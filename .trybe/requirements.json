@@ -1,0 +1,44 @@
+{
+  "requirements": [
+    {
+      "description": "1 - Crie uma função que busca as espécies de animais por id",
+      "bonus": false
+    },
+    {
+      "description": "2 - Crie uma função que verifica se todos os animais de uma espécie possuem a idade mínima especificada",
+      "bonus": false
+    },
+    {
+      "description": "3 - Crie uma função que busca as pessoas colaboradoras a partir do primeiro ou último nome",
+      "bonus": false
+    },
+    {
+      "description": "4 - Crie a gestão dos funcionários de acordo com o respectivo gerente",
+      "bonus": false
+    },
+    {
+      "description": "5 - Crie uma função que realiza a contagem dos animais de cada espécie",
+      "bonus": false
+    },
+    {
+      "description": "6 - Crie o cálculo total do preço de entrada",
+      "bonus": false
+    },
+    {
+      "description": "7 - Crie um mapeamento geográfico das espécies e seus animais",
+      "bonus": false
+    },
+    {
+      "description": "8 - Crie o agendamento que disponibilize as informações de horário dos animais com o dia que os animais estão disponíveis",
+      "bonus": false
+    },
+    {
+      "description": "9 - Crie uma função que busca o animal mais velho da primeira espécie gerenciada",
+      "bonus": false
+    },
+    {
+      "description": "10 - Crie uma associação de informações para cobertura das pessoas funcionárias",
+      "bonus": false
+    }
+  ]
+}

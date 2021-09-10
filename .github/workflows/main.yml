@@ -1,0 +1,35 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  eslint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1.4.4
+        with:
+          node-version: '12'
+      - name: ESLint
+        uses: betrybe/eslint-linter-action@v2.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+  
+  evaluator_job:
+    runs-on: ubuntu-18.04
+    name: Evaluator job
+    needs: [eslint]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Evaluator step
+        id: test
+        uses: betrybe/jest-evaluator-action@v7
+        with:
+          repository-test-name: 'betrybe/sd-0x-project-zoo-functions-tests'
+          repository-test-branch: 'master'
+      - name: Store evaluation step
+        uses: betrybe/store-evaluation-action@v2
+        with:
+          evaluation-data: ${{ steps.test.outputs.result }}
+          environment: production
+          pr-number: ${{ steps.test.outputs.pr-number }}
