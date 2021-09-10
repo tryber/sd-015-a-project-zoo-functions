@@ -91,7 +91,7 @@ Você deverá completar as funções de forma a satisfazer os requisitos listado
 1. Clone o repositório
   * `git clone git@github.com:tryber/sd-015-a-project-zoo-functions.git`
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-015-a-project-zoo-functions-rubric`
+    * `cd sd-015-a-project-zoo-functions`
 
 2. Instale as dependências
   * `npm install`
