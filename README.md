@@ -80,7 +80,7 @@ Você deverá completar as funções de forma a satisfazer os requisitos listado
 
 - Projeto individual;
 - Serão 2 dias de projeto;
-- Data de entrega para avaliação final do projeto: `dd/mm/yyyy - 14:00h`
+- Data de entrega para avaliação final do projeto: `21/09/2021 - 14:00h`
 
 ---
 
@@ -89,7 +89,7 @@ Você deverá completar as funções de forma a satisfazer os requisitos listado
 ### Antes de começar a desenvolver
 
 1. Clone o repositório
-  * `git clone git@github.com:tryber/sd-015-a-project-zoo-functions-rubric.git`
+  * `git clone git@github.com:tryber/sd-015-a-project-zoo-functions.git`
   * Entre na pasta do repositório que você acabou de clonar:
     * `cd sd-015-a-project-zoo-functions-rubric`
 
