@@ -7,6 +7,4 @@ function getOldestFromFirstSpecies(id) {
     ((o[2] > a.age) ? o : [a.name, a.sex, a.age]), [0, 0, 0]);
 }
 
-console.log(getOldestFromFirstSpecies(employees[0].id));
-
 module.exports = getOldestFromFirstSpecies;
