@@ -42,7 +42,7 @@ function getEmployeeByLastName(name) {
         species.find((el) => el.name === e).location),
     };
   }
-  return false;
+  throw new Error('Informações inválidas');
 }
 
 function getEmployeesByName(name) {
