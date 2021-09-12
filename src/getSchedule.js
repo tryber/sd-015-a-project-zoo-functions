@@ -24,15 +24,11 @@ function valorCalendario(dia) {
   };
 }
 
-function contruirCalendario(day = 0) {
+function contruirCalendario(...day) {
   const resposta = {};
-  if (day === 0) {
-    Object.keys(data.hours).forEach((dia) => {
-      resposta[dia] = valorCalendario(dia);
-    });
-  } else {
-    resposta[day] = valorCalendario(day);
-  }
+  day.forEach((dia) => {
+    resposta[dia] = valorCalendario(dia);
+  });
   return resposta;
 }
 
@@ -41,7 +37,7 @@ function getSchedule(dayName) {
   const diasDaSemana = Object.keys(data.hours);
   const animais = data.species.map((animal) => animal.name);
   if (dayName === undefined || (!diasDaSemana.includes(dayName) && !animais.includes(dayName))) {
-    resposta = contruirCalendario();
+    resposta = contruirCalendario(...diasDaSemana);
   } else if (diasDaSemana.includes(dayName)) {
     resposta = contruirCalendario(dayName);
   } else {
