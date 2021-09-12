@@ -7,7 +7,7 @@ function todosOsGerentes() {
       gerentes.push(id);
     });
   });
-  // Linha abaixo feito com a ajuda do Pedro Guarize;
+  // Linha abaixo feito com a ajuda do Pedro Guarize e do Leonardo Felix;
   return [...new Set(gerentes)];
 }
 
