@@ -17,17 +17,13 @@ function animaisExibidos(dia) {
   return retorno;
 }
 
-function valorCalendario(dia) {
-  return {
-    officeHour: horarios(data.hours[dia].open, data.hours[dia].close),
-    exhibition: animaisExibidos(dia),
-  };
-}
-
 function contruirCalendario(...day) {
   const resposta = {};
   day.forEach((dia) => {
-    resposta[dia] = valorCalendario(dia);
+    resposta[dia] = {
+      officeHour: horarios(data.hours[dia].open, data.hours[dia].close),
+      exhibition: animaisExibidos(dia),
+    };
   });
   return resposta;
 }
