@@ -1,13 +1,14 @@
 const data = require('../data/zoo_data');
 
-function getEmployeeByName(employeeName) {
-  let resposta = data.employees.find((ze) => {
-    const retorno = ze.firstName === employeeName || ze.lastName === employeeName;
+function acharEmpregado(nome) {
+  return data.employees.find((ze) => {
+    const retorno = ze.firstName === nome || ze.lastName === nome;
     return retorno;
   });
-  if (resposta === undefined) {
-    resposta = {};
-  }
+}
+
+function getEmployeeByName(employeeName) {
+  const { ...resposta } = employeeName !== undefined ? acharEmpregado(employeeName) : {};
   return resposta;
 }
 
