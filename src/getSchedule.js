@@ -4,18 +4,14 @@ function horarios(abre, fecha) {
   return abre === fecha && abre === 0 ? 'CLOSED' : `Open from ${abre}am until ${fecha}pm`;
 }
 
-function animaisExibidos(dia) {
-  let retorno;
-  if (dia !== 'Monday') {
-    retorno = data.species.filter((animal) => animal.availability.includes(dia)).map((bixo) => {
-      const retornoMap = bixo.name;
-      return retornoMap;
-    });
-  } else {
-    retorno = 'The zoo will be closed!';
-  }
-  return retorno;
+function acharAnimais(dia) {
+  return data.species.filter((animal) => animal.availability.includes(dia)).map((bixo) => {
+    const retornoMap = bixo.name;
+    return retornoMap;
+  });
 }
+
+const animaisExibidos = (dia) => (dia !== 'Monday' ? acharAnimais(dia) : 'The zoo will be closed!');
 
 function contruirCalendario(...day) {
   const resposta = {};
