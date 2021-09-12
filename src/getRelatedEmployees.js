@@ -7,17 +7,13 @@ function todosOsGerentes() {
       gerentes.push(id);
     });
   });
-  /*
-   Linha abaixo foi feita a partir do exemplo do site https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
-  */
-  const gerentesUnicos = gerentes.filter((chefe, index, lista) => {
-    const retornoReduce = lista.indexOf(chefe) === index;
-    return retornoReduce;
-  });
-  return gerentesUnicos;
+  // Linha abaixo feito com a ajuda do Pedro Guarize;
+  return [...new Set(gerentes)];
 }
 
 const managers = todosOsGerentes();
+
+console.log(managers);
 
 const isManager = (id) => managers.some((gerentes) => gerentes === id);
 
