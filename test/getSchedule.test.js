@@ -127,7 +127,7 @@ describe('8 - Crie o agendamento que disponibilize as informações de horário 
 
     {
       const actual = getSchedule('penguins');
-      const expected = [ 'Tuesday', 'Wednesday', 'Saturday', 'Sunday' ];
+      const expected = [ 'Tuesday', 'Wednesday', 'Sunday', 'Saturday' ];
       expect(actual).toEqual(expected);
     }
   });

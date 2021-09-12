@@ -38,10 +38,7 @@ function getSchedule(dayName) {
   } else if (diasDaSemana.includes(dayName)) {
     resposta[dayName] = calendario[dayName];
   } else {
-    resposta = Object.keys(calendario).filter((dia) => {
-      const respostaFilter = calendario[dia].exhibition.includes(dayName);
-      return respostaFilter;
-    });
+    resposta = data.species.find((bixo) => bixo.name === dayName).availability;
   }
   return resposta;
 }
