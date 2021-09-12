@@ -17,26 +17,33 @@ function animaisExibidos(dia) {
   return retorno;
 }
 
-function contruirCalendario() {
+function valorCalendario(dia) {
+  return {
+    officeHour: horarios(data.hours[dia].open, data.hours[dia].close),
+    exhibition: animaisExibidos(dia),
+  };
+}
+
+function contruirCalendario(day = 0) {
   const resposta = {};
-  Object.keys(data.hours).forEach((dia) => {
-    resposta[dia] = {
-      officeHour: horarios(data.hours[dia].open, data.hours[dia].close),
-      exhibition: animaisExibidos(dia),
-    };
-  });
+  if (day === 0) {
+    Object.keys(data.hours).forEach((dia) => {
+      resposta[dia] = valorCalendario(dia);
+    });
+  } else {
+    resposta[day] = valorCalendario(day);
+  }
   return resposta;
 }
 
 function getSchedule(dayName) {
   let resposta = {};
-  const calendario = contruirCalendario();
-  const diasDaSemana = Object.keys(calendario);
+  const diasDaSemana = Object.keys(data.hours);
   const animais = data.species.map((animal) => animal.name);
   if (dayName === undefined || (!diasDaSemana.includes(dayName) && !animais.includes(dayName))) {
-    resposta = calendario;
+    resposta = contruirCalendario();
   } else if (diasDaSemana.includes(dayName)) {
-    resposta[dayName] = calendario[dayName];
+    resposta = contruirCalendario(dayName);
   } else {
     resposta = data.species.find((bixo) => bixo.name === dayName).availability;
   }
