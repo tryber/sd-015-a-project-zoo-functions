@@ -1,15 +1,25 @@
 const data = require('../data/zoo_data');
 
-const stephanieId = '9e7d4524-363c-416a-8759-8aa7e50c0992';
-const olaId = 'fdb2543b-5662-46a7-badc-93d960fdc0a8';
-const burlId = '0e7b460e-acf4-4e17-bcb3-ee472265db83';
-const managers = [stephanieId, olaId, burlId];
-
-function isManager(id) {
-  const empregado = data.employees.find((ze) => ze.id === id);
-  const retorno = managers.some((gerentes) => gerentes === empregado.id);
-  return retorno;
+function todosOsGerentes() {
+  const gerentes = [];
+  data.employees.forEach((elemento) => {
+    elemento.managers.forEach((id) => {
+      gerentes.push(id);
+    });
+  });
+  /*
+   Linha abaixo foi feita a partir do exemplo do site https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
+  */
+  const gerentesUnicos = gerentes.filter((chefe, index, lista) => {
+    const retornoReduce = lista.indexOf(chefe) === index;
+    return retornoReduce;
+  });
+  return gerentesUnicos;
 }
+
+const managers = todosOsGerentes();
+
+const isManager = (id) => managers.some((gerentes) => gerentes === id);
 
 function getRelatedEmployees(managerId) {
   if (!isManager(managerId)) {
