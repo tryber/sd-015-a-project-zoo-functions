@@ -23,7 +23,6 @@ const getOptions = (param) => {
   const animals = species.map((specie) => specie.name);
   if (Object.keys(hours).includes(param)) options.weekDay = true;
   if (animals.includes(param)) options.animal = true;
-  console.log(options);
   return options;
 };
 
