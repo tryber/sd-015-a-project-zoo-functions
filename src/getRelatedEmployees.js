@@ -13,8 +13,6 @@ function todosOsGerentes() {
 
 const managers = todosOsGerentes();
 
-console.log(managers);
-
 const isManager = (id) => managers.some((gerentes) => gerentes === id);
 
 function getRelatedEmployees(managerId) {
