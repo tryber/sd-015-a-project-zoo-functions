@@ -6,7 +6,7 @@ function isManager(id) {
 }
 
 function getRelatedEmployees(managerId) {
-  if (isManager(managerId) === true) {
+  if (isManager(managerId)) {
     const names = data.employees.filter((element) => element.managers.includes(managerId));
     return names.map((element) => `${element.firstName} ${element.lastName}`);
   }
