@@ -5,7 +5,7 @@ function getAnimalsOlderThan(animal, age) {
     .filter((element) => element.name === animal)
     .map((idade) => idade.residents);
   // .every((idade) => idade.age >= age);
-  console.log(...animals[0]);
+  // console.log(...animals[0]);
   const ages = animals.every((ele, idx) => ele[idx].age > age);
   // const ages = animals.filter((ele, idx) => ele.name === 'Joe');
   // console.log(animals.filter((elem, idx2) => elem));
