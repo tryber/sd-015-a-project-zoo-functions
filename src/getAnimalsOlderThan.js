@@ -5,8 +5,7 @@ function getAnimalsOlderThan(animal, age) {
   return species
     .find((element) => element.name === animal)
     .residents
-    .map((element) => element.age)
-    .every((elemento) => elemento > age);
+    .every((elemento) => elemento.age > age);
 }
-// console.log(getAnimalsOlderThan('lions', 6));
+console.log(getAnimalsOlderThan('lions', 7));
 module.exports = getAnimalsOlderThan;
