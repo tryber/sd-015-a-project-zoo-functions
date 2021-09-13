@@ -10,6 +10,4 @@ function getAnimalsOlderThan(animal, age) {
   return returnable;
 }
 
-console.log(getAnimalsOlderThan('lions', 1000));
-
 module.exports = getAnimalsOlderThan;
