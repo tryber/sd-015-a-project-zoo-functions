@@ -8,7 +8,7 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  if (Object.keys(entrants).length === 0 || typeof (entrants) === 'undefined') {
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
   const visitantes = countEntrants(entrants);
