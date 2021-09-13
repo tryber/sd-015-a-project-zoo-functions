@@ -6,5 +6,5 @@ function getEmployeeByName(employeeName) {
   if (!employeeName) return {};
   return employees.find((employee) => (employee.firstName === employeeName || employee.lastName === employeeName));
 }
-console.log(getEmployeeByName('Spry'))
+// console.log(getEmployeeByName('Emery'))
 module.exports = getEmployeeByName;
