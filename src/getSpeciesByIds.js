@@ -23,5 +23,5 @@ function getSpeciesByIds(...ids) {
   return result;
 }
 
-console.log(getSpeciesByIds('89be95b3-47e4-4c5b-b687-1fabf2afa274', 'baa6e93a-f295-44e7-8f70-2bcdc6f6948d'));
+// console.log(getSpeciesByIds('89be95b3-47e4-4c5b-b687-1fabf2afa274', 'baa6e93a-f295-44e7-8f70-2bcdc6f6948d'));
 module.exports = getSpeciesByIds;
