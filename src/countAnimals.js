@@ -9,9 +9,9 @@ function countAnimals(animal) {
   if (!animal) return obj;
   const { specie, gender } = animal;
   if (specie && gender) {
-    const especie = species.find((e) => e.name === specie);
-    const residents = especie.residents.filter((e) => e.sex === gender);
-    return residents.length;
+    return species
+      .find((e) => e.name === specie).residents
+      .filter((e) => e.sex === gender).length;
   }
   if (specie) return obj[specie];
 }

@@ -3,48 +3,43 @@ const data = require('../data/zoo_data');
 const { species, employees } = data;
 
 function getAnimalNames(arr) {
-  const locations = [];
+  const res = [];
   const animalsNames = arr.map((e) => {
-    const specie = species.find((i) => i.id === e);
-    locations.push(specie.location);
-    return specie.name;
+    const { location, name } = species.find((i) => i.id === e);
+    res.push(location);
+    return name;
   });
-  return [animalsNames, locations];
+  return [animalsNames, res];
 }
 
 function makeArr() {
   const res = [];
   employees.forEach((e) => {
-    const obj = {};
     const [animalsNames, locations] = getAnimalNames(e.responsibleFor);
-    obj.fullName = `${e.firstName} ${e.lastName}`;
-    obj.id = e.id;
-    obj.locations = locations;
-    obj.species = animalsNames;
+    const obj = {
+      fullName: `${e.firstName} ${e.lastName}`,
+      id: e.id,
+      locations,
+      species: animalsNames,
+    };
     res.push(obj);
   });
   return res;
 }
 
-function getEmplooyeByName(arr, param) {
-  const employ = arr.find((e) => e.fullName.split(' ').includes(param));
-  return employ;
-}
+const getEmplooyeByName = (arr, param) => arr.find((e) => e.fullName.split(' ').includes(param));
 
 function getEmplooyeById(arr, param) {
   const employ = employees.find((e) => e.id === param);
-  if (employ) {
-    const obj = getEmplooyeByName(arr, employ.firstName);
-    return obj;
-  }
+  if (employ) return getEmplooyeByName(arr, employ.firstName);
   throw new Error('Informações inválidas');
 }
 
-function getEmployeesCoverage(param) {
+function getEmployeesCoverage({ name, id } = '') {
   const arr = makeArr();
-  if (!param) return arr;
-  if (param.name) return getEmplooyeByName(arr, param.name);
-  if (param.id) return getEmplooyeById(arr, param.id);
+  if (!name && !id) return arr;
+  if (name) return getEmplooyeByName(arr, name);
+  if (id) return getEmplooyeById(arr, id);
   throw new Error('Informações inválidas');
 }
 
