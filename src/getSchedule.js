@@ -5,5 +5,3 @@ function getSchedule(scheduleTarget) {
 }
 
 module.exports = getSchedule;
-
-// fazer por ultimo
