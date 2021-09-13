@@ -1,11 +1,15 @@
+const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function isManager(id) {
-  // seu código aqui
+  // const gerente = employees.some(() => employees.managers === [] ? true : false);
+  // if (employees.managers === []) {
+  //   return true;
+  // } return false;
 }
 
 function getRelatedEmployees(managerId) {
-  // seu código aqui
+  // const empregados = 
 }
 
 module.exports = { isManager, getRelatedEmployees };
