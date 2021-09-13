@@ -12,19 +12,18 @@ Ao receber mais de um id, retorna um array com as espécies referentes aos ids.
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-/*function getSpeciesByIds(...id) {
+/* function getSpeciesByIds(...id) {
     const buscaId = (id) => id === species.id;
     const resultado = species.map(buscaId);
     console.log(resultado);
     return resultado;
-}*/
+} */
 function getSpeciesByIds(...id) {
-    const buscaId = species.filter(objeto => { objeto.id === id });
-    console.log(id);
-    console.log(buscaId);
-    return buscaId;
+  const buscaId = species.filter((objeto) => objeto.id === id);
+  console.log(id);
+  console.log(buscaId);
+  return buscaId;
 }
 getSpeciesByIds('0938aa23-f153-4937-9f88-4858b24d6bce', '533bebf3-6bbe-41d8-9cdf-46f7d13b62ae');
-//console.log(getSpeciesByIds);
-
+// console.log(getSpeciesByIds);
 module.exports = getSpeciesByIds;
