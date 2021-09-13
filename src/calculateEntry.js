@@ -9,16 +9,16 @@ function countEntrants(entrants) {
   return people;
 }
 
-/** Source: https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty */
-function isEmpty(obj) {
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) { return false; }
-  }
-  return true;
+/** Source: https://www.samanthaming.com/tidbits/94-how-to-check-if-object-is-empty/ */
+function isObjectEmpty(value) {
+  return (
+    Object.prototype.toString.call(value) === '[object Object]'
+    && JSON.stringify(value) === '{}'
+  );
 }
 
 function calculateEntry(entrants) {
-  if (isEmpty(entrants) || entrants === undefined) {
+  if (isObjectEmpty(entrants) || entrants === undefined) {
     return 0;
   }
   const { child, adult, senior } = countEntrants(entrants);
