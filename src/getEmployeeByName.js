@@ -1,7 +1,7 @@
 const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
-  // seu código aqui
+  const getEmployee = data.employees
 }
 
 module.exports = getEmployeeByName;
