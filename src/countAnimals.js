@@ -5,10 +5,11 @@ function countAnimals({ specie = undefined, gender = undefined } = '') {
   // não sei porque precisa do = '', peguei na mentoria para resolver erro.
   // seu código aqui
   if (specie === undefined) {
-    return species.reduce((acc, { name, residents: { length } }) => {
-      Object.assign(acc, { [name]: length });
-      return acc;
-    }, {});
+    const countAll = {};
+    species.forEach((crr) => {
+      countAll[crr.name] = crr.residents.length;
+    });
+    return countAll;
   }
   if (gender === undefined) {
     return species.find((crr) => crr.name === specie).residents.length;
