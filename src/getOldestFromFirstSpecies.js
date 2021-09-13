@@ -1,7 +1,11 @@
+const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function getOldestFromFirstSpecies(id) {
-  // seu código aqui
+
 }
 
-module.exports = getOldestFromFirstSpecies;
+console.log(getOldestFromFirstSpecies('elephants'));
+// console.log(species.name)
+
+// module.exports = getOldestFromFirstSpecies;
