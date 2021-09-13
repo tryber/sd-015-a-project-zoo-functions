@@ -1,22 +1,18 @@
 const data = require('../data/zoo_data');
 
-function filtrarSexo(objeto, qualSexo) {
-  let resposta = objeto;
-  if (objeto !== undefined) {
-    resposta = objeto.filter((animal) => animal.sex === qualSexo);
-  }
-  return resposta;
+function filtrarSexo(animais, qualSexo) {
+  const objetos = qualSexo === undefined ? animais : animais.filter((algum) => {
+    const retorno = algum.sex === qualSexo;
+    return retorno;
+  });
+  return objetos.map((animal) => animal.name);
 }
 
-function nomesDosBixin(listaDosBixin, opicoes) {
-  return listaDosBixin.map((elemento) => {
-    const objetoSelecionado = data.species.find((especie) => especie.name === elemento);
-    let filtro = objetoSelecionado.residents;
-    if (opicoes.sex !== undefined) {
-      filtro = filtrarSexo(filtro, opicoes.sex);
-    }
-    const animaisResidentes = filtro.map((animal) => animal.name);
-    if (opicoes.sorted === true) {
+function mostrarTodosOsBichos(listaDeAnimais, opicoes) {
+  return listaDeAnimais.map((elemento) => {
+    const animalSelecionado = data.species.find((especie) => especie.name === elemento).residents;
+    const animaisResidentes = filtrarSexo(animalSelecionado, opicoes.sex);
+    if (opicoes.sorted) {
       animaisResidentes.sort();
     }
     const resposta = {};
@@ -25,25 +21,33 @@ function nomesDosBixin(listaDosBixin, opicoes) {
   });
 }
 
-function acharLocal(local, opicoes) {
+function animalPorLocal(local, opicoes) {
   let resposta;
-  const animaisin = data.species.filter((bissin) => bissin.location === local);
-  const locais = animaisin.map((bixin) => bixin.name);
+  const animaisLocais = data.species.filter((animal) => {
+    const retornoFilter = animal.location === local;
+    return retornoFilter;
+  }).map((animal) => animal.name);
   if (opicoes !== undefined && opicoes.includeNames === true) {
-    resposta = nomesDosBixin(locais, opicoes);
+    resposta = mostrarTodosOsBichos(animaisLocais, opicoes);
   } else {
-    resposta = locais;
+    resposta = animaisLocais;
   }
   return resposta;
 }
 
+function acharTodosLocais() {
+  return data.species.reduce((locais, bixo) => {
+    const retornoReduce = locais.includes(bixo.location) ? locais : `${locais}${bixo.location};`;
+    return retornoReduce;
+  }, '').split(';').slice(0, -1);// Usei slice, porque o pop() não funcionou;
+}
+
 function getAnimalMap(options) {
-  const resposta = {
-    NE: acharLocal('NE', options),
-    NW: acharLocal('NW', options),
-    SE: acharLocal('SE', options),
-    SW: acharLocal('SW', options),
-  };
+  const resposta = {};
+  const locais = acharTodosLocais();
+  locais.forEach((local) => {
+    resposta[local] = animalPorLocal(local, options);
+  });
   return resposta;
 }
 
