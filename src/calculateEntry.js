@@ -1,10 +1,7 @@
 const data = require('../data/zoo_data');
 
 function valorarAsChaves(entradas, IdadeMinima, IdadeMaxima) {
-  return entradas.map((pessoa) => pessoa.age).reduce((acc, curr) => {
-    const retornoReduce = curr < IdadeMaxima && curr >= IdadeMinima ? acc + 1 : acc;
-    return retornoReduce;
-  }, 0);
+  return entradas.filter((pessoa) => pessoa.age < IdadeMaxima && pessoa.age >= IdadeMinima).length;
 }
 
 function countEntrants(entrants) {
