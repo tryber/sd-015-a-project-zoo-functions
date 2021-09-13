@@ -10,6 +10,7 @@ function getSpeciesByIds(...ids) {
     const result = dataById.reduce((total, current) => total.concat(current), []);
     return result;
   }
+  return dataById;
 }
 
 module.exports = getSpeciesByIds;
