@@ -4,7 +4,7 @@ const data = require('../data/zoo_data');
 //   // seu código aqui
 // }
 
-//https://github.com/tryber/sd-015-a-project-zoo-functions/pull/3/commits/37c35b2e4d9696368a14f559f5743d91d2c425dc
+// https://github.com/tryber/sd-015-a-project-zoo-functions/pull/3/commits/37c35b2e4d9696368a14f559f5743d91d2c425dc
 const getAnimalsOlderThan = (animal, age) => data.species.find((e) => e.name === animal).residents
   .every((e) => e.age >= age);
 getAnimalsOlderThan('tigers', 15);
