@@ -16,8 +16,8 @@ function filtroGenero(especieSexo) {
 function countAnimals(bissin) {
   let resposta = {};
   if (bissin === undefined) {
-    data.species.map((especie) => especie.name).forEach((nome) => {
-      resposta[nome] = acharEspecie(nome).residents.length;
+    data.species.forEach((especie) => {
+      resposta[especie.name] = acharEspecie(especie.name).residents.length;
     });
   } else {
     resposta = filtroGenero(bissin);
