@@ -31,6 +31,7 @@ function countByGender(specie, gender) {
 
 function countAnimals({ specie = false, gender = false } = {}) {
   // seu código aqui
+
   if (!specie) {
     return countAllAnimals();
   }
@@ -41,7 +42,5 @@ function countAnimals({ specie = false, gender = false } = {}) {
 
   return countByGender(specie, gender);
 }
-
-console.log(countAnimals());
 
 module.exports = countAnimals;
