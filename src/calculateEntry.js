@@ -7,7 +7,7 @@ function countEntrants(entrants) {
   return { child: child1, adult: adult1, senior: senior1 };
 }
 
-const calculateEntry = (entrants = {}) => {
+function calculateEntry(entrants = {}) {
   if (Object.keys(entrants).length !== 0) {
     const a = countEntrants(entrants);
     const { child, adult, senior } = data.prices;
