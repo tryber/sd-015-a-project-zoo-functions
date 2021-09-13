@@ -37,7 +37,7 @@ function animalPorLocal(local, opicoes) {
 
 function getAnimalMap(options) {
   const resposta = {};
-  const locais = [...new Set(data.species.map((especie) => especie.location))];// Lógica dessa linha foi baseada no que foi feito na linha 11 de 'getRelatedEmployees.js'
+  const locais = [...new Set(data.species.map((especie) => especie.location))];// Lógica baseada em conversa com Leonardo Felix e Pedro Guarize
   locais.forEach((local) => {
     resposta[local] = animalPorLocal(local, options);
   });
