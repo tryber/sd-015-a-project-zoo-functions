@@ -1,19 +1,6 @@
 const data = require('../data/zoo_data');
 
-function todosOsGerentes() {
-  const gerentes = [];
-  data.employees.forEach((elemento) => {
-    elemento.managers.forEach((id) => {
-      gerentes.push(id);
-    });
-  });
-  // Linha abaixo feito com a ajuda do Pedro Guarize e do Leonardo Felix;
-  return [...new Set(gerentes)];
-}
-
-const gerencia = todosOsGerentes();
-
-const isManager = (id) => gerencia.some((gerentes) => gerentes === id);
+const isManager = (id) => data.employees.some((worker) => worker.managers.includes(id));
 
 function getRelatedEmployees(managerId) {
   if (!isManager(managerId)) {
