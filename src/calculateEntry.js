@@ -14,10 +14,13 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants = {}) {
-  const objetoEntradas = countEntrants(entrants);
   let resposta = 0;
   if (entrants.length > 0) {
-    resposta = Object.entries(objetoEntradas);
+    const objetoEntradas = countEntrants(entrants);
+    resposta = Object.entries(objetoEntradas).reduce((acc, curr) => {
+      const retornoReduce = acc + data.prices[curr[0]] * curr[1];
+      return retornoReduce;
+    }, 0);
   }
   return resposta;
 }
