@@ -9,7 +9,7 @@ Quando provido o último nome do funcionário, retorna o objeto do funcionário
 const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
-    if (!employeeName) return {};
+    if (typeof(employeeName) === 'undefined') return {};
 }
-
+getEmployeeByName();
 module.exports = getEmployeeByName;
