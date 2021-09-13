@@ -11,9 +11,9 @@ function todosOsGerentes() {
   return [...new Set(gerentes)];
 }
 
-const managers = todosOsGerentes();
+const gerencia = todosOsGerentes();
 
-const isManager = (id) => managers.some((gerentes) => gerentes === id);
+const isManager = (id) => gerencia.some((gerentes) => gerentes === id);
 
 function getRelatedEmployees(managerId) {
   if (!isManager(managerId)) {
