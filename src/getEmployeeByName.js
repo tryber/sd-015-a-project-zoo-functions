@@ -6,7 +6,7 @@ function getEmployeeByName(employeeName) {
     return data.employees.find((employee) =>{
       const returning = employee.firstName === employeeName || employee.lastName === employeeName;
       return returning;
-    })
+    });
   } else {
     return {};
   }
