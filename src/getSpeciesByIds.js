@@ -3,12 +3,13 @@ const data = require('../data/zoo_data');
 
 function getSpeciesByIds(...ids) {
   // seu código aqui
-  let arr = [];
-  const getSpecie = ids.forEach(id => species.filter((specie) => {
+  const arr = [];
+  ids.forEach((id) => species.filter((specie) => {
     if (specie.id === id) {
-      arr.push(specie);
-    }
-  }))
+      return arr.push(specie);
+    } return null;
+    // Lint estava exigindo um retorno para a arrow function, então li no StackOverflow que o return null seria uma boa solução. Link: https://stackoverflow.com/questions/45014094/how-do-i-fix-expected-to-return-a-value-at-the-end-of-arrow-function-warning
+  }));
   return arr;
 }
 
