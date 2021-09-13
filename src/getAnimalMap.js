@@ -35,16 +35,9 @@ function animalPorLocal(local, opicoes) {
   return resposta;
 }
 
-function acharTodosLocais() {
-  return data.species.reduce((locais, bixo) => {
-    const retornoReduce = locais.includes(bixo.location) ? locais : `${locais}${bixo.location};`;
-    return retornoReduce;
-  }, '').split(';').slice(0, -1);// Usei slice, porque o pop() não funcionou;
-}
-
 function getAnimalMap(options) {
   const resposta = {};
-  const locais = acharTodosLocais();
+  const locais = [...new Set(data.species.map((especie) => especie.location))];// Lógica dessa linha foi baseada no que foi feito na linha 11 de 'getRelatedEmployees.js'
   locais.forEach((local) => {
     resposta[local] = animalPorLocal(local, options);
   });
