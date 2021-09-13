@@ -29,12 +29,11 @@ function countByGender(specie, gender) {
   return numOfGenderResidents;
 }
 
-function countAnimals(animal) {
+function countAnimals({ specie = false, gender = false } = {}) {
   // seu código aqui
-  if (!animal) {
+  if (!specie) {
     return countAllAnimals();
   }
-  const { specie = false, gender = false } = animal;
 
   if (!gender) {
     return countBySpecie(specie);
