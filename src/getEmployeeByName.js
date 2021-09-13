@@ -2,11 +2,10 @@ const data = require('../data/zoo_data');
 
 const { employees } = data;
 
-function getEmployeeByName(employeeName) {
+function getEmployeeByName(employeeName) { 
+  const dataEmployer = employees.find((element) => element.firstName.includes(employeeName) || element.lastName.includes(employeeName));
 
-  const tokenPerson = employees.find((employerToken) => employerToken.firstName === employeeName
-  || employerToken.lastName === employeeName ? employerToken : {});
-  return tokenPerson;
+  return !(dataEmployer) ? {} : dataEmployer;
 }
 
 console.log(getEmployeeByName('Emery'));
