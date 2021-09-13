@@ -4,4 +4,6 @@ function getAnimalsOlderThan(animal, age) {
   // seu código aqui
 }
 
+console.log(getAnimalsOlderThan());
+
 module.exports = getAnimalsOlderThan;
