@@ -8,8 +8,8 @@ function isManager(id) {
 
 function getRelatedEmployees(managerId) {
   // seu código aqui
-  const patrao = isManager(managerId);
-  if (patrao) {
+  const boss = isManager(managerId);
+  if (boss) {
     return employees.filter((employee) => employee.managers.includes(managerId))
       .map((employee) => `${employee.firstName} ${employee.lastName}`);
   }
