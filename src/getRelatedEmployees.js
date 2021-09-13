@@ -12,6 +12,6 @@ const getRelatedEmployees = (managerId) => {
     );
   }
   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
-}
+};
 
 module.exports = { isManager, getRelatedEmployees };
