@@ -6,9 +6,9 @@ const getAnimalGender = (animal) => findAnimal(animal.specie).residents.filter((
 
 function countAnimals(animal) {
   if (animal === undefined) {
-    return data.species.reduce((animals, cur) => Object.assign(animals, {[cur.name]: cur.residents.length}), {});
-  } 
-  else if (animal.specie && !animal.gender) {
+    return data.species.reduce((animals, cur) => Object.assign(animals, { [cur.name]: cur.residents.length }), {});
+  }
+  if (animal.specie && !animal.gender) {
     return findAnimal(animal.specie).residents.length;
   }
   else if (animal.gender) {
