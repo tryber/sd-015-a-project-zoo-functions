@@ -21,7 +21,7 @@ console.log(countEntrants([
 
 function calculateEntry(entrants) {
   // Referência: https://www.samanthaming.com/tidbits/94-how-to-check-if-object-is-empty/
-  if (entrants === 0 || entrants === undefined || Object.keys(entrants).length === 0) {
+  if (entrants === 0 || !entrants || Object.keys(entrants).length === 0) {
     return 0;
   }
   const priceChild = (countEntrants(entrants).child * prices.child);

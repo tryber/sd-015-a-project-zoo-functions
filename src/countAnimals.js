@@ -18,7 +18,7 @@ function countSpecies(animal) {
 }
 
 function countAnimals(animal) {
-  if (animal === undefined) {
+  if (!animal) {
     return undefinedAnimal();
   }
   return countSpecies(animal);

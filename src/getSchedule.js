@@ -47,7 +47,7 @@ function animalSchedule(animal) {
 function getSchedule(scheduleTarget) {
   const animalCheck = species.some((element) => element.name === scheduleTarget);
   const dayCheck = days.some((element) => element === scheduleTarget);
-  if (scheduleTarget === undefined || (animalCheck === false && dayCheck === false)) {
+  if (!scheduleTarget || (animalCheck === false && dayCheck === false)) {
     return allSchedule();
   }
   if (dayCheck) {
@@ -56,6 +56,6 @@ function getSchedule(scheduleTarget) {
   return animalSchedule(scheduleTarget);
 }
 
-console.log(getSchedule('penguins'));
+console.log(getSchedule());
 
 module.exports = getSchedule;

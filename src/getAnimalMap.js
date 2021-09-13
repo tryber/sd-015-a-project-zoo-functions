@@ -11,7 +11,7 @@ function animalsLocation() {
 }
 
 function getAnimalMap(options) {
-  if (options === undefined) {
+  if (!options) {
     return animalsLocation();
   }
 }
