@@ -1,16 +1,17 @@
 const data = require('../data/zoo_data');
 
-function getSpeciesByIds(ids) {
-  if (ids === undefined) {
-    return [];
-  }
-  return console.log(
-    data.species.filter(
-      (ele) => ele.id === '0938aa23-f153-4937-9f88-4858b24d6bce',
-    ),
-  );
+function getSpeciesByIds(id1, id2) {
+  // if (ids === undefined) {
+  //   return [];
+  // }
+  return data.species.filter((ele) => ele.id === id1 || ele.id === id2);
 }
-console.log(getSpeciesByIds());
+// console.log(
+//   getSpeciesByIds(
+//     '0938aa23-f153-4937-9f88-4858b24d6bce',
+//     'e8481c1d-42ea-4610-8e11-1752cfc05a46',
+//   ),
+// );
 
 module.exports = getSpeciesByIds;
 
