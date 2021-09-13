@@ -1,7 +1,6 @@
 const data = require('../data/zoo_data');
 
-function getSpeciesByIds(ids) {
-  // seu código aq
-}
+const getSpeciesByIds = (...ids) => data.species.filter(({id} = data.species) => ids.includes(id));
 
+//NÃO RESOLVIDO...
 module.exports = getSpeciesByIds;
