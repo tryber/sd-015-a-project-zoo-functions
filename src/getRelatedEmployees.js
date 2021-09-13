@@ -5,8 +5,10 @@ function isManager(id) {
   data.employees.forEach((element) => {
     obj.push([...element.managers]);
   });
+  console.log('obj:', obj);
   const weyrwqur = [];
   obj.forEach((element) => weyrwqur.push(...element));
+  console.log('weyrwqur:', weyrwqur);
   return weyrwqur.some((element) => element === id);
 }
 
@@ -25,5 +27,5 @@ function getRelatedEmployees(managerId) {
   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 
-getRelatedEmployees('fdb2543b-5662-46a7-badc-93d960fdc0a8');
+// getRelatedEmployees('fdb2543b-5662-46a7-badc-93d960fdc0a8');
 module.exports = { isManager, getRelatedEmployees };
