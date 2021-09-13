@@ -6,10 +6,15 @@ Sem parâmetros, retorna um objeto vazio
 Quando provido o primeiro nome do funcionário, retorna o objeto do funcionário
 Quando provido o último nome do funcionário, retorna o objeto do funcionário
  */
+const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
-    if (typeof(employeeName) === 'undefined') return {};
+  if (typeof (employeeName) === 'undefined') return {};
+  const funcioFirstName = employees.find((funcionar) => funcionar.firstName === employeeName);
+  const funcioLastName = employees.find((funcionari) => funcionari.lastName === employeeName);
+  if (typeof (funcioFirstName) === 'undefined') return funcioLastName;
+  return funcioFirstName;
 }
-getEmployeeByName();
+getEmployeeByName('Elser');
 module.exports = getEmployeeByName;

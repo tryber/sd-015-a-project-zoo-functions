@@ -20,6 +20,7 @@ const data = require('../data/zoo_data');
 }*/
 function getSpeciesByIds(...id) {
     const buscaId = species.filter(objeto => { objeto.id === id });
+    console.log(id);
     console.log(buscaId);
     return buscaId;
 }
