@@ -27,7 +27,6 @@ describe('9 - Crie uma função que busca o animal mais velho da primeira espéc
       ['Shu', 'female', 19],
       ['Maxwell', 'male', 15],
     ];
-
     employees.forEach((employeeId, index) => {
       const actual = getOldestFromFirstSpecies(employeeId);
       expect(actual).toEqual(expected[index]);
