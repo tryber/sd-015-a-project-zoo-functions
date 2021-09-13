@@ -5,7 +5,6 @@ const { species } = data;
 function makeAnimalMap(sort, sex) {
   const obj = {};
   species.forEach((e) => {
-    obj[e.location] = [];
     const speciesInLocation = species.filter((animal) => animal.location === e.location);
     const newObj = speciesInLocation.map((animal) => {
       let { residents } = animal;
