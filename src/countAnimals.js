@@ -1,31 +1,26 @@
 const data = require('../data/zoo_data');
 
-function contarAnimalEspecifico(animal) {
+const acharEspecie = (bicho) => data.species.find((bixinho) => bixinho.name === bicho);
+
+function filtroGenero(especieSexo) {
   let resposta;
-  const animais = data.species.find((elemento) => elemento.name === animal.specie).residents;
-  if (animal.gender !== undefined) {
-    resposta = animais.reduce((contador, bixo) => {
-      const retornoReduce = bixo.sex === animal.gender ? contador + 1 : contador;
-      return retornoReduce;
-    }, 0);
+  const animais = acharEspecie(especieSexo.specie).residents;
+  if (especieSexo.gender !== undefined) {
+    resposta = animais.filter((animal) => animal.sex === especieSexo.gender);
   } else {
-    resposta = animais.length;
+    resposta = animais;
   }
-  return resposta;
+  return resposta.length;
 }
 
-function countAnimals(bixin) {
+function countAnimals(bissin) {
   let resposta = {};
-  if (bixin === undefined) {
-    const especies = data.species.map((elemento) => elemento.name);
-    especies.forEach((elemento) => {
-      resposta[elemento] = data.species.find((bixinho) => {
-        const retornoFind = bixinho.name === elemento;
-        return retornoFind;
-      }).residents.length;
+  if (bissin === undefined) {
+    data.species.map((especie) => especie.name).forEach((nome) => {
+      resposta[nome] = acharEspecie(nome).residents.length;
     });
   } else {
-    resposta = contarAnimalEspecifico(bixin);
+    resposta = filtroGenero(bissin);
   }
   return resposta;
 }
