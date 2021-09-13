@@ -31,11 +31,11 @@ function countAnimals(animal) {
     return allAnimals;
   }
   if (Object.keys(animal).includes('specie') && Object.keys(animal).length === 1) {
-    return species.filter((element) =>
-      element.name === animal.specie)[0].residents.length;
+    return species.find((element) =>
+      element.name === animal.specie).residents.length;
   }
-  return species.filter((element) =>
-    element.name === animal.specie)[0].residents
+  return species.find((element) =>
+    element.name === animal.specie).residents
     .filter((element) => element.sex === animal.gender).length;
 }
 
