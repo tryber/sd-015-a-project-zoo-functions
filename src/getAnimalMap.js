@@ -1,5 +1,6 @@
 const data = require('../data/zoo_data');
 
+/*
 // Requisito 1 do Exercício:
 function speciesFrom(location) { // Função que retorna todas as espécies presentes em uma determinada 'location' do Zoo.
   return data.species.filter((specie) =>
@@ -50,9 +51,9 @@ const allSpecAndNamesPerLocation = {
 
 // Requisito 3 do Exercício:
 
-
 function getAnimalMap(options) {
   // seu código aqui
 }
 
 module.exports = getAnimalMap;
+*/
