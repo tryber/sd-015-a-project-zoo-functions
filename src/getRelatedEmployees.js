@@ -25,5 +25,3 @@ function getRelatedEmployees(managerId) {
 }
 
 module.exports = { isManager, getRelatedEmployees };
-
-isManager('porra')
