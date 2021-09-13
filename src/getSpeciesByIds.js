@@ -15,20 +15,13 @@ Esta função é responsável pela busca das espécies de animais por id. Ela re
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function getSpeciesByIds(ids, ...rest) {
-  const semParametro = [];
-  const comUmParametro = species.filter((elem) => elem.id === ids);
-  const doisOuMaisParametros = species
-    .filter((element) => element.id === ids || element.id === rest[0]);
-  if (!ids) {
-    return semParametro;
-  }
-  if (rest.length === 0) {
-    return comUmParametro;
-  }
-  if (rest.length > 0) {
-    return doisOuMaisParametros;
-  }
+function getSpeciesByIds(...ids) {
+  const result = [];
+  ids.forEach((elementFor) =>
+    result.push(species.filter((elementFilter) =>
+      elementFilter.id === elementFor)[0]));
+  return result;
 }
-console.log(getSpeciesByIds('89be95b3-47e4-4c5b-b687-1fabf2afa274', 'baa6e93a-f295-44e7-8f70-2bcdc6f6948d'));
+
+// console.log(getSpeciesByIds('89be95b3-47e4-4c5b-b687-1fabf2afa274', 'baa6e93a-f295-44e7-8f70-2bcdc6f6948d'));
 module.exports = getSpeciesByIds;
