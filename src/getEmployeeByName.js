@@ -8,7 +8,7 @@ function getEmployeeByName(employeeName) {
       return returning;
     });
   }
-    return {};
-  }
+  return {};
+}
 
 module.exports = getEmployeeByName;
