@@ -11,8 +11,7 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
-  if (typeof entrants === 'undefined' || Object.values(entrants).length < 1) {
+  if (!entrants || Object.values(entrants).length < 1) {
     return 0;
   }
   const result = countEntrants(entrants);
