@@ -1,5 +1,6 @@
 const data = require('../data/zoo_data');
 
+// Lógica desse requisito foi feita com ajuda de Alex Cubas, Rodrigo Moreira e Lucas Ferreira.
 function valorarAsChaves(entradas, IdadeMinima, IdadeMaxima) {
   return entradas.filter((pessoa) => pessoa.age < IdadeMaxima && pessoa.age >= IdadeMinima).length;
 }
