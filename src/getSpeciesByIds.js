@@ -12,5 +12,5 @@ function getSpeciesByIds(id1, id2) {
   }
   return result;
 }
-console.log(getSpeciesByIds());
+
 module.exports = getSpeciesByIds;
