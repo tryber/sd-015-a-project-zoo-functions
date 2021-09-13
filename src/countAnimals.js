@@ -16,8 +16,8 @@ function countAnimals(animal) {
   const animals = species.find((type) => type.name === animal.specie);
   // Caso animal.gender seja passado, iremos usar este if para retornar somente o genero requisitado
   if (animal.gender !== undefined) {
-    const aux = animal.residents.filter((type) => type.sex === animal.gender);
-    return aux.length;
+    const animalByGender = animals.residents.filter((type) => type.sex === animal.gender);
+    return animalByGender.length;
   }
   // Caso gender não seja passado o if será ignorado e retornará todos animais residentes.
   return animals.residents.length;
