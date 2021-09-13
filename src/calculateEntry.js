@@ -17,8 +17,7 @@ function countEntrants(entrants) {
 function calculateEntry(entrants = {}) {
   let resposta = 0;
   if (entrants.length > 0) {
-    const objetoEntradas = countEntrants(entrants);
-    resposta = Object.entries(objetoEntradas).reduce((valor, atual) => {
+    resposta = Object.entries(countEntrants(entrants)).reduce((valor, atual) => {
       const retornoReduce = valor + data.prices[atual[0]] * atual[1];
       return retornoReduce;
     }, 0);
