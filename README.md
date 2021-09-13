@@ -105,19 +105,15 @@ Você deverá completar as funções de forma a satisfazer os requisitos listado
     * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
     * Exemplo: `git checkout -b luiza-zoo-functions-project`
 
-4. Desenvolva a solução para os problemas no arquivo `src/zoo.js`. Você pode usar os arquivos do diretório `test` para verificar se a sua implementação está de acordo com o esperado;
+4. Desenvolva a solução para os problemas nos arquivos dentro do diretório `src`. Você pode usar os arquivos do diretório `test` para verificar se a sua implementação está de acordo com o esperado;
 
 5. Adicione as mudanças ao _stage_ do Git e faça um `commit`
   * Verifique que as mudanças ainda não estão no _stage_
-    * Exemplo: `git status` (o arquivo `src/zoo.js` deve aparecer em vermelho)
+    * Exemplo: `git status` (os arquivos no diretório `src` devem aparecer em vermelho)
   * Adicione o novo arquivo ao _stage_ do Git
       * Exemplo:
         * `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-        * `git status` (deve aparecer listado o arquivo `src/zoo.js` em verde)
-  * Faça o `commit` inicial
-      * Exemplo:
-        * `git commit -m 'iniciando o projeto. VAMOS COM TUDO :rocket:'` (fazendo o primeiro commit)
-        * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
+        * `git status` (deve aparecer listado os arquivos do diretório `src` em verde)
 
 6. Adicione a sua branch com o novo `commit` ao repositório remoto
   * Usando o exemplo anterior: `git push -u origin luiza-zoo-functions-project`
