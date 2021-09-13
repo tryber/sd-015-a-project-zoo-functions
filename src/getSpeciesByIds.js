@@ -1,15 +1,13 @@
 const data = require('../data/zoo_data');
 
 function getSpeciesByIds(...ids) {
-  // seu código aqui
-  const species = [];
+  if (ids.length === 0) return [];
 
-  if (ids.length === 0) return species;
-
-  // Consultei o repositório do João Felipe Pelliccione para resolver essa parte: https://github.com/tryber/sd-015-a-project-zoo-functions/pull/42/files
-  ids.forEach((id) => species.push(data.species.find((animal) => animal.id === id)));
-
-  return species;
+  // Consultei o repositório do Apolo Wilker para resolver essa parte:
+  // Link: https://github.com/tryber/sd-015-a-project-zoo-functions/pull/9/files
+  return data.species.filter((animals) => {
+    return ids.includes(animals.id); // O includes é um método que procura se determinado conjunto de strings pode ser encontrado dentro de outra string, e irá retornar true, caso positivo, e false, caso negativo. Neste caso, estamos perguntando se os ids que estão dentro de animals estão presentes dentro do array, criado através do parâmetro rest, ...ids.
+  });
 }
 
 module.exports = getSpeciesByIds;
