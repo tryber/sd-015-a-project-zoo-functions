@@ -5,7 +5,7 @@ const monday = {
     exhibition: 'The zoo will be closed!' },
 };
 
-const dtHr = data.hours;
+const dtH = data.hours;
 
 const getAnimalsByDay = (day) => data.species.filter((animals) =>
   animals.availability.includes(day)).map((animalSpecies) =>
@@ -45,7 +45,7 @@ function getSchedule(scheduleTarget) {
   if (Object.keys(data.hours).includes(scheduleTarget)) {
     return {
       [scheduleTarget]: {
-        officeHour: `Open from ${dtHr[scheduleTarget].open}am until ${dtHr[scheduleTarget].close}pm`,
+        officeHour: `Open from ${dtH[scheduleTarget].open}am until ${dtH[scheduleTarget].close}pm`,
         exhibition: getAnimalsByDay(scheduleTarget),
       },
     };
