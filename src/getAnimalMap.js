@@ -23,7 +23,7 @@ function getAnimalMap(options) {
       obj[specie.location][specie.name] = [];
       specie.residents.forEach((resident) => {
         obj[specie.location][specie.name].push(resident.name);
-        
+
         if (options.sorted) obj[specie.location][specie.name].sort();
       }
     )});
