@@ -7,14 +7,12 @@ function countAnimals({ specie = false, gender = false } = {}) {
     species.forEach((element) => { allAnimals[element.name] = element.residents.length; });
     return allAnimals;
   }
-  const theAnimal = species.find((element) => element.name === specie);
+  const theAnimal = species.find((element) => element.name === specie).residents;
   if (!gender) {
-    return theAnimal.residents.length;
+    return theAnimal.length;
   }
-  const animalNGender = theAnimal.residents.filter((element) => element.sex === gender).length;
+  const animalNGender = theAnimal.filter((element) => element.sex === gender).length;
   return animalNGender;
 }
-
-// countAnimals({ specie: 'lions', gender: 'male' });
 
 module.exports = countAnimals;
