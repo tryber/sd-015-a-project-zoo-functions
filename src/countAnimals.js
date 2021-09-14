@@ -1,10 +1,10 @@
 const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
-  let animals = {};
+  const animals = {};
   if (animal === undefined) {
     data.species.forEach((element) => animals[element.name] = element.residents.length);
-  } else if (animal.gender === undefined){
+  } else if (animal.gender === undefined) {
     const animalResidentsObject = data.species.filter((element) => animal.specie.includes(element.name))[0].residents;
     return animalResidentsObject.length;
   } else {
