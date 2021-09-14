@@ -104,7 +104,7 @@ function getAnimalMap(options) {
   if (options.includeNames && !options.sorted && options.sex) return animalsSex(options.sex);
   if (options.includeNames && options.sorted && options.sex) return aniamalsSexSort(options.sex);
   if (!options.includeNames && !options.sorted && options.sex) return animalsLoc();
-
+  if (!options.includeNames && options.sorted && options.sex) return animalsLoc();
 }
 
 // const options = { includeNames: true, sex: 'female', sorted: true };
