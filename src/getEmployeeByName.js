@@ -4,8 +4,8 @@ function getEmployeeByName(employeeName) {
   if (employeeName === undefined) {
     return {};
   }
-  const achaFuncionario = (pessoa) => pessoa.firstName === employeeName || pessoa.lastName === employeeName;
-  const funcionario = data.employees.find(achaFuncionario);
+  const achaFu = (pessoa) => pessoa.firstName === employeeName || pessoa.lastName === employeeName;
+  const funcionario = data.employees.find(achaFu);
   return funcionario;
 }
 
