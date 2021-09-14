@@ -28,4 +28,6 @@ function countAnimals(animal = {}) {
   return listAnimals();
 }
 
+console.log(countAnimals({ specie: 'penguins' }));
+
 module.exports = countAnimals;
