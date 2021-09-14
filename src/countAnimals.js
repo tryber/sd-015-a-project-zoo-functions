@@ -1,3 +1,4 @@
+const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
@@ -8,7 +9,7 @@ function countAnimals(animal) {
     return animalList;
   }
   const { specie, gender } = animal;
-  const searchAnimal = data.species.find((resultAnimal) => resultAnimal.name === specie);
+  const searchAnimal = species.find((resultAnimal) => resultAnimal.name === specie);
   const numberOfAnimals = searchAnimal.residents.length;
   const searchGender = searchAnimal.residents.filter((resultAnimal) => resultAnimal.sex === gender);
   const animalsByGender = searchGender.length;
