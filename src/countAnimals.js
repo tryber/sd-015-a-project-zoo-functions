@@ -20,7 +20,7 @@ function countAnimals(animal) {
   const specieTot = specieObject[0].residents.length;
   return specieTot;
 }
-// console.log(countAnimals());
-// console.log(countAnimals({ specie: 'penguins' }));
-console.log(countAnimals({ specie: 'bears', gender: 'female' }));
+console.log(countAnimals());
+console.log(countAnimals({ specie: 'penguins' }));
+console.log(countAnimals({ specie: 'giraffes', gender: 'female' }));
 module.exports = countAnimals;
