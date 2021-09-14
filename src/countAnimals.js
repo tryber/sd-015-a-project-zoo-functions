@@ -1,16 +1,34 @@
-const data = require('../data/zoo_data');
+const data = require("../data/zoo_data");
+
+function findSpecie(animalSpecie) {
+  return data.species.find((elem) => elem.name === animalSpecie).residents;
+}
+
+function splitGender(animalSpecie, animalSex) {
+  return animalSpecie.filter((elem) => elem.sex === animalSex);
+}
 
 function countAnimals(animal) {
-  const result = data.species.forEach((elem) => {
-    console.log(elem.name);
-    console.log(elem.residents.length);
-  });
-  console.log(result);
+  if (animal === undefined) {
+    const animalList = {};
+    data.species.forEach(
+      (elem) => (animalList[elem.name] = elem.residents.length)
+    );
+    return animalList;
+  }
+  const { specie, gender } = animal;
+  const getSpecie = findSpecie(specie);
+  if (!gender) {
+    return getSpecie.length;
+  }
+  return splitGender(getSpecie, gender).length;
 }
 
 module.exports = countAnimals;
 
 //! Deletar Abaixo
+
+//* Contagem = residents.length
 
 // Implemente a função countAnimals
 // Esta função é responsável por contabilizar a quantidade de animais de cada espécie.
@@ -26,8 +44,8 @@ module.exports = countAnimals;
 // Recebendo como parâmetro um objeto com a chave specie, retorna um número, a quantidade de animais daquela espécie;
 // Recebendo como parâmetro um objeto com a chave specie e gender, retorna um número, a quantidade de animais daquela espécie, no gênero selecionado.
 
-countAnimals();
+// countAnimals();
 // countAnimals({ specie: "penguins" });
 // countAnimals({ specie: "giraffes" });
 // countAnimals({ specie: "bears", gender: "female" });
-// countAnimals({ specie: "elephants", gender: "male" });
+countAnimals({ specie: "elephants", gender: "male" });
