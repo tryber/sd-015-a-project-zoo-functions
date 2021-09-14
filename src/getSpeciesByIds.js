@@ -6,6 +6,9 @@ function getSpeciesByIds(...ids) {
   return mapObject;
 }
 
+// consultei o código do Leonardo Felix para me auxiliar a entender esse requisito pois estava travado
+// estou entendendo 100% do código
+
 console.log(getSpeciesByIds('533bebf3-6bbe-41d8-9cdf-46f7d13b62ae'));
 
 module.exports = getSpeciesByIds;
