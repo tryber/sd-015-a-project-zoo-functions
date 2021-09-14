@@ -15,7 +15,6 @@ function getRelatedEmployees(managerId) {
   const employeeObject = data.employees.filter((employee) => employee.managers.includes(managerId));
   const arrayOfNames = employeeObject.map((person) => `${person.firstName} ${person.lastName}`);
   return arrayOfNames;
-  // Na verdade eu acho que tem que fazer o contrário. Ver se o id da pessoa está inserido na categoria "managers" dos empregados.
 }
 console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992')); // true
 console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992'));
