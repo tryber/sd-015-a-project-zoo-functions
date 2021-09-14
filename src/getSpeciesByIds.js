@@ -1,9 +1,11 @@
 const data = require('../data/zoo_data');
 
-function getSpeciesByIds(id1, id2) {
+function getSpeciesByIds(...ids) {
   const animals = [];
   data.species.forEach((element) => {
-    if (element.id === id1 || element.id === id2) animals.push(element);
+    ids.forEach((id) => {
+      if (element.id === id) animals.push(element);
+    });
   });
   return animals;
 }
