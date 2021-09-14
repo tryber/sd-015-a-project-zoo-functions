@@ -2,7 +2,6 @@ const data = require('../data/zoo_data');
 
 const { species } = data;
 
-// Criando o Objeto com cada espécie como chave e a quantidade como valor
 function getAllSpeciesAmmount() {
   const speciesList = {};
   species.forEach((specie) => {
