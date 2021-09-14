@@ -8,7 +8,6 @@ function countAnimals(animal) {
     data.species.forEach((specie) => { animalList[specie.name] = specie.residents.length; });
     return animalList;
   }
-  
   const { specie, gender } = animal;
   const searchAnimal = data.species.find((resultAnimal) => resultAnimal.name === specie);
   const numberOfAnimals = searchAnimal.residents.length;
