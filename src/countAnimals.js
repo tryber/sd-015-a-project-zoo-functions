@@ -5,8 +5,8 @@ function countAnimals(animal) {
   if (animal) {
     const nome = species.filter((item) => item.name === animal.specie);
     const lista = nome.pop().residents;
-    if (animal.gender) {
-      return lista.filter((item) => item.sex === animal.gender).length;
+    if (animal.sex) {
+      return lista.filter((item) => item.sex === animal.sex).length;
     }
     return lista.length;
   }
@@ -16,5 +16,5 @@ function countAnimals(animal) {
     [item.name]: item.residents.length,
   }), {});
 }
-
+console.log(countAnimals({ specie: 'bears', sex: 'female' }))
 module.exports = countAnimals;
