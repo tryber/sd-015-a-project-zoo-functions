@@ -5,7 +5,7 @@ function countAnimals(animal = 'zero') {
   if (animal !== 'zero') {
     const a = data.species.find((elemento) => elemento.name === animal.specie);
     const contaAnimais = (valor) => a.residents.filter((elemento) => elemento.sex === valor).length;
-    return animal.gender === undefined ? a.residents.length : contaAnimais(animal.gender);
+    return animal.sex === undefined ? a.residents.length : contaAnimais(animal.sex);
   }
   return data.species.reduce((acc, curr) => {
     acc[curr.name] = curr.residents.length;
