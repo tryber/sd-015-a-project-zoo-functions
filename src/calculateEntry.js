@@ -19,7 +19,15 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
+    return 0;
+  }
+  const visitants = countEntrants(entrants);
+  const childPayment = visitants.child * data.prices.child;
+  const adultPayment = visitants.adult * data.prices.adult;
+  const seniorPayment = visitants.senior * data.prices.senior;
+  const totalPayment = childPayment + adultPayment + seniorPayment;
+  return totalPayment;
 }
 
 module.exports = { calculateEntry, countEntrants };
