@@ -18,10 +18,6 @@ const getAnimalLocations = () => {
     .map((value) => value.name);
 };
 
-const arrayNames = () => {
-  return 0;
-};
-
 /* const sortArrayNames = () => {
   const sorted = arrayNames();
   sorted.sort();
@@ -32,10 +28,6 @@ function getAnimalMap(options) {
   if (!options) {
     getAnimalLocations();
     return objLocations;
-  }
-
-  if (options.includeNames) {
-    arrayNames();
   }
 }
 
