@@ -3,7 +3,7 @@ const data = require('../data/zoo_data');
 
 function isManager(id) {
   return employees.some((element) => element.managers.find((elm) => elm === id) === id);
-}
+};
 
 function getRelatedEmployees(managerId) {
   if (!isManager (managerId))
