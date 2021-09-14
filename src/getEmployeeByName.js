@@ -7,4 +7,3 @@ function getEmployeeByName(employeeName) {
 }
 
 module.exports = getEmployeeByName;
-
