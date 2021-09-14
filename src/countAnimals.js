@@ -1,12 +1,11 @@
-const { SearchSource } = require('jest');
+// const { SearchSource } = require('jest');
 const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
   // seu código aqui
   const animalList = {};
-  
   if (!animal) {
-    data.species.forEach((specie) => {animalList[specie.name] = specie.residents.length;})
+    data.species.forEach((specie) => { animalList[specie.name] = specie.residents.length; });
     return animalList;
   }
   
