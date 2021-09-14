@@ -26,7 +26,6 @@ function calculateEntry(entrants) {
   }
   const objectEntries = countEntrants(entrants);
   const { prices } = data;
-  // const as = Object.entries(objectEntries);
   const arrayReduce = Object.keys(objectEntries)
     .reduce((acc, curr) => acc + objectEntries[curr] * prices[curr], 0);
   return arrayReduce;
