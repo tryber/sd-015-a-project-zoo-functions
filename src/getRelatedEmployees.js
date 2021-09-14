@@ -12,10 +12,10 @@ function getRelatedEmployees(id) {
     data.employees.forEach(({ firstName, lastName, managers }) => {
       if (managers.some((manager) => manager.includes(id))) {
         arrayRespFor.push(`${firstName} ${lastName}`);
-      };
-    return arrayRespFor;
-  })
-  throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
+      }
+      return arrayRespFor;
+    })
+    throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
 }
 
