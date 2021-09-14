@@ -8,7 +8,8 @@ function getEmployeeByName(employeeName) {
 
     };
   }
-  return employeeData.find((aux) => aux.firstName === employeeName || aux.lastName === employeeName);
+  return employeeData.find((aux) => aux.firstName === employeeName
+  || aux.lastName === employeeName);
 }
 
 module.exports = getEmployeeByName;
