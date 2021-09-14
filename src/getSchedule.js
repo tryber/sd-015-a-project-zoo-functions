@@ -2,6 +2,7 @@ const { species, hours } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 const weekDays = Object.keys(hours);
+// console.log(weekDays.some((element) => element === 'Cavalo'));
 const arrayAnimals = species.reduce((acc, next) => [...acc, next.name], []);
 const animalsDays = species.reduce((acc, { name, availability }) => (
   { ...acc, [name]: availability }
@@ -40,15 +41,20 @@ const animalName = (scheduleTarget) => {
 };
 
 const weekDay = (scheduleTarget) => {
-  return fullSchedule()[scheduleTarget];
+  const obj = {};
+  obj[scheduleTarget] = fullSchedule()[scheduleTarget];
+  return obj;
 };
 
 function getSchedule(scheduleTarget) {
-  if (weekDays.find((element) => element === scheduleTarget)) {
-   return weekDay(scheduleTarget)
-};
-const isTrue = arrayAnimals.some((element) => element === scheduleTarget);
-if (isTrue) {
-  animalName(scheduleTarget)
+  if (weekDays.some((element) => element === scheduleTarget)) {
+    return weekDay(scheduleTarget);
+  }
+  const isTrue = arrayAnimals.some((element) => element === scheduleTarget);
+  if (isTrue) {
+    return animalName(scheduleTarget);
+  }
+  return fullSchedule();
 }
+console.log(getSchedule('Monday'));
 module.exports = getSchedule;
