@@ -11,9 +11,9 @@ function countAnimals(animal) {
   }
   return data.species.find((name) => name.name === animal.specie)
     .residents.reduce((acc, curr) => {
-      if (curr.sex === animal.gender) return acc + 1;
+      if (curr.sex === animal.sex) return acc + 1;
       return acc;
     }, 0);
 }
-console.log(countAnimals({ specie: 'bears', gender: 'female' }));
+console.log(countAnimals({ specie: 'bears', sex: 'female' }));
 module.exports = countAnimals;

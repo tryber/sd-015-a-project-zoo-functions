@@ -34,13 +34,13 @@ describe('5 - Crie uma função que realiza a contagem dos animais de cada espé
 
   it('recebendo como parâmetro um objeto com a chave \'specie\' e \'gender\', retorna um número, a quantidade de animais daquela espécie, no gênero selecionado', () => {
     {
-      const actual = countAnimals({ specie: 'bears', gender: 'female' });
+      const actual = countAnimals({ specie: 'bears', sex: 'female' });
       const expected = 0;
       expect(actual).toBe(expected);
     }
 
     {
-      const actual = countAnimals({ specie: 'elephants', gender: 'male' });
+      const actual = countAnimals({ specie: 'elephants', sex: 'male' });
       const expected = 2;
       expect(actual).toBe(expected);
     }
