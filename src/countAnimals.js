@@ -1,11 +1,13 @@
-const data = require('../data/zoo_data');
+const data = require("../data/zoo_data");
 
 function countAnimals(animal) {
   // seu código aqui
   const geral = {};
 
-  function assingGeral(x, y) {geral[x] = y.length};
-  
+  function assingGeral(x, y) {
+    geral[x] = y.length;
+  }
+
   if (!animal) {
     data.species.forEach(({ name, residents }) => assingGeral(name, residents));
     return geral;
