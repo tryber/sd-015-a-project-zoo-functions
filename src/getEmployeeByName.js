@@ -12,5 +12,4 @@ function getEmployeeByName(employeeName) {
   return employeeSearch;
 }
 
-
 module.exports = getEmployeeByName;
