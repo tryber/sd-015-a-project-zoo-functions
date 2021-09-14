@@ -5,8 +5,8 @@ const acharEspecie = (bicho) => data.species.find((bixinho) => bixinho.name === 
 function filtroGenero(especieSexo) {
   let resposta;
   const animais = acharEspecie(especieSexo.specie).residents;
-  if (especieSexo.gender !== undefined) {
-    resposta = animais.filter((animal) => animal.sex === especieSexo.gender);
+  if (especieSexo.sex !== undefined) {
+    resposta = animais.filter((animal) => animal.sex === especieSexo.sex);
   } else {
     resposta = animais;
   }
