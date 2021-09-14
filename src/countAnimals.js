@@ -14,7 +14,7 @@ const data = require('../data/zoo_data');
 // Recebendo como parâmetro um objeto com a chave specie e gender, retorna um número, a quantidade de animais daquela espécie, no gênero selecionado.
 
 function countAnimals(...animal) {
-  // seu código aqui
+
 }
 
 module.exports = countAnimals;
