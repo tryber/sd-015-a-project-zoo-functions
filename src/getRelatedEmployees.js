@@ -25,14 +25,26 @@ Retorna false se o id passado não for de um gerente;
 Se o id passado for de um gerente, retorna um array contendo nome e sobrenome das pessoas colaboradoras que ela é responsável;
 Se o id passado não for de um gerente, dispara um erro com a mensagem: "O id inserido não é de uma pessoa colaboradora gerente!". */
 
+const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+const managers = ['9e7d4524-363c-416a-8759-8aa7e50c0992','b0dc644a-5335-489b-8a2c-4e086c7819a2',
+  'fdb2543b-5662-46a7-badc-93d960fdc0a8', '0e7b460e-acf4-4e17-bcb3-ee472265db83'];
 function isManager(id) {
-  // seu código aqui
+  const notManager = managers.some((manager) => {
+    if (manager === id) return true;
+    return false;
+  });
+  // console.log(notManager);
+  return notManager;
 }
-
+isManager('9e7d4524-363c-416a-8759-8aa7e50c0992');
 function getRelatedEmployees(managerId) {
-  // seu código aqui
+  if (isManager(managerId) === true) {
+    const arrNameLastName = employees.filter((objName) => objName.managers.includes(managerId));
+    return arrNameLastName.map((funcionario) => `${funcionario.firstName} ${funcionario.lastName}`);
+  }
+  throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
-
+getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992');
 module.exports = { isManager, getRelatedEmployees };
