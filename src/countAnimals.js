@@ -20,13 +20,13 @@ function countAnimals(animal) {
   if (animal === undefined) {
     return countAnimalsWithoutParam();
   }
-  if (animal.gender === undefined) {
+  if (animal.sex === undefined) {
     const findAnimal = species.find((animals) => animals.name === animal.specie);
     const numberOfAnimals = findAnimal.residents.length;
     return numberOfAnimals;
   }
   const findAnimal = species.find((animals) => animals.name === animal.specie);
-  const countGender = findAnimal.residents.filter((gender) => gender.sex === animal.gender);
+  const countGender = findAnimal.residents.filter((gender) => gender.sex === animal.sex);
   return countGender.length;
 }
 
