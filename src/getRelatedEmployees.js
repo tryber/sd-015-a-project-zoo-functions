@@ -14,7 +14,7 @@ function getRelatedEmployees(id) {
         arrayRespFor.push(`${firstName} ${lastName}`);
       }
       return arrayRespFor;
-    })
+    });
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
 }
