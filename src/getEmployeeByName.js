@@ -1,4 +1,4 @@
-const { name } = require('faker');
+// const { name } = require('faker');
 const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
