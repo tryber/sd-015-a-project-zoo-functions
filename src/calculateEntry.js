@@ -14,6 +14,6 @@ function calculateEntry(entrants = {}) {
     return a.child * child + a.adult * adult + a.senior * senior;
   }
   return 0;
-};
+}
 
 module.exports = { calculateEntry, countEntrants };
