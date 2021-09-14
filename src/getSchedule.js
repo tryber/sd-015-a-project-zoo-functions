@@ -12,6 +12,10 @@ function getScheduleByWeekDate(weekDate) {
   return { officeHour, exhibition: (exhibition.length) ? exhibition : 'The zoo will be closed!' };
 }
 
+function getWeekDateByAnimal(animal) {
+  return species.find((specie) => (specie.name === animal)).availability;
+}
+
 function getSchedule(scheduleTarget) {
   // seu código aqui
   const days = Object.keys(hours);
@@ -22,7 +26,7 @@ function getSchedule(scheduleTarget) {
     result[scheduleTarget] = getScheduleByWeekDate(scheduleTarget);
     return result;
   } if (animals.some((animal) => animal === scheduleTarget)) {
-    return species.find((specie) => (specie.name === scheduleTarget)).availability;
+    return getWeekDateByAnimal(scheduleTarget);
   }
   const result = {};
   Object.keys(hours).forEach((weekDate) => {
