@@ -8,12 +8,12 @@ function countAnimals(animal) {
     return obj;
   }
   //  object destructuring - consultado no material do course
-  const { specie, gender } = animal;
+  const { specie, sex } = animal;
   const getSpecie = data.species.find((addSpecie) => addSpecie.name === specie);
-  const getGender = getSpecie.residents.filter((addGender) => addGender.sex === gender);
+  const getGender = getSpecie.residents.filter((addGender) => addGender.sex === sex);
 
   //  recebe dois argumentos
-  if (specie && gender) {
+  if (specie && sex) {
     return getGender.length;
   }
   //  recebe um argumento
