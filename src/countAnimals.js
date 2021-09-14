@@ -11,7 +11,7 @@ function countAnimals(animal) {
   if (animal.specie && animal.gender) {
     const indicatedGender = indicatedSpecies.residents
       .filter((specieByGender) => specieByGender.sex === animal.gender);
-      return indicatedGender.length;
+    return indicatedGender.length;
   }
   return indicatedSpecies.residents.length;
 }
