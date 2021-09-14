@@ -15,5 +15,4 @@ function countAnimals(animal) {
   return objPeloNome.residents.length;
 }
 
-
 module.exports = countAnimals;
