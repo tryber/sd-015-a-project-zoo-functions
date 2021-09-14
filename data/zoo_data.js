@@ -101,7 +101,7 @@ module.exports = {
           sex: 'male',
           age: 12,
         },
-         {
+        {
           name: 'Keri',
           sex: 'female',
           age: 2,
