@@ -10,9 +10,9 @@ function countAnimals(animal) {
       namesAndTotal[animalsNames[index]] = animalsTotal[index];
     }
     return namesAndTotal;
-  } if (animal.gender !== undefined) {
+  } if (animal.sex !== undefined) {
     const specieObj = data.species.filter((specie) => specie.name === animal.specie);
-    const specieGenderTot = specieObj[0].residents.filter((specie) => specie.sex === animal.gender);
+    const specieGenderTot = specieObj[0].residents.filter((specie) => specie.sex === animal.sex);
     return specieGenderTot.length;
   }
 
@@ -22,5 +22,6 @@ function countAnimals(animal) {
 }
 console.log(countAnimals());
 console.log(countAnimals({ specie: 'penguins' }));
-console.log(countAnimals({ specie: 'giraffes', gender: 'female' }));
+console.log(countAnimals({ specie: 'giraffes', sex: 'female' }));
+console.log(countAnimals({ specie: 'bears', sex: 'female' }));
 module.exports = countAnimals;
