@@ -35,7 +35,7 @@ function countAnimals(animal) {
   return countGender(specie, gender);
 }
 
-// console.log(countGender('lions', 'male'));
+// console.log(countGender('bears', 'female'));
 // console.log(countSpecie('lions'));
 // console.log(countAnimals());
 module.exports = countAnimals;
