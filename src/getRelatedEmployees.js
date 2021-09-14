@@ -13,7 +13,7 @@ function isManager(id) {
 // código replicado do github do https://github.com/tryber/sd-015-a-project-zoo-functions/tree/alexandre-pimentel-zoo-functions
 function getRelatedEmployees(managerId) {
   // seu código aqui
-  if (isManager(managerId) === false) {
+  if (!isManager(managerId)) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');// mensagem de erro caso o id passado não seja de um gerente
   } else {
     return employees
