@@ -4,27 +4,26 @@ const data = require('../data/zoo_data');
 function getAnimalMap(options) {
   // seu código aqui
   const specieLocation = species.map((specie) => {
-    const {location, name, residents} = specie;
-    return {location, name, residents};
-  })
+    const { location, name, residents } = specie;
+    return { location, name, residents };
+  });
 
-  const obj = {NE: [], NW: [], SE: [], SW: []}
+  const obj = { NE: [], NW: [], SE: [], SW: [] };
 
   // Sem Parâmetros
   if (!options || !options.includeNames) {
     specieLocation.forEach((specie) => {
       obj[specie.location].push(specie.name);
-    })
+    });
     return obj;
   }
   // Include Names
   if (options.includeNames === true) {
     specieLocation.forEach((specie) => {
-
       const location = obj[specie.location];
 
-      let arr = [];
-      let objarr = {};
+      const arr = [];
+      const objarr = {};
 
       // Sex
       if (options.sex) {
@@ -32,13 +31,15 @@ function getAnimalMap(options) {
           if (resident.sex === options.sex) arr.push(resident.name);
           // Sorted
           if (options.sorted) arr.sort();
-        })
-      } else { 
-        specie.residents.forEach((resident) => { 
+          return console.log(arr);
+        });
+      } else {
+        specie.residents.forEach((resident) => {
           arr.push(resident.name);
-        // Sorted
-        if (options.sorted) arr.sort();
-      })}
+          // Sorted
+          if (options.sorted) arr.sort();
+        });
+      }
 
       objarr[specie.name] = arr;
       location.push(objarr);
@@ -46,9 +47,8 @@ function getAnimalMap(options) {
     return obj;
   }
   // Sorted
-
 }
 
-console.table(getAnimalMap({includeNames: true, sex: 'female'}));
+console.table(getAnimalMap({ includeNames: true, sex: 'female' }));
 
 module.exports = getAnimalMap;
