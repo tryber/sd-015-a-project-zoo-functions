@@ -13,12 +13,6 @@ function countEntrants(entrants) {
   return object;
 }
 
-console.log(countEntrants([
-  { name: 'Maria Costa', age: 18 },
-  { name: 'Núbia Souza', age: 18 },
-  { name: 'Carlos Nogueira', age: 50 },
-]));
-
 function calculateEntry(entrants) {
   // Referência: https://www.samanthaming.com/tidbits/94-how-to-check-if-object-is-empty/
   if (entrants === 0 || !entrants || Object.keys(entrants).length === 0) {
