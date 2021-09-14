@@ -11,10 +11,10 @@ function undefinedAnimal() {
 
 function countSpecies(animal) {
   const object = species.find((element) => element.name === animal.specie);
-  if (animal.specie !== undefined && animal.gender === undefined) {
+  if (animal.specie !== undefined && animal.sex === undefined) {
     return object.residents.length;
   }
-  return object.residents.filter((element) => element.sex === animal.gender).length;
+  return object.residents.filter((element) => element.sex === animal.sex).length;
 }
 
 function countAnimals(animal) {
