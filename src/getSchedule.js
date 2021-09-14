@@ -5,6 +5,8 @@ const monday = {
     exhibition: 'The zoo will be closed!' },
 };
 
+const getAnimalName = data.species.map((names) => names.name);
+
 const dtH = data.hours;
 
 const getAnimalsByDay = (day) => data.species.filter((animals) =>
@@ -41,8 +43,6 @@ const getWeekDays = () => {
     exhibition: 'The zoo will be closed!' };
   return obj;
 };
-
-const getAnimalName = data.species.map((names) => names.name);
 
 function getSchedule(scheduleTarget) {
   if (scheduleTarget === 'Monday') {
