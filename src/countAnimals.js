@@ -16,5 +16,5 @@ function countAnimals({ specie, gender } = {}) {
     .find((specieSex) => specieSex.name === specie)
     .residents.filter((femMal) => femMal.sex === gender).length;
 }
-console.log(countAnimals());
+
 module.exports = countAnimals;
