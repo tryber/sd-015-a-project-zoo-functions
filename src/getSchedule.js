@@ -29,7 +29,7 @@ const getDaysAndAnimals = (parameter) => {
       },
     };
   }
-}
+};
 
 const getWeekDays = () => {
   const obj = {};
@@ -53,10 +53,7 @@ function getSchedule(scheduleTarget) {
       && !Object.keys(data.hours).includes(scheduleTarget))) {
     return getWeekDays();
   }
-  if (getAnimalName.includes(scheduleTarget)
-    || Object.keys(data.hours).includes(scheduleTarget)) {
-    return getDaysAndAnimals(scheduleTarget);
-  }
+  return getDaysAndAnimals(scheduleTarget);
 }
 
 module.exports = getSchedule;
