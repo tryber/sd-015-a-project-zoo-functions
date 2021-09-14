@@ -11,6 +11,9 @@ function countAnimals(animal) {
   if (species === undefined) {
     return obj;
   }
+  const objPeloNome = species.find((specie) => specie.name === species);
+  return objPeloNome.residents.length;
+}
 }
 
 module.exports = countAnimals;
