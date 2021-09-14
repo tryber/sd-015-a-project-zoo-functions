@@ -2,12 +2,12 @@ const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function animalsLocation() {
-  const objec = {};
+  const object = {};
   species.forEach((element) => {
     const sameLocation = species.filter((specie) => element.location === specie.location);
-    objec[element.location] = sameLocation.map((value) => value.name);
+    object[element.location] = sameLocation.map((value) => value.name);
   });
-  return objec;
+  return object;
 }
 
 function getAnimalMap(options) {
