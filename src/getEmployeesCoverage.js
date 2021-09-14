@@ -3,30 +3,34 @@ const data = require('../data/zoo_data');
 
 function getSpecies(arr) {
   const animalsId = arr.responsibleFor.map((element) => element);
-  const animals = animalsId.map((element) => species.reduce((acc, value) =>
+  return animalsId.map((element) => species.reduce((acc, value) =>
     (value.id === element ? acc.concat(value.name) : acc), ''));
-  return animals;
 }
 
 function getLocate(arr) {
   const animalsId = arr.responsibleFor.map((element) => element);
-  const location = animalsId.map((element) => species.reduce((acc, value) =>
+  return animalsId.map((element) => species.reduce((acc, value) =>
     (value.id === element ? acc.concat(value.location) : acc), ''));
-  return location;
 }
 
+function animalsArray(animals, val) {
+  return animals.map((element) => species.reduce((acc, value) =>
+    (value.id === element ? acc.concat(value[val]) : acc), ''));
+}
+
+function locationArray(animals, val) {
+  return animals.map((element) => species.reduce((acc, value) =>
+    (value.id === element ? acc.concat(value[val]) : acc), ''));
+}
 function allEmployees() {
   const array = [];
   employees.forEach(({ id, firstName, lastName, responsibleFor }) => {
     const animalsId = responsibleFor.map((element) => element);
-    const animalsName = animalsId.map((element) => species.reduce((acc, value) =>
-      (value.id === element ? acc.concat(value.name) : acc), ''));
-    const location = animalsId.map((element) => species.reduce((acc, value) =>
-      (value.id === element ? acc.concat(value.location) : acc), ''));
     array.push({ id,
       fullName: `${firstName} ${lastName}`,
-      species: animalsName,
-      locations: location });
+      species: animalsArray(animalsId, 'name'),
+      locations: locationArray(animalsId, 'location'),
+    });
   });
   return array;
 }
@@ -51,6 +55,6 @@ function getEmployeesCoverage(coverage) {
   return object;
 }
 
-console.log(getEmployeesCoverage({ name: 'Sharonda' }));
+console.log(getEmployeesCoverage());
 
 module.exports = getEmployeesCoverage;
