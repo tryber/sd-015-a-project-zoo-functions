@@ -45,7 +45,7 @@ const animalsLoc = () => ({
   SW: animalsSW.map((element) => element.name),
 });
 
-const animalsSpecies = () => ({
+const animalsNames = () => ({
   NE: animalsNEloc,
   NW: animalsNWloc,
   SE: animalsSEloc,
@@ -96,17 +96,24 @@ const aniamalsSexSort = (sex) => {
   };
 };
 
-
 function getAnimalMap(options) {
-  if (!options) return animalsLoc();
-  if (options.includeNames && !options.sorted && !options.sex) return animalsSpecies();
-  if (options.includeNames && options.sorted && !options.sex) return animalsSort();
-  if (options.includeNames && !options.sorted && options.sex) return animalsSex(options.sex);
-  if (options.includeNames && options.sorted && options.sex) return aniamalsSexSort(options.sex);
-  if (!options.includeNames && !options.sorted && options.sex) return animalsLoc();
-  if (!options.includeNames && options.sorted && options.sex) return animalsLoc();
+  if (!options || !options.includeNames) return animalsLoc();
+
+  const test1 = (opt) => {
+    if (opt.includeNames && !opt.sorted) {
+      return !opt.sex ? animalsNames() : animalsSex(opt.sex);
+    };
+  };
+
+  const test2 = (opt) => {
+    if (opt.includeNames && opt.sorted) {
+      return !opt.sex ? animalsSort() : aniamalsSexSort(opt.sex);
+    }
+  };
+
+  return test1(options) ? test1(options) : test2(options);
 }
 
-// const options = { includeNames: true, sex: 'female', sorted: true };
-// console.log(getAnimalMap(options).NE[0].lions[1]); //zena
+const options = { includeNames: true};
+console.log(getAnimalMap()); //zena
 module.exports = getAnimalMap;
