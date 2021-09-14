@@ -6,18 +6,20 @@ function criaObjeto(acumulador, especie) {
   return acc;
 }
 function countAnimals(animal) {
+  const { specie, gender } = animal;
   if (animal === undefined) {
     const Animais = data.species.reduce(criaObjeto, {});
     return Animais;
   }
   if (Object.keys(animal).length === 1) {
-    console.log('entrou no especie');
-    const especie = animal.specie;
-    const bicho = data.species.find((elemento) => elemento.name === especie);
+    const bicho = data.species.find((elemento) => elemento.name === specie);
     return bicho.residents.length;
   }
   if (Object.keys(animal).length === 2) {
-    return {};
+    const bicho = data.species.find((elemento) => elemento.name === specie);
+    return bicho.residents
+    .reduce((acumulador, elemento) => elemento.gender === gender ? 
+    acumulador += 1 : acumulador, 0);
   }
 }
 
