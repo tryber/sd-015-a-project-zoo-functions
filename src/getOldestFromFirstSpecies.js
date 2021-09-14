@@ -2,12 +2,6 @@ const data = require('../data/zoo_data');
 
 const { species, employees } = data;
 
-function getOldestFromFirstSpecies(id) {
-  // seu código aqui
-  const employee = employees.find((employee) => employee.id.includes(id));
-  return getOldestSpecies(employee);
-}
-
 function getOldestSpecies({ responsibleFor }) {
   const { residents } = species.find((specie) => specie.id.includes(responsibleFor[0]));
   const oldestResident = oldestResidentFn(residents);
@@ -17,8 +11,14 @@ function getOldestSpecies({ responsibleFor }) {
 function oldestResidentFn(residents) {
   return residents.reduce(
     (older, resident) => ((resident.age > older.age) ? resident : older),
-    { age: 0 }
+    { age: 0 },
   );
+}
+
+function getOldestFromFirstSpecies(id) {
+  // seu código aqui
+  const checkEmployee = employees.find((employee) => employee.id.includes(id));
+  return getOldestSpecies(checkEmployee);
 }
 
 module.exports = getOldestFromFirstSpecies;
