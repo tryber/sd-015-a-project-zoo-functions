@@ -33,6 +33,7 @@ function informationsOfAllEmployees() { // Função para retornar a informação
       locations: specie(...curr.responsibleFor).map((animal) => animal.location),
     };
     arrayWithAllObjs.push(acc);
+    return 0;
   });
   return arrayWithAllObjs;
 }
