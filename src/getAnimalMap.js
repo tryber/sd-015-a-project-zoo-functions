@@ -11,7 +11,7 @@ function getAnimalMap(options) {
   const obj = {NE: [], NW: [], SE: [], SW: []}
 
   // Sem Parâmetros
-  if (!options) {
+  if (!options || !options.includeNames) {
     specieLocation.forEach((specie) => {
       obj[specie.location].push(specie.name);
     })
@@ -20,20 +20,35 @@ function getAnimalMap(options) {
   // Include Names
   if (options.includeNames === true) {
     specieLocation.forEach((specie) => {
-      obj[specie.location][specie.name] = [];
-      specie.residents.forEach((resident) => {
-        obj[specie.location][specie.name].push(resident.name);
 
-        if (options.sorted) obj[specie.location][specie.name].sort();
-      }
-    )});
+      const location = obj[specie.location];
+
+      let arr = [];
+      let objarr = {};
+
+      // Sex
+      if (options.sex) {
+        specie.residents.filter((resident) => {
+          if (resident.sex === options.sex) arr.push(resident.name);
+          // Sorted
+          if (options.sorted) arr.sort();
+        })
+      } else { 
+        specie.residents.forEach((resident) => { 
+          arr.push(resident.name);
+        // Sorted
+        if (options.sorted) arr.sort();
+      })}
+
+      objarr[specie.name] = arr;
+      location.push(objarr);
+    });
     return obj;
-    // if (options.sorted === true)
   }
   // Sorted
 
 }
 
-console.log(getAnimalMap({includeNames: true}));
+console.table(getAnimalMap({includeNames: true, sex: 'female'}));
 
 module.exports = getAnimalMap;
