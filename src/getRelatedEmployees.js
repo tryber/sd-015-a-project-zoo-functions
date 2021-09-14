@@ -5,7 +5,7 @@ function isManager(id) {
 }
 console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
-function getRelatedEmployees(managerId) {
+function getRelatedEmployees(managerId){
   if (isManager(managerId) === false) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   } else {
