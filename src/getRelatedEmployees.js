@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 
 const { employees } = data;
 
-const isManager = (id) => employees.some((e) => (e.managers.includes(id)));
+const isManager = (id) => employees.some((e) => e.managers.includes(id));
 
 const getNames = (id) => employees
   .filter((e) => e.managers.includes(id))

@@ -11,9 +11,7 @@ function makeAnimalMap(sort, sex) {
       if (sex) residents = residents.filter((i) => i.sex === sex);
       residents = residents.map((item) => item.name);
       if (sort) residents = residents.sort();
-      const novoObj = {};
-      novoObj[animal.name] = residents;
-      return novoObj;
+      return { [animal.name]: residents };
     });
     obj[e.location] = newObj;
   });
@@ -45,12 +43,9 @@ function getAnimalMap(options) {
   });
   if (!options) return obj;
   const { includeNames, sorted, sex } = options;
-  const res = veri(includeNames, sorted, sex);
-  const res2 = veri2(includeNames, sex);
-  const res3 = veri3(includeNames, sorted);
-  if (res) return res;
-  if (res2) return res2;
-  if (res3) return res3;
+  if (veri(includeNames, sorted, sex)) return veri(includeNames, sorted, sex);
+  if (veri2(includeNames, sex)) return veri2(includeNames, sex);
+  if (veri3(includeNames, sorted)) return veri3(includeNames, sorted);
   return obj;
 }
 

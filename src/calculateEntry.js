@@ -16,8 +16,7 @@ function countEntrants(entrants) {
   return obj;
 }
 
-function calculateEntry(entrants) {
-  if (!entrants) return 0;
+function calculateEntry(entrants = {}) {
   if (!Object.keys(entrants).length) return 0;
   const people = Object.entries(countEntrants(entrants));
   let res = 0;

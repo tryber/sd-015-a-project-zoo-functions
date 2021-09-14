@@ -19,9 +19,7 @@ function makeObj() {
 }
 
 function makeDayAnswer(obj, day) {
-  const res = {};
-  res[day] = obj[day];
-  return res;
+  return { [day]: obj[day] };
 }
 
 function animals(obj) {
