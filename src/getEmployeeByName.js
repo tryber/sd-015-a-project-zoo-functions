@@ -4,7 +4,7 @@ const { employees } = data;
 
 function getEmployeeObj(someEmployeeName) {
   return employees.find((employee) =>
-  (employee.firstName === someEmployeeName || employee.lastName === someEmployeeName));
+    (employee.firstName === someEmployeeName || employee.lastName === someEmployeeName));
 }
 function getEmployeeByName(employeeName) {
   // seu código aqui

@@ -8,7 +8,8 @@ function isManager(id) {
 }
 // console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 function employeesByManager(managerId) {
-  return employees.reduce((acc, curr) => (curr.managers.includes(managerId)) ? acc.concat(`${curr.firstName} ${curr.lastName}`) : acc, []);
+  return employees.reduce((acc, curr) => (curr.managers.includes(managerId)) ?
+    acc.concat(`${curr.firstName} ${curr.lastName}`) : acc, []);
 }
 
 function getRelatedEmployees(managerId) {
