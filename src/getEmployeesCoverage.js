@@ -13,12 +13,12 @@ function getLocate(arr) {
     (value.id === element ? acc.concat(value.location) : acc), ''));
 }
 
-function animalsArray(animals, val) {
+function allAnimals(animals, val) {
   return animals.map((element) => species.reduce((acc, value) =>
     (value.id === element ? acc.concat(value[val]) : acc), ''));
 }
 
-function locationArray(animals, val) {
+function allLocations(animals, val) {
   return animals.map((element) => species.reduce((acc, value) =>
     (value.id === element ? acc.concat(value[val]) : acc), ''));
 }
@@ -28,8 +28,8 @@ function allEmployees() {
     const animalsId = responsibleFor.map((element) => element);
     array.push({ id,
       fullName: `${firstName} ${lastName}`,
-      species: animalsArray(animalsId, 'name'),
-      locations: locationArray(animalsId, 'location'),
+      species: allAnimals(animalsId, 'name'),
+      locations: allLocations(animalsId, 'location'),
     });
   });
   return array;
