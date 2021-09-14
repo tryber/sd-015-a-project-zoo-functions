@@ -17,10 +17,10 @@ function countSpecie(specie) {
 }
 
 // Function to return the quantity of animals of specific specie and gender
-function countGender(specie, gender) {
+function countGender(specie, sex) {
   const { species } = data;
   const foundSpecie = species.find((info) => info.name === specie);
-  return foundSpecie.residents.filter((info) => info.sex === gender).length;
+  return foundSpecie.residents.filter((info) => info.sex === sex).length;
 }
 
 // Main function to call a function above acording to each condition
@@ -28,11 +28,11 @@ function countAnimals(animal) {
   if (!animal) {
     return countAll();
   }
-  const { specie = false, gender = false } = animal;
-  if (!gender) {
+  const { specie = false, sex = false } = animal;
+  if (!sex) {
     return countSpecie(specie);
   }
-  return countGender(specie, gender);
+  return countGender(specie, sex);
 }
 
 // console.log(countGender('bears', 'female'));
