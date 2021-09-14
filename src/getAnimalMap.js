@@ -18,7 +18,7 @@ const allAnimalsMapped = () => ({
     .filter((specie) => specie.location === 'SW')
     .map((anim) => anim.name),
 });
-// console.log(allAnimalsMapped());
+console.log(allAnimalsMapped());
 
 function nameIncluded(param) {
   const NE = {

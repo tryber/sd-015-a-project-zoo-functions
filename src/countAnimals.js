@@ -10,7 +10,7 @@ function everyAnimal() {
 
 function countAnimal(animal) {
   const specificAnimal = data.species.find(
-    (elem) => elem.name === animal.specie
+    (elem) => elem.name === animal.specie,
   );
   return specificAnimal.residents.length;
 }
@@ -20,7 +20,6 @@ function countAnimalByGender(animal, gender) {
   return species
     .find(({ name }) => name === animal)
     .residents.filter((element2) => element2.sex === gender).length;
-  // console.log(species.find(({ name }) => name === animal));
 }
 
 function countAnimals(animal) {

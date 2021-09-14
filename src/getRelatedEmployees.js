@@ -1,21 +1,30 @@
 const data = require('../data/zoo_data');
 
+const { employees } = data;
+
 function isManager(id) {
-  const manager1 = data.employees.map((elem) => elem.managers);
-  console.log(manager1);
-  const manager2 = manager1.find((item) => item === [id]);
-  console.log(manager2);
+  return employees
+    .map((elem) => elem.managers)
+    .some((elem2) => elem2.includes(id));
 }
 
 // Os managers são: Emery, burl, Ola e stephanie
 // se o valor passado constar no 'managers:' === true
 
 function getRelatedEmployees(managerId) {
-  // seu código aqui
+  if (isManager(managerId) === true) {
+    const subalternos = employees.filter((elem) =>
+      elem.managers.includes(managerId));
+    // console.log('subalternos', subalternos);
+    return subalternos.map((name) => `${name.firstName} ${name.lastName}`);
+  }
+  throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 
-// isManager('4b40a139-d4dc-4f09-822d-ec25e819a5ad'); // false
-isManager('b0dc644a-5335-489b-8a2c-4e086c7819a2'); // true
+console.log(isManager('4b40a139-d4dc-4f09-822d-ec25e819a5ad')); // false
+console.log(isManager('b0dc644a-5335-489b-8a2c-4e086c7819a2')); // true
+console.log(getRelatedEmployees('b0dc644a-5335-489b-8a2c-4e086c7819a2')); // true
+// console.log(getRelatedEmployees('4b40a139-d4dc-4f09-822d-ec25e819a5ad')); // false
 
 module.exports = { isManager, getRelatedEmployees };
 
