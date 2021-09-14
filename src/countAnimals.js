@@ -5,8 +5,7 @@ const { species } = data;
 function countAnimals(animal) {
   if (!animal) {
     const allSpecies = {};
-    species.forEach((nameSpecies) => 
-    { allSpecies[nameSpecies.name] = nameSpecies.residents.length; });
+    species.forEach((nameSpec) => { allSpecies[nameSpec.name] = nameSpec.residents.length; });
     return allSpecies;
   } if (animal.gender) {
     const animals = species.find((animalName) => animal.specie === animalName.name);
@@ -16,6 +15,5 @@ function countAnimals(animal) {
   const nameOfAnimal = species.find((elem) => animal.specie === elem.name);
   return nameOfAnimal.residents.length;
 }
-
 
 module.exports = countAnimals;
