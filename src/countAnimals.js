@@ -11,13 +11,13 @@ function countAnimals(animal) {
       finalObject[specie] = speciesQuantityList[idx];
     }); return finalObject;
   }
-  const { gender } = animal; const { specie } = animal;
-  if (gender === undefined) {
+  const { sex } = animal; const { specie } = animal;
+  if (sex === undefined) {
     return (data.species.find((specieOfChoosing) => specieOfChoosing.name === specie))
       .residents.length;
   }
   const specieAndGenderResult = data.species.find((specieOfChoosing) =>
-    specieOfChoosing.name === specie).residents.filter((resident) => resident.sex === gender);
+    specieOfChoosing.name === specie).residents.filter((resident) => resident.sex === sex);
   return specieAndGenderResult.length;
 }
 
