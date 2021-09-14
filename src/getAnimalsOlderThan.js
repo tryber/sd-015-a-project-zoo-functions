@@ -6,6 +6,5 @@ function getAnimalsOlderThan(animal, age) {
   return findAnimal.every((element) => element.age >= age);
 }
 
-// eslint-disable-next-line sonarjs/no-use-of-empty-return-value
 console.log(getAnimalsOlderThan('otters', 7));
 module.exports = getAnimalsOlderThan;
