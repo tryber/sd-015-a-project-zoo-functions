@@ -2,23 +2,42 @@ const data = require('../data/zoo_data');
 
 const { species } = data;
 
+// Criando o Objeto com cada espécie como chave e a quantidade como valor
+function getAllSpeciesAmmount() {
+  const speciesList = {};
+  species.forEach((specie) => {
+    speciesList[specie.name] = specie.residents.length;
+  });
+  return speciesList;
+}
+
+function countSpecie(animal) {
+  let result = 0;
+  species.forEach((specie) => {
+    if (specie.name === animal.specie) {
+      result = specie.residents.length;
+    }
+  });
+  return result;
+}
+
+function countGender(animal) {
+  let result = {};
+  species.forEach((specie) => {
+    if (specie.name === animal.specie) {
+      const filtered = specie.residents.filter((individual) => individual.sex === animal.gender);
+      result = filtered.length;
+    }
+  });
+  return result;
+}
+
 function countAnimals(animal) {
-  // Criando o Objeto com cada espécie como chave e a quantidade como valor
-  const obj = {};
-  species.forEach((item) => { obj[item.name] = item.residents.length; });
-
-  // sem parâmetros, retorna as espécies e sua quantidade
-  if (!animal) return obj;
-
-  const { specie, gender } = animal;
-  if (specie && gender) {
-    return species
-      .find((item) => item.name === specie).residents
-      .filter((item) => item.sex === gender).length;
+  if (!animal) return getAllSpeciesAmmount();
+  if (!animal.gender) {
+    return countSpecie(animal);
   }
-
-  // recebendo como parâmetro um objeto com a chave \'specie\', retorna um número, a quantidade de animais daquela espécie'
-  if (specie) return obj[specie];
+  return countGender(animal);
 }
 
 module.exports = countAnimals;
