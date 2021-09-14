@@ -18,14 +18,14 @@ const seAnimals = seRegion.map((element) => element.name);
 
 const swAnimals = swRegion.map((element) => element.name);
 
-function getAnimalMap({...options } = {}) {
+function getAnimalMap({ ...options } = {}) {
   if (Object.values(options).length < 1) {
     return {
       NE: neAnimals,
       NW: nwAnimals,
       SE: seAnimals,
       SW: swAnimals,
-    }
+    };
   }
 }
 

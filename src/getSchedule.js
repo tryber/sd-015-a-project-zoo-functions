@@ -32,12 +32,13 @@ function getSchedule(scheduleTarget = '') {
   if (!animals.some((element) =>
     element === scheduleTarget)
   && !weekDays.some((element) =>
-  element === scheduleTarget)) { return zooSchedule; }
+    element === scheduleTarget)) { return zooSchedule; }
 
   if (animals.some((element) =>
     element === scheduleTarget)) {
     return species.find((element) =>
-      element.name === scheduleTarget).availability;}
+      element.name === scheduleTarget).availability; 
+    }
 
   return { [scheduleTarget]: wichDay(scheduleTarget) };
 }
