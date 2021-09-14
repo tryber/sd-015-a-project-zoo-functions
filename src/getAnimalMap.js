@@ -1,47 +1,58 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const locals = {
-  NE: [],
-  NW: [],
-  SE: [],
-  SW: [],
+const sortCase = (options, array) => {
+  if (options) {
+    const sorte = array.sort();
+    return sorte;
+  }
+  return array;
+};
+
+const generateLocals = () => {
+  const locals = {
+    NE: [],
+    NW: [],
+    SE: [],
+    SW: [],
+  };
+  return locals;
 };
 
 const allAnimals = () => {
+  const locals = generateLocals();
   species.forEach(({ location, name }) => locals[location].push(name));
   return locals;
 };
 
-const tests = (includeNames, sex) => {
+const tests = (options) => {
+  const locals = generateLocals();
+  const { includeNames, sex, sorted } = options;
   if (includeNames) {
-    species.forEach(({ name, location, residents }) => {
+    species.forEach((specie) => {
+      const { name, location, residents } = specie;
       const x = [];
       let after = residents;
       if (sex) {
-        const sexOf = () => residents.filter((resident) => resident.sex === sex);
-        after = sexOf();
+        const sexOf = residents.filter((resident) => resident.sex === sex);
+        after = sexOf;
       }
-      after.forEach((element) => x.push(element.name));
-      locals[location].push({ [name]: x });
+      after.forEach((element) => { x.push(element.name); });
+      locals[location].push({ [name]: sortCase(sorted, x) });
     });
     return locals;
   }
 };
-function getAnimalMap(options) {
-  if (!options) allAnimals();
-
-  const { includeNames = false, sort = false, sex = false } = options;
-  const abc = tests(includeNames, sex);
-  if (sort) {
-    const { NE, NW, SE, SW } = abc;
-    NE.forEach((element) => Object.values(element)[0].sort());
-    NW.forEach((element) => Object.values(element)[0].sort());
-    SE.forEach((element) => Object.values(element)[0].sort());
-    SW.forEach((element) => Object.values(element)[0].sort());
+function getAnimalMap(options = {}) {
+  const { includeNames = false, sorted = false, sex = undefined } = options;
+  if (!includeNames && !sorted && !sex) {
+    return allAnimals();
   }
-  return abc;
+  if (!includeNames) {
+    return allAnimals();
+  }
+  return tests(options);
 }
 
-console.log(getAnimalMap({ includeNames: true, sort: true, sex: 'male' }));
+// console.log(getAnimalMap());
 module.exports = getAnimalMap;
