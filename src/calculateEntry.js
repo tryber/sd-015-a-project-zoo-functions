@@ -1,11 +1,12 @@
 const data = require('../data/zoo_data');
 
-// const { prices } = data;
+const { prices } = data;
 
 function countEntrants(entrants) {
-  const people = entrants;
-  //  // .filter((element) => element.age <= 18);
-  return people;
+  const childs = entrants.filter((element) => element.age < 18).length;
+  const adults = entrants.filter((element) => element.age >= 18 && element.age < 50).length;
+  const seniors = entrants.filter((element) => element.age >= 50).length;
+  return { senior: seniors, adult: adults, child: childs };
 }
 
 // USADO COMO REFERÊNCIA:
@@ -15,8 +16,11 @@ function calculateEntry(entrants) {
     return 0;
   }
   const tickets = countEntrants(entrants);
-  console.log(tickets);
-  return tickets;
+  const adultPrice = prices.adult * tickets.adult;
+  const seniorPrice = prices.senior * tickets.senior;
+  const childPrice = prices.child * tickets.child;
+
+  return adultPrice + seniorPrice + childPrice;
 }
 
 module.exports = { calculateEntry, countEntrants };
