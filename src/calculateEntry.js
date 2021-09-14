@@ -1,4 +1,4 @@
-const en = require('faker/lib/locales/en');
+// const en = require('faker/lib/locales/en');
 const data = require('../data/zoo_data');
 
 const entrants = [
@@ -10,17 +10,16 @@ const entrants = [
   { name: 'Carlos Nogueira', age: 50 },
 ];
 
-
-function countEntrants(entrants) {
+function countEntrants(x) {
   return {
-    child: entrants.name
-  }
+    child: entrants.name,
+  };
 }
 
-function calculateEntry(entrants) {
+function calculateEntry(x) {
   // seu código aqui
 }
 
-console.log(countEntrants(entrants));
+// console.log(countEntrants(entrants));
 
 module.exports = { calculateEntry, countEntrants };

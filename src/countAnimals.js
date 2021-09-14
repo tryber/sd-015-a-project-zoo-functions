@@ -2,10 +2,10 @@ const data = require('../data/zoo_data');
 
 const { species } = data;
 
-function countAnimals({specie, gender} = '') {
+function countAnimals({ specie, gender } = '') {
   if (!specie) {
-    return species.reduce(((count, {name, residents: {length}}) => {
-      Object.assign(count, { [name]: length});
+    return species.reduce(((count, { name, residents: { length } }) => {
+      Object.assign(count, { [name]: length });
       return count;
     }), {});
   }
@@ -14,15 +14,15 @@ function countAnimals({specie, gender} = '') {
     return species.find((value) => value.name === specie).residents.length;
   }
 
-  return species.find((anl) => anl.name  === specie).residents.filter((elm) => elm.sex === gender).length;
+  return species.find((anl) => anl.name === specie).residents.filter((elm) => elm.sex === gender).length;
 }
 
 module.exports = countAnimals;
 
-// Referências: 
+// Referências:
 // Sobre Object.assign: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 // fonte para (!x) usado nos if's: https://stackoverflow.com/questions/2559318/how-to-check-for-an-undefined-or-null-variable-in-javascript
-// Trecho específico do artigo: 
+// Trecho específico do artigo:
 // Note 2
 // This - even shorter - variant is not equivalent:
 
