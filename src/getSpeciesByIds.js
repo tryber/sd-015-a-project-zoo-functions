@@ -6,10 +6,11 @@ function getSpeciesByIds(...ids) {
   if (!ids) {
     return result;
   }
-  const findAnimal = ids.forEach((id) => {
+  const findAnimal = () => ids.forEach((id) => {
     const newAnimal = species.filter((specie) => specie.id === id);
     result.push(...newAnimal);
   });
+  findAnimal();
   return result;
 }
 

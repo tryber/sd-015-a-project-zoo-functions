@@ -3,7 +3,10 @@ const data = require('../data/zoo_data');
 
 function isManager(id) {
   const allManagers = [];
-  const fetchManagers = employees.forEach((person) => { allManagers.push(...person.managers); });
+  const managers = () => {
+    employees.forEach((person) => { allManagers.push(...person.managers); });
+  };
+  managers();
   return allManagers.some((managerId) => managerId === id);
 }
 
