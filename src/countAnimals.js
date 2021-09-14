@@ -15,5 +15,5 @@ function countAnimals(animal) {
     .residents.filter((e) => e.sex === gender).length;
   return animalWithGender;
 }
-
+// a
 module.exports = countAnimals;
