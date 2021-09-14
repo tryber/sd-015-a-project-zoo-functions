@@ -21,7 +21,9 @@ function countAnimals(animal) {
 
   return species
     .find((specie) => specie.name === animal.specie).residents
-    .filter((resident) => resident.sex === animal.gender).length;
+    .filter((resident) => resident.sex === animal.sex).length;
 }
 
 module.exports = countAnimals;
+
+console.log(countAnimals({ specie: 'elephants', sex: 'male' }));
