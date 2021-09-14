@@ -15,10 +15,8 @@ function countEntrants(entrants) {
   return {
     child: Object.values(entrants.filter((element) =>
       element.age < 18)).length,
-
     adult: Object.values(entrants.filter((element) =>
       element.age >= 18 && element.age < 50)).length,
-
     senior: Object.values(entrants.filter((element) =>
       element.age >= 50)).length,
   };
