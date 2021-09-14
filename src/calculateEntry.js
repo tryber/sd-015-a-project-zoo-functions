@@ -26,7 +26,11 @@ function countEntrants(entrants) {
 
 function calculateEntry(entrants) {
   if (!countEntrants(entrants)) return 0;
+  const childPay = countEntrants(entrants).child * data.prices.child;
+  const adultPay = countEntrants(entrants).adult * data.prices.adult;
+  const seniorPay = countEntrants(entrants).senior * data.prices.senior;
+  return childPay + adultPay + seniorPay;
 }
-console.log(countEntrants());
+console.log(calculateEntry(entrants1));
 
 module.exports = { calculateEntry, countEntrants };
