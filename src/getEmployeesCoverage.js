@@ -1,12 +1,6 @@
 const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-// const x = [];
-// employees.find((element) => element.firstName === 'Ola').responsibleFor.forEach((bagui) => {
-//   x.push(species.find((coisa) => coisa.id === bagui));
-// });
-// console.log(x);
-
 const allEmployees = () => {
   const people = [];
   employees.forEach((employee) => {
