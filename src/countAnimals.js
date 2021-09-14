@@ -15,5 +15,4 @@ const countAnimals = (animal) => {
   }
 };
 
-console.log(countAnimals({ specie: 'giraffes' }));
 module.exports = countAnimals;
