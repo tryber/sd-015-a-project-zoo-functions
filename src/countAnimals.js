@@ -8,10 +8,11 @@ const countAnimals = (animal) => {
     });
     return animals;
   } if (Object.keys(animal).length === 1) {
-    return data.species.find((elemento) => elemento.name === animal.specie).popularity;
+    return data.species.find((elemento) => elemento.name === animal.specie).residents.length;
   } if (Object.keys(animal).length === 2) {
     const animal2 = data.species.find((elemento) => elemento.name === animal.specie);
     return animal2.residents.filter((elemento) => elemento.sex === animal.gender).length;
   }
 };
+console.log(countAnimals({ specie: 'giraffes' }));
 module.exports = countAnimals;

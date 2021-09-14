@@ -27,7 +27,7 @@ describe('5 - Crie uma função que realiza a contagem dos animais de cada espé
 
     {
       const actual = countAnimals({ specie: 'giraffes' });
-      const expected = 4;
+      const expected = 6;
       expect(actual).toBe(expected);
     }
   });
