@@ -9,5 +9,14 @@ function countAnimals(animal) {
     }, {});
     return list;
   }
+  if (!animal.gender) {
+    const findSpecies = species.find((element) => element.name === animal.species);
+    const residentsSize = findSpecies.residents.length;
+    return residentsSize;
+  }
+  const findSpecies = species.find((element) => element.name === animal.species).residents;
+  const findGender = findSpecies.filter((element) => element.sex === animal.gender);
+  const residentsSize = findGender.length;
+  return residentsSize;
 }
 module.exports = countAnimals;
