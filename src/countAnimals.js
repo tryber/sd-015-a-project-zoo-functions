@@ -8,13 +8,13 @@ function countAnimals(animal) {
     species.forEach((item) => { objAnimal[item.name] = item.residents.length; });
     return objAnimal;
   }
-  const { specie, gender } = animal;
+  const { specie, sex } = animal;
 
-  if (gender === undefined && specie !== undefined) {
+  if (sex === undefined && specie !== undefined) {
     return species.find((item) => item.name === specie).residents.length;
   }
   return species.find((item) =>
-    item.name === specie).residents.filter((gen) => gen.sex === gender).length;
+    item.name === specie).residents.filter((gen) => gen.sex === sex).length;
 }
 
 module.exports = countAnimals;
