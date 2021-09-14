@@ -2,29 +2,28 @@ const data = require('../data/zoo_data');
 // Consultado PR do colega eric-cruz para resolução desta função https://github.com/tryber/sd-015-a-project-zoo-functions/pull/124/commits/115709da9dbafba95503995846238a84aa57407e
 function everyAnimal() {
   const animalObj = {};
-  data.species.forEach(({ name, residents }) => {
-    animalObj[name] = residents.length;
+  data.species.forEach((elem) => {
+    animalObj[elem.name] = elem.residents.length;
   });
   return animalObj;
 }
 
 function countAnimal(animal) {
   const specificAnimal = data.species.find(
-    (elem) => elem.name === animal.specie,
+    (elem) => elem.name === animal.specie
   );
   return specificAnimal.residents.length;
 }
 
 function countAnimalByGender(animal, gender) {
   const { species } = data;
-  const { residents } = species.find(({ name }) => name === animal);
-  const numOfGenderResidents = residents.filter(
-    ({ sex }) => sex === gender,
-  ).length;
-  return numOfGenderResidents;
+  return species
+    .find(({ name }) => name === animal)
+    .residents.filter((element2) => element2.sex === gender).length;
+  // console.log(species.find(({ name }) => name === animal));
 }
 
-function countAnimals(animal, gender) {
+function countAnimals(animal) {
   if (animal === undefined) {
     return everyAnimal();
   }

@@ -1,18 +1,44 @@
 const data = require('../data/zoo_data');
-
+// consultado repositório de pedro guarize para este quesito: https://github.com/tryber/sd-015-a-project-zoo-functions/blob/pedro-guarize-zoo-functions-project/src/getAnimalMap.js
 const { species } = data;
 
-function allAnimalsMapped() {
-  const byRegion = {};
-  // eslint-disable-next-line no-return-assign
-  species.forEach(({ name, location }) => (byRegion[location] += name));
-  return byRegion;
-}
+// console.log(species.filter((specie) => specie.location === 'NE').map((anim) => anim.name))
 
-console.log(allAnimalsMapped());
+const allAnimalsMapped = () => ({
+  NE: species
+    .filter((specie) => specie.location === 'NE')
+    .map((anim) => anim.name),
+  NW: species
+    .filter((specie) => specie.location === 'NW')
+    .map((anim) => anim.name),
+  SE: species
+    .filter((specie) => specie.location === 'SE')
+    .map((anim) => anim.name),
+  SW: species
+    .filter((specie) => specie.location === 'SW')
+    .map((anim) => anim.name),
+});
+// console.log(allAnimalsMapped());
+
+function nameIncluded(param) {
+  const NE = {
+    NE: species
+      .filter((specie) => specie.location === 'NE')
+      .map((anim) => anim.residents.map((elem) => elem.name)),
+  };
+  // const animalNames =
+  // const allAnimals = allAnimalsMapped();
+  // allAnimals.NE.map((elem) => elem === 'lions');
+  // console.log(allAnimals);
+  console.log(NE);
+}
+nameIncluded();
 
 function getAnimalMap(options) {
   // seu código aqui
+  if (options === undefined) {
+    return allAnimalsMapped();
+  }
 }
 
 module.exports = getAnimalMap;
