@@ -16,5 +16,4 @@ function countAnimals(animal) {
   return species.find((onesAnimal) => onesAnimal.name === name)
     .residents.filter((sexAnimal) => sexAnimal.sex === gender).length; // O Filter entrega um array com os elementos que satisfazem a condição.
 }
-
 module.exports = countAnimals;
