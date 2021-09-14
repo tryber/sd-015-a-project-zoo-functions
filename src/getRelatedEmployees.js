@@ -1,4 +1,3 @@
-const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function isManager(id) {
@@ -11,7 +10,8 @@ function getRelatedEmployees(managerId) {
   if (!isManager(managerId)) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
-  const searchingEmployee = data.employees.filter((employee) => employee.managers.includes(managerId));
+  const searchingEmployee = data.employees.filter((employee) => 
+  employee.managers.includes(managerId));
   return searchingEmployee.map((employee) => `${employee.firstName} ${employee.lastName}`);
 }
 
