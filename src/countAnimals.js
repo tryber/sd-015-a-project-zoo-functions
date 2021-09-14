@@ -9,9 +9,9 @@ function countAnimals(animal) {
     });
     return allAnimals;
   }
-  const { specie, gender } = animal;
+  const { specie, sex } = animal;
   const animals = species.find((value) => value.name === specie).residents;
-  const animalsResident = animals.reduce((acc, crr) => (crr.sex === gender ? acc + 1 : acc), 0);
-  return (gender === undefined) ? animals.length : animalsResident;
+  const animalsResident = animals.reduce((acc, crr) => (crr.sex === sex ? acc + 1 : acc), 0);
+  return (sex === undefined) ? animals.length : animalsResident;
 }
 module.exports = countAnimals;
