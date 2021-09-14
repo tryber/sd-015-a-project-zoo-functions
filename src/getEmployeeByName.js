@@ -5,7 +5,6 @@ function getEmployeeByName(employeeName) {
   // seu código aqui
   if (employeeName === undefined) {
     return {};
-  // eslint-disable-next-line max-len
-  } return employees.find((nameEmployee) => (nameEmployee.firstName === employeeName || nameEmployee.lastName === employeeName));
+  } return employees.find((el) => (el.firstName === employeeName || el.lastName === employeeName));
 }
 module.exports = getEmployeeByName;
