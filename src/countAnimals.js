@@ -8,12 +8,12 @@ function countAnimals(animal) {
     species.forEach((spe) => { numberOfAnimals[spe.name] = spe.residents.length; });
     return numberOfAnimals;
   }
-  const { specie, gender } = animal;
+  const { specie, sex } = animal;
   const animalsForSpecie = species.find((spe) => spe.name === specie).residents;
   const animalsOfGender = animalsForSpecie
-    .reduce((acc, curr) => (curr.sex === gender ? acc + 1 : acc), 0);
+    .reduce((acc, curr) => (curr.sex === sex ? acc + 1 : acc), 0);
 
-  return !gender ? animalsForSpecie.length : animalsOfGender;
+  return !sex ? animalsForSpecie.length : animalsOfGender;
 }
 
 console.log(countAnimals({ specie: 'penguins' }));
