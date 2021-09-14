@@ -8,9 +8,7 @@ as espécies referentes aos ids passados como parâmetro, podendo receber um ou 
 function getSpeciesByIds(...ids) {
   // seu código aqui
   const especiesData = zooData.species;
-  return especiesData.filter((animals, index) => (
-    animals.id === ids[index]
-  ));
+  return especiesData.filter((animals) => ids.includes(animals.id));
 }
 
 module.exports = getSpeciesByIds;
