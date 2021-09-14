@@ -39,8 +39,8 @@ function dayInformation({ target, accumulator = {}, day, officeHour }) {
   return accumulator;
 }
 
-function animalInformation(target, accumulator = []) {
-  return [...accumulator, ...species.reduce((list, { name, availability }) => {
+function animalInformation(target) {
+  return [...species.reduce((list, { name, availability }) => {
     if (name === target) {
       return availability;
     }
@@ -59,6 +59,7 @@ function isDay(target) {
 function isAnimal(target) {
   return species.some(({ name }) => name === target);
 }
+
 function getSchedule(target) {
   const hoursList = Object.entries(hours);
   return hoursList.reduce((accumulator, [day, officeHour], index) => {
@@ -67,16 +68,12 @@ function getSchedule(target) {
       return localAcc;
     }
     if (isAnimal(target)) {
-      if (index === 0) {
-        const localAcc = animalInformation(target);
-        return localAcc;
-      }
       return animalInformation(target);
     }
     return allInformation({ accumulator, day, officeHour });
   }, {});
 }
 
-console.log(getSchedule('Monday'));
+console.log(getSchedule('penguins'));
 
 module.exports = getSchedule;
