@@ -18,5 +18,4 @@ function countAnimals(obj) {
   } return everySpecie[obj.specie];
 }
 
-console.log(countAnimals({ specie: 'penguins', gender: 'female' }));
 module.exports = countAnimals;
