@@ -3,7 +3,7 @@ const data = require('../data/zoo_data');
 
 function countAnimals(animal = {}) {
   // seu código aqui
-  const { specie = false, gender = false } = animal;
+  const { specie = false, sex = false } = animal;
   if (!specie) {
     const objComplete = species.reduce((acc, actual) => {
       acc[actual.name] = actual.residents.length;
@@ -12,12 +12,12 @@ function countAnimals(animal = {}) {
     console.log(objComplete);
     return objComplete;
   }
-  if (!gender) {
+  if (!sex) {
     const { residents } = species.find((spe) => spe.name === specie);
     return residents.length;
   }
   const { residents } = species.find((spe) => spe.name === specie);
-  return residents.filter((gen) => gen.sex === gender).length;
+  return residents.filter((gen) => gen.sex === sex).length;
 }
 
 module.exports = countAnimals;
