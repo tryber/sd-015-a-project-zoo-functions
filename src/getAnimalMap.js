@@ -96,24 +96,23 @@ const aniamalsSexSort = (sex) => {
   };
 };
 
+const test1 = (opt) => {
+  if (opt.includeNames && !opt.sorted) {
+    return !opt.sex ? animalsNames() : animalsSex(opt.sex);
+  }
+};
+
+const test2 = (opt) => {
+  if (opt.includeNames && opt.sorted) {
+    return !opt.sex ? animalsSort() : aniamalsSexSort(opt.sex);
+  }
+};
+
 function getAnimalMap(options) {
   if (!options || !options.includeNames) return animalsLoc();
-
-  const test1 = (opt) => {
-    if (opt.includeNames && !opt.sorted) {
-      return !opt.sex ? animalsNames() : animalsSex(opt.sex);
-    };
-  };
-
-  const test2 = (opt) => {
-    if (opt.includeNames && opt.sorted) {
-      return !opt.sex ? animalsSort() : aniamalsSexSort(opt.sex);
-    }
-  };
-
   return test1(options) ? test1(options) : test2(options);
 }
 
-const options = { includeNames: true};
-console.log(getAnimalMap()); //zena
+// const options = { includeNames: true};
+// console.log(getAnimalMap());
 module.exports = getAnimalMap;
