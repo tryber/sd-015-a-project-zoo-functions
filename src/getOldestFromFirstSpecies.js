@@ -5,7 +5,7 @@ function getOldestFromFirstSpecies(id) {
   const getFirstRespAnimal = getEmployeeId.responsibleFor[0];
   const getResidents = (data.species.find((specie) => specie.id === getFirstRespAnimal)).residents;
   const getOlderAnimal = getResidents.reduce((older, animals) =>
-    older.age > animals.age ? older : animals, 0);
+    (older.age > animals.age ? older : animals), 0);
   return Object.values(getOlderAnimal);
 }
 
