@@ -18,15 +18,16 @@ function countAnimals(animal) {
   if (animal === undefined) {
     return createObject();
   }
-  const { specie, gender } = animal;
+  const { specie, sex } = animal;
 
   const resultAnimal = data.species.find((species) => species.name === specie);
-  if (gender !== undefined) {
+  if (sex !== undefined) {
     return (
-      resultAnimal.residents.length,
-      resultAnimal.residents.filter((genderAnimal) => genderAnimal.sex === gender).length
+      resultAnimal.residents.filter((genderAnimal) => genderAnimal.sex === sex).length
     );
   }
   return resultAnimal.residents.length;
 }
+
+console.log(countAnimals({ specie: 'bears', sex: 'female' }));
 module.exports = countAnimals;
