@@ -15,7 +15,7 @@ function calculateEntry(entrants) {
   if (!entrants || Object.values(entrants).length === 0) {
     return 0;
   }
-  const people = countEntrants(entrants);
+  const people = countEntrants(entrants); // função da linha 4.
   const child = people.child * prices.child;
   const adult = people.adult * prices.adult;
   const senior = people.senior * prices.senior;
