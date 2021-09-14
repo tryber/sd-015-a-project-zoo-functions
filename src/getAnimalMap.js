@@ -20,22 +20,21 @@ const animalsSWloc = animalsSW
 // let array = []
 
 const animalsNElocSort = animalsNE
-  .map((element) => ({ [element.name]: element.residents
+  .map((elementNE) => ({ [elementNE.name]: elementNE.residents
     .map((animal) => animal.name)
     .sort() }));
 const animalsNWlocSort = animalsNW
-  .map((element) => ({ [element.name]: element.residents
+  .map((elementNW) => ({ [elementNW.name]: elementNW.residents
     .map((animal) => animal.name)
     .sort() }));
 const animalsSElocSort = animalsSE
-  .map((element) => ({ [element.name]: element.residents
+  .map((elementSE) => ({ [elementSE.name]: elementSE.residents
     .map((animal) => animal.name)
     .sort() }));
 const animalsSWlocSort = animalsSW
-  .map((element) => ({ [element.name]: element.residents
+  .map((elementSW) => ({ [elementSW.name]: elementSW.residents
     .map((animal) => animal.name)
     .sort() }));
-
 
 // console.log(animalsNE.map((element) => ({ [element.name]: element.residents.map((element2) => element2.name).sort((a, b) => a > b) })));
 
@@ -76,16 +75,37 @@ const animalsPerLocSex = (sex) => {
     NW: animalsNWlocSex,
     SE: animalsSElocSex,
     SW: animalsSWlocSex,
-  }
+  };
 };
+
+const animalsPerLocSexSorted = (sex) => {
+  const animalsNElocSexSort = animalsNE.map((element) => ({ [element.name]: element.residents
+    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name).sort() }));
+  const animalsNWlocSexSort = animalsNW.map((element) => ({ [element.name]: element.residents
+    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name).sort() }));
+  const animalsSElocSexSort = animalsSE.map((element) => ({ [element.name]: element.residents
+    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name).sort() }));
+  const animalsSWlocSexSort = animalsSW.map((element) => ({ [element.name]: element.residents
+    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name).sort() }));
+
+  return {
+    NE: animalsNElocSexSort,
+    NW: animalsNWlocSexSort,
+    SE: animalsSElocSexSort,
+    SW: animalsSWlocSexSort,
+  };
+};
+
 
 function getAnimalMap(options) {
   if (!options) return animalsPerLoc();
   if (options.sorted && !options.sex) return animalsPerLocSorted();
   if (!options.sorted && options.sex) return animalsPerLocSex(options.sex);
+  if (options.sorted && options.sex) return animalsPerLocSexSorted(options.sex);
   if (options.includeNames) return animalsPerLocNames();
+
 }
 
-const options = { includeNames: true, sex: 'female'};
-console.log(getAnimalMap(options));
+// const options = { includeNames: true, sex: 'female', sorted: true };
+// console.log(getAnimalMap(options).NE[0].lions[1]); //zena
 module.exports = getAnimalMap;
