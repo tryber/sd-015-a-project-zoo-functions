@@ -1,33 +1,29 @@
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
-  // const age = {};
-  // entrants.map((entrant) => {
-  //   if (entrant.age < 18) {
-  //     age['child'] = entrant.age;
-  //   } else if (entrant.age < 50) {
-  //     age['adult'] = entrant.age;
-  //   } else {
-  //     age['senior'] = entrant.age;
-  //   }
-  // });
+  const typeEntrant = { child: 0, adult: 0, senior: 0 };
+  entrants.map((entrant) => {
+    if (entrant.age < 18) {
+      typeEntrant.child += 1;
+    } else if (entrant.age < 50) {
+      typeEntrant.adult += 1;
+    } else {
+      typeEntrant.senior += 1;
+    }
+    return typeEntrant;
+  });
 
-  // return age;
+  return typeEntrant;
 }
 
-const entrants = [
-  { name: 'Lara Carvalho', age: 5 },
-  { name: 'Frederico Moreira', age: 5 },
-  { name: 'Pedro Henrique Carvalho', age: 5 },
-  { name: 'Maria Costa', age: 18 },
-  { name: 'Núbia Souza', age: 18 },
-  { name: 'Carlos Nogueira', age: 50 },
-];
-
-console.log(countEntrants(entrants));
-
 function calculateEntry(entrantx) {
-  // seu código aqui
+  if (!entrantx || !entrantx.length) {
+    return 0;
+  }
+
+  const { child, adult, senior } = countEntrants(entrantx);
+
+  return child * 20.99 + adult * 49.99 + senior * 24.99;
 }
 
 module.exports = { calculateEntry, countEntrants };
