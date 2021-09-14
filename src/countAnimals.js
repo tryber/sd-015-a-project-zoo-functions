@@ -23,7 +23,7 @@ function countGender(specie, gender) {
   return foundSpecie.residents.filter((info) => info.sex === gender).length;
 }
 
-// Main function to call a function bellow acording to each condition
+// Main function to call a function above acording to each condition
 function countAnimals(animal) {
   if (!animal) {
     return countAll();
