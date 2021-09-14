@@ -18,7 +18,7 @@ function countEntrants(entrants) {
 function calculateEntry(entrants) {
   // seu código aqui
   const visitors = countEntrants(entrants);
-  const { child, adult, senior } = visitors; 
+  const { child, adult, senior } = visitors;
   const toReturn = (child * 20.99) + (adult * 49.99) + (senior * 24.99);
   return toReturn;
 }
@@ -30,5 +30,4 @@ const entrants = [
   { name: 'Núbia Souza', age: 18 },
   { name: 'Carlos Nogueira', age: 50 },
 ];
- console.log(calculateEntry(entrants)); 
 module.exports = { calculateEntry, countEntrants };
