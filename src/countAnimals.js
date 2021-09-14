@@ -11,8 +11,7 @@ const countAnimals = (animal) => {
     return data.species.find((elemento) => elemento.name === animal.specie).residents.length;
   } if (Object.keys(animal).length === 2) {
     const animal2 = data.species.find((elemento) => elemento.name === animal.specie);
-    return animal2.residents.filter((elemento) => elemento.sex === animal.gender).length;
+    return animal2.residents.filter((elemento) => elemento.sex === animal.sex).length;
   }
 };
-
 module.exports = countAnimals;
