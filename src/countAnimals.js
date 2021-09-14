@@ -1,7 +1,7 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function countAnimals({ specie = undefined, gender = undefined } = '') {
+function countAnimals({ specie = undefined, sex = undefined } = '') {
   // não sei porque precisa do = '', peguei na mentoria para resolver erro.
   // seu código aqui
   if (specie === undefined) {
@@ -11,12 +11,12 @@ function countAnimals({ specie = undefined, gender = undefined } = '') {
     });
     return countAll;
   }
-  if (gender === undefined) {
+  if (sex === undefined) {
     return species.find((crr) => crr.name === specie).residents.length;
   }
   return species.find((crr) =>
     crr.name === specie).residents.filter((resident) =>
-    resident.sex === gender).length;
+    resident.sex === sex).length;
 }
 
 module.exports = countAnimals;
