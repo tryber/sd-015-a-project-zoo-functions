@@ -9,8 +9,9 @@ const noInput = () => {
 };
 
 const genderCheck = (animal) => {
-  const { specie, gender } = animal;
+  const { specie, sex } = animal;
   const { residents } = data.species.find(({ name }) => name === specie);
+  const gender = sex;
   if (!gender) {
     return residents.length;
   }
