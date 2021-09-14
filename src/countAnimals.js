@@ -8,7 +8,7 @@ function getAnimalsResidentsLength(e) {
 
 function countAnimals(animal) {
   if (animal === undefined) {
-    data.species.forEach(e => getAnimalsResidentsLength(e));
+    data.species.forEach((e) => getAnimalsResidentsLength(e));
   } else if (animal.gender === undefined) {
     const residentsObject = data.species.filter((e) => animal.specie.includes(e.name))[0].residents;
     return residentsObject.length;
