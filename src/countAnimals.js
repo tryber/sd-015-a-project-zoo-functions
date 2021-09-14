@@ -26,14 +26,14 @@ function countAnimals(animal) {
   if (animal === undefined) {
     return everyAnimal();
   }
-  if (animal.gender === undefined) {
+  if (animal.sex === undefined) {
     // console.log(specificAnimal);
     return countAnimal(animal);
   }
-  return countAnimalByGender(animal.specie, animal.gender);
+  return countAnimalByGender(animal.specie, animal.sex);
 }
-// console.log(countAnimals());
-// console.log(countAnimals({ specie: 'bears' }));
+console.log(countAnimals());
+console.log(countAnimals({ specie: 'bears' }));
 console.log(countAnimals({ specie: 'bears', gender: 'female' }));
 
 module.exports = countAnimals;

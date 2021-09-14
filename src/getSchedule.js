@@ -1,7 +1,47 @@
 const data = require('../data/zoo_data');
 
+const { hours, species } = data;
+// const { Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Monday } = hours;
+// Tuesday: `Open from ${Tuesday.open}am until ${Tuesday.close}pm`,
+// Wednesday: `Open from ${Wednesday.open}am until ${Wednesday.close}pm`,
+// Thursday: `Open from ${Thursday.open}am until ${Thursday.close}pm`,
+// Friday: `Open from ${Friday.open}am until ${Friday.close}pm`,
+// Saturday: `Open from ${Saturday.open}am until ${Saturday.close}pm`,
+// Sunday: `Open from ${Sunday.open}am until ${Sunday.close}pm`,
+// Monday: `Open from ${Monday.open}am until ${Monday.close}pm`,
+
+function weeklyAnimal(param) {
+  const animalPerDay = species
+    .filter((specie) => specie.availability.includes(param))
+    .map((anim) => anim.name);
+  return animalPerDay;
+}
+// console.log(weeklyAnimal());
+// species.filter((specie) => specie.availability.some((elem) =>
+//     elem === day)).map((animal) => animal.name)
+
+function weeklySchedule() {
+  const deuCerto = Object.keys(hours).map((weeklyDay) => ({
+    [weeklyDay]: {
+      officerHour:
+        hours[weeklyDay].open === 0
+          ? 'CLOSE'
+          : `Open from ${hours[weeklyDay].open}am until ${hours[weeklyDay].close}pm`,
+      exhibition:
+        hours[weeklyDay].open === 0
+          ? 'The zoo will be closed!'
+          : weeklyAnimal(weeklyDay),
+    },
+  }));
+  return deuCerto;
+
+  // return { teste: `Open from ${Tuesday.open}am until ${Tuesday.close}pm`};
+}
+console.log(weeklySchedule());
 function getSchedule(scheduleTarget) {
-  // seu código aqui
+  if (!scheduleTarget) {
+    return weeklySchedule();
+  }
 }
 
 module.exports = getSchedule;
