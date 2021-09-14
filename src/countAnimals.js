@@ -11,11 +11,11 @@ const defaultCountAnimals = data.species.reduce((acc, specie) => {
 function countAnimals(animalObj) {
   if (animalObj === undefined) return defaultCountAnimals;
 
-  const { specie, gender } = animalObj;
+  const { specie, sex } = animalObj;
   if (Object.keys(animalObj).length === 1) return defaultCountAnimals[specie];
 
   const animalData = data.species.find((animal) => specie === animal.name);
-  return animalData.residents.reduce((acc, curr) => (curr.sex === gender ? acc + 1 : acc), 0);
+  return animalData.residents.reduce((acc, curr) => (curr.sex === sex ? acc + 1 : acc), 0);
 }
 
 module.exports = countAnimals;
