@@ -1,4 +1,4 @@
-const data = require("../data/zoo_data");
+const data = require('../data/zoo_data');
 
 function findEmployee(id) {
   return data.employees.find((emp) => emp.id === id);
@@ -6,8 +6,7 @@ function findEmployee(id) {
 
 function findAnimal(tgtEmp, id) {
   return tgtEmp.responsibleFor.find((empId) =>
-    data.species.filter((animalId) => animalId === id)
-  );
+    data.species.filter((animalId) => animalId === id));
 }
 
 function getAnimal(id) {
@@ -19,10 +18,10 @@ function oldestAnimal(animal) {
 }
 
 function getOldestFromFirstSpecies(id) {
-  let tgtEmp = findEmployee(id);
-  let animalId = findAnimal(tgtEmp, id);
-  let tgtAnimal = getAnimal(animalId);
-  let odAnimal = oldestAnimal(tgtAnimal);
+  const tgtEmp = findEmployee(id);
+  const animalId = findAnimal(tgtEmp, id);
+  const tgtAnimal = getAnimal(animalId);
+  const odAnimal = oldestAnimal(tgtAnimal);
   return [odAnimal.name, odAnimal.sex, odAnimal.age];
 }
 
