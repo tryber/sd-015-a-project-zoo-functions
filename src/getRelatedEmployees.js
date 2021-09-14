@@ -5,7 +5,7 @@ function isManager(id) {
 }
 
 function getRelatedEmployees(managerId) {
-  // seu código aqui 
+  // seu código aqui
 }
 
 module.exports = { isManager, getRelatedEmployees };
