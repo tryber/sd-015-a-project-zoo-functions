@@ -2,11 +2,15 @@ const data = require('../data/zoo_data');
 
 const listAnimalsByLocation = () => {
   const { species } = data;
-  const NE = species.filter((specie) => specie.location === 'NE');
-  const NW = species.filter((specie) => specie.location === 'NW');
-  const SE = species.filter((specie) => specie.location === 'SE');
-  const SW = species.filter((specie) => specie.location === 'SW');
-  return { NE, NW, SE, SW };
+  const prop = 'location';
+  // Trecho retirado da documentação
+  // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+  return species.reduce((acc, obj) => {
+    const key = obj[prop];
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(obj);
+    return acc;
+  }, {});
 };
 
 /* {
@@ -100,5 +104,7 @@ function getAnimalMap(options) {
   if (includeNames === true) return listAnimalsWithResidents(sorted, sex);
   return listAnimals();
 }
+
+console.log(listAnimalsByLocation());
 
 module.exports = getAnimalMap;
