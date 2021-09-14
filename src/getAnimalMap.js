@@ -38,14 +38,14 @@ const animalsSWlocSort = animalsSW
 
 // console.log(animalsNE.map((element) => ({ [element.name]: element.residents.map((element2) => element2.name).sort((a, b) => a > b) })));
 
-const animalsPerLoc = () => ({
+const animalsLoc = () => ({
   NE: animalsNE.map((element) => element.name),
   NW: animalsNW.map((element) => element.name),
   SE: animalsSE.map((element) => element.name),
   SW: animalsSW.map((element) => element.name),
 });
 
-const animalsPerLocNames = () => ({
+const animalsSpecies = () => ({
   NE: animalsNEloc,
   NW: animalsNWloc,
   SE: animalsSEloc,
@@ -53,14 +53,14 @@ const animalsPerLocNames = () => ({
 });
 // console.log(animalsPerLocNames());
 
-const animalsPerLocSorted = () => ({
+const animalsSort = () => ({
   NE: animalsNElocSort,
   NW: animalsNWlocSort,
   SE: animalsSElocSort,
   SW: animalsSWlocSort,
 });
 
-const animalsPerLocSex = (sex) => {
+const animalsSex = (sex) => {
   const animalsNElocSex = animalsNE.map((element) => ({ [element.name]: element.residents
     .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name) }));
   const animalsNWlocSex = animalsNW.map((element) => ({ [element.name]: element.residents
@@ -78,7 +78,7 @@ const animalsPerLocSex = (sex) => {
   };
 };
 
-const animalsPerLocSexSorted = (sex) => {
+const aniamalsSexSort = (sex) => {
   const animalsNElocSexSort = animalsNE.map((element) => ({ [element.name]: element.residents
     .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name).sort() }));
   const animalsNWlocSexSort = animalsNW.map((element) => ({ [element.name]: element.residents
@@ -98,11 +98,12 @@ const animalsPerLocSexSorted = (sex) => {
 
 
 function getAnimalMap(options) {
-  if (!options) return animalsPerLoc();
-  if (options.sorted && !options.sex) return animalsPerLocSorted();
-  if (!options.sorted && options.sex) return animalsPerLocSex(options.sex);
-  if (options.sorted && options.sex) return animalsPerLocSexSorted(options.sex);
-  if (options.includeNames) return animalsPerLocNames();
+  if (!options) return animalsLoc();
+  if (options.includeNames && !options.sorted && !options.sex) return animalsSpecies();
+  if (options.includeNames && options.sorted && !options.sex) return animalsSort();
+  if (options.includeNames && !options.sorted && options.sex) return animalsSex(options.sex);
+  if (options.includeNames && options.sorted && options.sex) return aniamalsSexSort(options.sex);
+  if (!options.includeNames && !options.sorted && options.sex) return animalsLoc();
 
 }
 
