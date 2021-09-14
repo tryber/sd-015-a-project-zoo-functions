@@ -45,8 +45,6 @@ describe('7 - Crie um mapeamento geográfico das espécies e seus animais', () =
     const options = { includeNames: true, sorted: true };
     const actual = getAnimalMap(options);
 
-    console.log(actual.NE);
-
     const expected = {
       NE: [
         { lions: ['Dee', 'Faustino', 'Maxwell', 'Zena'] },
