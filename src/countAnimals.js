@@ -1,5 +1,6 @@
 const data = require('../data/zoo_data');
 
+// teste
 function countAnimals(animal = 'zero') {
   if (animal !== 'zero') {
     const a = data.species.find((elemento) => elemento.name === animal.specie);
