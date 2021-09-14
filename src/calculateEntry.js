@@ -11,9 +11,9 @@ const data = require('../data/zoo_data');
 
 function countEntrants(entrantsCounter) {
   // console.log(entrantsCounter);
-  if (!entrantsCounter || !entrantsCounter.length) {
-    return 0;
-  }
+  // if (!entrantsCounter || !entrantsCounter.length) {
+  //   return 0;
+  // }
   const child = entrantsCounter.filter((elem) => elem.age < 18).length;
   const adult = entrantsCounter.filter(
     (elem2) => elem2.age >= 18 && elem2.age < 50,
@@ -45,7 +45,7 @@ const objss = {};
 // console.log(countEntrants());
 // console.log(calculateEntry(entrants));
 console.log(calculateEntry(objss));
-// console.log(calculateEntry());
+console.log(calculateEntry());
 
 module.exports = { calculateEntry, countEntrants };
 
