@@ -1,8 +1,8 @@
 const data = require('../data/zoo_data');
 
 const monday = {
-  'Monday': { 'officeHour': 'CLOSED',
-  'exhibition': 'The zoo will be closed!' },
+  Monday: { officeHour: 'CLOSED',
+    exhibition: 'The zoo will be closed!' },
 };
 
 const getAnimalsByDay = (day) => data.species.filter((animals) =>
@@ -32,11 +32,11 @@ function getSchedule(scheduleTarget) {
   if (scheduleTarget === 'Monday') {
     return monday;
   }
-  if (scheduleTarget === undefined ||
-    (!getAnimalName.includes(scheduleTarget) &&
-      !Object.keys(data.hours).includes(scheduleTarget))) {
-        return getWeekDays();
-  };
+  if (scheduleTarget === undefined
+    || (!getAnimalName.includes(scheduleTarget)
+      && !Object.keys(data.hours).includes(scheduleTarget))) {
+      return getWeekDays();
+  }
   if (getAnimalName.includes(scheduleTarget)) {
     return getDaysByAnimal(scheduleTarget);
   }
@@ -45,10 +45,9 @@ function getSchedule(scheduleTarget) {
       [scheduleTarget]: {
         officeHour: `Open from ${data.hours[scheduleTarget].open}am until ${data.hours[scheduleTarget].close}pm`,
         exhibition: getAnimalsByDay(scheduleTarget),
-      }
+      },
     };
   }
 }
-console.log((getSchedule('qualquercoisa')))
 
 module.exports = getSchedule;
