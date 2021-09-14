@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
   const empName = employeeName;
-  const emps = data.employees
+  const emps = data.employees;
   if (employeeName === undefined) {
     return {};
   }
