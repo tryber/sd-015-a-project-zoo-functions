@@ -7,9 +7,7 @@ function getSpeciesByIds(...ids) {
   }
 
   const selectedSepecies = ids.map((id) => {
-    const filteredSpecies = data.species.filter((specie) => {
-      return specie.id === id;
-    });
+    const filteredSpecies = data.species.filter((specie) => specie.id === id);
     return filteredSpecies;
   });
   return selectedSepecies;
