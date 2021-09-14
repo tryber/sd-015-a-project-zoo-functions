@@ -5,11 +5,11 @@ function countAnimals(animal) {
   if (animal === undefined) {
     data.species.forEach((e) => animals[e.name] = e.residents.length);
   } else if (animal.gender === undefined) {
-    const animalResidentsObject = data.species.filter((e) => animal.specie.includes(e.name))[0].residents;
-    return animalResidentsObject.length;
+    const residentsObject = data.species.filter((e) => animal.specie.includes(e.name))[0].residents;
+    return residentsObject.length;
   } else {
-    const animalResidentsObject = data.species.filter((e) => animal.specie.includes(e.name))[0].residents;
-    return animalResidentsObject.filter((e) => e.sex === `${animal.gender}`).length;
+    const residentsObject = data.species.filter((e) => animal.specie.includes(e.name))[0].residents;
+    return residentsObject.filter((e) => e.sex === `${animal.gender}`).length;
   } return animals;
 }
 
