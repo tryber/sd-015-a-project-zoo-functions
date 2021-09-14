@@ -1,7 +1,9 @@
 const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
-  // seu código aqui
+  if (animal.gender === undefined) {
+    return data.species.find()
+  }
 }
 
 module.exports = countAnimals;
