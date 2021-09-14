@@ -73,5 +73,3 @@ function getAnimalMap(options) {
 }
 
 module.exports = getAnimalMap;
-const options = { includeNames: true, sex: 'female' };
-console.log(getAnimalMap(options));
