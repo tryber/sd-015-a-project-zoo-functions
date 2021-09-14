@@ -6,7 +6,7 @@ function countAnimals(animal) {
     const nome = species.filter((item) => item.name === animal.specie);
     const lista = nome.pop().residents;
     if (animal.gender) {
-      return lista.filter((item) => item.sex === animal.sex).length;
+      return lista.filter((item) => item.sex === animal.gender).length;
     }
     return lista.length;
   }
