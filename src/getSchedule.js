@@ -5,6 +5,8 @@ const monday = {
     exhibition: 'The zoo will be closed!' },
 };
 
+const dtHr = data.hours;
+
 const getAnimalsByDay = (day) => data.species.filter((animals) =>
   animals.availability.includes(day)).map((animalSpecies) =>
   animalSpecies.name);
@@ -35,7 +37,7 @@ function getSchedule(scheduleTarget) {
   if (scheduleTarget === undefined
     || (!getAnimalName.includes(scheduleTarget)
       && !Object.keys(data.hours).includes(scheduleTarget))) {
-      return getWeekDays();
+    return getWeekDays();
   }
   if (getAnimalName.includes(scheduleTarget)) {
     return getDaysByAnimal(scheduleTarget);
@@ -43,7 +45,7 @@ function getSchedule(scheduleTarget) {
   if (Object.keys(data.hours).includes(scheduleTarget)) {
     return {
       [scheduleTarget]: {
-        officeHour: `Open from ${data.hours[scheduleTarget].open}am until ${data.hours[scheduleTarget].close}pm`,
+        officeHour: `Open from ${dtHr[scheduleTarget].open}am until ${dtHr[scheduleTarget].close}pm`,
         exhibition: getAnimalsByDay(scheduleTarget),
       },
     };
