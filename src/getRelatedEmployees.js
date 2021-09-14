@@ -2,7 +2,6 @@ const data = require('../data/zoo_data');
 
 function isManager(id) {
   let validateManager = false;
-  
   validateManager = data.employees.some((element) => element.managers.includes(id));
 
   // data.employees.forEach((person) => {
