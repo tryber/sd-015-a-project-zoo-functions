@@ -25,8 +25,6 @@ function getAnimalMap(options) {
       SW: swSpecies,
     };
   }
-  if (options.includeNames) {
-  }
 }
 //
 console.log(getAnimalMap());
