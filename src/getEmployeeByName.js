@@ -7,5 +7,4 @@ function getEmployeeByName(employeeName) {
   );
   return person.reduce((element) => element);
 }
-
 module.exports = getEmployeeByName;
