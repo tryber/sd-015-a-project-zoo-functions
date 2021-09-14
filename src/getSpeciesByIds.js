@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 const zoo_data = require('../data/zoo_data');
 const data = require('../data/zoo_data');
+=======
+const data = require("../data/zoo_data");
+>>>>>>> e47f2c3b655b20b25c4e2fee2cd30d446bad03c0
 
 function getSpeciesByIds(...ids) {
   // seu código aqui
+<<<<<<< HEAD
   if (ids.length === 0) {
     return [];
   }
@@ -16,6 +21,9 @@ function getSpeciesByIds(...ids) {
     }
   });
   return selectedSpecies;
+=======
+  //
+>>>>>>> e47f2c3b655b20b25c4e2fee2cd30d446bad03c0
 }
 
 // console.log(getSpeciesByIds());
