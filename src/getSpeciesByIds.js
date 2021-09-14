@@ -5,14 +5,14 @@ function getSpeciesByIds(...ids) {
   if (ids.length === 0) {
     return [];
   }
-  const selectedSpecies = data.species.filter((specie) => {
-    for (let i = 0; i < ids.length; i += 1) {
-      if (specie.id === ids[i]) {
-        return specie;
-      }
-    }
+
+  const selectedSepecies = ids.map((id) => {
+    const filteredSpecies = data.species.filter((specie) => {
+      return specie.id === id;
+    });
+    return filteredSpecies;
   });
-  return selectedSpecies;
+  return selectedSepecies;
 }
 
 module.exports = getSpeciesByIds;
