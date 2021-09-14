@@ -15,6 +15,20 @@ const getDaysByAnimal = (animal) =>
   data.species.filter((days) =>
     days.name === animal)[0].availability;
 
+const getDaysAndAnimals = (parameter) => {
+  if (getAnimalName.includes(parameter)) {
+    return getDaysByAnimal(parameter);
+  }
+  if (Object.keys(data.hours).includes(parameter)) {
+    return {
+      [parameter]: {
+        officeHour: `Open from ${dtH[parameter].open}am until ${dtH[parameter].close}pm`,
+        exhibition: getAnimalsByDay(parameter),
+      },
+    };
+  }
+}
+
 const getWeekDays = () => {
   const obj = {};
   Object.keys(data.hours).forEach((weekDays) => {
@@ -39,16 +53,9 @@ function getSchedule(scheduleTarget) {
       && !Object.keys(data.hours).includes(scheduleTarget))) {
     return getWeekDays();
   }
-  if (getAnimalName.includes(scheduleTarget)) {
-    return getDaysByAnimal(scheduleTarget);
-  }
-  if (Object.keys(data.hours).includes(scheduleTarget)) {
-    return {
-      [scheduleTarget]: {
-        officeHour: `Open from ${dtH[scheduleTarget].open}am until ${dtH[scheduleTarget].close}pm`,
-        exhibition: getAnimalsByDay(scheduleTarget),
-      },
-    };
+  if (getAnimalName.includes(scheduleTarget)
+    || Object.keys(data.hours).includes(scheduleTarget)) {
+    return getDaysAndAnimals(scheduleTarget);
   }
 }
 
