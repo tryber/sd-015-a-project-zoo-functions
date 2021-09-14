@@ -8,6 +8,4 @@ function getOldestFromFirstSpecies(id) {
   return obj.reduce((a, { name, age, sex }) => (age === number ? a.concat(name, sex, age) : a), []);
 }
 
-console.log(getOldestFromFirstSpecies('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
-
 module.exports = getOldestFromFirstSpecies;

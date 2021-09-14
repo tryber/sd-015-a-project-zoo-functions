@@ -16,4 +16,6 @@ function getAnimalMap(options) {
   }
 }
 
+console.log(getAnimalMap());
+
 module.exports = getAnimalMap;
