@@ -5,11 +5,8 @@ function getEmployeeByName(employeeName) {
   if (employeeName === undefined) {
     return {};
   }
-  let employeeFilter = employees.find((element) => element.firstName === employeeName);
-  if (employeeFilter === undefined) {
-    employeeFilter = employees.find((element) => element.lastName === employeeName);
-  }
-  console.log(employeeFilter);
+  const employeeFilter = employees
+    .find((elem) => elem.firstName === employeeName || elem.lastName === employeeName);
   return employeeFilter;
 }
 
