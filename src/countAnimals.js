@@ -6,14 +6,14 @@ function countAnimals(animal) {
     const allAnimals = Object.fromEntries(species.map((e) => [e.name, e.residents.length]));
     return allAnimals;
   }
-  const { specie: name, gender } = animal;
-  if (name && !gender) {
+  const { specie: name, sex } = animal;
+  if (name && !sex) {
     const num = species.find((e) => e.name === name);
     return num.residents.length;
   }
   const animalWithGender = species.find((e) => e.name === name)
-    .residents.filter((e) => e.sex === gender).length;
+    .residents.filter((e) => e.sex === sex).length;
   return animalWithGender;
 }
-// a
+
 module.exports = countAnimals;
