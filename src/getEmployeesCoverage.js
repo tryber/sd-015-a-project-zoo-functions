@@ -5,7 +5,8 @@ function getEmployeesCoverage(employeeName) {
   if (employeeName === undefined) {
     return employees;
   }
-  employees.find((fun) => fun.firstName === employeeName || fun.lastName === employeeName || fun.id === employeeName);
+  employees.find((fun) => 
+  fun.firstName === employeeName || fun.lastName === employeeName || fun.id === employeeName);
 }
 
 module.exports = getEmployeesCoverage;

@@ -10,9 +10,7 @@ const countEntrants = (entrants) => ({
 
 const calculateEntry = (entrants) => {
   if (!entrants || Object.keys(entrants).length === 0) return 0;
-  return (countEntrants(entrants).child * prices.child) 
-  +(countEntrants(entrants).adult * prices.adult)
-  +(countEntrants(entrants).senior * prices.senior);
+  return (countEntrants(entrants).child * prices.child) + (countEntrants(entrants).adult * prices.adult) + (countEntrants(entrants).senior * prices.senior);
   // seu código aqui
 };
 
