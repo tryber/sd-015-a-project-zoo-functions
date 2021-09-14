@@ -28,7 +28,7 @@ Se o id passado não for de um gerente, dispara um erro com a mensagem: "O id in
 const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const managers = ['9e7d4524-363c-416a-8759-8aa7e50c0992','b0dc644a-5335-489b-8a2c-4e086c7819a2',
+const managers = ['9e7d4524-363c-416a-8759-8aa7e50c0992', 'b0dc644a-5335-489b-8a2c-4e086c7819a2',
   'fdb2543b-5662-46a7-badc-93d960fdc0a8', '0e7b460e-acf4-4e17-bcb3-ee472265db83'];
 function isManager(id) {
   const notManager = managers.some((manager) => {
@@ -38,7 +38,7 @@ function isManager(id) {
   // console.log(notManager);
   return notManager;
 }
-isManager('9e7d4524-363c-416a-8759-8aa7e50c0992');
+isManager('b0dc644a-5335-489b-8a2c-4e086c7819a2');
 function getRelatedEmployees(managerId) {
   if (isManager(managerId) === true) {
     const arrNameLastName = employees.filter((objName) => objName.managers.includes(managerId));
