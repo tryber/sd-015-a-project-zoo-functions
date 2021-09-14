@@ -37,8 +37,8 @@ function getSchedule(scheduleTarget = '') {
   if (animals.some((element) =>
     element === scheduleTarget)) {
     return species.find((element) =>
-      element.name === scheduleTarget).availability; 
-    }
+      element.name === scheduleTarget).availability;
+  }
 
   return { [scheduleTarget]: wichDay(scheduleTarget) };
 }
