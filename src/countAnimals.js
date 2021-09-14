@@ -9,12 +9,12 @@ function countAnimals(animal) {
     const animals = Object.fromEntries(species.map((ani) => [ani.name, ani.residents.length]));
     return animals;
   }
-  const { specie: name, gender } = animal; // O paramentro recebido é um objeto com duas possibilidades, desestruturamos para conseguir ter acesso as keys desse objeto.
-  if (name && !gender) {
+  const { specie: name, sex } = animal; // O paramentro recebido é um objeto com duas possibilidades, desestruturamos para conseguir ter acesso as keys desse objeto.
+  if (name && !sex) {
     return species.find((oneAnimal) => oneAnimal.name === name).residents.length; // Uso do find é para satisfazer a primeira condição.
   }
-  return species.find((onesAnimal) => onesAnimal.name === name)
-    .residents.filter((sexAnimal) => sexAnimal.sex === gender).length; // O Filter entrega um array com os elementos que satisfazem a condição.
+  return species.find((oneAnimal) => oneAnimal.name === name)
+    .residents.filter((sexAnimal) => sexAnimal.sex === sex).length; // O Filter entrega um array com os elementos que satisfazem a condição.
 }
-
+console.log(countAnimals({ specie: 'elephants', sex: 'male' }));
 module.exports = countAnimals;
