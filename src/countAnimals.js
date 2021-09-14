@@ -22,7 +22,7 @@ function countGender(animal) {
   let result = {};
   data.species.forEach((specie) => {
     if (specie.name === animal.specie) {
-      const filtered = specie.residents.filter((individual) => individual.sex === animal.gender);
+      const filtered = specie.residents.filter((individual) => individual.sex === animal.sex);
       result = filtered.length;
     }
   });
@@ -34,7 +34,7 @@ function countAnimals(animal) {
   if (typeof animal === 'undefined') {
     return getEveryAnimal();
   }
-  if (typeof animal.gender === 'undefined') {
+  if (typeof animal.sex === 'undefined') {
     return countSpecie(animal);
   }
   return countGender(animal);
