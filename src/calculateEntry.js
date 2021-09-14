@@ -15,9 +15,9 @@ function calculateEntry(entrants1) {
     return 0;
   }
   const valores = Object.entries(countEntrants(entrants1));
-  console.log(valores);
+  // console.log(valores);
   const precos = valores.reduce((result, element) => result + prices[element[0]] * element[1], 0);
   return precos;
 }
-// console.log(calculateEntry(entrants));
+// console.log(calculateEntry());
 module.exports = { calculateEntry, countEntrants };
