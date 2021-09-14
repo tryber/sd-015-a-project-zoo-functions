@@ -14,9 +14,8 @@ function getRelatedEmployees(managerId) {
   const employeesByManager = employees.reduce((acc, curr) => (curr.managers.includes(managerId)) ? acc.concat(`${curr.firstName} ${curr.lastName}`) : acc, []);
   if (isManager(managerId) === true) {
     return employeesByManager;
-  } else {
-    throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
+  throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 // console.log(getRelatedEmployees('fdb2543b-5662-46a7-badc-93d960fdc0a8'))
 //Stephanie = Burl, Ola, Emery
