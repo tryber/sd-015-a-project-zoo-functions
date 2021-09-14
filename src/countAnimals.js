@@ -11,12 +11,12 @@ function countAnimals(animal) {
   if (!animal) {
     return emptyObject();
   }
-  if (!(animal.gender)) {
+  if (!(animal.sex)) {
     return species.find((element) => element.name.includes(animal.specie)).residents.length;
   }
 
   const filterGender = species.find((element) => element.name.includes(animal.specie));
-  return filterGender.residents.filter((element) => element.sex === animal.gender).length;
+  return filterGender.residents.filter((element) => element.sex === animal.sex).length;
 }
 console.log(countAnimals({ specie: 'elephants', gender: 'male' }));
 
