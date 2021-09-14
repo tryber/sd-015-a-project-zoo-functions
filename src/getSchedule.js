@@ -30,16 +30,16 @@ function getSchedule(scheduleTarget = '') {
   if (!scheduleTarget) return zooSchedule;
 
   if (!animals.some((element) =>
-  element === scheduleTarget) 
+    element === scheduleTarget)
   && !weekDays.some((element) =>
-  element === scheduleTarget)) {return zooSchedule;}
+  element === scheduleTarget)) { return zooSchedule; }
 
   if (animals.some((element) =>
-  element === scheduleTarget)) 
-  return species.find((element) =>
-  element.name === scheduleTarget).availability;
+    element === scheduleTarget)) {
+    return species.find((element) =>
+      element.name === scheduleTarget).availability;}
 
-  return {[scheduleTarget]: wichDay(scheduleTarget)};
+  return { [scheduleTarget]: wichDay(scheduleTarget) };
 }
 
 console.log(getSchedule('penguins'));
