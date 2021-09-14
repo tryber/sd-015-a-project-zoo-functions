@@ -9,10 +9,10 @@ function countAnimals(animal) {
     });
     return allAnimals;
   }
-  const { specie, gender } = animal;
+  const { specie, sex } = animal;
   const animalSpecie = species.find((tgAnimal) => tgAnimal.name === specie).residents;
-  const sexCounter = animalSpecie.reduce((acc, curr) => (curr.sex === gender ? acc + 1 : acc), 0);
-  return gender === undefined ? animalSpecie.length : sexCounter;
+  const sexCounter = animalSpecie.reduce((acc, curr) => (curr.sex === sex ? acc + 1 : acc), 0);
+  return sex === undefined ? animalSpecie.length : sexCounter;
 }
 
 /* Ideia de solução com deconstruct e acumulator por Pedro Guarizé.
