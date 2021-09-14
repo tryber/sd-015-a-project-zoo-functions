@@ -1,8 +1,9 @@
 const data = require('../data/zoo_data');
+
 const animals = {};
 
 function getAnimalsResidentsLength(e) {
-  animals[e.name] = e.residents.length
+  animals[e.name] = e.residents.length;
 }
 
 function countAnimals(animal) {
