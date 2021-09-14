@@ -25,7 +25,7 @@ function answerToReturn(obj) { // Esta função retorna o obj criado a partir da
 
 function informationsOfAllEmployees() { // Função para retornar a informação de todos os employees caso nenhum parâmetro seja passado para a função principal(getEmployeesCoverage)
   const arrayWithAllObjs = [];
-  employees.map((curr) => {
+  employees.forEach((curr) => {
     const acc = {
       id: curr.id,
       fullName: `${curr.firstName} ${curr.lastName}`,
@@ -33,7 +33,6 @@ function informationsOfAllEmployees() { // Função para retornar a informação
       locations: specie(...curr.responsibleFor).map((animal) => animal.location),
     };
     arrayWithAllObjs.push(acc);
-    return 0;
   });
   return arrayWithAllObjs;
 }
