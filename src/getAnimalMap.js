@@ -11,7 +11,7 @@ function createMap() {
       specie.location.includes('SE')).map((specie) => specie.name),
     SW: species.filter((specie) =>
       specie.location.includes('SW')).map((specie) => specie.name),
-  }
+  };
 }
 
 function createMapNames() {
@@ -24,7 +24,7 @@ function createMapNames() {
       specie.location.includes('SE')).map((specie) => specie.residents.name),
     SW: species.filter((specie) =>
       specie.location.includes('SW')).map((specie) => specie.residents.name),
-  }
+  };
 }
 
 function getAnimalMap(includeNames = false, sorted = false, sex = undefined, sort = false) {

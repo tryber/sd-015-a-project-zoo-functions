@@ -3,6 +3,13 @@
 const { species, hours } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+const exb = (day) => species.reduce((acc, crr) => {
+  if (crr.availability.includes(day)) {
+    acc.push(crr.name);
+  }
+  return acc;
+}, []);
+
 const animal = (scheduleTarget) =>
   species.find((specie) => specie.name === scheduleTarget).availability;
 
@@ -11,12 +18,7 @@ const AllDays = () => {
   Object.keys(horarios).forEach((day) => {
     horarios[day] = {
       officeHour: `Open from ${hours[day].open}am until ${hours[day].close}pm`,
-      exhibition: species.reduce((acc, crr) => {
-        if (crr.availability.includes(day)) {
-          acc.push(crr.name);
-        }
-        return acc;
-      }, []),
+      exhibition: exb(day),
     };
   });
   horarios.Monday.officeHour = 'CLOSED';
@@ -26,16 +28,11 @@ const AllDays = () => {
 
 const dia = (scheduleTarget) => {
   let horarios = { ...hours };
-  Object.keys(horarios).find((day) => {
+  Object.keys(horarios).forEach((day) => {
     if (day === scheduleTarget) {
       horarios = {
         officeHour: `Open from ${hours[day].open}am until ${hours[day].close}pm`,
-        exhibition: species.reduce((acc, crr) => {
-          if (crr.availability.includes(day)) {
-            acc.push(crr.name);
-          }
-          return acc;
-        }, []),
+        exhibition: exb(day),
       };
     }
   });
@@ -71,5 +68,3 @@ function getSchedule(scheduleTarget) {
 }
 
 module.exports = getSchedule;
-
-console.log(getSchedule('Monday'));
