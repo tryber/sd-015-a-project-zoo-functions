@@ -27,12 +27,13 @@ function sortDeclared(residentList, sort) {
 }
 
 function getLocation(includeNames, sort, sex) {
-  console.log(includeNames, sex, sort);
   return species.reduce((acc, { name, location, residents }) => {
     if (includeNames) {
       let residentList = nameDeclared(sex, residents);
+
       residentList = sortDeclared(residentList, sort);
       acc[location] = [...acc[location], { [name]: residentList }];
+
       return acc;
     }
     acc[location].push(name);
@@ -40,13 +41,10 @@ function getLocation(includeNames, sort, sex) {
   }, { NE: [], NW: [], SE: [], SW: [] });
 }
 
-function getAnimalMap(options) {
-
-  const { includeNames = false, sorted = false, sex = false } = options;
-
+function getAnimalMap({ includeNames = false, sorted = false, sex = false } = {}) {
   return getLocation(includeNames, sorted, sex);
 }
 
-console.log(getAnimalMap({ sex: 'female' }));
+getAnimalMap();
 
 module.exports = getAnimalMap;
