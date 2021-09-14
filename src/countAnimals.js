@@ -7,7 +7,7 @@ function getResidentsNumWithoutGender(animal) {
 
 function getResidentsNumWithGender(animal) {
   const spec = data.species.find((specie) => specie.name === animal.specie);
-  return spec.residents.filter((resident) => resident.sex === animal.gender).length;
+  return spec.residents.filter((resident) => resident.sex === animal.sex).length;
 }
 function getAllResidents() {
   const residentsBySpecie = {};
