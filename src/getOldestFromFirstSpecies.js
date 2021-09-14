@@ -7,8 +7,8 @@ function getOldestFromFirstSpecies(id) {
   const tipo = species.filter((item) => item.id === animaisId[0]);
   const animais = tipo.map((item) => item.residents).pop();
   const idades = animais.map((item) => item.age);
-  const maisVelho = idades.reduce((acc, curr) => acc > curr ? acc : curr)
-  const res = animais.filter((item) => item.age == maisVelho).pop();
+  const maisVelho = idades.reduce((acc, curr) => (acc > curr ? acc : curr));
+  const res = animais.filter((item) => item.age === maisVelho).pop();
   const res2 = Object.values(res);
   return res2;
 }
