@@ -3,8 +3,9 @@ const data = require('../data/zoo_data');
 // const { prices } = data;
 
 function countEntrants(entrants) {
-  // seu código aqui
-  // return {"adult": 2, "child": 3, "senior": 1};
+  const people = entrants;
+  //  // .filter((element) => element.age <= 18);
+  return people;
 }
 
 // USADO COMO REFERÊNCIA:
