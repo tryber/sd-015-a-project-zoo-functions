@@ -12,7 +12,7 @@ function countAnimals(animal) {
     return data.species.find((species) => species.name === animal.specie).residents.length;
   }
   const sortByGender = data.species.find((species) => species.name === animal.specie);
-  return sortByGender.residents.filter((residents) => residents.sex === animal.gender).length;
+  return sortByGender.residents.filter((residents) => residents.sex === animal.sex).length;
 }
 
 // console.log(countAnimals({ specie: 'penguins' }));
