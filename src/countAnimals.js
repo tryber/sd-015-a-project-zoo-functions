@@ -1,4 +1,4 @@
-const data = require("../data/zoo_data");
+const data = require('../data/zoo_data');
 
 function findSpecie(animalSpecie) {
   return data.species.find((elem) => elem.name === animalSpecie).residents;
@@ -8,12 +8,15 @@ function splitGender(animalSpecie, animalSex) {
   return animalSpecie.filter((elem) => elem.sex === animalSex);
 }
 
+const animalList = {};
+
+function teste(elem) {
+  animalList[elem.name] = elem.residents.length;
+}
+
 function countAnimals(animal) {
   if (animal === undefined) {
-    const animalList = {};
-    data.species.forEach(
-      (elem) => (animalList[elem.name] = elem.residents.length)
-    );
+    data.species.forEach((elem) => teste(elem));
     return animalList;
   }
   const { specie, gender } = animal;
@@ -44,8 +47,8 @@ module.exports = countAnimals;
 // Recebendo como parâmetro um objeto com a chave specie, retorna um número, a quantidade de animais daquela espécie;
 // Recebendo como parâmetro um objeto com a chave specie e gender, retorna um número, a quantidade de animais daquela espécie, no gênero selecionado.
 
-// countAnimals();
+countAnimals();
 // countAnimals({ specie: "penguins" });
 // countAnimals({ specie: "giraffes" });
 // countAnimals({ specie: "bears", gender: "female" });
-countAnimals({ specie: "elephants", gender: "male" });
+// countAnimals({ specie: "elephants", gender: "male" });
