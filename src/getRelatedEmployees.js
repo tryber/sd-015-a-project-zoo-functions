@@ -13,10 +13,10 @@ function getRelatedEmployees(id) {
       if (managers.some((manager) => manager.includes(id))) {
         arrayRespFor.push(`${firstName} ${lastName}`);
       }
-      return arrayRespFor;
     });
-    throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
+    return arrayRespFor;
   }
+  throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 
 module.exports = { isManager, getRelatedEmployees };
