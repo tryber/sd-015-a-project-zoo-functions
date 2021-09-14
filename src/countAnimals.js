@@ -8,12 +8,12 @@ function countAnimals(animal) {
     data.species.forEach((type) => { totalOfAnimals[type.name] = type.residents.length; });
     return totalOfAnimals;
   }
-  const { specie, gender } = animal;
+  const { specie, sex } = animal;
   const animalSpecie = data.species.find((name) => name.name === specie);
   // console.log(animalSpecie);
-  const genderAnimal = animalSpecie.residents.filter((kind) => kind.sex === gender);
+  const genderAnimal = animalSpecie.residents.filter((kind) => kind.sex === sex);
   // console.log(genderAnimal);
-  if (specie && gender) {
+  if (specie && sex) {
     return genderAnimal.length;
   }
   return animalSpecie.residents.length;
