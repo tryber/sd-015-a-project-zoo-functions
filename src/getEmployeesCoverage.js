@@ -8,29 +8,33 @@ const getAnimalById = (id) => data.species.find((specie) => specie.id === id);
 
 const getLocation = (id) => data.species.find((specie) => specie.id === id);
 
-const getSingleCoverage = (person) => {
-  const obj = {
-    id: person.id,
-    fullName: `${person.firstName} ${person.lastName}`,
-    species: person.responsibleFor.map((animal) => getAnimalById(animal).name),
-    // locations: obj.species.map((animal) =>)
-  };
-};
-
-function getEmployeesCoverage(obj) {
-  // seu código aqui
+const getSingleCoverage = (obj) => {
   const { name, id } = obj;
   const person = getPerson(name, id);
+  if (!person) throw new Error('Informações inválidas');
   const { firstName, lastName, responsibleFor } = person;
-  const singleCoverage = {
+  return {
     id: person.id,
     fullName: `${firstName} ${lastName}`,
     species: responsibleFor.map((animal) => getAnimalById(animal).name),
     locations: responsibleFor.map((animal) => getLocation(animal).location),
   };
-  return singleCoverage;
+};
+
+const getWholeCoverage = () => employees.map((employee) => {
+  const { firstName, lastName, responsibleFor } = employee;
+  return {
+    id: employee.id,
+    fullName: `${firstName} ${lastName}`,
+    species: responsibleFor.map((animal) => getAnimalById(animal).name),
+    locations: responsibleFor.map((animal) => getLocation(animal).location),
+  };
+});
+
+function getEmployeesCoverage(obj) {
+  // seu código aqui
+  if (obj) return getSingleCoverage(obj);
+  return getWholeCoverage();
 }
 
 module.exports = getEmployeesCoverage;
-
-console.log(getEmployeesCoverage({ id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad' }));
