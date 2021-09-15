@@ -7,16 +7,16 @@ const emeryId = 'b0dc644a-5335-489b-8a2c-4e086c7819a2';
 const managers = [stephanieId, olaId, burlId, emeryId];
 
 function isManager(id) {
-  return managers.some((manager) => manager === id)
+  return managers.some((manager) => manager === id);
 }
 
 function getRelatedEmployees(managerId) {
   if (isManager(managerId) === false) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
-  };
+  }
   const filteredEmployees = employees.filter((employee) => employee.managers.includes(managerId));
   return filteredEmployees.map((filteredEmployee) =>
-  `${filteredEmployee.firstName} ${filteredEmployee.lastName}`);
+    `${filteredEmployee.firstName} ${filteredEmployee.lastName}`);
 }
 
 module.exports = { isManager, getRelatedEmployees };
