@@ -105,19 +105,15 @@ Você deverá completar as funções de forma a satisfazer os requisitos listado
     * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
     * Exemplo: `git checkout -b luiza-zoo-functions-project`
 
-4. Desenvolva a solução para os problemas no arquivo `src/zoo.js`. Você pode usar os arquivos do diretório `test` para verificar se a sua implementação está de acordo com o esperado;
+4. Desenvolva a solução para os problemas nos arquivos dentro do diretório `src`. Você pode usar os arquivos do diretório `test` para verificar se a sua implementação está de acordo com o esperado;
 
 5. Adicione as mudanças ao _stage_ do Git e faça um `commit`
   * Verifique que as mudanças ainda não estão no _stage_
-    * Exemplo: `git status` (o arquivo `src/zoo.js` deve aparecer em vermelho)
+    * Exemplo: `git status` (os arquivos no diretório `src` devem aparecer em vermelho)
   * Adicione o novo arquivo ao _stage_ do Git
       * Exemplo:
         * `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-        * `git status` (deve aparecer listado o arquivo `src/zoo.js` em verde)
-  * Faça o `commit` inicial
-      * Exemplo:
-        * `git commit -m 'iniciando o projeto. VAMOS COM TUDO :rocket:'` (fazendo o primeiro commit)
-        * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
+        * `git status` (deve aparecer listado os arquivos do diretório `src` em verde)
 
 6. Adicione a sua branch com o novo `commit` ao repositório remoto
   * Usando o exemplo anterior: `git push -u origin luiza-zoo-functions-project`
@@ -273,13 +269,13 @@ Você pode ler mais sobre a [função construtora **Error**, neste link.](https:
 
   - Se nenhum argumento for passado, retorna um objeto cujo o nome de cada espécie é uma chave desse objeto, e o total de animais dessa espécie é o seu valor;
   - Com o argumento `{ specie: 'penguins' }`, retorna um número, a quantidade de pinguins no zoológico;
-  - Com o argumento `{ specie: 'giraffes', gender: 'female' }`, retorna um número, a quantidade de girafas do gênero feminino.
+  - Com o argumento `{ specie: 'giraffes', sex: 'female' }`, retorna um número, a quantidade de girafas do gênero feminino.
 
 **O que será avaliado**
 
   - Sem parâmetros, retorna as espécies e sua quantidade;
   - Recebendo como parâmetro um objeto com a chave `specie`, retorna um número, a quantidade de animais daquela espécie;
-  - Recebendo como parâmetro um objeto com a chave `specie` e `gender`, retorna um número, a quantidade de animais daquela espécie, no gênero selecionado.
+  - Recebendo como parâmetro um objeto com a chave `specie` e `sex`, retorna um número, a quantidade de animais daquela espécie, no gênero selecionado.
 
 ---
 
