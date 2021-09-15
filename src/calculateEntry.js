@@ -10,16 +10,18 @@ function countEntrants(entrants) {
   return personObject;
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
 function calculateEntry(entrants) {
   if (entrants === undefined || entrants.length === undefined) return 0;
-  let price = 0;
-  entrants.forEach((person) => {
-    if (person.age < 18) price += 20.99;
-    else if (person.age === 18 && person.age < 50) price += 49.99;
-    else price += 24.99;
-  });
+  const numberOfKids = entrants.filter((person) => person.age < 18).length;
+  const numberOfAdults = entrants.filter((person) => person.age === 18 && person.age < 50).length;
+  const numberOfSenior = entrants.filter((person) => person.age === 50 || person.age > 50).length;
 
-  return Number.parseFloat(price.toFixed(2));
+  const price = (
+    (data.prices.child * numberOfKids)
+    + (data.prices.adult * numberOfAdults)
+    + (data.prices.senior * numberOfSenior)
+  );
+  return price;
 }
+
 module.exports = { calculateEntry, countEntrants };
