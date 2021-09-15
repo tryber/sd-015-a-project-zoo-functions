@@ -29,7 +29,7 @@ const countAnimals = (animal) => {
   if (gender) {
     const genderAnimal = data.species.find((e) => (e.name === specie))
       .residents.filter((j) => j.sex === gender);
-    return console.log(genderAnimal.length);
+    return genderAnimal.length;
   }
 };
 
