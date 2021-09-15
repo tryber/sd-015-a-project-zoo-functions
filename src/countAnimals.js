@@ -4,7 +4,7 @@ function findSpecie(animalSpecie) {
   return data.species.find((elem) => elem.name === animalSpecie).residents;
 }
 
-function splitGender(animalSpecie, animalSex) {
+function splitSex(animalSpecie, animalSex) {
   return animalSpecie.filter((elem) => elem.sex === animalSex);
 }
 
@@ -19,12 +19,14 @@ function countAnimals(animal) {
     data.species.forEach((elem) => teste(elem));
     return animalList;
   }
-  const { specie, gender } = animal;
+  const { specie, sex } = animal;
+  console.log(specie);
+  console.log(sex);
   const getSpecie = findSpecie(specie);
-  if (!gender) {
+  if (!sex) {
     return getSpecie.length;
   }
-  return splitGender(getSpecie, gender).length;
+  return splitSex(getSpecie, sex).length;
 }
 
 module.exports = countAnimals;
