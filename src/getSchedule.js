@@ -50,7 +50,6 @@ function isAnimal(animal) {
   return creature.availability;
 }
 
-
 function getSchedule(scheduleTarget) {
   // seu código aqui
   const weekDays = Object.keys(hours);
@@ -73,5 +72,5 @@ function getSchedule(scheduleTarget) {
 
 module.exports = getSchedule;
 
-// Código utilizado da PR do Lucas Pontes 
+// Código utilizado da PR do Lucas Pontes
 // link: https://github.com/tryber/sd-015-a-project-zoo-functions/pull/132/files
