@@ -10,7 +10,7 @@ function countAnimals(animal) {
       return acc;
     }, {});
   }
-  if (!animal.gender) {
+  if (!animal.sex) {
     const findAnimal = species.find((param) => param.name === animal.specie);
     const countSpecie = findAnimal.residents.length;
     return countSpecie;
@@ -19,7 +19,7 @@ function countAnimals(animal) {
   const foundedAnimal = species.find((param) =>
     param.name === animal.specie);
   const genderAnimal = foundedAnimal.residents.filter((element) =>
-    element.sex === animal.gender).length;
+    element.sex === animal.sex).length;
   return genderAnimal;
 }
 countAnimals({
