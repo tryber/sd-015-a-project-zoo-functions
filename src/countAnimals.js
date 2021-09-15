@@ -10,6 +10,7 @@ function countAnimals(animal) {
 
     return allAnimals;
   }
+
   if (Object.keys(animal).includes('specie') && Object.keys(animal).length === 1) {
     return data.species.find((element) =>
       element.name === animal.specie).residents.length;
