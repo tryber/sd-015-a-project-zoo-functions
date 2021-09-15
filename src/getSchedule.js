@@ -1,6 +1,6 @@
 const data = require('../data/zoo_data');
 
-// Function to return the complete schedule of the zoo, discriminating which animals will be available and the opening hours for each day 
+// Function to return the complete schedule of the zoo, discriminating which animals will be available and the opening hours for each day
 function getCompleteSchedule() {
   const { species, hours } = data;
   const completeSchedule = hours;
@@ -19,8 +19,7 @@ function getCompleteSchedule() {
 }
 
 function getSchedule(scheduleTarget) {
-  if (!scheduleTarget) return getCompleteSchedule();
 }
 
-// console.log(getCompleteSchedule())
+console.log(getCompleteSchedule());
 module.exports = getSchedule;

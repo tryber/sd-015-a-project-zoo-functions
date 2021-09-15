@@ -10,10 +10,10 @@ function getAnimalsByLocation() {
   return { NE, NW, SE, SW };
 }
 
-function getAnimalMap(options) {
-
-}
+// function getAnimalMap({ includeName = false, sorted = false, sex = '' } = options) {
+//   if (includeNames)
+// }
 
 getAnimalsByLocation();
 
-module.exports = getAnimalMap;
+// module.exports = getAnimalMap;
