@@ -4,11 +4,9 @@ const getId = require('./getSpeciesByIds');
 const { employees } = require('../data/zoo_data');
 // const data = require('../data/zoo_data');
 
-function returnArray() { // primeira função retorna array original
-  return employees;
-}
+const returnArray = () => employees; // primeira função retorna array original
 
-function returnArrayModify() { // função auxiliar que vai formatar um array.
+const returnArrayModify = () => { // função auxiliar que vai formatar um array.
   const arrayEmployees = returnArray(); // função da linha 7.
   const arrayToReturn = []; // array que vai receber o objeto
   arrayEmployees.forEach((element) => { // o forEach vai formatar o objeto que é pedido no parametro
@@ -22,23 +20,23 @@ function returnArrayModify() { // função auxiliar que vai formatar um array.
     arrayToReturn.push(obj); // empurra o array para um vaizio e retorna ele.
   });
   return arrayToReturn; // retorna o objeto formatado
-}
+};
 
-function getEmployeeByName(worker) {
+const getEmployeeByName = (worker) => {
   // quando passar o nome no parametro ele vai procurar no objeto que foi feito e verificar no parametro, se tiver retorna
   // o objeto selecionado, para isso ele faz a verificação no parametro da função.
   const arrayCompleto = returnArrayModify(); // função que retorna o array modificado da linha 11
   const findWorkerByName = arrayCompleto.find((element) => element.fullName.includes(worker.name));
   return findWorkerByName;
-}
+};
 
-function getEmployeeById(workerId) { // a mesma coisa nessa função ele compara o id do parametro com o id do objeto.
+const getEmployeeById = (workerId) => { // a mesma coisa nessa função ele compara o id do parametro com o id do objeto.
   const arrayCompleto = returnArrayModify(); // função que retorna o array modificado da linha 11
   const findWorkerId = arrayCompleto.find((element) => element.id === workerId.id);
   return findWorkerId;
-}
+};
 
-function getEmployeesCoverage(colaborationPeople) { // função principal que faz verificações.
+const getEmployeesCoverage = (colaborationPeople) => { // função principal que faz verificações.
   // seu código aqui
   const arrayCompleto = returnArrayModify(); // função que retorna o array modificado da linha 11
   if (!colaborationPeople) return arrayCompleto; // se não tiver parametro retorna o array completo
@@ -54,6 +52,6 @@ function getEmployeesCoverage(colaborationPeople) { // função principal que fa
     return employeeId;
   }
   throw new Error('Informações inválidas'); // se o parametro for errado lança uma mensagem de error.
-}
+};
 
 module.exports = getEmployeesCoverage;

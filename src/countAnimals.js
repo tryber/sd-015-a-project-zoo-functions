@@ -1,7 +1,6 @@
 const { species } = require('../data/zoo_data');
-const data = require('../data/zoo_data');
 
-function countAnimals(animal) {
+const countAnimals = (animal) => {
   // seu código aqui
   if (!animal) {
     return species.reduce((objeto, elemento) =>
@@ -18,6 +17,6 @@ function countAnimals(animal) {
   return species.find((zooAnimal) => zooAnimal.name === specie).residents
   // se tiver os dois ele retorna a quantidade de animais daquele sexo e para isso ele faz uma filtragem
     .filter((genreAnimal) => genreAnimal.sex === sex).length;
-}
+};
 
 module.exports = countAnimals;
