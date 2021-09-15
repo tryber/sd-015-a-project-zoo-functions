@@ -5,12 +5,7 @@ function getEmployeeByName(employeeName) {
     return {};
   }
   const path = data.employees;
-  return path.find((el) => {
-    if (el.firstName === employeeName || el.lastName === employeeName) {
-      return el;
-    }
-    return null;
-  });
+  return path.find((el) => el.firstName === employeeName || el.lastName === employeeName);
 }
 
 console.log(getEmployeeByName('Wishart'));
