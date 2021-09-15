@@ -7,7 +7,6 @@ const animalNames = species.map((specie) => specie.name);
 const weekDays = Object.keys(hours);
 
 function getDaySchedule(...weekDay) {
-
   const conversion = (weekDay.every((day) => weekDays.includes(day))) ? weekDay : weekDays;
   return (conversion.length > 0 ? conversion : weekDays).reduce((acc, day) => {
     const schedule = hours[day];
@@ -31,5 +30,3 @@ function getSchedule(...scheduleTarget) {
 }
 
 module.exports = getSchedule;
-
-getSchedule()

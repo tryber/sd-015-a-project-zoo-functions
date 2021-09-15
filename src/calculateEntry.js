@@ -24,7 +24,7 @@ function calculateEntry(entrants) {
   if (!entrants || !entrants.keys) return 0;
   const entrantscount = Object.values(countEntrants(entrants));
   const price = [20.99, 49.99, 24.99];
-  return entrantscount.map((entrant, i) => entrant * price[i]).reduce((a,b) => a + b);
+  return entrantscount.map((entrant, i) => entrant * price[i]).reduce((a, b) => a + b);
 }
 
 module.exports = { calculateEntry, countEntrants };
