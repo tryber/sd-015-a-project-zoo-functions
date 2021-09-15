@@ -7,9 +7,9 @@ function countAnimals(animalPam) {
     // Vai percorrer o array de species a adcionar no objeto vazio o nome e a quantidade de animais.
     return objAnimals;
   }
-  const { specie, gender } = animalPam;
+  const { specie, sex } = animalPam;
 
-  if (specie !== undefined && gender === undefined) {
+  if (specie !== undefined && sex === undefined) {
     return species.find((anim) => anim.name === specie).residents.length;
   }
   return species.find((anim) => anim.name === specie).residents
