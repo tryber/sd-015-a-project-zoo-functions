@@ -1,7 +1,7 @@
 const data = require('../data/zoo_data');
 
-function getAnimalMap(options) {
-  // seu código aqui
-}
+// CASO O PARAMETRO OPTIONS SEJA UNDEFINED
 
+function getAnimalMap(options) {
+}
 module.exports = getAnimalMap;
