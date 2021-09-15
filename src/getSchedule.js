@@ -1,3 +1,4 @@
+const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function getAnimals(day) {
@@ -34,7 +35,7 @@ function getSchedule(scheduleTarget) {
     return { [scheduleTarget]: schedule[scheduleTarget] };
   }
   if (animals.some((animal) => animal === scheduleTarget)) {
-    return weekDays.filter((day) => getScheduleByAnimal(day, schedule, scheduleTarget));
+    return species.find((specie) => specie.name === scheduleTarget).availability;
   }
   return schedule;
 }
