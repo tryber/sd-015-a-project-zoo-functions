@@ -2,7 +2,7 @@ const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 // funcao q separa os sexos caso o param seja true
-function sex(group, resident, sex) {
+function sexo(group, resident, sex) {
   let localGroup = group;
   if (!sex) {
     localGroup = [...group, resident.name];
@@ -17,7 +17,7 @@ function sex(group, resident, sex) {
 // imprime os names e separa por sexo caso o parametro seja true
 function getName(sex, residents) {
   return residents.reduce((group, resident) => {
-    const localGrup = sex(group, resident, sex);
+    const localGrup = sexo(group, resident, sex);
     return localGrup;
   }, []);
 }
