@@ -22,7 +22,6 @@ const verificaAnimalSexo = (animal, sex) => {
   return cont;
 };
 const contadores = (animal) => {
-  console.log(animal.specie);
   if (animal.specie !== undefined && animal.gender === undefined) {
     return verificaAnimal(animal.specie);
   }
@@ -30,11 +29,11 @@ const contadores = (animal) => {
     return verificaAnimalSexo(animal.specie, animal.gender);
   }
 };
-function countAnimals(...animal) {
+const countAnimals = (...animal) => {
   if (animal[0] === undefined) {
     return animalList();
   }
   return contadores(animal[0]);
-}
+};
 
 module.exports = countAnimals;
