@@ -3,7 +3,7 @@ const data = require('../data/zoo_data');
 function getAnimalsOlderThan(animal, age) {
   // seu código aqui
   const filteredSpecie = data.species.filter(
-    (specie) => specie.name === animal
+    (specie) => specie.name === animal,
   );
   let animals = filteredSpecie.map((zooAnimal) => zooAnimal.residents);
   [animals] = animals;
