@@ -16,4 +16,4 @@ function getRelatedEmployees(managerId) {
     .map((element) => `${element.firstName} ${element.lastName}`);
 }
 
-module.exports =  { isManager, getRelatedEmployees };
+module.exports = {isManager, getRelatedEmployees};
