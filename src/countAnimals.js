@@ -22,9 +22,9 @@ function countAnimals(...animal) {
     const resultado = qtdAnimls[0];
     return resultado;
   }
-  if ((typeof animal.specie === 'undefined') && (typeof animal.sex === 'undefined')) {
+  /* if (!typeof animal.specie === 'undefined' && (!typeof animal.sex === 'undefined')) {
     return console.log('Funcionou');
-  }
+  } */
   /* if (){
 
   } */
