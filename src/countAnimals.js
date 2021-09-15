@@ -1,9 +1,11 @@
 const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
-  const animaisQuantidade = {};
   if (animal === undefined) {
-    data.species.map((obj) => { animaisQuantidade[obj.name] = obj.residents.length; });
+    const animaisQuantidade = {};
+    data.species.forEach((obj) => {
+      (animaisQuantidade[obj.name] = obj.residents.length);
+    });
 
     return animaisQuantidade;
   } if (Object.keys(animal).length === 1) {
@@ -19,6 +21,7 @@ function countAnimals(animal) {
   return quantidade;
 }
 
+console.log(countAnimals());
 // countAnimals({ specie: 'bears', gender: 'male' });
 
 module.exports = countAnimals;
