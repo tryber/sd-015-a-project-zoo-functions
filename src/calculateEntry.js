@@ -15,13 +15,11 @@ function calculateEntry(entrants) {
   const numberOfKids = entrants.filter((person) => person.age < 18).length;
   const numberOfAdults = entrants.filter((person) => person.age === 18 && person.age < 50).length;
   const numberOfSenior = entrants.filter((person) => person.age === 50 || person.age > 50).length;
-
-  const price = (
+  return (
     (data.prices.child * numberOfKids)
     + (data.prices.adult * numberOfAdults)
     + (data.prices.senior * numberOfSenior)
   );
-  return price;
 }
 
 module.exports = { calculateEntry, countEntrants };
