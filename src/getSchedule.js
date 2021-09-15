@@ -20,11 +20,19 @@ const animalsDays = () => {
   });
   return obj;
 };
+
+const isAnimalOrDay = (param) => {
+  const animals = data.species.map((animal) => animal.name);
+  const days = Object.keys(data.hours);
+
+  return !animals.includes(param) || !days.includes(param);
+};
+
 function getSchedule(scheduleTarget) {
-  if (!scheduleTarget) return animalsDays();
+  if (!scheduleTarget || isAnimalOrDay(scheduleTarget)) return animalsDays();
 }
 
-console.log(getSchedule());
+console.log(getSchedule('asdasdasdasdasasdasd'));
 // console.log(data.species.filter((element) => element.availability.includes('Tuesday')).map((element) => element.name));
 // console.log(data.hours.Tuesday.open);
 module.exports = getSchedule;
