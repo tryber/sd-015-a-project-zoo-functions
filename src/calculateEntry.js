@@ -1,9 +1,6 @@
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
-  if (entrants === {}) {
-    return 0;
-  }
   const total = { child: 0, adult: 0, senior: 0 };
   entrants.forEach((pessoa) => {
     if (pessoa.age < 18) {
@@ -16,11 +13,13 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  if (entrants === undefined || entrants === {}) {
+  if (entrants === undefined || !entrants || entrants === {}) {
     return 0;
   }
   const totalPessoas = countEntrants(entrants);
   return totalPessoas.adult * 49.99 + totalPessoas.senior * 24.99 + totalPessoas.child * 20.99;
 }
+
+console.log(calculateEntry({}));
 
 module.exports = { calculateEntry, countEntrants };
