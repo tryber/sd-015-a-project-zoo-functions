@@ -10,27 +10,22 @@ const daysExhibition = (weeklyDay) => ((hours[weeklyDay].open === 0)
   : species.filter((animalAvaiable) => animalAvaiable.availability.includes(weeklyDay))
     . map((names) => names.name));
 
-function weeklySchedule() {
-  return Object.keys(hours).reduce((finalObject, weeklyDay) => {
-    const newObject = finalObject;
-    newObject[weeklyDay] = {
-      officeHour: officeHoursWeekly(weeklyDay),
-      exhibition: daysExhibition(weeklyDay),
-    };
-    return finalObject;
-  }, {});
-}
+const weeklySchedule = () => Object.keys(hours).reduce((finalObject, weeklyDay) => {
+  const newObject = finalObject;
+  newObject[weeklyDay] = {
+    officeHour: officeHoursWeekly(weeklyDay),
+    exhibition: daysExhibition(weeklyDay),
+  };
+  return finalObject;
+}, {});
 
-function mapWeekly() {
-  return Object.keys(hours).map((mapWeeklyDay) => ({
-    [mapWeeklyDay]: {
-      officeHour: officeHoursWeekly(mapWeeklyDay),
-      exhibition: daysExhibition(mapWeeklyDay),
-    },
-  }));
-}
-// console.log(mapWeekly());
-// console.log(daysExhibition('Tuesday'));
+const mapWeekly = () => Object.keys(hours).map((mapWeeklyDay) => ({
+  [mapWeeklyDay]: {
+    officeHour: officeHoursWeekly(mapWeeklyDay),
+    exhibition: daysExhibition(mapWeeklyDay),
+  },
+}));
+
 function getSchedule(scheduleTarget) {
   if (!scheduleTarget) {
     return weeklySchedule();
@@ -44,6 +39,4 @@ function getSchedule(scheduleTarget) {
   return weeklySchedule();
 }
 
-console.log(getSchedule('lions'));
-// console.log(getSchedule());
 module.exports = getSchedule;
