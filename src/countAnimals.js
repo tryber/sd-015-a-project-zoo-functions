@@ -8,7 +8,7 @@ function countAnimals(animal) {
     });
     return objectReturn;
   }
-  const { specie, gender: sex } = animal;
+  const { specie, sex } = animal;
   if (!sex) {
     return data.species.find((elemento) =>
       elemento.name === specie).residents.length;
@@ -17,6 +17,6 @@ function countAnimals(animal) {
     elemento2.name === specie).residents.filter((elemento3) =>
     elemento3.sex === sex).length;
 }
-console.log(countAnimals({ specie: 'elephants', gender: 'male' }));
+// console.log(countAnimals({ specie: 'elephants', gender: 'male' }));
 
 module.exports = countAnimals;
