@@ -9,7 +9,7 @@ function countAnimals(animal) {
     // nessa condicional caso o parametro seja vazio, faco um for each para pegar todas as especies e colocar em um array criado anteriormente
   }
   const { specie, gender } = animal;
-  // desestruturei os parametro para cessalos de forma independente
+  // desestruturei os parametro para acessa-los de forma independente
   const animal2 = species.find((elemento) => elemento.name === specie).residents;
   // atribui a animal2 o objeto que condiz com o parametro, porem resgatei o array residents
   const residentes = animal2.reduce((acc, element) => (element.sex === gender ? acc + 1 : acc), 0);

@@ -13,10 +13,10 @@ function animalOfTheDay(dia) {
 }
 // a funcao acima retorna o nome dos animais q estao disponives para o dia passado como parametro
 
-function availableAnimal(dia) {
+function availableDay(dia) {
   return (dia !== 'Monday' ? animalOfTheDay(dia) : 'The zoo will be closed!');
 }
-// chama a funcao que virifica o dia de cada animal e imprime
+// chama a funcao que virifica o dia passado e retorna se estara fechado
 
 function fullSchedule(...day) {
   const retorno = {};
@@ -25,7 +25,7 @@ function fullSchedule(...day) {
       // coloco a chave '[dia]' para ser criada a cada elemento do day
       officeHour: hoursDay(data.hours[dia].open, data.hours[dia].close),
       // chamo a funcao hoursday com o parametro da hora do dia correspondente do elemento
-      exhibition: availableAnimal(dia),
+      exhibition: availableDay(dia),
       // chamo a funcao para verificar qual animal esta disponivel no dia (day)
     };
   });
