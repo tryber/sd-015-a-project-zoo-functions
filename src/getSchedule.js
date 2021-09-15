@@ -16,13 +16,6 @@ function getDailySchedule(weekDay, day) {
   };
 }
 
-function getScheduleByAnimal(day, schedule, scheduleTarget) {
-  if (day !== 'Monday') {
-    return schedule[day].exhibition.some((elem) => elem === scheduleTarget);
-  }
-  return false;
-}
-
 function getSchedule(scheduleTarget) {
   const weekDays = Object.keys(data.hours);
   const animals = data.species.map((specie) => specie.name);
