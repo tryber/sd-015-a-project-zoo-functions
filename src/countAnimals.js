@@ -14,7 +14,7 @@ function countAnimals(animal) {
     return findAnimal.residents.length;
   }
 
-  const genderPopularity = findAnimal.residents.filter((value) => value.sex === animal.gender);
+  const genderPopularity = findAnimal.residents.filter((value) => value.sex === animal.sex);
   return genderPopularity.length;
 }
 
