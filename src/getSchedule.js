@@ -22,17 +22,26 @@ const animalsDays = () => {
 };
 
 const isAnimalOrDay = (param) => {
-  const animals = data.species.map((animal) => animal.name);
-  const days = Object.keys(data.hours);
+  const isAnimals = data.species.map((animal) => animal.name).includes(param);
+  const isDays = Object.keys(data.hours).includes(param);
 
-  return !animals.includes(param) || !days.includes(param);
+  return isAnimals || isDays;
+  // return result;
 };
 
 function getSchedule(scheduleTarget) {
-  if (!scheduleTarget || isAnimalOrDay(scheduleTarget)) return animalsDays();
+  if (!scheduleTarget || !isAnimalOrDay(scheduleTarget)) return animalsDays();
+  // if (scheduleTarget === 'Monday') {
+  //   return {
+  //     Monday: {
+  //       officeHour: 'CLOSED',
+  //       exhibition: 'The zoo will be closed!',
+  //     },
+  //   };
+  // }
 }
 
-console.log(getSchedule('asdasdasdasdasasdasd'));
+console.log(getSchedule('Monday'));
 // console.log(data.species.filter((element) => element.availability.includes('Tuesday')).map((element) => element.name));
 // console.log(data.hours.Tuesday.open);
 module.exports = getSchedule;
