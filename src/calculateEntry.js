@@ -16,10 +16,10 @@ const entrants = [
 // Pessoas com idade maior ou igual 50 anos são classificadas como pessoas com mais idade (senior).
 // O retorno da função deverá ser um objeto no seguinte formato: { child: 3, adult: 2, senior: 1 }.
 
-function countEntrants(entrants) {
-  const under18 = entrants.filter((e) => e.age < 18);
-  const above18 = entrants.filter((e) => e.age >= 18 && e.age < 50);
-  const aboveOrEqual50 = entrants.filter((e) => e.age >= 50);
+function countEntrants(parameter) {
+  const under18 = parameter.filter((e) => e.age < 18);
+  const above18 = parameter.filter((e) => e.age >= 18 && e.age < 50);
+  const aboveOrEqual50 = parameter.filter((e) => e.age >= 50);
   const obj = {
     child: under18.length,
     adult: above18.length,
