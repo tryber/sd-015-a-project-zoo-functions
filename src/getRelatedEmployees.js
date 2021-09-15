@@ -1,7 +1,5 @@
 const data = require('../data/zoo_data');
 
-const burlId = '0e7b460e-acf4-4e17-bcb3-ee472265db83';
-
 function isManager(id) {
   return data.employees.some((element) =>
     element.managers.includes(id));
