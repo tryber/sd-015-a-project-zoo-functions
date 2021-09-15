@@ -1,63 +1,65 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const noOptions = () => ({
-  NE: species
-    .filter((specie) => specie.location === 'NE')
-    .map((specie) => specie.name),
-  NW: species
-    .filter((specie) => specie.location === 'NW')
-    .map((specie) => specie.name),
-  SE: species
-    .filter((specie) => specie.location === 'SE')
-    .map((specie) => specie.name),
-  SW: species
-    .filter((specie) => specie.location === 'SW')
-    .map((specie) => specie.name),
-});
+// CREDITS TO CAIO LIMA. HIS CODE GIVE ME THE INSIGHT ABOUT HOW TO ORGANIZE MINE TO GET THE BEST RESULT
 
-const includeNamesOption = () => ({
-  NE: species
-    .filter((specie) => specie.location === 'NE')
-    .map((specie) => ({ [specie.name]: specie.residents.map((resident) => resident.name) })),
-  NW: species
-    .filter((specie) => specie.location === 'NW')
-    .map((specie) => ({ [specie.name]: specie.residents.map((resident) => resident.name) })),
-  SE: species
-    .filter((specie) => specie.location === 'SE')
-    .map((specie) => ({ [specie.name]: specie.residents.map((resident) => resident.name) })),
-  SW: species
-    .filter((specie) => specie.location === 'SW')
-    .map((specie) => ({ [specie.name]: specie.residents.map((resident) => resident.name) })),
-});
+// IF THERE IS NO INCLUDE NAMES OPTION
+const noOption = (location) => species
+  .filter((specie) => specie.location === location)
+  .map((specie) => specie.name);
 
-// const sortedOption = () => ({
-//   NE: species
-//     .filter((specie) => specie.location === 'NE')
-//     .map((specie) => ({ [specie.name]: specie.residents.map((resident) => resident.name) })),
-//   NW: species
-//     .filter((specie) => specie.location === 'NW')
-//     .map((specie) => ({ [specie.name]: specie.residents.map((resident) => resident.name) })),
-//   SE: species
-//     .filter((specie) => specie.location === 'SE')
-//     .map((specie) => ({ [specie.name]: specie.residents.map((resident) => resident.name) })),
-//   SW: species
-//     .filter((specie) => specie.location === 'SW')
-//     .map((specie) => ({ [specie.name]: specie.residents.map((resident) => resident.name) })),
-// });
+// IF THERE IS ONLY THE INCLUDE NAMES OPTION (BUT MAYBE SORTED OPTION TOO)
+const includeNamesOption = (location, options) => species
+  .filter((specie) => specie.location === location)
+  .map((specie) => {
+    if (options.sorted) {
+      return {
+        [specie.name]: specie.residents
+          .map((resident) => resident.name).sort(),
+      };
+    }
+    return {
+      [specie.name]: specie.residents
+        .map((resident) => resident.name),
+    };
+  });
 
-const getAnimalMap = (options) => {
-  if (!options) {
-    return noOptions();
+// IF THERE IS INCLUDE NAMES AND SEX OPTIONS (MAYBE SORTED OPTION TOO)
+const sexOption = (location, options) => species
+  .filter((specie) => specie.location === location)
+  .map((specie) => {
+    if (options.sorted) {
+      return {
+        [specie.name]: specie.residents
+          .filter((resident) => resident.sex === options.sex)
+          .map((resident) => resident.name).sort(),
+      };
+    }
+    return {
+      [specie.name]: specie.residents
+        .filter((resident) => resident.sex === options.sex)
+        .map((resident) => resident.name),
+    };
+  });
+
+// CREATES ANIMALS LIST
+const createAnimalsList = (location, options) => {
+  if (!options) return noOption(location);
+  if (options.includeNames) {
+    if (options.sex) {
+      return sexOption(location, options);
+    }
+    return includeNamesOption(location, options);
   }
-  if (options.includeNames === true) {
-    return includeNamesOption();
-  }
-  if (options.sorted === true) {
-    // return sortedOption();
-  }
+  return noOption(location);
 };
 
-module.exports = getAnimalMap;
+// MAIN FUNCTION
+const getAnimalMap = (options) => ({
+  NE: createAnimalsList('NE', options),
+  NW: createAnimalsList('NW', options),
+  SE: createAnimalsList('SE', options),
+  SW: createAnimalsList('SW', options),
+});
 
-console.table(getAnimalMap({ includeNames: true }));
+module.exports = getAnimalMap;
