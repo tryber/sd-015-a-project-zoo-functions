@@ -1,4 +1,3 @@
-const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 // 5. Implemente a função countAnimals
 // Esta função é responsável por contabilizar a quantidade de animais de cada espécie.
@@ -30,7 +29,7 @@ const countAnimals = (animal) => {
   if (gender) {
     const genderAnimal = data.species.find((e) => (e.name === specie))
       .residents.filter((j) => j.sex === gender);
-    return genderAnimal.length;
+    return console.log(genderAnimal.length);
   }
 };
 
