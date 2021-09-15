@@ -17,5 +17,5 @@ function getRelatedEmployees(managerId) {
   return workers.map((e) => `${e.firstName} ${e.lastName}`);
 }
 
-// console.log(getRelatedEmployees(managers[0]));
+console.log(getRelatedEmployees(managers[0]));
 module.exports = { isManager, getRelatedEmployees };

@@ -7,18 +7,18 @@ function xibil(animal) {
 function xibil2(animal) {
   return data.species.find(
     (specie) => specie.name === animal.specie,
-  ).residents.filter((resident) => resident.sex === animal.gender).length;
+  ).residents.filter((resident) => resident.sex === animal.sex).length;
 }
 
 function countAnimals(animal) {
   if (animal === undefined) {
     return data.species.reduce((acc, specie) =>
       Object.assign(acc, { [specie.name]: specie.residents.length }), {});
-  } if (animal.gender) {
+  } if (animal.sex) {
     return xibil2(animal);
   }
   return xibil(animal);
 }
 
-// console.log(countAnimals({ specie: 'elephants', gender: 'male' }));
+// console.log(countAnimals({ specie: 'elephants', sex: 'male' }));
 module.exports = countAnimals;

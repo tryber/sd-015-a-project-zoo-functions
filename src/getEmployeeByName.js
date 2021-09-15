@@ -8,5 +8,5 @@ function getEmployeeByName(employeeName) {
   );
 }
 
-// console.log(getEmployeeByName('Emery'));
+console.log(getEmployeeByName('Emery'));
 module.exports = getEmployeeByName;

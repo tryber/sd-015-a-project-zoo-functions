@@ -1,5 +1,5 @@
 const { employees } = require('../data/zoo_data');
-const data = require('../data/zoo_data');
+// const data = require('../data/zoo_data');
 const getSpeciesByIds = require('./getSpeciesByIds');
 
 function getOldestFromFirstSpecies(id) {
