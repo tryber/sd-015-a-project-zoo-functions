@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 
 const { species, employees } = data;
 
-function undefinedEmployee(employee) {
+function undefinedEmployee() {
   const arrayAll = [];
   employees.forEach((element) => {
     const objAll = {
