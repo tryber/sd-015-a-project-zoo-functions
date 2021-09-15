@@ -70,6 +70,7 @@ describe('7 - Crie um mapeamento geográfico das espécies e seus animais', () =
   it('com a opção `sex: \'female\'` ou `sex: \'male\'` especificada, retorna somente nomes de animais macho/fêmea', () => {
     const options = { includeNames: true, sex: 'female' };
     const actual = getAnimalMap(options);
+    //console.log(actual);
 
     const expected = {
       NE: [
