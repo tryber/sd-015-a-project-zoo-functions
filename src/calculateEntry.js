@@ -30,11 +30,12 @@ function countEntrants(entrants) {
 
 // Após terminar a implementação da função countEntrants você deverá utilizá-la para implementar a função calculateEntry. Esta deverá receber um array de visitantes e a partir da quantidade de visitantes e faixa etária de cada um, deverá retornar o valor total a ser cobrado.
 
-const calculateEntry = (entrants) => {
-  if (!entrants || Object.keys(entrants).length === 0) return 0;
-  return ((data.prices.child * countEntrants(entrants).child)
-  + (data.prices.adult * countEntrants(entrants).adult)
-  + (data.prices.senior * countEntrants(entrants).senior));
+const calculateEntry = (parameter) => {
+  if (!parameter || Object.keys(parameter).length === 0) return 0;
+  const sumOfAllPrices = (data.prices.child * countEntrants(parameter).child)
+  + (data.prices.adult * countEntrants(parameter).adult)
+  + data.prices.senior * countEntrants(parameter).senior;
+  return sumOfAllPrices;
 };
 
 calculateEntry(entrants);
