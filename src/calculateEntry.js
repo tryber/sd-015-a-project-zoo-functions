@@ -30,5 +30,5 @@ function calculateEntry(entrants) {
   const result = adultPrice + seniorPrice + childPrice;
   return result;
 }
-// console.log(calculateEntry(''));
+
 module.exports = { calculateEntry, countEntrants };
