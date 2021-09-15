@@ -9,12 +9,12 @@ function getAnimalsResidentsLength(e) {
 function countAnimals(animal) {
   if (animal === undefined) {
     data.species.forEach((e) => getAnimalsResidentsLength(e));
-  } else if (animal.gender === undefined) {
+  } else if (animal.sex === undefined) {
     const residentsObject = data.species.filter((e) => animal.specie.includes(e.name))[0].residents;
     return residentsObject.length;
   } else {
     const residentsObject = data.species.filter((e) => animal.specie.includes(e.name))[0].residents;
-    return residentsObject.filter((e) => e.sex === `${animal.gender}`).length;
+    return residentsObject.filter((e) => e.sex === `${animal.sex}`).length;
   } return animals;
 }
 
