@@ -3,8 +3,7 @@ const data = require('../data/zoo_data');
 
 function getSpeciesByIds(...ids) {
   // seu código aqui
-  // if (ids === undefined) return [];
-  return species.filter((specie) => ids.includes(specie.id));
+  return species.filter((specie) => ids.includes(specie.id)); // filter se não receber nenhum parâmetro ele retorna um array vazio.
 }
 
 module.exports = getSpeciesByIds;
