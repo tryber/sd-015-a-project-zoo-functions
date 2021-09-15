@@ -11,7 +11,8 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  // aqui é uma validação
+  // se não tiver parametro ou se o objeto for vazio retornará 0.
   if (!entrants || Object.values(entrants).length === 0) {
     return 0;
   }

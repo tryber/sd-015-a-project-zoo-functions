@@ -1,6 +1,6 @@
 const getId = require('./getSpeciesByIds');
 // essa função é da primeira questão que foi reaproveitada.
-// essa forma de pensar foi passada pelos colegas Fernando Sena e Breno de Cunha
+// essa forma de pensar foi passada pelos colegas Fernando Sena e Breno de Cunha da turma 15 A.
 const { employees } = require('../data/zoo_data');
 // const data = require('../data/zoo_data');
 
