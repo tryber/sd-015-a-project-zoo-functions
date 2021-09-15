@@ -1,15 +1,7 @@
 const data = require('../data/zoo_data');
 
 function isManager(id) {
-  let validateManager = false;
-  validateManager = data.employees.some((element) => element.managers.includes(id));
-
-  // data.employees.forEach((person) => {
-  //   if (person.managers.includes(id)) {
-  //     validateManager = true;
-  //   }
-  // });
-  // console.log(validateManager);
+  const validateManager = data.employees.some((element) => element.managers.includes(id));
   return validateManager;
 }
 
@@ -26,9 +18,6 @@ function getRelatedEmployees(managerId) {
       managerResponse.push(`${person.firstName} ${person.lastName}`);
     }
   });
-  // let teste = data.employees.filter((element) => element.managers.includes(managerId));
-  // const resultTeste = data.employees.map((element) => `${element.firstName} ${element.lastName}`);
-  // console.log(resultTeste);
   return managerResponse;
 }
 // getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992');
