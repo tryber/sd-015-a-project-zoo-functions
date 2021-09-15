@@ -10,12 +10,16 @@ function countAnimals(animal) {
     return obj;
   }
 
-  if (animal === { species: 'penguins' }) {
-    species.name.map((elem) => elem.residents.length);
+  let animalFind = data.species.find(x => x.name === animal.specie);
+
+  console.log(animalFind)
+  if (!animal.gender) {
+    return animalFind.residents.length
   }
-  return { species };
+
+  let animalCount = animalFind.residents.filter(x => x.sex === animal.gender)
+  return animalCount.length;
 }
 
-console.log(countAnimals());
-
+console.log(countAnimals({ specie: 'penguins'}));
 module.exports = countAnimals;
