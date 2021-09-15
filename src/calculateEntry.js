@@ -1,7 +1,4 @@
-const { prices } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
-
-const { adult, child, senior } = prices;
 
 const entrant = [
   { name: 'Lara Carvalho', age: 5 },
@@ -24,5 +21,5 @@ function calculateEntry(entrants) {
     return 0;
   }
 }
-
+console.log(entrant);
 module.exports = { calculateEntry, countEntrants };
