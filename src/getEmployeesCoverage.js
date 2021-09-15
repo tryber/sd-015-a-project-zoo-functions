@@ -41,7 +41,6 @@ function getAllEmployees() {
 // Main function to call one of the other functions above acording to each condition
 function getEmployeesCoverage({ name = false, id = false } = {}) {
   if (!name && !id) return getAllEmployees();
-  // if (firstNames.includes(name) || lastNames.includes(name) || idList.includes(id)) {
   if (name) return getEmployeeByName(name);
   if (id) return getEmployeeById(id);
 }
