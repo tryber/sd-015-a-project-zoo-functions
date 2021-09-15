@@ -1,56 +1,49 @@
 const data = require('../data/zoo_data');
 
-// Function to receive first or lastname of an employee and return the respective { id, fullName, species and locations }
-function getEmployeeByName(name) {
-  const { employees } = data;
-  let { species } = data;
-  const employeeInfo = employees.find((info) => info.firstName === name || info.lastName === name);
-  const { id } = employeeInfo;
-  const fullName = `${employeeInfo.firstName} ${employeeInfo.lastName}`;
-  const spcIds = employeeInfo.responsibleFor;
-  const spcNames = species.filter((spc) => spcIds.includes(spc.id)).map((info) => info.name);
-  const locations = species.filter((spc) => spcIds.includes(spc.id)).map((info) => info.location);
-  species = spcNames;
+const { employees } = data;
+const idList = employees.map((employee) => employee.id);
+const firstNames = employees.map((employee) => employee.firstName);
+const lastNames = employees.map((employee) => employee.lastName);
+
+// Function to create the output like {id, fullName, species, locations}
+function createOutput(info) {
+  const { id } = info;
+  const fullName = `${info.firstName} ${info.lastName}`;
+  const Ids = info.responsibleFor;
+  const species = data.species.filter((sp) => Ids.includes(sp.id)).map((inf) => inf.name);
+  const locations = data.species.filter((sp) => Ids.includes(sp.id)).map((inf) => inf.location);
   return { id, fullName, species, locations };
 }
 
-// Function to receive an id of an employee and return the respective { id, fullName, species and locations }
+// Function to return employee info formated correctly according to the id
 function getEmployeeById(id) {
-  const { employees } = data;
-  let { species } = data;
-  const employeeInfo = employees.find((info) => info.id === id);
-  const fullName = `${employeeInfo.firstName} ${employeeInfo.lastName}`;
-  const spcIds = employeeInfo.responsibleFor;
-  const spcNames = species.filter((spc) => spcIds.includes(spc.id)).map((info) => info.name);
-  const locations = species.filter((spc) => spcIds.includes(spc.id)).map((info) => info.location);
-  species = spcNames;
-  return { id, fullName, species, locations };
-}
-
-// Function to return all the employees formated as { id, fullName, species, locations }
-function getAllEmployees() {
-  const { employees } = data;
-  return employees.map((employee) => {
-    const { id } = employee;
-    const fullName = `${employee.firstName} ${employee.lastName}`;
-    const Ids = employee.responsibleFor;
-    const species = data.species.filter((sp) => Ids.includes(sp.id)).map((info) => info.name);
-    const locations = data.species.filter((sp) => Ids.includes(sp.id)).map((info) => info.location);
-    return { id, fullName, species, locations };
-  });
-}
-
-function getEmployeesCoverage({ name = false, id = false } = {}) {
-  const ids = data.employees.map((employee) => employee.id); 
-  const firstNames = data.employees.map((employee) => employee.firstName);
-  const lastNames = data.employees.map((employee) => employee.lastName);
-  if (!name && !id) return getAllEmployees();
-  if (firstNames.includes(name) || lastNames.includes(name) || ids.includes(id)) {
-    if (name) return getEmployeeByName(name);
-    if (id) return getEmployeeById(id);
+  if (idList.includes(id)) {
+    const employeeFound = employees.find((employee) => employee.id === id);
+    return createOutput(employeeFound);
   }
   throw new Error('Informações inválidas');
 }
 
-// console.log(getEmployeesCoverage({ name: 'Sprye' }))
+// Function to return employee info formated correctly according to the id
+function getEmployeeByName(name) {
+  if (firstNames.includes(name) || lastNames.includes(name)) {
+    const employeeFound = employees.find((emp) => emp.firstName === name || emp.lastName === name);
+    return createOutput(employeeFound);
+  }
+  throw new Error('Informações inválidas');
+}
+
+// Function to map all employees formated correctly
+function getAllEmployees() {
+  return employees.map((employee) => createOutput(employee));
+}
+
+// Main function to call one of the other functions above acording to each condition
+function getEmployeesCoverage({ name = false, id = false } = {}) {
+  if (!name && !id) return getAllEmployees();
+  // if (firstNames.includes(name) || lastNames.includes(name) || idList.includes(id)) {
+  if (name) return getEmployeeByName(name);
+  if (id) return getEmployeeById(id);
+}
+
 module.exports = getEmployeesCoverage;
