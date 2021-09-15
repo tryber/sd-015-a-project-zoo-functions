@@ -25,21 +25,21 @@ const returnArrayModify = () => { // função auxiliar que vai formatar um array
 const getEmployeeByName = (worker) => {
   // quando passar o nome no parametro ele vai procurar no objeto que foi feito e verificar no parametro, se tiver retorna
   // o objeto selecionado, para isso ele faz a verificação no parametro da função.
-  const arrayCompleto = returnArrayModify(); // função que retorna o array modificado da linha 11
-  const findWorkerByName = arrayCompleto.find((element) => element.fullName.includes(worker.name));
+  const arrayCompleted = returnArrayModify(); // função que retorna o array modificado da linha 11
+  const findWorkerByName = arrayCompleted.find((element) => element.fullName.includes(worker.name));
   return findWorkerByName;
 };
 
 const getEmployeeById = (workerId) => { // a mesma coisa nessa função ele compara o id do parametro com o id do objeto.
-  const arrayCompleto = returnArrayModify(); // função que retorna o array modificado da linha 11
-  const findWorkerId = arrayCompleto.find((element) => element.id === workerId.id);
+  const arrayCompleted = returnArrayModify(); // função que retorna o array modificado da linha 11
+  const findWorkerId = arrayCompleted.find((element) => element.id === workerId.id);
   return findWorkerId;
 };
 
 const getEmployeesCoverage = (colaborationPeople) => { // função principal que faz verificações.
   // seu código aqui
-  const arrayCompleto = returnArrayModify(); // função que retorna o array modificado da linha 11
-  if (!colaborationPeople) return arrayCompleto; // se não tiver parametro retorna o array completo
+  const arrayCompleted = returnArrayModify(); // função que retorna o array modificado da linha 11
+  if (!colaborationPeople) return arrayCompleted; // se não tiver parametro retorna o array completo
   // se tiver parametro ele vai procurar nesse objeto que está no parametro da função se o nome está lá
   // se tiver ele retorna o objeto completo.
   const employeeName = getEmployeeByName(colaborationPeople); // função que acha o nome da pessoa colaboradora linha 26
