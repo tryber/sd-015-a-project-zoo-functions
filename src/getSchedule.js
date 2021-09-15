@@ -53,8 +53,7 @@ function eachAnimal(animal) {
 
 function getSchedule(scheduleTarget) {
   if (
-    !scheduleTarget ||
-    (!isDay(scheduleTarget) && !isAnimal(scheduleTarget))
+    !scheduleTarget || (!isDay(scheduleTarget) && !isAnimal(scheduleTarget))
   ) {
     return weeklySchedule();
   }
