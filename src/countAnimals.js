@@ -11,19 +11,19 @@ function countAnimals(animal) {
     }); return listAnimals;
   }
   if (Object.values(animal).length === 1) {
-    return species.find((element) => element.name === Object.values(animal)[0]).residents.length;
+    return species.find((element) => element.name === animal.specie).residents.length;
   }
-  if (Object.values(animal).length === 2 && animal.gender === 'female') {
-    const filtterAnimal = species.find((element) => element.name === Object.values(animal)[0]);
+  if (Object.values(animal).length === 2 && animal.sex === 'female') {
+    const filtterAnimal = species.find((element) => element.name === animal.specie);
     const female = filtterAnimal.residents.filter((gender) => gender.sex === 'female');
     return female.length;
   }
-  const filtterAnimal = species.find((element) => element.name === Object.values(animal)[0]);
-  const result = filtterAnimal.residents.filter((gender) => gender.sex === 'male');
-  return result.length;
+  const filtterAnimal = species.find((element) => element.name === animal.specie);
+  const male = filtterAnimal.residents.filter((gender) => gender.sex === 'male');
+  return male.length;
 }
 
-console.log(countAnimals({ specie: 'bears', gender: 'female' }));
+console.log(countAnimals({ specie: 'lions', sex: 'female' }));
 
 module.exports = countAnimals;
 
