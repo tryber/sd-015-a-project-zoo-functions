@@ -5,7 +5,7 @@ function getSchedule(scheduleTarget) {
     const objeto = {};
     const dias = Object.keys(data.hours);
     dias.forEach((dia) => {
-      objeto[dia] = {
+      [objeto[dia]] = {
         officeHour: `Open from ${data.hours.dia.open}am until ${data.hours.Tuesday.close}pm`,
         exhibition: [],
       };
