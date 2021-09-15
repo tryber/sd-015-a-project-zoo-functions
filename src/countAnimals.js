@@ -1,22 +1,16 @@
 const { species } = require('../data/zoo_data');
 
-const countAnimals = (animal) => {
-  let { specie, gender } = '';
-  if (animal) {
-    ({ specie, gender } = animal);
-  } else {
-    return species.reduce((acc, { name, residents }) => ({ ...acc, [name]: residents.length }), {});
-    // https://stackoverflow.com/questions/11508463/javascript-set-object-key-by-variable
-  }
-  let filteredAnimals;
+const findAnimalByName = (specie) => species.find(({ name }) => name === specie);
 
-  if (specie) filteredAnimals = species.find(({ name }) => name === specie);
-  if (gender) {
-    filteredAnimals = filteredAnimals.residents.filter(({ sex }) => sex === gender);
-    return filteredAnimals.length;
-  }
+const filterAnimalsBySex = (animalObj, gender) =>
+  animalObj.residents.filter(({ sex }) => sex === gender);
 
-  return filteredAnimals.residents.length;
+const countAnimals = ({ specie = false, sex = false } = {}) => {
+  if (sex) return filterAnimalsBySex(findAnimalByName(specie), sex).length;
+  if (specie) return findAnimalByName(specie).residents.length;
+
+  return species.reduce((acc, { name, residents }) => ({ ...acc, [name]: residents.length }), {});
+  // https://stackoverflow.com/questions/11508463/javascript-set-object-key-by-variable
 };
 
 module.exports = countAnimals;
