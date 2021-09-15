@@ -1,5 +1,4 @@
 const { hours, species } = require('../data/zoo_data');
-const data = require('../data/zoo_data');
 
 function checkingIfIsDayOrAnimal(param) {
   const ani = species.map((e) => e.name);

@@ -1,5 +1,4 @@
 const { employees, species } = require('../data/zoo_data');
-const data = require('../data/zoo_data');
 
 function showAllEmployee() {
   return employees.map((employee) => ({

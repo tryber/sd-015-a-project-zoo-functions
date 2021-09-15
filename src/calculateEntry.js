@@ -1,5 +1,4 @@
 const { prices } = require('../data/zoo_data');
-const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
   if (!Array.isArray(entrants)) return {};

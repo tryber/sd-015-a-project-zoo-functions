@@ -1,5 +1,4 @@
 const { species } = require('../data/zoo_data');
-const data = require('../data/zoo_data');
 
 function countAnimals({ specie = undefined, sex = false } = {}) {
   if (!specie) {
@@ -14,8 +13,5 @@ function countAnimals({ specie = undefined, sex = false } = {}) {
   return species.find((elem) => elem.name === specie).residents.filter((e) =>
     e.sex === sex).length;
 }
-
-console.log(countAnimals({ specie: 'giraffes' }));
-console.log(countAnimals({ specie: 'bears', sex: 'female' }));
 
 module.exports = countAnimals;
