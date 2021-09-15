@@ -5,7 +5,7 @@ const { species } = data;
 function getAnimalNames(opt, obj) {
   const animalNames = species.reduce((acc, spc) => {
     const residents = opt.sex ? spc.residents.filter((res) => res.sex === opt.sex) : spc.residents;
-    const names = residents.map((res) => res.name)
+    const names = residents.map((res) => res.name);
     acc[spc.location].push({ [spc.name]: opt.sorted ? names.sort() : names });
     return acc;
   }, obj);
