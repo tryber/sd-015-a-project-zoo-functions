@@ -19,11 +19,9 @@ const data = require('../data/zoo_data');
     return resultado;
 } */
 function getSpeciesByIds(...id) {
-  const buscaId = species.filter((objeto) => objeto.id === id);
-  console.log(id);
+  const buscaId = data.species.filter((objeto) => id.includes(objeto.id));
   console.log(buscaId);
   return buscaId;
 }
-getSpeciesByIds('0938aa23-f153-4937-9f88-4858b24d6bce', '533bebf3-6bbe-41d8-9cdf-46f7d13b62ae');
-// console.log(getSpeciesByIds);
+getSpeciesByIds();
 module.exports = getSpeciesByIds;
