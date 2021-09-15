@@ -1,5 +1,14 @@
 const data = require('../data/zoo_data');
 
+function getSpecie(tgtEmp, animalFilter) {
+  return tgtEmp.responsibleFor.map(
+    (elemSpecie) =>
+      data.species.find((specieName) => elemSpecie === specieName.id)[
+        animalFilter
+      ],
+  );
+}
+
 function createReturnAll() {
   return data.employees.map((tgtEmployee) => ({
     id: tgtEmployee.id,
@@ -19,7 +28,9 @@ function createReturnSpecific(employeeData) {
 }
 
 function getDataByName(employeeName) {
-  const dataByNameResult = data.employees.find((elem) => elem.firstName === employeeName || elem.lastName === employeeName);
+  const dataByNameResult = data.employees.find(
+    (elem) => elem.firstName === employeeName || elem.lastName === employeeName,
+  );
   if (!dataByNameResult) {
     throw new Error('Informações inválidas');
   }
@@ -32,15 +43,6 @@ function getDataById(employeeId) {
     throw new Error('Informações inválidas');
   }
   return createReturnSpecific(dataByIdResult);
-}
-
-function getSpecie(tgtEmp, animalFilter) {
-  return tgtEmp.responsibleFor.map(
-    (elemSpecie) =>
-      data.species.find((specieName) => elemSpecie === specieName.id)[
-        animalFilter
-      ],
-  );
 }
 
 function getEmployeesCoverage(employee) {
