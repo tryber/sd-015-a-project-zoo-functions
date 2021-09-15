@@ -17,7 +17,7 @@ const countEntrants = (entrants) => {
 
 const calculateEntry = (entrants) =>
   Object.entries(countEntrants(entrants))
-    .reduce((acc, entrant, index) =>
+    .reduce((acc, entrant) =>
       acc + entrant[1] * prices[entrant[0]], 0);
 
 module.exports = { calculateEntry, countEntrants };
