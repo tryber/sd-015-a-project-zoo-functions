@@ -1,11 +1,8 @@
 const { species } = require('../data/zoo_data');
 
 function makeObjWithoutNames() {
-  return species.reduce((obj, elem) => {
-    Object.assign(obj, { [elem.location]: species.filter((eleme) =>
-      eleme.location === elem.location).map((name) => name.name) });
-    return obj;
-  }, {});
+  return species.reduce((obj, el) => Object.assign(obj, { [el.location]: species.filter((eleme) =>
+    eleme.location === el.location).map((name) => name.name) }), {});
 }
 
 function makeArray(array, sex, sort) {
