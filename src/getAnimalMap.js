@@ -17,7 +17,6 @@ const animalsSEloc = animalsSE
 const animalsSWloc = animalsSW
   .map((element) => ({ [element.name]: element.residents
     .map((animal) => animal.name) }));
-// let array = []
 
 const animalsNElocSort = animalsNE
   .map((elementNE) => ({ [elementNE.name]: elementNE.residents
@@ -36,8 +35,6 @@ const animalsSWlocSort = animalsSW
     .map((animal) => animal.name)
     .sort() }));
 
-// console.log(animalsNE.map((element) => ({ [element.name]: element.residents.map((element2) => element2.name).sort((a, b) => a > b) })));
-
 const animalsLoc = () => ({
   NE: animalsNE.map((element) => element.name),
   NW: animalsNW.map((element) => element.name),
@@ -51,7 +48,6 @@ const animalsNames = () => ({
   SE: animalsSEloc,
   SW: animalsSWloc,
 });
-// console.log(animalsPerLocNames());
 
 const animalsSort = () => ({
   NE: animalsNElocSort,
@@ -113,6 +109,4 @@ function getAnimalMap(options) {
   return test1(options) ? test1(options) : test2(options);
 }
 
-// const options = { includeNames: true};
-// console.log(getAnimalMap());
 module.exports = getAnimalMap;
