@@ -9,8 +9,8 @@ function countAnimals(animal) {
   }
   if (animal !== undefined) {
     const especie = animal.specie;
-    if (animal.gender !== undefined) {
-      const genero = animal.gender;
+    if (animal.sex !== undefined) {
+      const genero = animal.sex;
       const encontrarChaveDoAnimal = data.species.find((element) => element.name === especie);
       const encontrarIndividuoDoGenero = (element) => element.sex === genero;
       const contadorDeGeneros = encontrarChaveDoAnimal.residents.filter(encontrarIndividuoDoGenero);
