@@ -22,11 +22,11 @@ const verificaAnimalSexo = (animal, sex) => {
   return cont;
 };
 const contadores = (animal) => {
-  if (animal.specie !== undefined && animal.gender === undefined) {
+  if (animal.specie !== undefined && animal.sex === undefined) {
     return verificaAnimal(animal.specie);
   }
-  if (animal.specie !== undefined && animal.gender !== undefined) {
-    return verificaAnimalSexo(animal.specie, animal.gender);
+  if (animal.specie !== undefined && animal.sex !== undefined) {
+    return verificaAnimalSexo(animal.specie, animal.sex);
   }
 };
 const countAnimals = (...animal) => {
