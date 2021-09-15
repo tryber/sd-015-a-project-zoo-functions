@@ -13,6 +13,8 @@ function getSpeciesByIds(...ids) {
   });
 }
 
+// return null no final pq o lint queria que houvesse um return no final da arrow function
+
 console.log(getSpeciesByIds());
 
 module.exports = getSpeciesByIds;
