@@ -36,6 +36,6 @@ const calculateEntry = (entrants) => {
     retorno = entradaAdulto + entradaCrianca + entradaIdoso;
   }
   return retorno;
-}
+};
 
 module.exports = { calculateEntry, countEntrants };
