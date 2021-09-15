@@ -2,24 +2,19 @@ const { species } = require('../data/zoo_data');
 
 function makeObjWithoutNames() {
   return species.reduce((obj, elem) => {
-    Object.assign(obj, {
-      [elem.location]: species.filter((eleme) =>
-        eleme.location === elem.location).map((name) => name.name),
-    });
+    Object.assign(obj, { [elem.location]: species.filter((eleme) =>
+      eleme.location === elem.location).map((name) => name.name) });
     return obj;
   }, {});
 }
 
 function makeArray(array, sex, sort) {
-  let arrayFinal = array.map((elm) => ({
-    [elm]: species.find((e) =>
-      e.name === elm).residents.map((e) => e.name),
-  }));
+  let arrayFinal = array.map((elm) => ({ [elm]: species.find((e) =>
+    e.name === elm).residents.map((e) => e.name) }));
   if (sex) {
     arrayFinal = array.map((elm) => ({
-      [elm]: species.find((e) =>
-        e.name === elm).residents.filter((el) => el.sex === sex).map((e) => e.name),
-    }));
+      [elm]: species.find((e) => e.name === elm).residents.filter((el) =>
+        el.sex === sex).map((e) => e.name) }));
   }
   if (sort) {
     arrayFinal = arrayFinal.map((obj) => ({ [Object.keys(obj)[0]]: Object.values(obj)[0].sort() }));
@@ -30,9 +25,7 @@ function makeArray(array, sex, sort) {
 function makeObjWithNames(sort = false, sex) {
   const objFinal = makeObjWithoutNames();
   const objKeys = Object.keys(objFinal);
-  objKeys.forEach((key) => {
-    objFinal[key] = makeArray(objFinal[key], sex, sort);
-  });
+  objKeys.forEach((key) => { objFinal[key] = makeArray(objFinal[key], sex, sort); });
   return objFinal;
 }
 
