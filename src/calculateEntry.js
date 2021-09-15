@@ -1,6 +1,6 @@
 const { prices } = require('../data/zoo_data');
 
-const countEntrants = (entrants = []) => {
+const countEntrants = (entrants) => {
   if (!Array.isArray(entrants)) return [];
 
   return entrants.reduce(
@@ -15,15 +15,9 @@ const countEntrants = (entrants = []) => {
   );
 };
 
-const calculateEntry = (entrants) => {
-  let totalPrice = 0;
-  Object.entries(countEntrants(entrants)).forEach((entrant) => {
-    Object.entries(prices).forEach((price) => {
-      if (price[0] === entrant[0]) totalPrice += price[1] * entrant[1];
-    });
-  });
-
-  return totalPrice;
-};
+const calculateEntry = (entrants) =>
+  Object.entries(countEntrants(entrants))
+    .reduce((acc, entrant, index) =>
+      acc + entrant[1] * prices[entrant[0]], 0);
 
 module.exports = { calculateEntry, countEntrants };
