@@ -4,7 +4,7 @@ const sortByOlder = (residents) => residents.sort((a, b) => b.age - a.age);
 
 const findAnimalById = (id) => species.find(({ id: animalId }) => animalId === id);
 
-const findEmployeeById = (id) => employees.find(({id: employeeId}) => employeeId === id);
+const findEmployeeById = (id) => employees.find(({ id: employeeId }) => employeeId === id);
 
 const getOldestFromFirstSpecies = (id) => {
   const animal = findAnimalById(findEmployeeById(id).responsibleFor[0]);
