@@ -21,18 +21,18 @@ const countAnimals = (animal) => {
     });
     return obj;
   }
-  const { specie, gender } = animal;
-  if (!gender) {
+  const { specie, sex } = animal;
+  if (!sex) {
     const specieCount = data.species.find((e) => e.name === specie);
     return specieCount.residents.length;
   }
-  if (gender) {
-    const genderAnimal = data.species.find((e) => (e.name === specie))
-      .residents.filter((j) => j.sex === gender);
-    return genderAnimal.length;
+  if (sex) {
+    const sexAnimal = data.species.find((e) => (e.name === specie))
+      .residents.filter((j) => j.sex === sex).length;
+    return sexAnimal;
   }
 };
 
-countAnimals({ specie: 'bears', gender: 'female' });
+countAnimals({ specie: 'bears', sex: 'female' });
 
 module.exports = countAnimals;
