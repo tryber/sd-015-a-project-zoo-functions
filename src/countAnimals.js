@@ -8,14 +8,14 @@ function countAnimals(animal) {
     }, {});
   }
 
-  const { specie, gender } = animal;
-  if (!gender) {
+  const { specie } = animal;
+  if (!specie) {
     return data.species.find((element) => element.name === specie).residents
       .length;
   }
   return data.species
     .find((element) => element.name === specie)
-    .residents.filter((element) => element.sex === gender).length;
+    .residents.filter((element) => element.sex === specie.sex).length;
 }
 
 module.exports = countAnimals;
