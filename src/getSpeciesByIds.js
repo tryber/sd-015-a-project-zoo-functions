@@ -4,7 +4,7 @@ function getSpeciesByIds(...ids) {
   // o parâmetro foi alterado para o formato "spread Operator" para funcionar caso fossem passado mais de um valor como salientado na questão
   const { species } = data;
   const animals = [];
-  // declarado um array "animals" que vai ser o retorno dessa função 
+  // declarado um array "animals" que vai ser o retorno dessa função.
   ids.forEach((e) => {
     animals.push(species.find((spc) => spc.id === e));
   });

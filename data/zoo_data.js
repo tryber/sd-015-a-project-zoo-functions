@@ -25,7 +25,7 @@ module.exports = {
           age: 12,
         },
         {
-          name: 'Maxwell', 
+          name: 'Maxwell',
           sex: 'male',
           age: 15,
         },

@@ -9,7 +9,7 @@ const isManager = (id) => employees
 const getRelatedEmployees = (managerId) => {
   if (!isManager(managerId)) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
-// caso o valor do parametro não seja de um funcionário gerente retornar um Error com a mensagem a cima.
+  // caso o valor do parametro não seja de um funcionário gerente retornar um Error com a mensagem a cima.
   } else {
     return employees
       .filter((employee) => employee.managers
@@ -20,4 +20,3 @@ const getRelatedEmployees = (managerId) => {
 };
 
 module.exports = { isManager, getRelatedEmployees };
-
