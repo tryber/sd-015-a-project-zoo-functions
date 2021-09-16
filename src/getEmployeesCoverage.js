@@ -38,5 +38,5 @@ function getEmployeesCoverage(options) {
   if (options.id) return resultToId(options.id)[0];
   if (options.name) return resultToName(options.name)[0];
 }
-// console.log(getEmployeesCoverage({ name: 'italo' }));
+
 module.exports = getEmployeesCoverage;
