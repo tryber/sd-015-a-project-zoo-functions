@@ -17,8 +17,7 @@ function countAnimals(species) {
     .filter((animal) => animal.sex === species.sex);
 
   return (paramIncludesSpecie && !paramIncludesSex)
-    ? amontResidents.length
-    : amontResidentsPerSex.length;
+    ? amontResidents.length : amontResidentsPerSex.length;
 }
 
 module.exports = countAnimals;
