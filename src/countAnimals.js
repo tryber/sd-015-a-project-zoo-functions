@@ -16,8 +16,8 @@ function countAnimals(animal) {
   }
   const generic = species.find((spec) => spec.name === animal.specie).residents;
   const unGender = generic.length;
-  const gender = generic.reduce((acc, curr) => (curr.sex === animal.gender ? acc + 1 : acc), 0);
-  return animal.gender === undefined ? unGender : gender;
+  const gender = generic.reduce((acc, curr) => (curr.sex === animal.sex ? acc + 1 : acc), 0);
+  return animal.sex === undefined ? unGender : gender;
 }
 
 module.exports = countAnimals;
