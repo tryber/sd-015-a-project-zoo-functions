@@ -16,9 +16,9 @@ const data = require('../data/zoo_data');
 function countAnimals(animal) {
   if (!animal) { // entra aqui se nenhum parametro for passado
     const animalsObj = species.reduce((objNames, objData) => {
-      const x = objNames;
-      x[objData.name] = objData.residents.length;
-      return x;
+      const resultado = objNames;
+      resultado[objData.name] = objData.residents.length;
+      return resultado;
     }, {});
     return animalsObj;
   }
