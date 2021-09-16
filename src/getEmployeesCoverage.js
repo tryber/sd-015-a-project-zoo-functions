@@ -29,10 +29,14 @@ const resultToName = (name) => data.employees
     locations: person.responsibleFor.map((specieId) => specieIdLocation(specieId)),
   }));
 
+const isEmployee = (obj) => data.employees.some((employee) =>
+  employee.firstName === obj.name || employee.lastName === obj.name || employee.id === obj.id);
+
 function getEmployeesCoverage(options) {
   if (!options) return resultNoParam();
+  if (!isEmployee(options)) throw new Error('Informações inválidas');
   if (options.id) return resultToId(options.id)[0];
   if (options.name) return resultToName(options.name)[0];
 }
-console.log(getEmployeesCoverage({ name: 'Sharonda' }));
+// console.log(getEmployeesCoverage({ name: 'italo' }));
 module.exports = getEmployeesCoverage;
