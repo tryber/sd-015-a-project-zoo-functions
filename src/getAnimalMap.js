@@ -18,10 +18,18 @@ const speciesSWloc = speciesSW
   .map((specie) => ({ [specie.name]: specie.residents
     .map((animal) => animal.name) }));
 
-const speciesNElocSort = speciesNEloc.sort();
-const speciesNWlocSort = speciesNWloc.sort();
-const speciesSElocSort = speciesSEloc.sort();
-const speciesSWlocSort = speciesSWloc.sort();
+const speciesNElocSort = speciesNE.map((specieNE) => ({ [specieNE.name]: specieNE.residents
+  .map((animal) => animal.name)
+  .sort() }));
+const speciesNWlocSort = speciesNW.map((specieNW) => ({ [specieNW.name]: specieNW.residents
+  .map((animal) => animal.name)
+  .sort() }));
+const speciesSElocSort = speciesSE.map((specieSE) => ({ [specieSE.name]: specieSE.residents
+  .map((animal) => animal.name)
+  .sort() }));
+const speciesSWlocSort = speciesSW.map((specieSW) => ({ [specieSW.name]: specieSW.residents
+  .map((animal) => animal.name)
+  .sort() }));
 
 const speciesLoc = () => ({
   NE: speciesNE.map((specie) => specie.name),
