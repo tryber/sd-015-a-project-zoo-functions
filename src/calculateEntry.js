@@ -22,8 +22,8 @@ console.log(countEntrants([
 function calculateEntry(entrants) {
   if (typeof entrants === 'undefined' || Object.keys(entrants).length === 0) return 0;
   const entrant = countEntrants(entrants);
-  return (entrant.adult * prices.adult) +
-    (entrant.senior * prices.senior) + (entrant.child * prices.child);
+  return (entrant.adult * prices.adult)
+    + (entrant.senior * prices.senior) + (entrant.child * prices.child);
 }
 console.log(calculateEntry([
   { name: 'asda', age: 5 },
