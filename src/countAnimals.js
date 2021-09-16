@@ -16,6 +16,4 @@ function countAnimals(animal) {
   return nameOfAnimal.residents.length;
 }
 
-// Pull na branch master realizado.
-
 module.exports = countAnimals;
