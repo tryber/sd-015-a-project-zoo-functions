@@ -12,7 +12,7 @@ const entrantsXX = [
 const entrantsList = {
   child: 0,
   adult: 0,
-  senior: 0
+  senior: 0,
 };
 
 let totalValue = 0;
@@ -34,8 +34,8 @@ function insertInEntrantList(element) {
 }
 
 function countEntrants(entrants) {
-  resetEntrants()
-  entrants.forEach((e) => insertInEntrantList(e))
+  resetEntrants();
+  entrants.forEach((e) => insertInEntrantList(e));
   return entrantsList;
 }
 
@@ -52,11 +52,10 @@ function refreshTotalValue() {
 
 function calculateEntry(entrants) {
   if (entrants === undefined || Object.keys(entrants).length === 0) {
-    return 0
-  } else {
-  countEntrants(entrants) ;
+    return 0;
   }
-  return refreshTotalValue();
+countEntrants(entrants);
+return refreshTotalValue();
 }
 
 module.exports = { calculateEntry, countEntrants };
