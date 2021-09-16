@@ -8,8 +8,6 @@ function getSpeciesByIds(...ids) {
   return data.species.filter((element) => ids.includes(element.id));
 }
 
-// return null no final pq o lint queria que houvesse um return no final da arrow function
-
 console.log(getSpeciesByIds());
 
 module.exports = getSpeciesByIds;
