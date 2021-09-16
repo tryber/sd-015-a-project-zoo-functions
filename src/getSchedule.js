@@ -6,8 +6,9 @@ const days = Object.keys(data.hours);
 // Function to return the complete schedule of the zoo, discriminating which animals will be available and opening hours for each day
 function getCompleteSchedule() {
   const { species, hours } = data;
+  const newHours = {};
   Object.keys(hours).forEach((day) => {
-    hours[day] = {
+    newHours[day] = {
       officeHour: `Open from ${hours[day].open}am until ${hours[day].close}pm`,
       exhibition: species.reduce((animalsList, specie) => {
         if (specie.availability.includes(day)) animalsList.push(specie.name);
@@ -15,9 +16,9 @@ function getCompleteSchedule() {
       }, []),
     };
   });
-  hours.Monday.officeHour = 'CLOSED';
-  hours.Monday.exhibition = 'The zoo will be closed!';
-  return hours;
+  newHours.Monday.officeHour = 'CLOSED';
+  newHours.Monday.exhibition = 'The zoo will be closed!';
+  return newHours;
 }
 
 // Function to return the schedule of a specific day
@@ -54,4 +55,5 @@ function getSchedule(scheduleTarget) {
   return getDaySchedule(scheduleTarget);
 }
 
+// console.log(getSchedule('qualq'))
 module.exports = getSchedule;
