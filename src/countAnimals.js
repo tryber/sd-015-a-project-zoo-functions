@@ -27,9 +27,8 @@ function countAnimals(animal) {
     const animSelected = species.find((especie) => especie.name === specie);
     return animSelected.residents.length;
   }
-
   const animSelected = species.find((especie) => especie.name === specie); // entra aqui se tiver passando duas duas chaves no objeto da countAnimals
-  const resultado = animSelected.residents.filter((g) => g.sex === animal.gender).length;
+  const resultado = animSelected.residents.filter((girafa) => girafa.sex === animal.gender).length;
   return resultado;
 }
 
