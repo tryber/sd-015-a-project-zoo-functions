@@ -5,7 +5,7 @@ function countEntrants(entrants) {
   const entrant = {
     child: entrants.filter((iten) => iten.age < 18).length,
     adult: entrants.filter((iten) => iten.age >= 18 && iten.age < 50).length,
-    senior: entrants.filter((iten) => iten.age >= 50).length
+    senior: entrants.filter((iten) => iten.age >= 50).length,
   };
   return entrant;
 }
