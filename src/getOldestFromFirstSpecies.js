@@ -1,7 +1,24 @@
 const data = require('../data/zoo_data');
 
+const { species, employees } = data;
+
+function getEmployee(id) {
+  const employee = employees.find((elem) => elem.id === id);
+  const animalId = employee.responsibleFor[0];
+  return animalId;
+}
+
+function oldestSpecie(id) {
+  const animalSpecie = species.find((oldest) => oldest.id === getEmployee(id));
+  const residentSpecie = animalSpecie.residents.reduce((idade, current) =>
+    (idade.age < current.age ? current : idade));
+  return Object.values(residentSpecie);
+}
+
+console.log(oldestSpecie('4b40a139-d4dc-4f09-822d-ec25e819a5ad')); // otters
+
 function getOldestFromFirstSpecies(id) {
-  // seu código aqui
+  return oldestSpecie(id);
 }
 
 module.exports = getOldestFromFirstSpecies;

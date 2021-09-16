@@ -2,13 +2,6 @@ const data = require('../data/zoo_data');
 
 const { hours, species } = data;
 
-// function weeklyAnimal(param) {
-//   const animalPerDay = species
-//     .filter((specie) => specie.availability.includes(param))
-//     .map((anim) => anim.name);
-//   return animalPerDay;
-// }
-
 function weeklyOfficeHours(weeklyDay) {
   // eslint-disable-next-line no-unused-expressions
   return hours[weeklyDay].open === 0
@@ -47,10 +40,6 @@ function isAnimal(anim) {
   return species.some((elem) => elem.name.includes(anim));
 }
 
-// function isMonday(day) {
-//   return Object.keys(hours).some((elem2) => elem2.includes(day));
-// }
-
 function eachAnimal(animal) {
   return species.find((anim) => anim.name === animal).availability;
 }
@@ -85,15 +74,9 @@ function getSchedule(scheduleTarget) {
   ) {
     return weeklySchedule();
   }
-  // if (isMonday(scheduleTarget)) {
-  //   return ({ Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } });
-  // }
   if (isAnimal(scheduleTarget)) {
     return eachAnimal(scheduleTarget);
   }
-  // if (eachDay(scheduleTarget)) {
-  //   return eachDay(scheduleTarget);
-  // }
   return eachDay(scheduleTarget);
 }
 // console.log(getSchedule('Sunday'));
