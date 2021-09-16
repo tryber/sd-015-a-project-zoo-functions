@@ -1,112 +1,97 @@
 const data = require('../data/zoo_data');
 
-const animalsNE = data.species.filter((species) => species.location === 'NE');
-const animalsNW = data.species.filter((species) => species.location === 'NW');
-const animalsSE = data.species.filter((species) => species.location === 'SE');
-const animalsSW = data.species.filter((species) => species.location === 'SW');
+const speciesNE = data.species.filter((specie) => specie.location === 'NE');
+const speciesNW = data.species.filter((specie) => specie.location === 'NW');
+const speciesSE = data.species.filter((specie) => specie.location === 'SE');
+const speciesSW = data.species.filter((specie) => specie.location === 'SW');
 
-const animalsNEloc = animalsNE
-  .map((element) => ({ [element.name]: element.residents
+const speciesNEloc = speciesNE
+  .map((specie) => ({ [specie.name]: specie.residents
     .map((animal) => animal.name) }));
-const animalsNWloc = animalsNW
-  .map((element) => ({ [element.name]: element.residents
+const speciesNWloc = speciesNW
+  .map((specie) => ({ [specie.name]: specie.residents
     .map((animal) => animal.name) }));
-const animalsSEloc = animalsSE
-  .map((element) => ({ [element.name]: element.residents
+const speciesSEloc = speciesSE
+  .map((specie) => ({ [specie.name]: specie.residents
     .map((animal) => animal.name) }));
-const animalsSWloc = animalsSW
-  .map((element) => ({ [element.name]: element.residents
+const speciesSWloc = speciesSW
+  .map((specie) => ({ [specie.name]: specie.residents
     .map((animal) => animal.name) }));
 
-const animalsNElocSort = animalsNE
-  .map((elementNE) => ({ [elementNE.name]: elementNE.residents
-    .map((animal) => animal.name)
-    .sort() }));
-const animalsNWlocSort = animalsNW
-  .map((elementNW) => ({ [elementNW.name]: elementNW.residents
-    .map((animal) => animal.name)
-    .sort() }));
-const animalsSElocSort = animalsSE
-  .map((elementSE) => ({ [elementSE.name]: elementSE.residents
-    .map((animal) => animal.name)
-    .sort() }));
-const animalsSWlocSort = animalsSW
-  .map((elementSW) => ({ [elementSW.name]: elementSW.residents
-    .map((animal) => animal.name)
-    .sort() }));
+const speciesNElocSort = speciesNEloc.sort();
+const speciesNWlocSort = speciesNWloc.sort();
+const speciesSElocSort = speciesSEloc.sort();
+const speciesSWlocSort = speciesSWloc.sort();
 
-const animalsLoc = () => ({
-  NE: animalsNE.map((element) => element.name),
-  NW: animalsNW.map((element) => element.name),
-  SE: animalsSE.map((element) => element.name),
-  SW: animalsSW.map((element) => element.name),
+const speciesLoc = () => ({
+  NE: speciesNE.map((specie) => specie.name),
+  NW: speciesNW.map((specie) => specie.name),
+  SE: speciesSE.map((specie) => specie.name),
+  SW: speciesSW.map((specie) => specie.name),
 });
 
-const animalsNames = () => ({
-  NE: animalsNEloc,
-  NW: animalsNWloc,
-  SE: animalsSEloc,
-  SW: animalsSWloc,
+const speciesNames = () => ({
+  NE: speciesNEloc,
+  NW: speciesNWloc,
+  SE: speciesSEloc,
+  SW: speciesSWloc,
 });
 
-const animalsSort = () => ({
-  NE: animalsNElocSort,
-  NW: animalsNWlocSort,
-  SE: animalsSElocSort,
-  SW: animalsSWlocSort,
+const speciesSort = () => ({
+  NE: speciesNElocSort,
+  NW: speciesNWlocSort,
+  SE: speciesSElocSort,
+  SW: speciesSWlocSort,
 });
 
-const animalsSex = (sex) => {
-  const animalsNElocSex = animalsNE.map((element) => ({ [element.name]: element.residents
-    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name) }));
-  const animalsNWlocSex = animalsNW.map((element) => ({ [element.name]: element.residents
-    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name) }));
-  const animalsSElocSex = animalsSE.map((element) => ({ [element.name]: element.residents
-    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name) }));
-  const animalsSWlocSex = animalsSW.map((element) => ({ [element.name]: element.residents
-    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name) }));
+const speciesSex = (sex) => {
+  const speciesNElocSex = speciesNE.map((specie) => ({ [specie.name]: specie.residents
+    .filter((animal) => animal.sex === sex).map((animal) => animal.name) }));
+  const speciesNWlocSex = speciesNW.map((specie) => ({ [specie.name]: specie.residents
+    .filter((animal) => animal.sex === sex).map((animal) => animal.name) }));
+  const speciesSElocSex = speciesSE.map((specie) => ({ [specie.name]: specie.residents
+    .filter((animal) => animal.sex === sex).map((animal) => animal.name) }));
+  const speciesSWlocSex = speciesSW.map((specie) => ({ [specie.name]: specie.residents
+    .filter((animal) => animal.sex === sex).map((animal) => animal.name) }));
 
   return {
-    NE: animalsNElocSex,
-    NW: animalsNWlocSex,
-    SE: animalsSElocSex,
-    SW: animalsSWlocSex,
+    NE: speciesNElocSex,
+    NW: speciesNWlocSex,
+    SE: speciesSElocSex,
+    SW: speciesSWlocSex,
   };
 };
 
 const aniamalsSexSort = (sex) => {
-  const animalsNElocSexSort = animalsNE.map((element) => ({ [element.name]: element.residents
-    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name).sort() }));
-  const animalsNWlocSexSort = animalsNW.map((element) => ({ [element.name]: element.residents
-    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name).sort() }));
-  const animalsSElocSexSort = animalsSE.map((element) => ({ [element.name]: element.residents
-    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name).sort() }));
-  const animalsSWlocSexSort = animalsSW.map((element) => ({ [element.name]: element.residents
-    .filter((animalDoc) => animalDoc.sex === sex).map((animal) => animal.name).sort() }));
+  const speciesNElocSexSort = speciesNE.map((specie) => ({ [specie.name]: specie.residents
+    .filter((animal) => animal.sex === sex).map((animal) => animal.name).sort() }));
+  const speciesNWlocSexSort = speciesNW.map((specie) => ({ [specie.name]: specie.residents
+    .filter((animal) => animal.sex === sex).map((animal) => animal.name).sort() }));
+  const speciesSElocSexSort = speciesSE.map((specie) => ({ [specie.name]: specie.residents
+    .filter((animal) => animal.sex === sex).map((animal) => animal.name).sort() }));
+  const speciesSWlocSexSort = speciesSW.map((specie) => ({ [specie.name]: specie.residents
+    .filter((animal) => animal.sex === sex).map((animal) => animal.name).sort() }));
 
   return {
-    NE: animalsNElocSexSort,
-    NW: animalsNWlocSexSort,
-    SE: animalsSElocSexSort,
-    SW: animalsSWlocSexSort,
+    NE: speciesNElocSexSort,
+    NW: speciesNWlocSexSort,
+    SE: speciesSElocSexSort,
+    SW: speciesSWlocSexSort,
   };
 };
 
-const test1 = (opt) => {
-  if (opt.includeNames && !opt.sorted) {
-    return !opt.sex ? animalsNames() : animalsSex(opt.sex);
-  }
+const queryName = (opt) => {
+  if (opt.includeNames && !opt.sorted) return !opt.sex ? speciesNames() : speciesSex(opt.sex);
 };
 
-const test2 = (opt) => {
-  if (opt.includeNames && opt.sorted) {
-    return !opt.sex ? animalsSort() : aniamalsSexSort(opt.sex);
-  }
+const querySort = (opt) => {
+  if (opt.includeNames && opt.sorted) return !opt.sex ? speciesSort() : aniamalsSexSort(opt.sex);
 };
 
 function getAnimalMap(options) {
-  if (!options || !options.includeNames) return animalsLoc();
-  return test1(options) ? test1(options) : test2(options);
+  if (!options || !options.includeNames) return speciesLoc();
+
+  return queryName(options) ? queryName(options) : querySort(options);
 }
 
 module.exports = getAnimalMap;
