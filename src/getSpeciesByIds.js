@@ -4,7 +4,7 @@ function getSpeciesByIds(...ids) {
   if (ids === undefined) {
     return [];
   }
-  return data.species.filter((object) => ids.includes(object.id));
+  return data.species.filter((animal) => ids.includes(animal.id));
 }
 
 module.exports = getSpeciesByIds;
