@@ -14,15 +14,15 @@ const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
-   if (!animal) { // entr aqui se nenhum parametro for passado
+  if (!animal) { // entra aqui se nenhum parametro for passado
     const animalsObj = species.reduce((objNames, objData) => {
-      const resultado = objNames[objData.name] = objData.residents;
-      return resultado;
+      const x = objNames;
+      x[objData.name] = objData.residents.length;
+      return x;
     }, {});
     return animalsObj;
   }
-  const { specie } = animal;
-  const { gender } = animal;
+  const { specie, gender } = animal;
   if (!gender) { // entra se tiver somente o nome da especie { specie: 'penguins' }
     const animSelected = species.find((especie) => especie.name === specie);
     return animSelected.residents.length;
@@ -32,7 +32,6 @@ function countAnimals(animal) {
   const resultado = animSelected.residents.filter((g) => g.sex === animal.gender).length;
   return resultado;
 }
+
 console.log(countAnimals());
-// countAnimals({ specie: 'giraffes', gender: 'female' });
 module.exports = countAnimals;
-/*    */
