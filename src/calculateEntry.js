@@ -1,13 +1,12 @@
 const { prices } = require('../data/zoo_data');
 
-const entrant = { adult: 0, child: 0, senior: 0 };
 function countEntrants(entrants) {
   if (typeof entrants === 'undefined' || Object.keys(entrants).length === 0) return 0;
-  entrants.forEach((iten) => {
-    if (iten.age < 18) entrant.child += 1;
-    if (iten.age >= 18 && iten.age < 50) entrant.adult += 1;
-    if (iten.age >= 50) entrant.senior += 1;
-  });
+  const entrant = {
+    child: entrants.filter((iten) => iten.age < 18).length,
+    adult: entrants.filter((iten) => iten.age >= 18 && iten.age < 50).length,
+    senior: entrants.filter((iten) => iten.age >= 50).length
+  };
   return entrant;
 }
 console.log(countEntrants([
