@@ -7,8 +7,8 @@ function countAnimals(animal) {
     return animals;
   }
   const numAni = species.find((animals) => animals.name === animal.specie);
-  if (animal.gender === undefined) return numAni.residents.length;
-  return numAni.residents.filter((iten) => iten.sex === animal.gender).length;
+  if (animal.sex === undefined) return numAni.residents.length;
+  return numAni.residents.filter((iten) => iten.sex === animal.sex).length;
 }
-console.log(countAnimals({ specie: 'tigers', gender: 'male' }));
+console.log(countAnimals({ specie: 'tigers', sex: 'male' }));
 module.exports = countAnimals;
