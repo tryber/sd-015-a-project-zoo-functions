@@ -17,18 +17,28 @@ const getAnimalLocations = () => {
   objLocations.SW = data.species.filter((value) => value.location === 'SW')
     .map((value) => value.name);
 };
+/*
+const arrayNames = () => {
+  Object.entries(objLocations).forEach((local) => local.forEach((animal) => animal.sort)
+  // objLocations.NE.forEach((value) => value.sort);
+};
 
-/* const sortArrayNames = () => {
+const sortArrayNames = () => {
   const sorted = arrayNames();
   sorted.sort();
   return sorted;
 }; */
 
 function getAnimalMap(options) {
+  getAnimalLocations();
   if (!options) {
-    getAnimalLocations();
     return objLocations;
   }
+  /*
+  if (options.includeNames) {
+    sortArrayNames();
+  }
+  */
 }
 
 module.exports = getAnimalMap;
