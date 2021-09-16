@@ -13,21 +13,26 @@ Recebendo como parâmetro um objeto com a chave specie e gender, retorna um núm
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function countAnimals(...animal) {
-  if (animal.keys === 'especie') {
-    const { specie } = animal;
-    console.log(typeof animal);
-    const animais = species.filter((obj) => obj.name === specie);
-    const qtdAnimls = animais.map((index) => index.residents.length);
-    const resultado = qtdAnimls[0];
-    return resultado;
+function countAnimals(animal) {
+   if (!animal) { // entr aqui se nenhum parametro for passado
+    const animalsObj = species.reduce((objNames, objData) => {
+      const resultado = objNames[objData.name] = objData.residents;
+      return resultado;
+    }, {});
+    return animalsObj;
   }
-  /* if (!typeof animal.specie === 'undefined' && (!typeof animal.sex === 'undefined')) {
-    return console.log('Funcionou');
-  } */
-  /* if (){
+  const { specie } = animal;
+  const { gender } = animal;
+  if (!gender) { // entra se tiver somente o nome da especie { specie: 'penguins' }
+    const animSelected = species.find((especie) => especie.name === specie);
+    return animSelected.residents.length;
+  }
 
-  } */
+  const animSelected = species.find((especie) => especie.name === specie); // entra aqui se tiver passando duas duas chaves no objeto da countAnimals
+  const resultado = animSelected.residents.filter((g) => g.sex === animal.gender).length;
+  return resultado;
 }
-countAnimals({ specie: 'giraffes', sex: 'female' });
+console.log(countAnimals());
+// countAnimals({ specie: 'giraffes', gender: 'female' });
 module.exports = countAnimals;
+/*    */
