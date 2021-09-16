@@ -20,7 +20,7 @@ function undefinedEmployee() {
 
 function findEmployee(employee) {
   const obj = {};
-  const findPerson = data.employees.find((cur) =>
+  const findPerson = employees.find((cur) =>
     cur.firstName === employee.name || cur.lastName === employee.name || cur.id === employee.id);
   obj.id = findPerson.id;
   obj.fullName = `${findPerson.firstName} ${findPerson.lastName}`;

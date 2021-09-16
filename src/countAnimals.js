@@ -2,13 +2,18 @@ const data = require('../data/zoo_data');
 
 const { species } = data;
 
+function undefinedParameter() {
+  const listAnimals = {};
+  const value = species.map((element) => element.residents.length);
+  species.map((animals) => animals.name).forEach((element, index) => {
+    listAnimals[element] = value[index];
+  });
+  return listAnimals;
+}
+
 function countAnimals(animal) {
-  const listAnimals = { };
   if (animal === undefined) {
-    const value = species.map((element) => element.residents.length);
-    species.map((animals) => animals.name).forEach((element, index) => {
-      listAnimals[element] = value[index];
-    }); return listAnimals;
+    return undefinedParameter();
   }
   if (Object.values(animal).length === 1) {
     return species.find((element) => element.name === animal.specie).residents.length;
@@ -26,5 +31,3 @@ function countAnimals(animal) {
 console.log(countAnimals({ specie: 'lions', sex: 'female' }));
 
 module.exports = countAnimals;
-
-// { specie: 'giraffes', gender: 'female' }
