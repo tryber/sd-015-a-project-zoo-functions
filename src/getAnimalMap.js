@@ -8,7 +8,7 @@ const base = species.reduce((acc, actual) => {
 
 function withName(options) {
   return species.reduce((acc, act) => {
-    if (options.sorted) { // Lógica do If dentro do reduce feita com Marcelo Adriano, Eric Cruz e Pedro
+    if (options.sorted) { // Lógica do if dentro do reduce feita com Marcelo Adriano, Eric Cruz e Pedro
       acc[act.location] = [...acc[act.location], { [act.name]: act.residents.map((unit) =>
         unit.name).sort() }];
     } else {
@@ -21,7 +21,7 @@ function withName(options) {
 
 function withSex(options) {
   return species.reduce((acc, actual) => {
-    if (options.sorted) { // Lógica do If dentro do reduce feita com Marcelo Adriano, Eric Cruz e Pedro
+    if (options.sorted) { // Lógica do if dentro do reduce feita com Marcelo Adriano, Eric Cruz e Pedro
       acc[actual.location] = [...acc[actual.location],
         { [actual.name]: actual.residents.filter((unit) => unit.sex === options.sex).map((unit2) =>
           unit2.name).sort() }];
