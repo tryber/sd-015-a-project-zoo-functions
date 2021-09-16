@@ -10,5 +10,5 @@ function countAnimals(animal) {
   if (animal.gender === undefined) return numAni.residents.length;
   return numAni.residents.filter((iten) => iten.sex === animal.gender).length;
 }
-console.log(countAnimals({ specie: 'lions', gender: 'female' }));
+console.log(countAnimals({ specie: 'tigers', gender: 'male' }));
 module.exports = countAnimals;
