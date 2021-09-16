@@ -54,5 +54,4 @@ function getSchedule(scheduleTarget) {
   return getDaySchedule(scheduleTarget);
 }
 
-// console.log(getSchedule('qualquercoisa'));
 module.exports = getSchedule;
