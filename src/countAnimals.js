@@ -3,21 +3,22 @@ const data = require('../data/zoo_data');
 function countAnimals(species) {
   if (!species) {
     const allAnimals = {};
-
-    data.species.forEach((element) => {
-      allAnimals[element.name] = element.residents.length;
-    });
-
+    data.species.forEach((specie) => { allAnimals[specie.name] = specie.residents.length; });
     return allAnimals;
   }
 
-  if (Object.keys(species).includes('specie') && Object.keys(species).length === 1) {
-    return data.species.find((element) =>
-      element.name === species.specie).residents.length;
-  }
-  return data.species.find((element) =>
-    element.name === species.specie)
-    .residents.filter((element) => element.sex === species.sex).length;
+  const paramIncludesSpecie = Object.keys(species).includes('specie');
+  const paramIncludesSex = Object.keys(species).includes('sex');
+
+  const amontResidents = data.species
+    .find((specie) => specie.name === species.specie).residents;
+
+  const amontResidentsPerSex = amontResidents
+    .filter((animal) => animal.sex === species.sex);
+
+  return (paramIncludesSpecie && !paramIncludesSex)
+    ? amontResidents.length
+    : amontResidentsPerSex.length;
 }
 
 module.exports = countAnimals;
