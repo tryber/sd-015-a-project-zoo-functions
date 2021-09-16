@@ -9,26 +9,31 @@ const { hours, species } = data;
 //   return animalPerDay;
 // }
 
-const officeHoursWeekly = (weeklyDay) => ((hours[weeklyDay].open === 0) ? 'CLOSED'
-  : `Open from ${hours[weeklyDay].open}am until ${hours[weeklyDay].close}pm`);
+function weeklyOfficeHours(weeklyDay) {
+  // eslint-disable-next-line no-unused-expressions
+  return hours[weeklyDay].open === 0
+    ? 'CLOSED'
+    : `Open from ${hours[weeklyDay].open}am until ${hours[weeklyDay].close}pm`;
+}
 
-const exhibitionDays = (weeklyDay) => ((hours[weeklyDay].open === 0)
-  ? 'The zoo will be closed!'
-  : species.filter((animalAvaiable) => animalAvaiable.availability.includes(weeklyDay))
-    . map((names) => names.name));
+function exhibitionDays(weeklyDay) {
+  // eslint-disable-next-line no-unused-expressions
+  return hours[weeklyDay].open === 0
+    ? 'The zoo will be closed!'
+    : species
+      .filter((animalAvailable) =>
+        animalAvailable.availability.includes(weeklyDay))
+      .map((names) => names.name);
+}
+
+console.log(exhibitionDays('Monday'));
 
 function weeklySchedule() {
   return Object.keys(hours).reduce((finalObj, weeklyDay) => {
     const actualObject = finalObj;
     actualObject[weeklyDay] = {
-      officeHour: officeHoursWeekly(weeklyDay),
-      // hours[weeklyDay].open === 0
-      //   ? 'CLOSED'
-      //   : `Open from ${hours[weeklyDay].open}am until ${hours[weeklyDay].close}pm`,
+      officeHour: weeklyOfficeHours(weeklyDay),
       exhibition: exhibitionDays(weeklyDay),
-      // hours[weeklyDay].open === 0
-      //   ? 'The zoo will be closed!'
-      //   : weeklyAnimal(weeklyDay),
     };
     return finalObj;
   }, {});
@@ -47,13 +52,36 @@ function isAnimal(anim) {
 // }
 
 function eachAnimal(animal) {
-  return species.find((elem) => elem.name === animal).availability;
+  return species.find((anim) => anim.name === animal).availability;
 }
-// console.log(eachAnimal('bears'));
+
+function eachDay(weeklyDay) {
+  if (weeklyDay !== 'Monday') {
+    const dailly = species
+      .filter((elem) => elem.availability.includes(weeklyDay))
+      .reduce((finalObject) => {
+        const finalObje = finalObject;
+        finalObje[weeklyDay] = {
+          [weeklyDay]: {
+            officeHour: weeklyOfficeHours(weeklyDay),
+            exhibition: exhibitionDays(weeklyDay) },
+        };
+        return finalObje[weeklyDay];
+      }, {});
+    return dailly;
+  }
+  // eslint-disable-next-line no-return-assign
+  return { [weeklyDay]: {
+    officeHour: weeklyOfficeHours(weeklyDay),
+    exhibition: exhibitionDays(weeklyDay) } };
+}
+
+console.log(eachDay('Monday'));
 
 function getSchedule(scheduleTarget) {
   if (
     !scheduleTarget || (!isDay(scheduleTarget) && !isAnimal(scheduleTarget))
+    // !scheduleTarget
   ) {
     return weeklySchedule();
   }
@@ -63,9 +91,12 @@ function getSchedule(scheduleTarget) {
   if (isAnimal(scheduleTarget)) {
     return eachAnimal(scheduleTarget);
   }
+  // if (eachDay(scheduleTarget)) {
+  //   return eachDay(scheduleTarget);
+  // }
+  return eachDay(scheduleTarget);
 }
-// console.log(isMonday('Monday').filter(elem3) => elem3);
-console.log(getSchedule('snakes'));
+// console.log(getSchedule('Sunday'));
 
 module.exports = getSchedule;
 
