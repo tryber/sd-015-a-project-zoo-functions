@@ -7,13 +7,10 @@ function countAnimals(animal) {
     return animals;
   }
   const numAni = species.find((animals) => animals.name === animal.specie);
-  if (animal.gender === undefined) {
-    return numAni.residents.length; 
-  }
-  else {
+  if (animal.gender === undefined) return numAni.residents.length;
+   {
     return numAni.residents.filter((iten) => iten.sex === animal.gender).length;
   }
 }
 console.log(countAnimals());
 module.exports = countAnimals;
-
