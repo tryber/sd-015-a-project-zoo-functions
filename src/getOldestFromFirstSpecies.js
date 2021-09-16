@@ -10,3 +10,5 @@ function getOldestFromFirstSpecies(id) {
 }
 
 module.exports = getOldestFromFirstSpecies;
+// código do utilizada da PR do Douglas Oliveira
+// link:https://github.com/tryber/sd-015-a-project-zoo-functions/tree/douglas-de-oliveira-project-zoo-function
