@@ -1,8 +1,7 @@
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
-  if (!entrants) return false;
-  if (!Object.values(entrants).length) return false;
+  if (!entrants || ({})) return false;
   return {
     child: Object.values(entrants.filter((element) =>
       element.age < 18)).length,
