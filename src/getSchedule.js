@@ -1,11 +1,13 @@
 const data = require('../data/zoo_data');
 
-// Function to return the complete schedule of the zoo, discriminating which animals will be available and the opening hours for each day
+const animals = data.species.map((specie) => specie.name);
+const days = Object.keys(data.hours);
+
+// Function to return the complete schedule of the zoo, discriminating which animals will be available and opening hours for each day
 function getCompleteSchedule() {
   const { species, hours } = data;
-  const completeSchedule = hours;
-  Object.keys(completeSchedule).forEach((day) => {
-    completeSchedule[day] = {
+  Object.keys(hours).forEach((day) => {
+    hours[day] = {
       officeHour: `Open from ${hours[day].open}am until ${hours[day].close}pm`,
       exhibition: species.reduce((animalsList, specie) => {
         if (specie.availability.includes(day)) animalsList.push(specie.name);
@@ -13,13 +15,44 @@ function getCompleteSchedule() {
       }, []),
     };
   });
-  completeSchedule.Monday.officeHour = 'CLOSED';
-  completeSchedule.Monday.exhibition = 'The zoo will be closed!';
-  return completeSchedule;
+  hours.Monday.officeHour = 'CLOSED';
+  hours.Monday.exhibition = 'The zoo will be closed!';
+  return hours;
 }
 
+// Function to return the schedule of a specific day
+function getDaySchedule(day) {
+  const filteredByDay = data.species.filter((specie) => specie.availability.includes(day));
+  const availableAnimals = filteredByDay.map((specie) => specie.name);
+  const open = (Object.values(Object.entries(data.hours).find((dInf) => dInf[0] === day)[1])[0]);
+  const close = (Object.values(Object.entries(data.hours).find((dInf) => dInf[0] === day)[1])[1]);
+  const daySchedule = {
+    [day]: {
+      officeHour: `Open from ${open}am until ${close}pm`,
+      exhibition: availableAnimals,
+    },
+  };
+  if (day === 'Monday') {
+    return { [day]: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } };
+  }
+  return daySchedule;
+}
+
+// Function to return the available days of a specific animal
+function getAnimalSchedule(animal) {
+  return data.species.find((specie) => specie.name === animal).availability;
+}
+
+// Main function to call another function above acording to each condition
 function getSchedule(scheduleTarget) {
+  if (!scheduleTarget || (!animals.includes(scheduleTarget) && !days.includes(scheduleTarget))) {
+    return getCompleteSchedule();
+  }
+  if (animals.includes(scheduleTarget)) {
+    return getAnimalSchedule(scheduleTarget);
+  }
+  return getDaySchedule(scheduleTarget);
 }
 
-console.log(getCompleteSchedule());
+// console.log(getSchedule('qualquercoisa'));
 module.exports = getSchedule;
