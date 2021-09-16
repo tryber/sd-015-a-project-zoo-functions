@@ -1,7 +1,7 @@
 const { prices } = require('../data/zoo_data');
 
+const entrant = { adult: 0, child: 0, senior: 0 };
 function countEntrants(entrants) {
-  const entrant = { adult: 0, child: 0, senior: 0 };
   if (typeof entrants === 'undefined' || Object.keys(entrants).length === 0) return 0;
   entrants.forEach((iten) => {
     if (iten.age < 18) entrant.child += 1;
