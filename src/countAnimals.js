@@ -21,7 +21,7 @@ function countAnimals(animal) {
   if (!animal.sex) {
     return filteredAnimal.residents.length;
   }
-  const sexFilteredResidents = filteredAnimal.residents.filter((resident) => 
+  const sexFilteredResidents = filteredAnimal.residents.filter((resident) =>
     resident.sex === animal.sex);
   return sexFilteredResidents.length;
 }
