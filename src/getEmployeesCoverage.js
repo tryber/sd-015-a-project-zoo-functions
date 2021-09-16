@@ -20,9 +20,19 @@ const resultToId = (id) => data.employees
     locations: employee.responsibleFor.map((specieId) => specieIdLocation(specieId)),
   }));
 
+const resultToName = (name) => data.employees
+  .filter((employee) => employee.firstName === name || employee.lastName === name)
+  .map((person) => ({
+    id: person.id,
+    fullName: `${person.firstName} ${person.lastName}`,
+    species: person.responsibleFor.map((specieId) => specieIdName(specieId)),
+    locations: person.responsibleFor.map((specieId) => specieIdLocation(specieId)),
+  }));
+
 function getEmployeesCoverage(options) {
   if (!options) return resultNoParam();
   if (options.id) return resultToId(options.id)[0];
+  if (options.name) return resultToName(options.name)[0];
 }
-console.log(getEmployeesCoverage({ id: 'c1f50212-35a6-4ecd-8223-f835538526c2' }));
+console.log(getEmployeesCoverage({ name: 'Sharonda' }));
 module.exports = getEmployeesCoverage;
