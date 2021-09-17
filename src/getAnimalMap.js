@@ -1,84 +1,52 @@
 const data = require('../data/zoo_data');
 
-const nordEste = data.species.filter((region) => region.location === 'NE');
-const noroWest = data.species.filter((region) => region.location === 'NW');
-const sudEste = data.species.filter((region) => region.location === 'SE');
-const sudoWeste = data.species.filter((region) => region.location === 'SW');
+const { species } = require('../data/zoo_data');
 
-function getNull() {
-  const NE = nordEste.map((name) => name.name);
-  const NW = noroWest.map((name) => name.name);
-  const SE = sudEste.map((name) => name.name);
-  const SW = sudoWeste.map((name) => name.name);
+const nordEste = species.filter(({ location }) => location === 'NE');
+const noroWest = species.filter(({ location }) => location === 'NW');
+const sudEste = species.filter(({ location }) => location === 'SE');
+const sudoWeste = species.filter(({ location }) => location === 'SW');
+
+const getNull = () => {
+  const NE = nordEste.map(({ name }) => name);
+  const NW = noroWest.map(({ name }) => name);
+  const SE = sudEste.map(({ name }) => name);
+  const SW = sudoWeste.map(({ name }) => name);
   return { NE, NW, SE, SW };
-}
+};
 
-function getAnimal() {
-  const NE = nordEste.map(({ name, residents }) => ({ [name]: residents
-    .reduce((acc, curr) => acc.concat(curr.name), []) }));
-  const NW = noroWest.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => acc.concat(curr.name), []) }));
-  const SE = sudEste.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => acc.concat(curr.name), []) }));
-  const SW = sudoWeste.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => acc.concat(curr.name), []) }));
+const getSorted = (objSorted, sexSorted, sex, sorted) => {
+  if (sex && sorted) {
+    return sexSorted.sort();
+  }
+  if (sorted) {
+    return objSorted.sort();
+  }
+  return sexSorted;
+};
 
-  return { NE, NW, SE, SW };
-}
+const checkOut = (obj, sexId, sorted) => {
+  const objSorted = obj.reduce((acc, { name }) => acc.concat(name), []);
+  const sexSorted = obj.reduce((acc, { name, sex }) => ((sex === sexId) ? acc
+    .concat(name) : acc), []);
+  if (!sexId && !sorted) return objSorted;
+  return getSorted(objSorted, sexSorted, sexId, sorted);
+};
 
-function getSorted() {
-  const NE = nordEste.map(({ name, residents }) => ({ [name]: residents
-    .reduce((acc, curr) => acc.concat(curr.name), []).sort() }));
-  const NW = noroWest.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => acc.concat(curr.name), []).sort() }));
-  const SE = sudEste.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => acc.concat(curr.name), []).sort() }));
-  const SW = sudoWeste.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => acc.concat(curr.name), []).sort() }));
-
-  return { NE, NW, SE, SW };
-}
-
-function getSex(sex) {
-  const NE = nordEste.map(({ name, residents }) => ({ [name]: residents
-    .reduce((acc, curr) => ((curr.sex === sex) ? acc.concat(curr.name) : acc), []) }));
-  const NW = noroWest.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => ((curr.sex === sex) ? acc.concat(curr.name) : acc), []) }));
-  const SE = sudEste.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => ((curr.sex === sex) ? acc.concat(curr.name) : acc), []) }));
-  const SW = sudoWeste.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => ((curr.sex === sex) ? acc.concat(curr.name) : acc), []) }));
+const getAnimal = (sex, sorted) => {
+  const NE = nordEste.map(({ name, residents }) => ({ [name]: checkOut(residents, sex, sorted) }));
+  const NW = noroWest.map(({ name, residents }) => ({ [name]: checkOut(residents, sex, sorted) }));
+  const SE = sudEste.map(({ name, residents }) => ({ [name]: checkOut(residents, sex, sorted) }));
+  const SW = sudoWeste.map(({ name, residents }) => ({ [name]: checkOut(residents, sex, sorted) }));
 
   return { NE, NW, SE, SW };
-}
-
-function getSexSort(sex) {
-  const NE = nordEste.map(({ name, residents }) => ({ [name]: residents
-    .reduce((acc, curr) => ((curr.sex === sex) ? acc.concat(curr.name) : acc), []).sort() }));
-  const NW = noroWest.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => ((curr.sex === sex) ? acc.concat(curr.name) : acc), []).sort() }));
-  const SE = sudEste.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => ((curr.sex === sex) ? acc.concat(curr.name) : acc), []).sort() }));
-  const SW = sudoWeste.map((name) => ({ [name.name]: name.residents
-    .reduce((acc, curr) => ((curr.sex === sex) ? acc.concat(curr.name) : acc), []).sort() }));
-
-  return { NE, NW, SE, SW };
-}
-
-function getAnimalFunctions(sorted, sex) {
-  if (sex && sorted) return getSexSort(sex);
-  if (sex) return getSex(sex);
-  if (sorted) return getSorted();
-  return false;
-}
+};
 
 function getAnimalMap(options) {
   if (!options) return getNull();
   const { includeNames = false, sorted = false, sex = false } = options;
   if (!includeNames) return getNull();
-  const result = (getAnimalFunctions(sorted, sex));
-  if (!result) return getAnimal();
-  return result;
+  return getAnimal(sex, sorted);
 }
-
+console.log(JSON.stringify(getAnimalMap({ includeNames: true })));
 module.exports = getAnimalMap;
