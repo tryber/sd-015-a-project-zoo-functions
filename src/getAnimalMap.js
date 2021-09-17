@@ -11,7 +11,6 @@ const categoryLocation = {
 
 function getAnimalMap(options) {
   if (!options) return categoryLocation;
-
 }
 
 module.exports = getAnimalMap;
