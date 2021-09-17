@@ -7,7 +7,6 @@ function countAnimals(animal) {
     const { specie, sex } = animal;
     const specieResidents = species.find((whichAnimal) =>
       whichAnimal.name === specie).residents;
-    console.log(specieResidents);
     return sex === undefined
       ? specieResidents.length
       : specieResidents.filter((whatAnimals) => whatAnimals.sex === sex).length;
