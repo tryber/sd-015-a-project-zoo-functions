@@ -1,7 +1,7 @@
-const { species } = require('../data/zoo_data');
+/* const { species } = require('../data/zoo_data');
 const { residents } = require('../data/zoo_data');
 
-function getAnimalMap(options) {
+ function getAnimalMap(options) {
   const allLocations = species.map((iten) => iten.location)
   const allLocation = allLocations.filter((este, i) => allLocations.indexOf(este) === i);
 
@@ -26,6 +26,6 @@ function getAnimalMap(options) {
     return animals;
   };
   }
-console.log(getAnimalMap({ includeNames: true }));
+console.log(getAnimalMap({ includeNames: true })); 
 
-module.exports = getAnimalMap;
+module.exports = getAnimalMap; */
