@@ -22,6 +22,10 @@ function daySchedule(chosenDay) {
   };
 }
 
+function checkIfItsAnimal(specie) {
+  return data.species.some((animal) => animal.name === specie);
+}
+
 const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const allDaysSchedule = {
   Monday: daySchedule('Monday'),
@@ -32,10 +36,6 @@ const allDaysSchedule = {
   Saturday: daySchedule('Saturday'),
   Sunday: daySchedule('Sunday'),
 };
-
-function checkIfItsAnimal (specie) {
-  return data.species.some((animal) => animal.name === specie);
-}
 
 function getSchedule(scheduleTarget) {
   if (!scheduleTarget) {
