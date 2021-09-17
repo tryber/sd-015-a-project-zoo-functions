@@ -30,5 +30,5 @@ function getSchedule(scheduleTarget) {
   if (animal) return data.species.find((anim) => anim.name === scheduleTarget).availability;
   return everyDay();
 }
-console.log(getSchedule('lions'));
+console.log(getSchedule());
 module.exports = getSchedule;
