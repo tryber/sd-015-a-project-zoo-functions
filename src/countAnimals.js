@@ -16,8 +16,11 @@ function countAnimals(animal) {
   }
   if (Object.keys(animal).length === 2) {
     const bicho = data.species.find((elemento) => elemento.name === animal.specie);
-    return bicho.residents.filter((elemento) => elemento.sex === animal.gender).length;
+    return bicho.residents.filter((objeto) => objeto.sex === animal.sex).length;
   }
 }
+
+// console.log(countAnimals({ specie: 'bears' }));
+// console.log(countAnimals({ specie: 'elephants', sex: 'male' }));
 
 module.exports = countAnimals;
