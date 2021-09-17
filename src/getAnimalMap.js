@@ -14,7 +14,7 @@ const { residents } = require('../data/zoo_data');
     };
     return animals;
   }
-  
+
    const getAnimals = species.filter((iten) => iten.location === 'NE').map((specie) => ({
     [specie.name]: species.find((ite) => ite.name === specie.name).residents.map((speci) => speci.name)
   }));
@@ -26,6 +26,6 @@ const { residents } = require('../data/zoo_data');
     return animals;
   };
   }
-console.log(getAnimalMap({ includeNames: true })); 
+console.log(getAnimalMap({ includeNames: true }));
 
 module.exports = getAnimalMap; */
