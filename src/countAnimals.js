@@ -9,8 +9,8 @@ function countAnimals(animal) {
     }, {});
   }
   const especie = species.find((bicho) => bicho.name === animal.specie);
-  if (animal.specie && animal.gender) {
-    const wGender = especie.residents.filter((bicho) => bicho.sex === animal.gender);
+  if (animal.specie && animal.sex) {
+    const wGender = especie.residents.filter((bicho) => bicho.sex === animal.sex);
     return wGender.length;
   }
   return especie.residents.length;
