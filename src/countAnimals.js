@@ -18,4 +18,5 @@ function countAnimals(animal) {
   return item.residents.length;
 }
 
+
 module.exports = countAnimals;
