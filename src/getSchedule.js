@@ -23,8 +23,6 @@ function daySchedule(chosenDay) {
 }
 
 const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-const animals = ['lions', 'tigers', 'bears', 'penguins', 'otters',
-  'frogs', 'snakes', 'elephants', 'giraffes'];
 const allDaysSchedule = {
   Monday: daySchedule('Monday'),
   Tuesday: daySchedule('Tuesday'),
@@ -35,12 +33,16 @@ const allDaysSchedule = {
   Sunday: daySchedule('Sunday'),
 };
 
+function checkIfItsAnimal (specie) {
+  return data.species.some((animal) => animal.name === specie);
+}
+
 function getSchedule(scheduleTarget) {
   if (!scheduleTarget) {
     return allDaysSchedule;
-  } if (!(weekDays.includes(scheduleTarget) || animals.includes(scheduleTarget))) {
+  } if (!(weekDays.includes(scheduleTarget) || checkIfItsAnimal(scheduleTarget))) {
     return allDaysSchedule;
-  } if (animals.includes(scheduleTarget)) {
+  } if (checkIfItsAnimal(scheduleTarget)) {
     return animalSchedule(scheduleTarget);
   }
   return {
