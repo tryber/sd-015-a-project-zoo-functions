@@ -1,11 +1,23 @@
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
-  // seu código aqui
+  let countChild = 0;
+  let countAdult = 0;
+  let countSenior = 0;
+  entrants.forEach((element) => {
+    if (element.age < 18) { countChild += 1; }
+
+    if (element.age >= 18 && element.age < 50) { countAdult += 1; }
+
+    if (element.age >= 50) countSenior += 1;
+    return 0;
+  });
+  return { child: countChild, adult: countAdult, senior: countSenior };
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  if (!entrants) return 0;
+  if (entrants.args === undefined) return 0;
 }
 const entrants = [
   { name: 'Lara Carvalho', age: 5 },
