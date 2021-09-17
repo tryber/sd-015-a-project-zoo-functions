@@ -6,19 +6,15 @@ function isManager(id) {
   return employees.some((element) => element.managers.includes(id));
 }
 
-
 function getRelatedEmployees(managerId) {
   // seu código aqui
   if (isManager(managerId) === false) {
-    throw new Error("O id inserido não é de uma pessoa colaboradora gerente!");
+    throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
-  else if (isManager(managerId) === true){
+  if (isManager(managerId) === true) {
     const findManager = employees.filter((element) => element.managers[0] === managerId);
     const toReturn = findManager.map((element) => `${element.firstName} ${element.lastName}`);
     return toReturn;
-  }
-  else {
-    return ('dibre'); 
   }
 }
 /* console.log(getRelatedEmployees("0e7b460e-acf4-4e17-bcb3-ee472265db83"));
