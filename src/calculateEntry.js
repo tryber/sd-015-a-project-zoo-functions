@@ -13,7 +13,7 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  if (entrants === undefined) {
+  if (entrants === undefined || JSON.stringify(entrants) === JSON.stringify({})) {
     return 0;
   }
 
