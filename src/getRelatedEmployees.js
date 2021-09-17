@@ -3,6 +3,7 @@ const data = require('../data/zoo_data');
 function isManager(id) {
   // seu código aqui
   const managersIds = data.employees.map((employee) => employee.managers).flat(); // Estamos pegando os ids de todos os managers e colocando dentro de um array. Como o resultado vai dar varios arrays dentro de arrays, usamos o .flat() para colocar os resultados dentro de um único array.
+  // source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
   return managersIds.includes(id);
 }
 

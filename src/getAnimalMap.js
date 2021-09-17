@@ -8,7 +8,7 @@ const defaultAnswer = () => {
 
   const defaultObject = {
     NE: [animalsNE[0].name, animalsNE[1].name],
-    NW: [animalsNW[0].name, animalsNW[1].name],
+    NW: [animalsNW[0].name, animalsNW[1].name, animalsNW[2].name],
     SE: [animalsSE[0].name, animalsSE[1].name],
     SW: [animalsSW[0].name, animalsSW[1].name],
   };
@@ -24,10 +24,11 @@ function getAnimalMap(options) {
   return `includeNames: ${includeNames}, sorted: ${sorted}, sex: ${sex}`;
 }
 
-console.log(getAnimalMap());
-console.log(getAnimalMap({ includeNames: true }));
-console.log(getAnimalMap({ sorted: true }));
-console.log(getAnimalMap({ sex: 'male' }));
+// console.log(getAnimalMap());
+// console.log(getAnimalMap({ includeNames: true }));
+// console.log(getAnimalMap({ sorted: true }));
+// console.log(getAnimalMap({ sex: 'male' }));
+console.log(defaultAnswer());
 module.exports = getAnimalMap;
 
 const expectedDefault = {
