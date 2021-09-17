@@ -34,8 +34,8 @@ const getAnimalMapOptions = (sorted, sex) => {
 
 const getAnimalMap = (options) => {
   if (!options) {
-  return map;
-}
+    return map;
+  }
   const { includeNames, sorted, sex } = options;
   if (includeNames) return getAnimalMapOptions(sorted, sex);
 
