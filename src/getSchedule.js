@@ -23,8 +23,8 @@ function daySchedule(chosenDay) {
 }
 
 const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-// eslint-disable-next-line max-len
-const animals = ['lions', 'tigers', 'bears', 'penguins', 'otters', 'frogs', 'snakes', 'elephants', 'giraffes'];
+const animals = ['lions', 'tigers', 'bears', 'penguins', 'otters',
+  'frogs', 'snakes', 'elephants', 'giraffes'];
 const allDaysSchedule = {
   Monday: daySchedule('Monday'),
   Tuesday: daySchedule('Tuesday'),
