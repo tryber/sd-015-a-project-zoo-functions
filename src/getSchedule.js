@@ -28,6 +28,7 @@ function getSchedule(scheduleTarget) {
 
     days.map((obj) => {
       resultado[obj] = getDay(obj);
+      return resultado;
     });
 
     return resultado;
