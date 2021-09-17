@@ -9,7 +9,8 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  const { prices: { adult: adultPrice, senior: seniorPrice, child: childPrice}} = data;
+  console.log(`adult:${adultPrice}, senior:${seniorPrice}, child:${childPrice}`);
 }
 
 module.exports = { calculateEntry, countEntrants };
