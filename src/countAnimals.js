@@ -1,17 +1,15 @@
 const data = require('../data/zoo_data');
 
-const { species } = data;
-
 function countAnimals(animal) {
   // seu código aqui
   const animals = {};
   if (!animal) {
-    species.forEach(({ name, residents }) => {
+    data.species.forEach(({ name, residents }) => {
       animals[name] = residents.length;
     });
     return animals;
   }
-  const animalSelected = species.find((spec) => spec.name === animal.specie);
+  const animalSelected = data.species.find((spec) => spec.name === animal.specie);
 
   if (animal.gender) {
     const sexSelected = animalSelected.residents
