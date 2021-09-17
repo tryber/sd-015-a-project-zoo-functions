@@ -15,7 +15,7 @@ const retornaExhibition = (diaDaSemana) => {
   });
   console.log(animaisHoje);
   return animaisHoje;
-}
+};
 
 function getSchedule(scheduleTarget) {
   if (!scheduleTarget) {

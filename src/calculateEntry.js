@@ -13,13 +13,12 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  if (entrants === undefined || !entrants || entrants === {}) {
+  if (entrants === undefined) {
     return 0;
   }
+
   const totalPessoas = countEntrants(entrants);
   return totalPessoas.adult * 49.99 + totalPessoas.senior * 24.99 + totalPessoas.child * 20.99;
 }
-
-console.log(calculateEntry({}));
 
 module.exports = { calculateEntry, countEntrants };
