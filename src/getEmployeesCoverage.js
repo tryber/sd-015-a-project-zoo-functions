@@ -15,7 +15,6 @@ const structure = (employ) => (
       species.find((spec) => spec.id === creature).location),
   }
 );
-
 const employeeAll = () => employees.map((employ) => (structure(employ)));
 const uniqueEmp = (obj) => structure(obj);
 
