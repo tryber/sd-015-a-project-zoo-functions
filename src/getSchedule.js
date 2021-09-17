@@ -1,7 +1,9 @@
 const data = require('../data/zoo_data');
 
 function getSchedule(scheduleTarget) {
-  // seu código aqui
+  if (!scheduleTarget) {
+    return 0;
+  }
 }
 
 module.exports = getSchedule;
