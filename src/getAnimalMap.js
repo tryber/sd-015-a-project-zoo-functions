@@ -113,7 +113,7 @@ const genderAndSorted = (parameter, genders) => {
 
 const sortedGender = (genders) => {
   const animalGender = Object.keys(animalLocation).reduce((location, initials) => {
-    let result = location;
+    const result = location;
     result[initials] = genderAndSorted(initials, genders);
     return result;
   }, {});

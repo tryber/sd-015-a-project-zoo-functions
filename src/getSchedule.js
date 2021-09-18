@@ -27,8 +27,7 @@ const createTable = () => {
         result.exhibition = getAnimalByDay(days);
         return result;
       }, {});
-      return acc;
-    }
+    } return acc;
   }, {});
   return obj;
 };
