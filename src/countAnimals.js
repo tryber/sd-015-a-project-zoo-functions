@@ -15,13 +15,13 @@ const data = require('../data/zoo_data');
 
 const countAnimals = (animal) => {
   const obj = {};
-  const { specie, sex } = animal;
   if (!animal) {
     data.species.forEach((e) => {
       obj[e.name] = e.residents.length;
     });
     return obj;
   }
+  const { specie, sex } = animal;
   if (!sex) {
     const specieCount = data.species.find((e) => e.name === specie);
     return specieCount.residents.length;
@@ -33,6 +33,6 @@ const countAnimals = (animal) => {
   }
 };
 
-countAnimals({ specie: 'bears', sex: 'female' });
+countAnimals();
 
 module.exports = countAnimals;
