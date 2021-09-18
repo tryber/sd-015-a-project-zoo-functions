@@ -10,7 +10,7 @@ describe('10 - Crie uma associação de informações para cobertura das pessoas
       species: [ 'otters', 'frogs' ],
       locations: [ 'SE', 'SW' ],
     };
-
+    
     expect(actual).toEqual(expected);
   });
 
