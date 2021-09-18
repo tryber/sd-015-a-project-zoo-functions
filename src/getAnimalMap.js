@@ -112,7 +112,6 @@ const genderAndSorted = (parameter, genders) => {
 };
 
 const sortedGender = (genders) => {
-  let result = {};
   const animalGender = Object.keys(animalLocation).reduce((location, initials) => {
     let result = location;
     result[initials] = genderAndSorted(initials, genders);
@@ -127,7 +126,7 @@ function verify1(includeNames, sorted, sex) {
   }
 }
 
-function verify2(includeNames, sex) { 
+function verify2(includeNames, sex) {
   if (typeof includeNames === 'undefined' && sex) return animalLocation;
   if (sex) return animalByGender(sex);
 }
@@ -137,7 +136,7 @@ function verify3(includeNames, sorted) {
   if (includeNames) return getAnimalMapIfIncludeNames();
 }
 
-//https://github.com/tryber/sd-015-a-project-zoo-functions/pull/7/commits/1400152f7e70a76988e2e549b364e6e62fcf80da
+// https://github.com/tryber/sd-015-a-project-zoo-functions/pull/7/commits/1400152f7e70a76988e2e549b364e6e62fcf80da
 function getAnimalMap(options) {
   if (!options) return animalLocation;
   const { includeNames, sorted, sex } = options;

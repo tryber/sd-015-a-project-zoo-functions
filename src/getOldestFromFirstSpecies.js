@@ -7,7 +7,6 @@ const data = require('../data/zoo_data');
 // Passado o id de um funcionário, encontra a primeira espécie de animal gerenciado pelo funcionário, e retorna um array com nome, sexo e idade do animal mais velho dessa espécie.
 
 function createArray(number, id, employee) {
-  const teste = data.employees.find((e) => e.id.includes(id)).responsibleFor;
   const array = data.species.find((e) => employee.includes(e.id)).residents.reduce((acc, curr) => {
     if (number === curr.age) {
       acc.push(curr.name);
@@ -35,14 +34,4 @@ function getOldestFromFirstSpecies(id) {
   return firstSpecie(id);
 }
 
-firstSpecie('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1');
-
 module.exports = getOldestFromFirstSpecies;
-// employees: [
-//     {
-//       id: 'c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1',
-//       firstName: 'Nigel',
-//       lastName: 'Nelson',
-//       managers: [burlId, olaId],
-//       responsibleFor: [lionId, tigersId],
-//     },
