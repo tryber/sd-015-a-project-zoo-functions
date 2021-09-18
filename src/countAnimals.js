@@ -15,5 +15,5 @@ function countAnimals(animal) {
 
   return gender === undefined ? population : popGender;
 }
-
+//testando o avaliador 
 module.exports = countAnimals;
