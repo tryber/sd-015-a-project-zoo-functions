@@ -105,10 +105,6 @@ const genderAndSorted = (parameter, genders) => {
   return obj;
 };
 
-// NE: [
-//   { lions: ['Dee', 'Zena'] },
-//   { giraffes: ['Gracia', 'Vicky'] },
-// ],
 const sortedGender = (genders) => {
   const animalGender = Object.keys(animalLocation).reduce((location, initials) => {
     location[initials] = genderAndSorted(initials, genders);
