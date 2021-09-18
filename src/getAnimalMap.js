@@ -36,18 +36,20 @@ const createObjectAnimalAndName = (parameter) => {
   const name = data.species.filter((e) => e.location.includes(parameter))
     .filter((i) => i.residents.map((x) => x.name));
   const obj = name.reduce((arr, curr) => {
-    const teste = {};
-    teste[curr.name] = curr.residents.map((y) => y.name);
-    arr.push(teste);
+    const result = {};
+    result[curr.name] = curr.residents.map((y) => y.name);
+    arr.push(result);
     return arr;
   }, []);
   return obj;
 };
 
 const getAnimalMapIfIncludeNames = () => {
+  let result = {};
   const objectWithInitialsLocations = Object.keys(animalLocation).reduce((location, initials) => {
-    location[initials] = createObjectAnimalAndName(initials);
-    return location;
+    result = location;
+    result[initials] = createObjectAnimalAndName(initials);
+    return result;
   }, {});
   return objectWithInitialsLocations;
 };
@@ -65,11 +67,13 @@ const sortAnimal = (parameter) => {
 };
 
 const sortedAnimalName = () => {
+  let result = {};
   const sortedAnimal = Object.keys(animalLocation).reduce((location, initials) => {
-    location[initials] = sortAnimal(initials).sort();
-    return location;
+    result = location;
+    result[initials] = sortAnimal(initials).sort();
+    return result;
   }, {});
-  return (sortedAnimal);
+  return sortedAnimal;
 };
 
 const getAnimalByGender = (parameter, genders) => {
@@ -85,9 +89,11 @@ const getAnimalByGender = (parameter, genders) => {
 };
 
 const animalByGender = (genders) => {
+  let result = {};
   const animalGender = Object.keys(animalLocation).reduce((location, initials) => {
-    location[initials] = getAnimalByGender(initials, genders);
-    return location;
+    result = location;
+    result[initials] = getAnimalByGender(initials, genders);
+    return result;
   }, {});
   return animalGender;
 };
@@ -106,21 +112,41 @@ const genderAndSorted = (parameter, genders) => {
 };
 
 const sortedGender = (genders) => {
+  let result = {};
   const animalGender = Object.keys(animalLocation).reduce((location, initials) => {
-    location[initials] = genderAndSorted(initials, genders);
-    return location;
+    let result = location;
+    result[initials] = genderAndSorted(initials, genders);
+    return result;
   }, {});
   return animalGender;
 };
 
+function verify1(includeNames, sorted, sex) {
+  if (includeNames && sorted && sex) {
+    return sortedGender(sex);
+  }
+}
+
+function verify2(includeNames, sex) { 
+  if (typeof includeNames === 'undefined' && sex) return animalLocation;
+  if (sex) return animalByGender(sex);
+}
+
+function verify3(includeNames, sorted) {
+  if (includeNames && sorted) return sortedAnimalName();
+  if (includeNames) return getAnimalMapIfIncludeNames();
+}
+
+//https://github.com/tryber/sd-015-a-project-zoo-functions/pull/7/commits/1400152f7e70a76988e2e549b364e6e62fcf80da
 function getAnimalMap(options) {
   if (!options) return animalLocation;
   const { includeNames, sorted, sex } = options;
-  if (sex && typeof includeNames === 'undefined') return animalLocation;
-  if ((includeNames) && (sex) && (sorted)) return sortedGender(sex);
-  if (sex) return animalByGender(sex);
-  if (sorted) return sortedAnimalName();
-  if (includeNames && !(sorted)) return getAnimalMapIfIncludeNames();
+  const ver1 = verify1(includeNames, sorted, sex);
+  const ver2 = verify2(includeNames, sex);
+  const ver3 = verify3(includeNames, sorted);
+  if (ver1) return ver1;
+  if (ver2) return ver2;
+  if (ver3) return ver3;
 }
 
 getAnimalMap({ includeNames: true, sex: 'female', sorted: true });

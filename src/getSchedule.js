@@ -16,15 +16,16 @@ const createTable = () => {
   const obj = weekDays.reduce((acc, days, index) => {
     if (weekDays[index].includes(days)) {
       const openHours = Object.values(data.hours[days]);
-      acc[days] = Object.values(data.hours[days]).reduce((acumulator) => {
+      acc[days] = Object.values(data.hours[days]).reduce((accumulator) => {
+        const result = accumulator;
         if (days === 'Monday') {
-          acumulator.exhibition = 'The zoo will be closed!';
-          acumulator.officeHour = 'CLOSED';
-          return acumulator;
+          result.exhibition = 'The zoo will be closed!';
+          result.officeHour = 'CLOSED';
+          return result;
         }
-        acumulator.officeHour = `Open from ${openHours[0]}am until ${openHours[1]}pm`;
-        acumulator.exhibition = getAnimalByDay(days);
-        return acumulator;
+        result.officeHour = `Open from ${openHours[0]}am until ${openHours[1]}pm`;
+        result.exhibition = getAnimalByDay(days);
+        return result;
       }, {});
       return acc;
     }
@@ -37,14 +38,15 @@ function getScheduleByDay(day) {
   const teste = createTable();
   const teste2 = Object.entries(teste).find((e) => e.includes(day)).reduce((acc) => {
     acc[day] = Object.values(data.hours[day]).reduce((accumulator) => {
+      const result = accumulator;
       if (day === 'Monday') {
-        accumulator.officeHour = 'CLOSED';
-        accumulator.exhibition = 'The zoo will be closed!';
-        return accumulator;
+        result.officeHour = 'CLOSED';
+        result.exhibition = 'The zoo will be closed!';
+        return result;
       }
-      accumulator.officeHour = `Open from ${openHours[0]}am until ${openHours[1]}pm`;
-      accumulator.exhibition = getAnimalByDay(day);
-      return accumulator;
+      result.officeHour = `Open from ${openHours[0]}am until ${openHours[1]}pm`;
+      result.exhibition = getAnimalByDay(day);
+      return result;
     }, {});
     return acc;
   }, {});
@@ -57,11 +59,17 @@ function getScheduleByAnimal(animal) {
   return scheduleAnimal;
 }
 
+function animalOrDay(parameter) {
+  if (parameter) {
+    if (weekDays.includes(parameter)) return getScheduleByDay(parameter);
+    if (animals.includes(parameter)) return getScheduleByAnimal(parameter);
+  } return createTable();
+}
+
 function getSchedule(scheduleTarget) {
   if (!scheduleTarget) return createTable();
   if (scheduleTarget) {
-    if (weekDays.includes(scheduleTarget)) return getScheduleByDay(scheduleTarget);
-    if (animals.includes(scheduleTarget)) return getScheduleByAnimal(scheduleTarget);
-  } return createTable();
+    return animalOrDay(scheduleTarget);
+  }
 }
 module.exports = getSchedule;
