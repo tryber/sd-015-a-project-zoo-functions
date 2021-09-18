@@ -11,19 +11,20 @@ const findEmployee = (person) => {
 };
 
 const location = (person) => {
-  const param = findEmployee(person).responsibleFor;
-  const locations = [];
-  for (let i = 0; i < data.species.length; i += 1) {
-    for (let i2 = 0; i2 < param.length; i2 += 1) {
-      if (data.species[i].id === param[i2]) {
-        locations.push(data.species[i].location);
-      }
-    }
-  }
-  return locations;
+  // const param = findEmployee(person).responsibleFor;
+  // const locations = [];
+  // for (let i = 0; i < data.species.length; i += 1) {
+  //   for (let i2 = 0; i2 < param.length; i2 += 1) {
+  //     if (data.species[i].id === param[i2]) {
+  //       locations.push(data.species[i].location);
+  //     }
+  //   }
+  // }
+  // return locations;
 };
 
-const getAnimalName = (id) => id.map((element) => species.find((specie) => specie.id === element).name);
+const getAnimalName = (id) => id.map((element) =>
+  species.find((specie) => specie.id === element).name);
 console.log(getAnimalName());
 
 const allEmployerrs = () => {
