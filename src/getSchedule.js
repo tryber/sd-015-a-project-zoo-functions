@@ -6,10 +6,7 @@ const horarios = data.hours;
 function parametro() {
   const dias = {};
   Object.keys(horarios).forEach((key) => {
-    dias[key] = {
-      officeHour: '',
-      exhibition: [],
-    };
+    dias[key] = { officeHour: '', exhibition: [], };
     const especifico = data.hours[key];
     if (key === 'Monday') {
       dias[key].officeHour = 'CLOSED';
@@ -36,30 +33,20 @@ function animaizinhos(scheduleTarget) {
   return respostaAnimal[0];
 }
 
-function exhibitionDiaDaSemana(scheduleTarget, diaDaSemana) {
-  animais.forEach((animal) => {
-    if (animal.availability.includes(scheduleTarget)) {
-      diaDaSemana[scheduleTarget].exhibition.push(animal.name);
-    } else if (scheduleTarget === 'Monday') {
-      diaDaSemana[scheduleTarget].exhibition = 'The zoo will be closed!';
-    }
-  });
-}
-
 function diaSemana(scheduleTarget) {
   const diaDaSemana = {};
-  diaDaSemana[scheduleTarget] = {
-    officeHour: '',
-    exhibition: [],
-  };
+  diaDaSemana[scheduleTarget] = { officeHour: '', exhibition: [], };
   const oDia = horarios[scheduleTarget];
-  exhibitionDiaDaSemana(scheduleTarget, diaDaSemana);
   if (scheduleTarget === 'Monday') {
     diaDaSemana[scheduleTarget].officeHour = 'CLOSED';
+    diaDaSemana[scheduleTarget].exhibition = 'The zoo will be closed!';
   } else {
-    diaDaSemana[
-      scheduleTarget
-    ].officeHour = `Open from ${oDia.open}am until ${oDia.close}pm`;
+    diaDaSemana[scheduleTarget].officeHour = `Open from ${oDia.open}am until ${oDia.close}pm`;
+    animais.forEach((animal) => {
+      if (animal.availability.includes(scheduleTarget)) {
+        diaDaSemana[scheduleTarget].exhibition.push(animal.name);
+      }
+    });
   }
   return diaDaSemana;
 }
