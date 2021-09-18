@@ -38,6 +38,7 @@ function getEmployeesCoverage(information) {
   if (employeesDates().find((employee) => employee.fullName.includes(name))) {
     return employeesDates().find((employee) => employee.fullName.includes(name));
   }
+  throw new Error('Informações inválidas');
 }
 
 module.exports = getEmployeesCoverage;
