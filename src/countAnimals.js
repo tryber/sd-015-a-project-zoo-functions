@@ -5,7 +5,7 @@ function countAnimals(animal) {
   // seu código aqui
   if (animal === undefined) {
     const objectToReturn = {};
-    species.forEach(element => {
+    species.forEach((element) => {
       const animalName = element.name;
       const numberAnimals = element.residents.length;
       objectToReturn[`${animalName}`] = numberAnimals;
@@ -15,11 +15,9 @@ function countAnimals(animal) {
   const { specie, sex } = animal;
   const findAnimal = species.find((element) => element.name === specie);
   if (sex) {
-    return findAnimal['residents'].filter((element) => element.sex === sex).length;
-  }
-  else {
-    return findAnimal.residents.length;
-  }
+    return findAnimal.residents.filter((element) => element.sex === sex).length;
+  } 
+  return findAnimal.residents.length;
 }
  /* console.log(countAnimals({ specie: 'bears', sex: 'female' }));  */
 module.exports = countAnimals;
