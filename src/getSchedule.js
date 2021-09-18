@@ -6,7 +6,7 @@ const horarios = data.hours;
 function parametro() {
   const dias = {};
   Object.keys(horarios).forEach((key) => {
-    dias[key] = { officeHour: '', exhibition: [], };
+    dias[key] = { officeHour: '', exhibition: [] };
     const especifico = data.hours[key];
     if (key === 'Monday') {
       dias[key].officeHour = 'CLOSED';
@@ -35,7 +35,7 @@ function animaizinhos(scheduleTarget) {
 
 function diaSemana(scheduleTarget) {
   const diaDaSemana = {};
-  diaDaSemana[scheduleTarget] = { officeHour: '', exhibition: [], };
+  diaDaSemana[scheduleTarget] = { officeHour: '', exhibition: [] };
   const oDia = horarios[scheduleTarget];
   if (scheduleTarget === 'Monday') {
     diaDaSemana[scheduleTarget].officeHour = 'CLOSED';
