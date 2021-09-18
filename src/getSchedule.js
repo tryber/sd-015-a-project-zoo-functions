@@ -3,29 +3,7 @@ const data = require('../data/zoo_data');
 const animais = data.species;
 const horarios = data.hours;
 
-function preencheExhibition(key, dias) {
-  animais.forEach((animal) => {
-    if (animal.availability.includes(key)) {
-      dias[key].exhibition.push(animal.name);
-    } else if (key === 'Monday') {
-      dias[key].exhibition = 'The zoo will be closed!';
-    }
-  });
-}
-
-function preencheOfficeHour(especifico, key, dias) {
-  Object.values(especifico).forEach((cada) => {
-    if (key === 'Monday') {
-      dias[key].officeHour = 'CLOSED';
-    } else {
-      dias[
-        key
-      ].officeHour = `Open from ${especifico.open}am until ${especifico.close}pm`;
-    }
-  });
-}
-
-function parametro(scheduleTarget) {
+function parametro() {
   const dias = {};
   Object.keys(horarios).forEach((key) => {
     dias[key] = {
@@ -33,8 +11,17 @@ function parametro(scheduleTarget) {
       exhibition: [],
     };
     const especifico = data.hours[key];
-    preencheOfficeHour(especifico, key, dias);
-    preencheExhibition(key, dias);
+    if (key === 'Monday') {
+      dias[key].officeHour = 'CLOSED';
+      dias[key].exhibition = 'The zoo will be closed!';
+    } else {
+      dias[key].officeHour = `Open from ${especifico.open}am until ${especifico.close}pm`;
+      animais.forEach((animal) => {
+        if (animal.availability.includes(key)) {
+          dias[key].exhibition.push(animal.name);
+        }
+      });
+    }
   });
   return dias;
 }
@@ -84,7 +71,7 @@ function getSchedule(scheduleTarget) {
   if (Object.keys(horarios).includes(scheduleTarget)) {
     return diaSemana(scheduleTarget);
   }
-  return parametro(scheduleTarget);
+  return parametro();
 }
 
 module.exports = getSchedule;
