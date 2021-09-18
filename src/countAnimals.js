@@ -10,12 +10,15 @@ function countAnimals(animal) {
   }
   const { specie, sex } = animal;
   if (sex === undefined) {
-    return data.species.find((x) =>
+    const specieType = data.species.find((x) =>
       x.name === specie).residents.length;
+    return specieType;
   }
-  return data.species.find((x) =>
+  const specieSex = data.species.find((x) =>
     x.name === specie).residents.filter((x) =>
     x.sex === sex).length;
+  return specieSex;
 }
+console.log(countAnimals({ specie: 'lions' }));
 
 module.exports = countAnimals;
