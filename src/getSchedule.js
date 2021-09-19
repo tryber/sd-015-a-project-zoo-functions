@@ -2,11 +2,6 @@ const { hours } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 const diaHora = () => Object.entries(hours);
-const horario = {
-  [diaHora()[0][0]]: {
-    officeHour: `Open from ${diaHora()[0][1].open}am until ${diaHora()[0][1].close}pm`,
-  },
-};
 
 function teste() {
   const resultado = {};
