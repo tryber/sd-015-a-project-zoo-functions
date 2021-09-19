@@ -14,7 +14,7 @@ function countAnimals(animal) {
     return kindQuantity.filter((element) => element.sex === animal.sex).length;
   }
 
-  return kindQuantity.length; 
+  return kindQuantity.length;
 }
 
 module.exports = countAnimals;
