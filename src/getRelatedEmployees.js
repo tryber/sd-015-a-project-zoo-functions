@@ -1,7 +1,7 @@
 const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-// mentoria e git Apolo
+// www.youtube.com/playlist?list=PLYgzkrmJnLwo-pTURSTti_ljhjWB9BF7 - mentoria sabado e git Apolo
 
 function isManager(id) {
   return employees.some((manager) => manager.managers.includes((id)));
