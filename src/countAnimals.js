@@ -1,5 +1,7 @@
 const data = require('../data/zoo_data');
 
+// youtube - mentoria sabado e git
+
 function countAnimals(animal) {
   const object = {};
   if (animal === undefined) {
