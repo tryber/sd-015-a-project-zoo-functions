@@ -14,12 +14,11 @@ function countEntrants(entrants) {
 function calculateEntry(entrants) {
   if (!entrants || Object.keys(entrants).length === 0) return 0;
 
-  const sum = ( countEntrants(entrants).child * data.prices.child ) +
-    ( countEntrants(entrants).adult * data.prices.adult ) +
-    ( countEntrants(entrants).senior * data.prices.senior );
+  const sum = (countEntrants(entrants).child * data.prices.child)
+    + (countEntrants(entrants).adult * data.prices.adult)
+    + (countEntrants(entrants).senior * data.prices.senior);
 
   return sum;
-
 }
 
 module.exports = { calculateEntry, countEntrants };
