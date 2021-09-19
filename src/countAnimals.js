@@ -1,8 +1,6 @@
-const data = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
 
 // o seguinte código foi realizado com o auxílio das informações encontradas na página: https://dev.to/_bigblind/quick-tip-transform-an-array-into-an-object-using-reduce-2gh6
-
 const defaultCountAnimals = species.reduce((acc, specie) => {
   const { name, residents } = specie;
   return {

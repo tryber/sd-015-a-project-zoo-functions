@@ -1,4 +1,3 @@
-const data = require('../data/zoo_data');
 const { hours, species } = require('../data/zoo_data');
 
 const animalAvailability = species.map((specie) => [specie.name, specie.availability]);

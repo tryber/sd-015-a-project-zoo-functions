@@ -1,13 +1,13 @@
-const data = require('../data/zoo_data');
+const { employees } = require('../data/zoo_data');
 
 function isManager(id) {
-  const managersNames = data.employees.reduce((total, worker) => total.concat(worker.managers), []);
+  const managersNames = employees.reduce((total, worker) => total.concat(worker.managers), []);
   return managersNames.some((managerId) => managerId === id);
 }
 
 function getRelatedEmployees(managerId) {
   if (isManager(managerId) === true) {
-    return data.employees.reduce((acc, worker) => {
+    return employees.reduce((acc, worker) => {
       if (worker.managers.includes(managerId) === true) {
         const fullName = `${worker.firstName} ${worker.lastName}`;
         return acc.concat(fullName);
