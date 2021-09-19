@@ -8,7 +8,7 @@ function countSex(animals, gender) {
   let animalResidents = animals.residents;
   if (gender) {
     animalResidents = animalResidents.filter((resident) => (
-  Attribute(resident, 'sex', gender)
+      Attribute(resident, 'sex', gender)
     ));
   }
   return animalResidents.length;
@@ -18,7 +18,7 @@ function countAnimals({ species, gender } = { species: undefined, gender: undefi
   let animals = data.species;
   if (species) {
     animals = data.species.filter((animalSpecie) => (
-  Attribute(animalSpecie, 'name', species)
+      Attribute(animalSpecie, 'name', species)
     ));
     return countSex(animals[0], gender);
   }
