@@ -4,10 +4,9 @@ function getSpeciesByIds(...ids) {
   const dataById = [];
   if (ids.length > 0) {
     for (let index = 0; index < ids.length; index += 1) {
-      dataById.push(species.filter((specie) => ids[index] === specie.id));
+      dataById.push(species.filter((specie) => ids[index] === specie.id)[0]);
     }
-    const result = dataById.reduce((total, current) => total.concat(current), []);
-    return result;
+    return dataById;
   }
   return dataById;
 }
