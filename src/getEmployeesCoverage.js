@@ -17,7 +17,7 @@ function validation(identification) {
   const { name, id } = identification; // Descontruir os parametros, para fazer a condições.
   if (name) {
     return getEmployeerInformation.find((nameEmployee) =>
-      nameEmployee.fullName.split(' ').includes(name));
+      nameEmployee.fullName.split(' ').includes(name)); // This part (split('') I fund in https://stackoverflow.com/questions/55163348/how-to-check-if-a-string-contains-a-word-in-javascript/55163447 
   } if (id) {
     return getEmployeerInformation.find((nameEmployee) => nameEmployee.id === id);
   }
