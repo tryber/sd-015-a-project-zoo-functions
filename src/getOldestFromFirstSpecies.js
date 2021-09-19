@@ -9,7 +9,8 @@ function getOldestFromFirstSpecies(id) {
   const findAnimals = species.find((elementAnimals) =>
     findEmployee.includes(elementAnimals.id)).residents;
 
-  const oldAnimal = findAnimals.reduce((acc, curr) => ((acc.age > curr.age) ? acc : curr), 0); // Essa compração usando o reduce foi tirada a logica do site :https://stackoverflow.com/questions/4020796/finding-the-max-value-of-an-attribute-in-an-array-of-objects?rq=1 resposta do  juliangonzalez.
-  return Object.values(oldAnimal);
+  const oldestAnimal = findAnimals.reduce((acc, curr) => ((acc.age > curr.age) ? acc : curr), 0); 
+  //logica do site :https://stackoverflow.com/questions/4020796/finding-the-max-value-of-an-attribute-in-an-array-of-objects?rq=1 resposta do  juliangonzalez.
+  return Object.values(oldestAnimal);
 }
 module.exports = getOldestFromFirstSpecies;
