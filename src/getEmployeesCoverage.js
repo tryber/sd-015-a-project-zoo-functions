@@ -3,48 +3,50 @@ const data = require('../data/zoo_data');
 
 // Busca o nome das especies
 const getSpecies = (speciesIds) =>
-  speciesIds.map((animalId) => species.find((specie) => specie.id === animalId).name
-);
+  speciesIds.map(
+    (animalId) => species.find((specie) => specie.id === animalId).name,
+  );
 
-//Busca a localização das especies
+// Busca a localização das especies
 const getLocation = (speciesIds) =>
-  speciesIds.map((animalId) => species.find((specie) => specie.id === animalId).location
-);
+  speciesIds.map(
+    (animalId) => species.find((specie) => specie.id === animalId).location,
+  );
 
-// 
+// Retorna objeto com as infos das pessoas funcionárias.
 const getEmployees = () =>
   employees.map((employee) => {
-    const object = { 
+    const object = {
       id: employee.id,
       fullName: `${employee.firstName} ${employee.lastName}`,
       species: getSpecies(employee.responsibleFor),
-      locations: getLocation(employee.responsibleFor), 
+      locations: getLocation(employee.responsibleFor),
     };
     return object;
   });
 
-  // Caso nenhuma pessoa seja encontrada com o nome, sobrenome ou id, um erro é gerado.
-  const verifyEmployeeInformations = (name, id) => {
-    const verified = employees.some((employee) =>
-        employee.firstName === name
-        || employee.lastName === name
-        || employee.id === id,
-    );
-    if (verified === false) throw new Error('Informações inválidas');
-  };
+// Verifica informações das pessoas funcionárias.
+// Caso nenhuma pessoa seja encontrada com o nome, sobrenome ou id, um erro é gerado.
+const verifyEmployeeInformations = (name, id) => {
+  const verified = employees.some(
+    (employee) =>
+      employee.firstName === name
+      || employee.lastName === name
+      || employee.id === id,
+  );
+  if (verified === false) throw new Error('Informações inválidas');
+};
 
-  //
-  const allEmployees = getEmployees();
+const allEmployees = getEmployees();
 
-  const getEmployeeById = (id) => {
-    return allEmployees.find((employee) => employee.id === id);
-  };
+// Obtem a pessoa funcionaria pelo id
+const getEmployeeById = (id) => allEmployees.find((employee) => employee.id === id);
 
-  //
+// Obtem a pessoa funcionaria pelo nome
+const getEmployeeByName = (name) => allEmployees.find((value) => value.fullName.includes(name));
 
-  const getEmployeeByName = (name) => {
-    return allEmployees.find((employee) => employee.fullName.includes(name));
-  }
+// 1 : retornar um array com a cobertura de todas as pessoas funcionárias.
+// Associa infos das pessoas funcionárias.
 
 function getEmployeesCoverage(employee) {
   if (employee === undefined) return getEmployees(); // 1
@@ -54,9 +56,6 @@ function getEmployeesCoverage(employee) {
   if (name) return getEmployeeByName(name);
   if (id) return getEmployeeById(id);
 }
-
-// 1 : retornar um array com a cobertura de todas as pessoas funcionárias.
-// 2 : 
 
 // Referência: [Guilherme Polippo] https://github.com/tryber/sd-015-a-project-zoo-functions/pull/100/commits/101555f04e52ce4f75b882d2979984011f37067a
 
