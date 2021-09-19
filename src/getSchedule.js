@@ -55,6 +55,4 @@ function getSchedule(scheduleTarget) {
   return getObjWithArray();
 }
 
-console.log(getSchedule('Monday'));
-
 module.exports = getSchedule;
