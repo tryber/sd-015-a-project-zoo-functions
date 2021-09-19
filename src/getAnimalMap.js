@@ -4,4 +4,6 @@ function getAnimalMap(options) {
   // seu código aqui
 }
 
+console.log(getAnimalMap());
+
 module.exports = getAnimalMap;
