@@ -41,7 +41,7 @@ const includeNamesAnimals = ({ includeNames, sorted }) => {
   return obj;
 };
 
-const includeNameSex = ({ includeNames, sex , sorted}) => {
+const includeNameSex = ({ includeNames, sex, sorted }) => {
   const obj = {};
   const locations = getAllLocations();
   const animalSex = sex;
