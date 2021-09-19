@@ -22,9 +22,9 @@ function calculateEntry(entrants = {}) {
   if (Object.keys(entrants).length === 0) {
     return 0;
   }
-  const { child: child, adult: adult, senior: senior } = countEntrants(entrants);
+  const { child: visChild, adult: visAdult, senior: visSenior } = countEntrants(entrants);
   const { child: priceChild, adult: priceAdult, senior: priceSenior } = data.prices;
-  return priceChild * child + priceAdult * adult + priceSenior * senior;
+  return priceChild * visChild + priceAdult * visAdult + priceSenior * visSenior;
 }
 
 module.exports = { calculateEntry, countEntrants };
