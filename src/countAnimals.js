@@ -1,27 +1,23 @@
-const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function undefinedAnimal() {
-  const object = {};
-  species.forEach((element) => {
-    object[element.name] = element.residents.length;
-  });
-  return object;
-}
-
-function countSpecies(animal) {
-  const object = species.find((element) => element.name === animal.specie);
-  if (animal.specie !== undefined && animal.gender === undefined) {
-    return object.residents.length;
-  }
-  return object.residents.filter((element) => element.sex === animal.gender).length;
-}
+const { species } = data;
 
 function countAnimals(animal) {
+  // seu código aqui
+  const animals = {};
   if (!animal) {
-    return undefinedAnimal();
+    species.forEach(({ name, residents }) => {
+      animals[name] = residents.length;
+    });
+    return animals;
   }
-  return countSpecies(animal);
-}
+  const animalSelected = species.find((specie) => specie.name === animal.specie);
 
+  if (animal.sex) {
+    const sexSelected = animalSelected.residents
+      .filter((resident) => resident.sex === animal.sex);
+    return sexSelected.length;
+  }
+  return animalSelected.residents.length;
+}
 module.exports = countAnimals;
