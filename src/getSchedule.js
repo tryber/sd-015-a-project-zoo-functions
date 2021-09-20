@@ -4,13 +4,12 @@ const { species, hours } = data;
 
 function createBase() {
   const dayWeeks = Object.keys(hours);
-  const openingHours = Object.values(hours);
+  const zooHours = Object.values(hours);
   const daysHoursZoo = dayWeeks.reduce((acc, actual, index, array) => {
-    if (index !== array.length - 1) {
-      acc[actual] = { officeHour: 
-        `Open from ${openingHours[index].open}am until ${openingHours[index].close}pm`,
-      exhibition: species.filter((specie) =>
-        specie.availability.includes(actual)).map((animal) => animal.name) };
+    if (i !== array.length - 1) {
+      acc[actual] = { officeHour: `Open from ${zooHours[i].open}am until ${zooHours[i].close}pm`,
+        exhibition: species.filter((specie) =>
+          specie.availability.includes(actual)).map((animal) => animal.name) };
       return acc;
     }
     acc[actual] = { officeHour: 'CLOSED',
