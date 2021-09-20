@@ -17,13 +17,6 @@ function getOfficeHour(scheduleTarget) {
   return getOfficeHourContinue(scheduleTarget);
 }
 
-function getfilters(scheduleTarget) {
-  const animals = data.species.filter((x) => x.availability.includes(scheduleTarget))
-    .map((y) => y.name);
-
-  return getAnimals(animals, scheduleTarget);
-}
-
 function getTodosOsDias() {
   const Tuesday = getfilters('Tuesday');
   const Wednesday = getfilters('Wednesday');
@@ -57,6 +50,13 @@ function getAnimals(animals, scheduleTarget) {
     return animal.availability;
   }
   return getTodosOsDias();
+}
+
+function getfilters(scheduleTarget) {
+  const animals = data.species.filter((x) => x.availability.includes(scheduleTarget))
+    .map((y) => y.name);
+
+  return getAnimals(animals, scheduleTarget);
 }
 
 function getSchedule(scheduleTarget) {
