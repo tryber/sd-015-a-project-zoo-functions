@@ -5,7 +5,7 @@ const { species, hours } = data;
 function createBase() {
   const dayWeeks = Object.keys(hours);
   const zooHours = Object.values(hours);
-  const daysHoursZoo = dayWeeks.reduce((acc, actual, index, array) => {
+  const daysHoursZoo = dayWeeks.reduce((acc, actual, i, array) => {
     if (i !== array.length - 1) {
       acc[actual] = { officeHour: `Open from ${zooHours[i].open}am until ${zooHours[i].close}pm`,
         exhibition: species.filter((specie) =>
