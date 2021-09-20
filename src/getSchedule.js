@@ -20,7 +20,7 @@ function completeSchedule() {
   const fullSchedule = daysOfWeek.map((day) =>
     ({ [day]: { officeHour: `Open from ${getHour(day).open}am until ${getHour(day).close}pm` } }));
   // const result = fullSchedule.reduce((a, v) => ({ a, [v]: v }), {});
-  return typeof (fullSchedule);
+  return fullSchedule[0];
   // console.log(fullSchedule);
 }
 
