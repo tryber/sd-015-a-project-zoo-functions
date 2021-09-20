@@ -7,7 +7,8 @@ function getId(parametro) {
       || pessoa.firstName === parametro.name
       || pessoa.lastName === parametro.name
     ) {
-      id = pessoa.id;
+      // id = pessoa.id;
+      return pessoa.id
     }
     return id;
   }, '');
@@ -21,7 +22,8 @@ function getName(parametro) {
       || pessoa.firstName === parametro.name
       || pessoa.lastName === parametro.name
     ) {
-      nomeCompleto = `${pessoa.firstName} ${pessoa.lastName}`;
+      // nomeCompleto = `${pessoa.firstName} ${pessoa.lastName}`;
+      return `${pessoa.firstName} ${pessoa.lastName}`;
     }
     return nomeCompleto;
   }, '');
@@ -35,14 +37,15 @@ function getSpecies(parametro) {
       || pessoa.firstName === parametro.name
       || pessoa.lastName === parametro.name
     ) {
-      animais = pessoa.responsibleFor;
+      // animais = pessoa.responsibleFor;
+      return pessoa.responsibleFor;
     }
     return animais;
   }, []);
   const nomeAnimais = data.species.reduce((listaNomes, animal) => {
     if (idAnimais.includes(animal.id)) {
-      listaNomes.push(animal.name)
-    };
+      listaNomes.push(animal.name);
+    }
     return listaNomes;
   }, []);
   return nomeAnimais;
@@ -74,14 +77,14 @@ function getEmployeesCoverage(parametro) {
   if (parametro === undefined) {
     const respostaTodos = [];
     data.employees.forEach((pessoa) => {
-      respostaTodos.push(respostaFinal({ name: `${pessoa.firstName}` }))
+      respostaTodos.push(respostaFinal({ name: `${pessoa.firstName}` }));
     });
     return respostaTodos;
   }
   if (data.employees.find((empregado) => empregado.id === parametro.id)) {
     return respostaFinal(parametro);
   }
-  if (data.employees.find((empregado) => empregado.firstName === parametro.name )) {
+  if (data.employees.find((empregado) => empregado.firstName === parametro.name)) {
     return respostaFinal(parametro);
   }
   if (data.employees.find((empregado) => empregado.lastName === parametro.name)) {
