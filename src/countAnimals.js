@@ -16,10 +16,10 @@ function countAnimals(animal) {
     });
     return result;
   }
-  const { specie, gender } = animal;
-  if (specie && gender) {
+  const { specie, sex } = animal;
+  if (specie && sex) {
     const specieFind = species.find((aux) => aux.name === specie);
-    const genderFIlter = specieFind.residents.filter((aux) => aux.sex === gender);
+    const genderFIlter = specieFind.residents.filter((aux) => aux.sex === sex);
     return genderFIlter.length;
   }
 
