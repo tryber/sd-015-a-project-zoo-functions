@@ -8,7 +8,7 @@ function getId(parametro) {
       || pessoa.lastName === parametro.name
     ) {
       // id = pessoa.id;
-      return pessoa.id
+      return pessoa.id;
     }
     return id;
   }, '');
