@@ -22,7 +22,7 @@ function animalGender(animal) {
   let animalsGenders = 0;
   species.forEach((specie) => {
     if (specie.name === animal.specie) {
-      animalsGenders = specie.residents.filter((eachAnimal) => eachAnimal.sex === animal.sex).length;
+      animalsGenders = specie.residents.filter((each) => each.sex === animal.sex).length;
     }
   });
   return animalsGenders;
