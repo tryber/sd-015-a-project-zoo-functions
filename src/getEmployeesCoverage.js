@@ -1,62 +1,62 @@
-const data = require("../data/zoo_data");
-
+const data = require('../data/zoo_data');
 
 function getId(parametro) {
   const resposta = data.employees.reduce((id, pessoa) => {
     if (
-      pessoa.id === parametro.id ||
-      pessoa.firstName === parametro.name ||
-      pessoa.lastName === parametro.name
+      pessoa.id === parametro.id
+      || pessoa.firstName === parametro.name
+      || pessoa.lastName === parametro.name
     ) {
-      id = pessoa.id
+      id = pessoa.id;
     }
     return id;
-  }, '')
+  }, '');
   return resposta;
 }
 
 function getName(parametro) {
   const resposta = data.employees.reduce((nomeCompleto, pessoa) => {
     if (
-      pessoa.id === parametro.id ||
-      pessoa.firstName === parametro.name ||
-      pessoa.lastName === parametro.name
+      pessoa.id === parametro.id
+      || pessoa.firstName === parametro.name
+      || pessoa.lastName === parametro.name
     ) {
       nomeCompleto = `${pessoa.firstName} ${pessoa.lastName}`;
     }
     return nomeCompleto;
-  }, '')
+  }, '');
   return resposta;
 }
 
 function getSpecies(parametro) {
   const idAnimais = data.employees.reduce((animais, pessoa) => {
     if (
-      pessoa.id === parametro.id ||
-      pessoa.firstName === parametro.name ||
-      pessoa.lastName === parametro.name
+      pessoa.id === parametro.id
+      || pessoa.firstName === parametro.name
+      || pessoa.lastName === parametro.name
     ) {
       animais = pessoa.responsibleFor;
     }
     return animais;
   }, []);
   const nomeAnimais = data.species.reduce((listaNomes, animal) => {
-    if (idAnimais.includes(animal.id))
+    if (idAnimais.includes(animal.id)) {
       listaNomes.push(animal.name)
-    return listaNomes
-  }, [])
+    };
+    return listaNomes;
+  }, []);
   return nomeAnimais;
 }
 
 function getLocations(parametro) {
-  let resposta = [];
+  const resposta = [];
   getSpecies(parametro).forEach((animalDaPessoa) => {
     data.species.forEach((animal) => {
       if (animal.name === animalDaPessoa) {
         resposta.push(animal.location);
       }
-    })
-  })
+    });
+  });
   return resposta;
 }
 
@@ -65,21 +65,26 @@ function respostaFinal(parametro) {
     id: `${getId(parametro)}`,
     fullName: `${getName(parametro)}`,
     species: getSpecies(parametro),
-    locations: getLocations(parametro)
-  }
-  return resposta
+    locations: getLocations(parametro),
+  };
+  return resposta;
 }
 
 function getEmployeesCoverage(parametro) {
   if (parametro === undefined) {
     const respostaTodos = [];
-    data.employees.forEach((pessoa) => respostaTodos.push(respostaFinal({ name: `${pessoa.firstName}`})));
+    data.employees.forEach((pessoa) => {
+      respostaTodos.push(respostaFinal({ name: `${pessoa.firstName}` }))
+    });
     return respostaTodos;
   }
   if (data.employees.find((empregado) => empregado.id === parametro.id)) {
     return respostaFinal(parametro);
   }
-  if (data.employees.find((empregado) => empregado.firstName === parametro.name || empregado.lastName === parametro.name)) {
+  if (data.employees.find((empregado) => empregado.firstName === parametro.name )) {
+    return respostaFinal(parametro);
+  }
+  if (data.employees.find((empregado) => empregado.lastName === parametro.name)) {
     return respostaFinal(parametro);
   }
   throw new Error('Informações inválidas');
