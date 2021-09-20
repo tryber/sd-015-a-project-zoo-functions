@@ -24,13 +24,13 @@ function getSpeciesByIds(...id) {
   }
   if (id.length > 1) {
     const busca = species.filter((obj) => id.includes(obj.id));
-    console.log(busca);
+    // console.log(busca);
     return busca;
   }
   const buscaId = species.filter((objeto) => objeto.id.includes(id));
-  console.log(buscaId);
+  // console.log(buscaId);
   return buscaId;
 }
-getSpeciesByIds('0938aa23-f153-4937-9f88-4858b24d6bce', '78460a91-f4da-4dea-a469-86fd2b8ccc84',
-  '89be95b3-47e4-4c5b-b687-1fabf2afa274');
+// getSpeciesByIds('0938aa23-f153-4937-9f88-4858b24d6bce', '78460a91-f4da-4dea-a469-86fd2b8ccc84',
+// '89be95b3-47e4-4c5b-b687-1fabf2afa274');
 module.exports = getSpeciesByIds;
