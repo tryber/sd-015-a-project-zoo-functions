@@ -12,12 +12,11 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  if (entrants === undefined || entrants === {}) return 0;
+  if (entrants === undefined || Object.keys(entrants).length === 0) return 0;
+  // usar o metodo object.keys foi uma ideia que busquei no repositório de Leonardo.
+  // https://github.com/tryber/sd-015-a-project-zoo-functions/pull/1/commits/fc49fc544616d097f8ca8aafeb2876ca597afdc8
   let entry = 0;
   const people = countEntrants(entrants);
-  if (people === {}) {
-    return 0;
-  }
   entry += people.child * data.prices.child;
   entry += people.adult * data.prices.adult;
   entry += people.senior * data.prices.senior;
