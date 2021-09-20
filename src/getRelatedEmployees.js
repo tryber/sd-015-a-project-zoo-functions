@@ -17,5 +17,3 @@ function getRelatedEmployees(managerId) {
 }
 
 module.exports = { isManager, getRelatedEmployees };
-
-console.log(getRelatedEmployees('fdb2543b-5662-46a7-badc-93d960fdc0a8'));
