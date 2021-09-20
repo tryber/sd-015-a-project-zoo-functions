@@ -1,5 +1,12 @@
 const data = require('../data/zoo_data');
 
+function getOfficeHourContinue(scheduleTarget) {
+  if (scheduleTarget === 'Saturday') {
+    return 'Open from 8am until 10pm';
+  }
+  return 'Open from 8am until 8pm'; ''
+}
+
 function getOfficeHour(scheduleTarget) {
   if (scheduleTarget === 'Tuesday' || scheduleTarget === 'Wednesday') {
     return 'Open from 8am until 6pm';
@@ -7,10 +14,7 @@ function getOfficeHour(scheduleTarget) {
   if (scheduleTarget === 'Thursday' || scheduleTarget === 'Friday') {
     return 'Open from 10am until 8pm';
   }
-  if (scheduleTarget === 'Saturday') {
-    return 'Open from 8am until 10pm';
-  }
-  return 'Open from 8am until 8pm';
+  return getOfficeHourContinue(scheduleTarget)
 }
 
 function getAnimais(scheduleTarget) {
@@ -72,12 +76,7 @@ function getSchedule(scheduleTarget) {
       return animal.availability;
     }
   }
-
-
-
   return getTodosOsDias();
 }
 
-const actual = getSchedule('lions');
-console.log(actual)
 module.exports = getSchedule;
