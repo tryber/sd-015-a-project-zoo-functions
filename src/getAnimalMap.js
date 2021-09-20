@@ -20,18 +20,5 @@ function getAnimalMap(options) {
       SW: swAnimals.map((aux) => `${aux.name}`),
     };
   }
-  const { incldesNames, sorted, sex } = options;
-  if (sorted === true) {
-    return animalNames.sort()
-    
-  }
- 
 }
-
 module.exports = getAnimalMap;
-
-/*    NE: ['lions', 'giraffes'],
-      NW: ['tigers', 'bears', 'elephants'],
-      SE: ['penguins', 'otters'],
-      SW: ['frogs', 'snakes'], */
-// console.log(getAnimalMap());
