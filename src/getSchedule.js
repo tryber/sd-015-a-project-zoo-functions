@@ -1,12 +1,5 @@
 const data = require('../data/zoo_data');
 
-function getOfficeHourContinue(scheduleTarget) {
-  if (scheduleTarget === 'Saturday') {
-    return 'Open from 8am until 10pm';
-  }
-  return 'Open from 8am until 8pm';
-}
-
 function getOfficeHour(scheduleTarget) {
   if (scheduleTarget === 'Tuesday' || scheduleTarget === 'Wednesday') {
     return 'Open from 8am until 6pm';
@@ -14,16 +7,20 @@ function getOfficeHour(scheduleTarget) {
   if (scheduleTarget === 'Thursday' || scheduleTarget === 'Friday') {
     return 'Open from 10am until 8pm';
   }
-  return getOfficeHourContinue(scheduleTarget);
+  if (scheduleTarget === 'Saturday') {
+    return 'Open from 8am until 10pm';
+  }
+  return 'Open from 8am until 8pm';
 }
 
 function getTodosOsDias() {
-  const Tuesday = getfilters('Tuesday');
-  const Wednesday = getfilters('Wednesday');
-  const Thursday = getfilters('Thursday');
-  const Friday = getfilters('Friday');
-  const Saturday = getfilters('Saturday');
-  const Sunday = getfilters('Sunday');
+
+  const Tuesday = getSchedule('Tuesday');
+  const Wednesday = getSchedule('Wednesday');
+  const Thursday = getSchedule('Thursday');
+  const Friday = getSchedule('Friday');
+  const Saturday = getSchedule('Saturday');
+  const Sunday = getSchedule('Sunday');
 
   return [
     Tuesday,
@@ -35,30 +32,6 @@ function getTodosOsDias() {
   ];
 }
 
-function getAnimals(animals, scheduleTarget) {
-  if (animals.length !== 0) {
-    return {
-      [scheduleTarget]: {
-        officeHour: getOfficeHour(scheduleTarget),
-        exhibition: animals,
-      },
-    };
-  }
-  const animal = data.species.find((y) => y.name === scheduleTarget);
-
-  if (animal !== undefined) {
-    return animal.availability;
-  }
-  return getTodosOsDias();
-}
-
-function getfilters(scheduleTarget) {
-  const animals = data.species.filter((x) => x.availability.includes(scheduleTarget))
-    .map((y) => y.name);
-
-  return getAnimals(animals, scheduleTarget);
-}
-
 function getSchedule(scheduleTarget) {
   if (scheduleTarget === 'Monday') {
     return {
@@ -68,10 +41,26 @@ function getSchedule(scheduleTarget) {
       },
     };
   }
-  const animals = data.species.filter((x) => x.availability.includes(scheduleTarget))
+
+  let animals = data.species
+    .filter((x) => x.availability.includes(scheduleTarget))
     .map((y) => y.name);
 
-  return getAnimals(animals, scheduleTarget);
+  if (animals.length !== 0) {
+    return {
+      [scheduleTarget]: {
+        officeHour: getOfficeHour(scheduleTarget),
+        exhibition: animals,
+      },
+    };
+  }
+
+  let animal = data.species.find(y => y.name === scheduleTarget);
+
+  if (animal !== undefined) {
+    return animal.availability;
+  }
+  return getTodosOsDias();
 }
 
 module.exports = getSchedule;
