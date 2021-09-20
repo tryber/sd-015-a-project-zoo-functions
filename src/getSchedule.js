@@ -54,27 +54,19 @@ function getTodosOsDias() {
 function getSchedule(scheduleTarget) {
   if (scheduleTarget === 'Monday') {
     return {
-      [scheduleTarget]: {
-        officeHour: 'CLOSED',
-        exhibition: 'The zoo will be closed!'
+      [scheduleTarget]: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!',
       },
     };
   }
-
   const animal = getAnimais(scheduleTarget);
-
   if (animal !== undefined) {
     if (animal.officeHour) {
       return {
-        [scheduleTarget]: {
-          officeHour: animal.officeHour,
-          exhibition: animal.exhibition
-        }
+        [scheduleTarget]: { officeHour: animal.officeHour, exhibition: animal.exhibition,
+        },
       };
-    }
-    else {
-      return animal.availability;
-    }
+    };
+    return animal.availability;
   }
   return getTodosOsDias();
 }
