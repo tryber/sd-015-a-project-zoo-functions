@@ -1,5 +1,3 @@
-const { deepEqual, deepStrictEqual } = require('assert');
-const { assert } = require('console');
 const data = require('../data/zoo_data');
 
 function scheduleType(parameter) {
@@ -48,8 +46,8 @@ function scheduleDayWithMonday(day) {
       exhibition: animalsExhibit,
     };
   } else if (day === 'Monday') {
-    result1[`${day}`] = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } ;
-  } 
+    result1[`${day}`] = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
+  }
   return result1;
 }
 
