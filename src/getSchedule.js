@@ -12,6 +12,29 @@ function getOfficeHour(scheduleTarget) {
   }
   return 'Open from 8am until 8pm';
 }
+function getSchedule1(scheduleTarget) {
+  const animals = data.species.filter((x) => x.availability.includes(scheduleTarget))
+    .map((y) => y.name);
+
+  return getAnimals(animals, scheduleTarget);
+}
+function getTodosOsDias() {
+  const Tuesday = getSchedule1('Tuesday');
+  const Wednesday = getSchedule1('Wednesday');
+  const Thursday = getSchedule1('Thursday');
+  const Friday = getSchedule1('Friday');
+  const Saturday = getSchedule1('Saturday');
+  const Sunday = getSchedule1('Sunday');
+
+  return [
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday,
+  ];
+}
 
 function getAnimals(animals, scheduleTarget) {
   if (animals.length !== 0) {
@@ -45,22 +68,5 @@ function getSchedule(scheduleTarget) {
   return getAnimals(animals, scheduleTarget);
 }
 
-function getTodosOsDias() {
-  const Tuesday = getSchedule('Tuesday');
-  const Wednesday = getSchedule('Wednesday');
-  const Thursday = getSchedule('Thursday');
-  const Friday = getSchedule('Friday');
-  const Saturday = getSchedule('Saturday');
-  const Sunday = getSchedule('Sunday');
-
-  return [
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
-    Sunday,
-  ];
-}
 
 module.exports = getSchedule;
