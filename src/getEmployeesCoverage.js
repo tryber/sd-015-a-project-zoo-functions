@@ -1,7 +1,7 @@
 const { species, employees } = require('../data/zoo_data');
 
 function createObject(object) {
-  const animals = object.responsibleFor.map((id) => species.find((each) => each.id === id).name);
+  const animals = object.responsibleFor.map((id) => species.find((a) => a.id === id).name);
   return {
     id: object.id,
     fullName: `${object.firstName} ${object.lastName}`,
@@ -10,7 +10,9 @@ function createObject(object) {
   };
 }
 
-const verify = (employee, identity) => employee.id === identity.id || employee.firstName === identity.name || employee.lastName === identity.name;
+function verify(e, idName) {
+  return e.id === idName.id || e.firstName === idName.name || e.lastName === idName.name
+}
 
 function getEmployeesCoverage(entry) {
   let coverage = {};
