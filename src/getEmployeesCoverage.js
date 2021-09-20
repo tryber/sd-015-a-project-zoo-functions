@@ -1,12 +1,11 @@
 const data = require('../data/zoo_data');
 const getSpeciesByIds = require('./getSpeciesByIds');
 
-function calculo() {
+const calculo = () => {
   const arr = [];
-  const allEmployees = data.employees.forEach((funcionario) => {
+  data.employees.forEach((funcionario) => {
     const { id } = funcionario;
     const fullName = (`${funcionario.firstName} ${funcionario.lastName}`);
-
     const objFinal = {
       id,
       fullName,
@@ -16,34 +15,18 @@ function calculo() {
     };
     arr.push(objFinal);
   });
-  console.log(allEmployees);
   return arr;
-}
-
-function calUmFunc(idName) {
-  const allEmployees = data.employees.find((funcionario) => funcionario);
-  // const { id } = idName;
-  // funcionario.id === id;
-  const { id } = allEmployees;
-  const fullName = (`${allEmployees.firstName} ${allEmployees.lastName}`);
-  const objFinal = {
-    id,
-    fullName,
-    species: getSpeciesByIds(...allEmployees.responsibleFor).map((animal) => animal.name),
-    locations: getSpeciesByIds(...allEmployees.responsibleFor)
-      .map((animal) => animal.location),
-  };
-  return objFinal;
-}
+};
 
 function getEmployeesCoverage(pessoaFunc) {
   if (!pessoaFunc) { return calculo(); }
-  return calUmFunc(pessoaFunc);
+  if (calculo().some((funcionario) => funcionario.id === pessoaFunc.id)) {
+    return calculo().find((funcionario) => funcionario.id === pessoaFunc.id);
+  }
+  if (calculo().some((funcionario) => funcionario.fullName.includes(pessoaFunc.name))) {
+    return calculo().find((funcionario) => funcionario.fullName.includes(pessoaFunc.name));
+  }
+  throw new Error('Informações inválidas');
 }
-console.log(getEmployeesCoverage({ id: 'c1f50212-35a6-4ecd-8223-f835538526c2' }));
+console.log(getEmployeesCoverage({ name: 'Sharonda' }));
 module.exports = getEmployeesCoverage;
-
-// const animQtomaConta = data.species.map((obj) => obj);
-// const animaisQtomaConta = (funcionario.responsibleFor === data.species.id);
-// const nameAnimal = getSpeciesByIds(...funcionario.responsibleFor[0]).forEach((element) => element.name);
-// return fullNam.includes(pessoaFunc.name) || funcionario.id.includes(pessoaFunc.id);
