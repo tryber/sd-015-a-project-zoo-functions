@@ -11,13 +11,14 @@ function getOldestFromFirstSpecies(id) {
     sex: '',
   };
 
-  for (let element of animal.residents) {
+  animal.residents.forEach((element) => {
     if (element.age > retorno.value) {
       retorno.value = element.age;
       retorno.name = element.name;
       retorno.sex = element.sex;
     }
-  }
+    
+  });
   return [retorno.name, retorno.sex, retorno.value];
 }
 

@@ -5,7 +5,7 @@ function getSchedule(scheduleTarget) {
         return {
             [scheduleTarget]: {
                 officeHour: 'CLOSED',
-                exhibition: 'The zoo will be closed!'
+                exhibition: 'The zoo will be closed!',
             }
         }
     }
@@ -17,31 +17,30 @@ function getSchedule(scheduleTarget) {
         return {
             [scheduleTarget]: {
                 officeHour: getOfficeHour(scheduleTarget),
-                exhibition: animals
+                exhibition: animals,
             }
         }
-
     }
     let animal = data.species.find((y) => y.name === scheduleTarget);
 
     if (animal !== undefined) {
         return animal.availability;
     }
-    return getTodosOsDias()
+    return getTodosOsDias();
 }
 
 function getOfficeHour(scheduleTarget) {
     if (scheduleTarget === 'Tuesday' || scheduleTarget === 'Wednesday') {
-        return 'Open from 8am until 6pm'
+        return 'Open from 8am until 6pm';
     }
     if (scheduleTarget === 'Thursday' || scheduleTarget === 'Friday') {
-        return 'Open from 10am until 8pm'
+        return 'Open from 10am until 8pm';
     }
     if (scheduleTarget === 'Saturday') {
-        return 'Open from 8am until 10pm'
+        return 'Open from 8am until 10pm';
     }
     else {
-        return 'Open from 8am until 8pm'
+        return 'Open from 8am until 8pm';
     }
 }
 
