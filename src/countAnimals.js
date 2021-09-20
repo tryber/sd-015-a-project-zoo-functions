@@ -27,7 +27,3 @@ function countAnimals(animal) {
 }
 console.log(countAnimals());
 module.exports = countAnimals;
-
-/* const result = species.map((specie) => (
-      { [specie.name]: specie.residents.length }));
-    return result.sort((a, b) => a[0] - b[0]); */
