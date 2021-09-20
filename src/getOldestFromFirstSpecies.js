@@ -16,8 +16,7 @@ function getOldestFromFirstSpecies(id) {
       retorno.value = element.age;
       retorno.name = element.name;
       retorno.sex = element.sex;
-    }
-    
+    } 
   });
   return [retorno.name, retorno.sex, retorno.value];
 }
