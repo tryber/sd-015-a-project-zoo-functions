@@ -8,7 +8,7 @@ function countAnimals(animal) {
   if (!animal) {
     const result = species.map((specie) => (
       { [specie.name]: specie.residents.length }));
-      return result.sort((a, b) => a[0] - b[0]);
+    return result.sort((a, b) => a[0] - b[0]);
   }
   const { specie, gender } = animal;
 
@@ -19,8 +19,6 @@ function countAnimals(animal) {
   }
 
   return species.find((aux) => aux.name === specie).residents.length;
-
 }
 console.log(countAnimals());
 module.exports = countAnimals;
- 
