@@ -7,9 +7,10 @@ function getAnimalsOlderThan(animal, age) {
   const { residents } = data.species.find((specie) => specie.name === animal);
   // console.log(findAnimals);
   const requiredAnimals = residents.every((subject) => subject.age > age);
+  console.log(requiredAnimals);
   return requiredAnimals;
 }
 
-getAnimalsOlderThan('bears', 4);
+getAnimalsOlderThan('bears', 3);
 
 module.exports = getAnimalsOlderThan;
