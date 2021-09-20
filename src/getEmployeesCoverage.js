@@ -7,12 +7,12 @@ function animalsAndLOcations(ids) {
       names.locationAnimal.push(animal.location);
     }
     return names;
-  },{ animals: [], locationAnimal: [] });
+  }, { animals: [], locationAnimal: [] });
 }
 
 function employer(id) {
   return employees.reduce((listEmployees, employee) => {
-    const animals = animalsAndLOcations(employee.responsibleFor)
+    const animals = animalsAndLOcations(employee.responsibleFor);
     const employeeDads = {
       id: employee.id,
       fullName: `${employee.firstName} ${employee.lastName}`,
@@ -28,8 +28,9 @@ function getEmployeesCoverage(id) {
   if (!id) {
     return employer();
   }
-  if (employer().some((iten) => iten.id === id.id))
+  if (employer().some((iten) => iten.id === id.id)) {
     return employer().find((iten) => iten.id === id.id);
+  } 
   if (employer().some((iten) => iten.fullName.includes(id.name))) {
     return employer().find((iten) => iten.fullName.includes(id.name))
   }
