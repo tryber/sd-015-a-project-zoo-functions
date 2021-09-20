@@ -6,11 +6,11 @@ function countAnimals(animal) {
     data.species.forEach((specie) => { allSpecies[specie.name] = specie.residents.length; });
     return allSpecies;
   }
-  if (animal.gender === undefined) {
+  if (animal.sex === undefined) {
     return data.species.find((specie) => specie.name === animal.specie).residents.length;
   }
   return data.species.find((specie) =>
-    specie.name === animal.specie).residents.filter((resident) => resident.sex === animal.gender)
+    specie.name === animal.specie).residents.filter((resident) => resident.sex === animal.sex)
     .length;
 }
 
