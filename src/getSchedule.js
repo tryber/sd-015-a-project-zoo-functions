@@ -10,7 +10,7 @@ function getOfficeHour(scheduleTarget) {
   if (scheduleTarget === 'Saturday') {
     return 'Open from 8am until 10pm';
   }
-    return 'Open from 8am until 8pm';
+  return 'Open from 8am until 8pm';
 }
 
 function getAnimals(animals, scheduleTarget) {
@@ -19,7 +19,7 @@ function getAnimals(animals, scheduleTarget) {
       [scheduleTarget]: {
         officeHour: getOfficeHour(scheduleTarget),
         exhibition: animals,
-      }
+      },
     };
   }
   const animal = data.species.find((y) => y.name === scheduleTarget);
