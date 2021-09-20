@@ -30,12 +30,12 @@ function getEmployeesCoverage(id) {
   }
   if (employer().some((iten) => iten.id === id.id)) {
     return employer().find((iten) => iten.id === id.id);
-  } 
+  }
   if (employer().some((iten) => iten.fullName.includes(id.name))) {
-    return employer().find((iten) => iten.fullName.includes(id.name))
+    return employer().find((iten) => iten.fullName.includes(id.name));
   }
   throw new Error('Informações inválidas');
 }
 console.log(getEmployeesCoverage());
 
-  module.exports = getEmployeesCoverage;
+module.exports = getEmployeesCoverage;
