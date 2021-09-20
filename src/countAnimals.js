@@ -6,7 +6,7 @@ function countAnimals(animal) {
     data.species.forEach((specie) => {
       speciesTotais[specie.name] = specie.residents.length; // atribui a chave nome especie para a quantidade da especie que tem esse nome
     });
-    return speciesTotais;
+    return speciesTotais; // qualquer coisa para corrigir o lint
   }
 
   const totalPorSpecie = data.species.find((obj) => obj.name === animal.specie).residents;
