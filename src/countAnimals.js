@@ -9,9 +9,9 @@ function countAnimals(animal) {
     });
     return retorno;
   }
-  if (Object.keys(animal).includes('gender')) {
+  if (Object.keys(animal).includes('sex')) {
     const procurado = data.species.find((especie) => especie.name === animal.specie);
-    const sexoProcurado = procurado.residents.filter((elemento) => elemento.sex === animal.gender);
+    const sexoProcurado = procurado.residents.filter((elemento) => elemento.sex === animal.sex);
     return sexoProcurado.length;
   }
   return data.species.find((a) => a.name === animal.specie).residents.length;
