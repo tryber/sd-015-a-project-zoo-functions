@@ -9,5 +9,5 @@ function getEmployeeByName(employeeName) {
   return name;
   // seu código aqui
 }
-console.log(getEmployeeByName());
+console.log(getEmployeeByName('Nigel'));
 module.exports = getEmployeeByName;
