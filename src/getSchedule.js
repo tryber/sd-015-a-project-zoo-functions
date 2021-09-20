@@ -4,7 +4,7 @@ function getOfficeHourContinue(scheduleTarget) {
   if (scheduleTarget === 'Saturday') {
     return 'Open from 8am until 10pm';
   }
-  return 'Open from 8am until 8pm'; ''
+  return 'Open from 8am until 8pm';
 }
 
 function getOfficeHour(scheduleTarget) {
@@ -14,7 +14,7 @@ function getOfficeHour(scheduleTarget) {
   if (scheduleTarget === 'Thursday' || scheduleTarget === 'Friday') {
     return 'Open from 10am until 8pm';
   }
-  return getOfficeHourContinue(scheduleTarget)
+  return getOfficeHourContinue(scheduleTarget);
 }
 
 function getAnimais(scheduleTarget) {
@@ -48,7 +48,7 @@ function getTodosOsDias() {
     Saturday,
     Sunday,
     Monday,
-  }
+  };
 }
 
 function getSchedule(scheduleTarget) {
@@ -65,7 +65,7 @@ function getSchedule(scheduleTarget) {
         [scheduleTarget]: { officeHour: animal.officeHour, exhibition: animal.exhibition,
         },
       };
-    };
+    }
     return animal.availability;
   }
   return getTodosOsDias();
