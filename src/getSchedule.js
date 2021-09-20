@@ -1,5 +1,12 @@
 const data = require('../data/zoo_data');
 
+function getOfficeHour1(scheduleTarget) {
+  if (scheduleTarget === 'Saturday') {
+    return 'Open from 8am until 10pm';
+  }
+  return 'Open from 8am until 8pm';
+}
+
 function getOfficeHour(scheduleTarget) {
   if (scheduleTarget === 'Tuesday' || scheduleTarget === 'Wednesday') {
     return 'Open from 8am until 6pm';
@@ -7,17 +14,16 @@ function getOfficeHour(scheduleTarget) {
   if (scheduleTarget === 'Thursday' || scheduleTarget === 'Friday') {
     return 'Open from 10am until 8pm';
   }
-  if (scheduleTarget === 'Saturday') {
-    return 'Open from 8am until 10pm';
-  }
-  return 'Open from 8am until 8pm';
+  return getSchedule1(scheduleTarget);
 }
+
 function getSchedule1(scheduleTarget) {
   const animals = data.species.filter((x) => x.availability.includes(scheduleTarget))
     .map((y) => y.name);
 
   return getAnimals(animals, scheduleTarget);
 }
+
 function getTodosOsDias() {
   const Tuesday = getSchedule1('Tuesday');
   const Wednesday = getSchedule1('Wednesday');
@@ -67,6 +73,5 @@ function getSchedule(scheduleTarget) {
 
   return getAnimals(animals, scheduleTarget);
 }
-
 
 module.exports = getSchedule;
