@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../data"
+		},
+		{
+			"path": "../node_modules"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../test"
+		}
+	]
+}

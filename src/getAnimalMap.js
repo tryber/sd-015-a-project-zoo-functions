@@ -1,7 +1,12 @@
 const data = require('../data/zoo_data');
 
 function getAnimalMap(options) {
-  // seu código aqui
+  // if (!options) {
+  //   const allAnimalsForlocal = options.filter((animal) => animal.location).length;
+  //   allAnimalsForlocal.reduce((accumulator, currenteValue) )
+  //   console.log(allAnimalsForlocal);
+  // }
+  // // seu código aqui
 }
 
 module.exports = getAnimalMap;
