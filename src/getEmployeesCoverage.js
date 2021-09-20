@@ -11,7 +11,7 @@ function createObject(object) {
 }
 
 function verify(e, idName) {
-  return e.id === idName.id || e.firstName === idName.name || e.lastName === idName.name
+  return e.id === idName.id || e.firstName === idName.name || e.lastName === idName.name;
 }
 
 function getEmployeesCoverage(entry) {
