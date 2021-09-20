@@ -16,15 +16,14 @@ function calculo() {
     };
     arr.push(objFinal);
   });
+  console.log(allEmployees);
   return arr;
 }
 
 function calUmFunc(idName) {
-  const allEmployees = data.employees.find((funcionario) => {
-    const { id: idNome } = idName;
-    funcionario.id === idNome;
-    return funcionario;
-  });
+  const allEmployees = data.employees.find((funcionario) => funcionario);
+  // const { id } = idName;
+  // funcionario.id === id;
   const { id } = allEmployees;
   const fullName = (`${allEmployees.firstName} ${allEmployees.lastName}`);
   const objFinal = {
