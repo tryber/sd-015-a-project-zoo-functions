@@ -13,7 +13,7 @@ function countAnimals(animal) {
     return zoo;
   // 3 - recebendo como parâmetro um objeto com a chave 'specie' e 'gender', retorna um número, a quantidade de animais daquela espécie, no gênero selecionado
   } if (animal.sex) {
-    const animais = data.species.find((element) => animal.sex === element.name);
+    const animais = data.species.find((element) => animal.specie === element.name);
     const porSexo = animais.residents.filter((element) => animal.sex === element.sex);
     return porSexo.length;
   }
