@@ -1,4 +1,4 @@
-/* const { species } = require('../data/zoo_data');
+ const { species } = require('../data/zoo_data');
 const { residents } = require('../data/zoo_data');
 
  function getAnimalMap(options) {
@@ -28,4 +28,4 @@ const { residents } = require('../data/zoo_data');
   }
 console.log(getAnimalMap({ includeNames: true }));
 
-module.exports = getAnimalMap; */
+module.exports = getAnimalMap;
