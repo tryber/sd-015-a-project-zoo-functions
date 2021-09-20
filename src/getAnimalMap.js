@@ -9,4 +9,4 @@ function getAnimalMap(options) {
   }
 }
 module.exports = getAnimalMap;
-console.log(getAnimalMap());
+/* console.log(getAnimalMap()); */
