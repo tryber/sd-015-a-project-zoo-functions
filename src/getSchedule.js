@@ -13,7 +13,7 @@ function animalDaqueleDia(dia) {
 }
 function verificarODia(dia) {
   if (dia !== 'Monday') {
-    return animalDaqueleDia(dia)
+    return animalDaqueleDia(dia);
   }
   return 'The zoo will be closed!';
 }
