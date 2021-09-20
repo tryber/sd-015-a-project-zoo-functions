@@ -3,6 +3,6 @@ const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
   if (!employeeName) return {};
-  return employees.find((elemento) => elemento.firstName === employeeName || elemento.lastName === employeeName)
-};
+  return employees.find((elem) => elem.firstName === employeeName || elem.lastName === employeeName);
+}
 module.exports = getEmployeeByName;

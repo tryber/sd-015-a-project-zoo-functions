@@ -2,29 +2,29 @@ const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function defaultt() {
-  const resultado = employees.map((elemento) => ({
-    id: elemento.id,
-    fullName: `${elemento.firstName} ${elemento.lastName}`,
-    species: elemento.responsibleFor.map((elemento2) => species.find((elemento3) => elemento3.id === elemento2).name),
-    locations: elemento.responsibleFor.map((elemento2) => species.find((elemento3) => elemento3.id === elemento2).location),
-  }))
-  return resultado
+  const resultado = employees.map((H) => ({
+    id: H.id,
+    fullName: `${H.firstName} ${H.lastName}`,
+    species: H.responsibleFor.map((F) => species.find((E) => E.id === F).name),
+    locations: H.responsibleFor.map((F) => species.find((E) => E.id === F).location),
+  }));
+  return resultado;
 }
-function getEmployeesCoverage(parametro) {
-  if (!parametro) {
+function getEmployeesCoverage(H) {
+  if (!H) {
     return defaultt();
   }
-  const {id, name} = parametro;
-  if (employees.find((parametro2) => (parametro2.firstName === name || parametro2.lastName === name || parametro2.id === id))) {
-  const objeto = employees.find((parametro3) => (parametro3.firstName === name || parametro3.lastName === name || parametro3.id === id))
-  return {
-    id: objeto.id,
-    fullName: `${objeto.firstName} ${objeto.lastName}`,
-    species: objeto.responsibleFor.map((elemento2) => species.find((elemento3) => elemento3.id === elemento2).name),
-    locations: objeto.responsibleFor.map((elemento2) => species.find((elemento3) => elemento3.id === elemento2).location),
-  };
-}
-throw new Error('Informações inválidas');
+  const { id, name } = H;
+  if (employees.find((F) => (F.firstName === name || F.lastName === name || F.id === id))) {
+  const ob = employees.find((E) => (E.firstName === name || E.lastName === name || E.id === id))
+      return {
+        id: ob.id,
+        fullName: `${ob.firstName} ${ob.lastName}`,
+        species: ob.responsibleFor.map((F) => species.find((E) => E.id === F).name),
+        locations: ob.responsibleFor.map((F) => species.find((E) => E.id === F).location),
+      };
+    }
+    throw new Error('Informações inválidas');
 }
 
 module.exports = getEmployeesCoverage;

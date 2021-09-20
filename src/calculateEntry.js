@@ -9,17 +9,17 @@ function countEntrants(entrants) {
     child: childValues,
     adult: adultValues,
     senior: seniorValues,
-  }
+  };
 }
 
 function calculateEntry(entrants) {
-  if(entrants === undefined || Object.keys(entrants).length === 0) return 0;
-  const quantidade = countEntrants(entrants)
-  const resultadoChild = quantidade.child * prices.child
-  const resultadoAdult = quantidade.adult * prices.adult
-  const resultadoSenior = quantidade.senior * prices.senior
-  const valorTotal = (resultadoAdult) + (resultadoChild) + (resultadoSenior)
-  return valorTotal
+  if (entrants === undefined || Object.keys(entrants).length === 0) return 0;
+  const quantidade = countEntrants(entrants);
+  const resultadoChild = quantidade.child * prices.child;
+  const resultadoAdult = quantidade.adult * prices.adult;
+  const resultadoSenior = quantidade.senior * prices.senior;
+  const valorTotal = (resultadoAdult) + (resultadoChild) + (resultadoSenior);
+  return valorTotal;
 }
 
 module.exports = { calculateEntry, countEntrants };
