@@ -17,4 +17,6 @@ function getAnimalMap(options) {
     return 0;
   }
 }
+// acabou sendo mais dificil do que eu imaginei entao pulei para o proximo
+
 module.exports = getAnimalMap;
