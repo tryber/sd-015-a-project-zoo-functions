@@ -25,11 +25,10 @@ function getCompleteSchedule() {
 function getDaySchedule(day) {
   const filteredByDay = data.species.filter((specie) => specie.availability.includes(day));
   const availableAnimals = filteredByDay.map((specie) => specie.name);
-  const open = (Object.values(Object.entries(data.hours).find((dInf) => dInf[0] === day)[1])[0]);
-  const close = (Object.values(Object.entries(data.hours).find((dInf) => dInf[0] === day)[1])[1]);
+  const { hours } = data;
   const daySchedule = {
     [day]: {
-      officeHour: `Open from ${open}am until ${close}pm`,
+      officeHour: `Open from ${hours[day].open}am until ${hours[day].close}pm`,
       exhibition: availableAnimals,
     },
   };
@@ -55,5 +54,5 @@ function getSchedule(scheduleTarget) {
   return getDaySchedule(scheduleTarget);
 }
 
-// console.log(getSchedule('qualq'))
-module.exports = getSchedule;
+console.log(getSchedule('Tuesday'))
+// module.exports = getSchedule;
