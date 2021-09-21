@@ -1,7 +1,7 @@
 
 const data = require('../data/zoo_data');
 
-const animals = species.map((specie) => specie.name);
+const animals = data.species.map((specie) => specie.name);
 const week = Object.keys(data.hours);
 
 function officeHours(day) {
@@ -13,11 +13,11 @@ function officeHours(day) {
 }
 
 function availability(day) {
-  const availableAnimal = data.species.filter((specie) => specie.availability.includes(day) === true);
-  if (availableAnimal.length === 0) {
+  const avbleAnimal = data.species.filter((specie) => specie.availability.includes(day) === true);
+  if (avbleAnimal.length === 0) {
     return 'The zoo will be closed!';
   }
-  return availableAnimal.map((specie) => specie.name);
+  return avbleAnimal.map((specie) => specie.name);
 }
 
 function completeSchedule() {
