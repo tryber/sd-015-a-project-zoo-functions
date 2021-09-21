@@ -10,8 +10,8 @@ function getOldestFromFirstSpecies(id) {
     return acumulador;
   }, null);
   const pegandoAnimais = animais.filter((elemento) => elemento.age === animaisAntigos)[0];
-  const {name, sex, age } = pegandoAnimais;
-  return [name,sex, age];
+  const { name, sex, age } = pegandoAnimais;
+  return [name, sex, age];
   // seu código aqui
 }
 // amigo andrey de novais me ajudou nessa
