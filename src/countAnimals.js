@@ -15,7 +15,7 @@ function countAnimals(animal) {
   let contadorSex = 0;
   const buscarAnimal = species.find((ani) => ani.name.includes(animal.specie));
   buscarAnimal.residents.forEach((element) => {
-    if (element.sex === animal.gender) { contadorSex += 1; }
+    if (element.sex === animal.sex) { contadorSex += 1; }
   });
   return contadorSex;
 }
