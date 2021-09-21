@@ -7,7 +7,7 @@ function countAnimals(animal) {
     return animals;
   }
   const specieTotal = species.find((specie) => specie.name === animal.specie).residents;
-  if (animal.gender) return specieTotal.filter((specie) => specie.sex === animal.gender).length;
+  if (animal.sex) return specieTotal.filter((specie) => specie.sex === animal.sex).length;
   return specieTotal.length;
 }
 
