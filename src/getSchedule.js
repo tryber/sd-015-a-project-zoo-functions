@@ -1,28 +1,58 @@
-const { hours } = require('../data/zoo_data');
+const { hours, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const horario = (dia) => {
-  const funcionamento = `Open from ${hours[dia].open}am until ${hours[dia].close - 12}pm`;
-  return funcionamento;
-};
+const animals = species.map((specie) => specie.name);
+const week = Object.keys(hours);
+
+function getOfficeHours(day) {
+  const hours = Object.values(hours[day]);
+  if (hours[0] === 0) {
+    return 'CLOSED';
+  }
+  return `Open from ${hours[0]}am until ${hours[1]}pm`;
+}
+
+function getAvailability(day) {
+  const availableAnimal = species.filter((specie) => specie.availability.includes(day) === true);
+  if (availableAnimal.length === 0) {
+    return 'The zoo will be closed!';
+  }
+  return availableAnimal.map((specie) => specie.name);
+}
+
+function completeSchedule() {
+  const result = {};
+  week.forEach((day) => {
+    result[day] = {
+      officeHour: getOfficeHours(day),
+      exhibition: getAvailability(day),
+    };
+  });
+  return result;
+}
+
+function getDaySchedule(day) {
+  const result = {};
+  result[day] = {
+    officeHour: getOfficeHours(day),
+    exhibition: getAvailability(day),
+  };
+  return result;
+}
+
+function getAnimalSchedule(animal) {
+  return species.find((specie) => specie.name === animal).availability;
+}
 
 function getSchedule(dayName) {
   // seu código aqui
-  const arr = Object.keys(hours);
-  const dias = {};
-  if (dayName === undefined) {
-    for (let i = 0; i < arr.length - 1; i += 1) {
-      dias[arr[i]] = horario(arr[i]);
-    }
-    dias.Monday = 'CLOSED';
-    return dias;
+  if (animals.includes(dayName)) {
+    return getAnimalSchedule(dayName);
   }
-  if (dayName === 'Monday') {
-    dias.Monday = 'CLOSED';
-    return dias;
+  if (week.includes(dayName)) {
+    return getDaySchedule(dayName);
   }
-  dias[dayName] = horario(dayName);
-  return dias;
+  return completeSchedule();
 }
 
 module.exports = getSchedule;
