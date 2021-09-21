@@ -1,19 +1,21 @@
 const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+// Feito com ajuda do video: https://www.youtube.com/watch?v=NiLUGy1Mh4U&ab_channel=LeighHalliday
+
 function getOldestFromFirstSpecies(id) {
   const selectedId = employees.find((elemento) => elemento.id === id).responsibleFor[0];
   const selectedAnimal = species.find((elemento) => elemento.id === selectedId);
   const meusAnimais = selectedAnimal.residents;
-  let maior = 0;
-  for (let i = 0; i < meusAnimais.length; i += 1) {
-    if (meusAnimais[i].age > maior) {
-      maior = meusAnimais[i];
-    }
-  }
-  return Object.values(maior);
+  const maisVelho = meusAnimais.reduce((acc, animal) => {
+    if (acc === null || animal.age > acc) return animal.age;
+    return acc;
+  }, null);
+  const meuSelecionado = meusAnimais.filter((elemento) => elemento.age === maisVelho)[0];
+  const { name } = meuSelecionado;
+  const { sex } = meuSelecionado;
+  const { age } = meuSelecionado;
+  return [name, sex, age];
 }
 
-console.log(getOldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
-
-// module.exports = getOldestFromFirstSpecie    s;
+module.exports = getOldestFromFirstSpecies;
