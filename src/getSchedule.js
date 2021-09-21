@@ -1,7 +1,5 @@
 const data = require('../data/zoo_data');
 
-const data = require('../data/zoo_data');
-
 const funcHora = (param) => {
   const horaDeAbrir = data.hours[param].open;
   const horaDeFechar = data.hours[param].close;
