@@ -1,4 +1,3 @@
-
 const data = require('../data/zoo_data');
 
 const animals = data.species.map((specie) => specie.name);
