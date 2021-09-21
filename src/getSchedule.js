@@ -1,3 +1,4 @@
+const { hours } = require('./data');
 const data = require('../data/zoo_data');
 
 const horario = (dia) => {
