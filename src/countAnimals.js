@@ -14,4 +14,5 @@ function countAnimals(animal) {
   const genderReport = specieReport.filter((resident) => resident.sex === animal.gender);
   return genderReport.length;
 }
+
 module.exports = countAnimals;
