@@ -5,7 +5,7 @@ function getOldestFromFirstSpecies(id) {
   // seu código aqui
   const funcionario = employees.find((employee) => employee.id === id).responsibleFor[0];
   const firstAnimalCare = species.find((specie) => specie.id === funcionario).residents;
-  const elderAnimal = firstAnimalCare.reduce((acc, curr) => (acc.age > curr. age ? acc : curr));
+  const elderAnimal = firstAnimalCare.reduce((acc, curr) => (acc.age > curr.age ? acc : curr));
   return Object.values(elderAnimal);
 }
 
