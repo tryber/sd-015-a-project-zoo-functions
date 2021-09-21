@@ -5,8 +5,7 @@ const animals = species.map((specie) => specie.name);
 const week = Object.keys(hours);
 
 function getOfficeHours(day) {
-  const time = Object.values(hours[day]);
-  if (time[0] === 0) {
+  if (hours[day] === 0) {
     return 'CLOSED';
   }
   return `Open from ${hours[0]}am until ${hours[1]}pm`;
