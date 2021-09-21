@@ -12,7 +12,7 @@ function calculateEntry(entrants) {
   if (arguments.length === 0) {
     return 0;
   }
-  if (entrants === { }) {
+  if (Object.keys(entrants).length === 0) {
     return 0;
   }
 
