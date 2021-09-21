@@ -1,18 +1,19 @@
-const { hours, species } = require('../data/zoo_data');
+
 const data = require('../data/zoo_data');
 
 const animals = species.map((specie) => specie.name);
-const week = Object.keys(hours);
+const week = Object.keys(data.hours);
 
-function getOfficeHours(day) {
-  if (hours[day] === 0) {
+function officeHours(day) {
+  const hours = Object.values(data.hours[day]);
+  if (hours[0] === 0) {
     return 'CLOSED';
   }
   return `Open from ${hours[0]}am until ${hours[1]}pm`;
 }
 
-function getAvailability(day) {
-  const availableAnimal = species.filter((specie) => specie.availability.includes(day) === true);
+function availability(day) {
+  const availableAnimal = data.species.filter((specie) => specie.availability.includes(day) === true);
   if (availableAnimal.length === 0) {
     return 'The zoo will be closed!';
   }
@@ -23,33 +24,33 @@ function completeSchedule() {
   const result = {};
   week.forEach((day) => {
     result[day] = {
-      officeHour: getOfficeHours(day),
-      exhibition: getAvailability(day),
+      officeHour: officeHours(day),
+      exhibition: availability(day),
     };
   });
   return result;
 }
 
-function getDaySchedule(day) {
+function daySchedule(day) {
   const result = {};
   result[day] = {
-    officeHour: getOfficeHours(day),
-    exhibition: getAvailability(day),
+    officeHour: officeHours(day),
+    exhibition: availability(day),
   };
   return result;
 }
 
-function getAnimalSchedule(animal) {
-  return species.find((specie) => specie.name === animal).availability;
+function animalSchedule(animal) {
+  return data.species.find((specie) => specie.name === animal).availability;
 }
 
 function getSchedule(dayName) {
   // seu código aqui
   if (animals.includes(dayName)) {
-    return getAnimalSchedule(dayName);
+    return animalSchedule(dayName);
   }
   if (week.includes(dayName)) {
-    return getDaySchedule(dayName);
+    return daySchedule(dayName);
   }
   return completeSchedule();
 }
