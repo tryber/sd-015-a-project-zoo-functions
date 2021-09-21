@@ -7,7 +7,7 @@ function getEmployeeByName(employeeName) {
   }
   const employeeArr = data.employees.filter(
     (employee) =>
-      employee.firstName === employeeName || employee.lastName === employeeName
+      employee.firstName === employeeName || employee.lastName === employeeName,
   );
   return employeeArr[0];
 }
