@@ -2,12 +2,12 @@ const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function novosDados() {
-  return employees.map((elemento) => ({
-    id: elemento.id,
-    fullName: `${elemento.firstName} ${elemento.lastName}`,
-    species: elemento.responsibleFor.map((elemen) => species.find((elemen2) => elemen2.id === elemen)
+  return employees.map((elem) => ({
+    id: elem.id,
+    fullName: `${elem.firstName} ${elem.lastName}`,
+    species: elem.responsibleFor.map((elemen) => species.find((elemen2) => elemen2.id === elemen)
       .name),
-    locations: elemento.responsibleFor.map((elemen) => species.find((elemen2) => elemen2.id === elemen)
+    locations: elem.responsibleFor.map((elemen) => species.find((elemen2) => elemen2.id === elemen)
       .location),
   }));
 }
@@ -18,20 +18,18 @@ function getEmployeesCoverage(arg) {
   }
   const { id, name } = arg;
 
-  if (employees.find((rg) => (rg.firstName === name || rg.lastName === name || rg.id === id))) {
-    const ray = employees.find((rg) => (rg.firstName === name || rg.lastName === name || rg.id === id));
+  if (employees.find((g) => (g.firstName === name || g.lastName === name || g.id === id))) {
+    const ray = employees.find((g) => (g.firstName === name || g.lastName === name || g.id === id));
     return {
       id: ray.id,
       fullName: `${ray.firstName} ${ray.lastName}`,
-      species: ray.responsibleFor.map((ele) => species.find((ele2) => ele2.id === ele)
+      species: ray.responsibleFor.map((e) => species.find((ele2) => ele2.id === e)
         .name),
-      locations: ray.responsibleFor.map((ele) => species.find((ele2) => ele2.id === ele)
+      locations: ray.responsibleFor.map((e) => species.find((ele2) => ele2.id === e)
         .location),
     };
   }
   throw new Error('Informações inválidas');
 }
-
-console.log(getEmployeesCoverage({ name: 'Sharonda' }));
 
 module.exports = getEmployeesCoverage;
