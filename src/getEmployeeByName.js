@@ -5,13 +5,11 @@ function getEmployeeByName(employeeName) {
   if (!employeeName) {
     return {};
   }
-  const employeeArr = data.employees.filter(employee => {
-    return (
+  const employeeArr = data.employees.filter(
+    (employee) =>
       employee.firstName === employeeName || employee.lastName === employeeName
-    );
-  });
+  );
   return employeeArr[0];
 }
-console.log(getEmployeeByName());
 
 module.exports = getEmployeeByName;
