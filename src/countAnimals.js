@@ -1,6 +1,6 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
-// código do José Carlos(Zeka) usado para fazer essa parte - encurtador.com.br/EFH48
+// código do José Carlos(Zeka) usado para fazer essa parte- encurtador.com.br/EFH48
 function countAnimals(animal) {
   const animals = {};
   if (animal === undefined) {
