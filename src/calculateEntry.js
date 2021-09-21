@@ -5,7 +5,7 @@ function countEntrants(entrants) {
   // seu código aqui teste
   const visitors = {
     child: entrants.filter((kid) => kid.age < 18).length,
-    adult: entrants.filter((old) => adult.age >= 18 && adult.age < 50).length,
+    adult: entrants.filter((adult) => adult.age >= 18 && adult.age < 50).length,
     senior: entrants.filter((elder) => elder.age >= 50).length,
   };
   return visitors;
