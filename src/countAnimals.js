@@ -13,7 +13,7 @@ function countAnimals(animal) {
     const findBySpicie = data.species.find((spicieName) => spicieName.name === name);
     return findBySpicie.residents.length;
   }
-  const findBySpecieEGender = data.species.find((specieName) => specieName.name === name
+  const findBySpecieEGender = data.species.find((specieName) => specieName.name === name)
   .residents.filter((gender) => gender.sex === sex);
   return findBySpecieEGender.length;
 }
