@@ -18,8 +18,6 @@ function countAnimals(animal) {
   return selecGender.length;
 }
 
-console.log(countAnimals({ specie: 'elephants', sex: 'male' }));
-
 module.exports = countAnimals;
 
 // const todosOsAnimais = species.map((elemento) => `${elemento.name} ${elemento.residents.length}`);
