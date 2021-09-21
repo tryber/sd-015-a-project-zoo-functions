@@ -9,12 +9,12 @@ function countAnimals(animal) {
       Object.assign(objeto, { [elemento.name]: elemento.residents.length }), {});
   }
 
-  const { specie, gender } = animal;
-  if (!gender) {
+  const { specie, sex } = animal;
+  if (!sex) {
     return species.find((anim) => anim.name === specie).residents.length;
   }
   return species.find((anim) => anim.name === specie).residents.filter((genderS) =>
-    genderS.sex === gender).length;
+    genderS.sex === sex).length;
 }
 
 module.exports = countAnimals;
