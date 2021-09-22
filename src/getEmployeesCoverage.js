@@ -39,6 +39,4 @@ function getEmployeesCoverage(obj) {
   return receiveMap;
 }
 
-// console.log(getEmployeesCoverage());
-// console.log(getEmployeesCoverage({ name: 'Id invalido' }));
 module.exports = getEmployeesCoverage;

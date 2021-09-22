@@ -1,49 +1,67 @@
 const data = require('../data/zoo_data');
 
 const { species } = data;
+const locations = ['NE', 'NW', 'SE', 'SW'];
 
-const receiveLocation = (location) => {
-  return species
-    .filter((locationAnimal) => locationAnimal.location === location)
-    .map((arrayAnimals) => arrayAnimals.name);
+const receiveLocation = (location) => species
+  .filter((locationAnimal) => locationAnimal.location === location)
+  .map((arrayAnimals) => arrayAnimals.name);
+
+const sexSorted = (currentLocation, sex, sorted) => {
+  if (sorted) {
+    return receiveLocation(currentLocation).map((element) => ({
+      [element]: species.find((animal) => animal.name === element)
+        .residents
+        .filter((sexAnimal) => sexAnimal.sex === sex)
+        .map((namesAnimals) => namesAnimals.name).sort(),
+    }));
+  }
+  return receiveLocation(currentLocation).map((element) => ({
+    [element]: species.find((animal) => animal.name === element)
+      .residents
+      .filter((sexAnimal) => sexAnimal.sex === sex)
+      .map((namesAnimals) => namesAnimals.name),
+  }));
 };
-// const receiveLocation2 = (location) => {
-//   return species
-//     .filter((locationAnimal) => locationAnimal.location === location)
-//     .reduce((atual, current) => , [])
-// };
-// console.log(receiveLocation2('NE'));
 
-const allLocations = () => {
-  const locations = ['NE', 'NW', 'SE', 'SW'];
-  return locations.reduce((objectLocations, currentLocation) => {
+const receiveLocationWithNames = (currentLocation, sex, sorted) => {
+  if (sex) {
+    return sexSorted(currentLocation, sex, sorted);
+  }
+  if (sorted) {
+    return receiveLocation(currentLocation).map((element) => ({
+      [element]: species.find((animal) => animal.name === element)
+        .residents
+        .map((namesAnimals) => namesAnimals.name).sort(),
+    }));
+  }
+  if (!sex && !sorted) {
+    return receiveLocation(currentLocation).map((element) => ({
+      [element]: species.find((animal) => animal.name === element)
+        .residents
+        .map((namesAnimals) => namesAnimals.name),
+    }));
+  }
+};
+
+const allLocations = () => locations.reduce((objectLocations, currentLocation) => {
+  const finalObject = objectLocations;
+  finalObject[currentLocation] = receiveLocation(currentLocation);
+  return finalObject;
+}, {});
+
+const allLocationsWithNames = ({ sex, sorted }) => {
+  const locationWithName = locations.reduce((objectLocations, currentLocation) => {
     const finalObject = objectLocations;
-    finalObject[currentLocation] = receiveLocation(currentLocation);
+    finalObject[currentLocation] = receiveLocationWithNames(currentLocation, sex, sorted);
     return finalObject;
   }, {});
+  return locationWithName;
 };
-// const newobjs = receiveLocation('NE').reduce((objectAnimals, currentAnimal) => {
-//   const objctFinal = objectAnimals;
-//   objctFinal.push({
-//     [currentAnimal]: species.find((element) => element.name === currentAnimal),
-//   });
-//   return objctFinal;
-// }, []);
-
-// const locationWithName = () => {
-//   const locations = ['NE', 'NW', 'SE', 'SW'];
-//   return locations.reduce((objectLocations, currentLocation) => {
-//     const finalObject = objectLocations;
-//     finalObject[currentLocation] = receiveLocation(currentLocation).reduce(() =>);
-//     return finalObject;
-//   }, {});
-// }
 
 function getAnimalMap(options) {
   if (!options) return allLocations();
-
-  // if(options.includeNames === true)
+  if (!options.includeNames) return allLocations();
+  if (options) return allLocationsWithNames(options);
 }
-
-console.log(getAnimalMap());
 module.exports = getAnimalMap;
