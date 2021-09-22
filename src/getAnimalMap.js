@@ -35,13 +35,12 @@ const receiveLocationWithNames = (currentLocation, sex, sorted) => {
         .map((namesAnimals) => namesAnimals.name).sort(),
     }));
   }
-  if (!sex && !sorted) {
-    return receiveLocation(currentLocation).map((element) => ({
-      [element]: species.find((animal) => animal.name === element)
-        .residents
-        .map((namesAnimals) => namesAnimals.name),
-    }));
-  }
+
+  return receiveLocation(currentLocation).map((element) => ({
+    [element]: species.find((animal) => animal.name === element)
+      .residents
+      .map((namesAnimals) => namesAnimals.name),
+  }));
 };
 
 const allLocations = () => locations.reduce((objectLocations, currentLocation) => {
