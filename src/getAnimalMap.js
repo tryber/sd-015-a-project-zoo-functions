@@ -1,5 +1,6 @@
 const data = require('../data/zoo_data');
-const { species } = require('../data/zoo_data')
+const { species } = require('../data/zoo_data');
+
 const base = species.reduce((acc, actual) => {
   acc[actual.location] = [...acc[actual.location], actual.name];
   return acc;
