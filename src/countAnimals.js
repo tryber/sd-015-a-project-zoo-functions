@@ -4,7 +4,7 @@ const data = require('../data/zoo_data');
 function countAnimals(animal) {
   if (!animal) {
     return species.reduce((obj, elem) =>
-      Object.assign(obj, { [elem.name]: elem.residents.length }), {});
+      Object.assign(obj, { [elem.name]: elem.residents.length }));
   }
 
   const { specie, sex } = animal;

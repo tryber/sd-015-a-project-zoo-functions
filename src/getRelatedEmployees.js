@@ -2,7 +2,7 @@ const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function isManager(id) {
-  return employees.some((employSome) => employSome.managers.includes(id));
+  return employees.some((employSome) => employSome.managers.includes());
 }
 
 function getRelatedEmployees(managerId) {
