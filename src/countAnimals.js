@@ -39,6 +39,4 @@ function countAnimals(animal) {
     return doisParametros(animal);
   }
 }
-
-console.log(countAnimals({ specie: 'elephants', gender: 'male' }));
 module.exports = countAnimals;
