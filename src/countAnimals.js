@@ -21,9 +21,9 @@ function umParametro(parametro) {
 function doisParametros(parametro) {
   const b = species.filter((element) => element.name === parametro.specie)[0].residents;
   let cont = 0;
-  for (let index = 0; index < b.length; index += 1) {
+  b.forEach((element, index) => {
     if (b[index].sex === parametro.gender) { cont += 1; }
-  }
+  });
   return cont;
 }
 
