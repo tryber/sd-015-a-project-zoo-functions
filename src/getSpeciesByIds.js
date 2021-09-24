@@ -2,8 +2,8 @@ const data = require('../data/zoo_data');
 
 const { species } = data;
 
-function getSpeciesByIds(...ids) { // ... nos permite representar um número indefinido de argumentos como um array
-  return species.filter((specie) => ids.includes(specie.id));
+function getSpeciesByIds(...ids) { // diferentes formatos de ids
+  return species.filter((specie) => ids.includes(specie.id)); // ferifica especie que tem o determinado id
 }
 
 // console.log(species);

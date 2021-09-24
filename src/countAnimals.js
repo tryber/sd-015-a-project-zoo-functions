@@ -23,6 +23,6 @@ function countAnimals(animal) {
   return findAnimals.residents.length;
 }
 
-console.log(countAnimals({ specie: 'bears', gender: 'female' }));
+// console.log(countAnimals({ specie: 'bears', gender: 'female' }));
 
 module.exports = countAnimals;
