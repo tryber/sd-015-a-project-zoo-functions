@@ -22,5 +22,3 @@ function countAnimals(animal) {
 }
 
 module.exports = countAnimals;
-
-console.log(countAnimals({ specie: 'lions', gender: 'female' }));
