@@ -3,11 +3,10 @@ const data = require('../data/zoo_data');
 function getAnimalsOlderThan(animal, age) {
   // seu código aqui
   const namedAnimal = data.species.filter((specie) => specie.name === animal);
-  let returnable = true;
-  namedAnimal[0].residents.forEach((resident) => {
-    if (age > resident.age) returnable = false;
+  return namedAnimal[0].residents.reduce((acc, res) => {
+    if (age > res.age) return false;
+    return true;
   });
-  return returnable;
 }
 
 module.exports = getAnimalsOlderThan;

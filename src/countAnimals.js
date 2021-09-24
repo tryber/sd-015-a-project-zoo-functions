@@ -10,7 +10,7 @@ function countAnimals(animal) {
     }, {});
   }
   // Condition to count all animals of specified gender if specie is not defined
-  if (Object.keys(animal).includes('gender')) {
+  if (Object.keys(animal).includes('gender') && Object.keys(animal).length === 1) {
     return species.reduce((acc, specie) => {
       acc[specie.name] = specie.residents.filter((res) => res.sex === animal.gender).length;
       return acc;
@@ -23,4 +23,4 @@ function countAnimals(animal) {
 
 module.exports = countAnimals;
 
-console.log(countAnimals({ gender: 'female' }));
+console.log(countAnimals({ specie: 'lions', gender: 'female' }));
