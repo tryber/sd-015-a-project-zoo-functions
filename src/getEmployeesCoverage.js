@@ -17,22 +17,21 @@ const empIdName = () => employees.map((elem) => ({
   }, []),
 }));
 
-const employeeName = (name) => empIdName().find((elem) => elem.fullName.includes(name));
+// const employeeName = (name) => empIdName().find((elem) => elem.fullName.includes(name));
 
-const employeeId = (id) => empIdName().find((elem) => elem.id.includes(id));
+// const employeeId = (id) => empIdName().find((elem) => elem.id.includes(id));
 
 function getEmployeesCoverage(obj) {
   if (!obj) {
     return empIdName();
   }
-  if (obj.name) {
-    return employeeName(obj.name);
+  const employeeNameId = () => empIdName().find((nameId) => nameId.fullName.includes(obj.name)
+  || nameId.id.includes(obj.id));
+
+  if (!employeeNameId()) {
+    throw new Error('Informações inválidas');
   }
-  if (obj.id.length === 36) {
-    return employeeId(obj.id);
-  }
-  throw new Error('Informações inválidas');
+  return employeeNameId();
 }
-// console.log(getEmployeesCoverage({ id: 'Id inválido' }));
 
 module.exports = getEmployeesCoverage;
