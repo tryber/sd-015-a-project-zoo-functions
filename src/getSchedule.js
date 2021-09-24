@@ -19,8 +19,6 @@ function exhibitionDays(weeklyDay) {
       .map((names) => names.name);
 }
 
-console.log(exhibitionDays('Monday'));
-
 function weeklySchedule() {
   return Object.keys(hours).reduce((finalObj, weeklyDay) => {
     const actualObject = finalObj;
@@ -49,13 +47,13 @@ function eachDay(weeklyDay) {
     const dailly = species
       .filter((elem) => elem.availability.includes(weeklyDay))
       .reduce((finalObject) => {
-        const finalObje = finalObject;
-        finalObje[weeklyDay] = {
+        const finalObj = finalObject;
+        finalObj[weeklyDay] = {
           [weeklyDay]: {
             officeHour: weeklyOfficeHours(weeklyDay),
             exhibition: exhibitionDays(weeklyDay) },
         };
-        return finalObje[weeklyDay];
+        return finalObj[weeklyDay];
       }, {});
     return dailly;
   }
@@ -65,12 +63,11 @@ function eachDay(weeklyDay) {
     exhibition: exhibitionDays(weeklyDay) } };
 }
 
-console.log(eachDay('Monday'));
+// console.log(eachDay('Monday'));
 
 function getSchedule(scheduleTarget) {
   if (
     !scheduleTarget || (!isDay(scheduleTarget) && !isAnimal(scheduleTarget))
-    // !scheduleTarget
   ) {
     return weeklySchedule();
   }
@@ -79,7 +76,7 @@ function getSchedule(scheduleTarget) {
   }
   return eachDay(scheduleTarget);
 }
-// console.log(getSchedule('Sunday'));
+console.log(getSchedule('Sundasd'));
 
 module.exports = getSchedule;
 
