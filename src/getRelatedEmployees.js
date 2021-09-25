@@ -25,11 +25,11 @@ function getRelatedEmployees(managerId) {
         for (let index1 = 0; index1 < gerente[index].managers.length; index1 += 1) {
           if (gerente[index].managers[index1] === managerId) {
             arrayColabora.push(`${gerente[index].firstName} ${gerente[index].lastName}`);
-          } 
+          }
         }
       }
-    }  
-  }  
+    }
+  }
   else {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
