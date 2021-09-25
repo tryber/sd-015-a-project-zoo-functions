@@ -1,7 +1,7 @@
-const data = require('../data/zoo_data');
+/*const data = require('../data/zoo_data');
 
 function resultNameAnimal(localanimal, nomeanimal) 
-//{}
+
 
 getAnimalMap({ includeNames: true });
-module.exports = getAnimalMap;
+module.exports = getAnimalMap;*/
