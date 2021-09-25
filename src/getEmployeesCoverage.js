@@ -12,6 +12,10 @@ const findEmployee = (person) => {
   }
 };
 
+/* Função para encontrar (caso exista) um funcionário pelo nome ou ID.
+O find encontra o primeiro que encaixa no parâmetro.
+*/
+
 const standardObj = (obj) => ({
 
   id: obj.id,
@@ -23,12 +27,21 @@ const standardObj = (obj) => ({
 
 });
 
+/* Cria um objeto padrão com as informações que serão usadas no retorno.
+O filter retorna as informações correspondentes no includes.
+O map reescreve um array com as informações recebidas.
+*/
+
 function getEmployeesCoverage(person) {
+  if (!findEmployee(person)) {
+    throw new Error('Informações inválidas');
+  }
   if (!person) {
     return employees.map((a) => standardObj(a));
   }
-  if (!findEmployee(person)) throw new Error('Informações inválidas');
   return standardObj(findEmployee(person));
 }
+
+// Retorna o objeto de acordo com os parâmetros recebidos.
 
 module.exports = getEmployeesCoverage;
