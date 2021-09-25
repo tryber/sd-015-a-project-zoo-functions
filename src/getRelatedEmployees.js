@@ -5,13 +5,12 @@ function isManager(id) {
   let saida = false;
   for (let index = 0; index < gerente.length; index += 1) {
     if ((gerente[index].managers.length !== 0) && (!saida)) {
-      let existe = gerente[index].managers;
+      const existe = gerente[index].managers;
       saida = existe.some((elemento) => elemento === id);
-      
-    }
-  }
+    };
+  };
   return saida;
-}
+};
 
 function getRelatedEmployees(managerId) {
   arrayColabora = [];
