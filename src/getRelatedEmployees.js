@@ -22,7 +22,7 @@ function colaboraGerente(managerId) {
         if (elemento1 === managerId) {
           arrayColabora.push(`${gerente[index].firstName} ${gerente[index].lastName}`);
         }
-      })
+      });
     }
   });
   return arrayColabora;
@@ -30,12 +30,11 @@ function colaboraGerente(managerId) {
 
 function getRelatedEmployees(managerId) {
   if (isManager(managerId)) {
-    return colaboraGerente(managerId);
+    colaboraGerente(managerId);
   } else {
       throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
-  } 
+  }
 }
- console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992'));
-// console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992'))
+
 
 module.exports = { isManager, getRelatedEmployees };
