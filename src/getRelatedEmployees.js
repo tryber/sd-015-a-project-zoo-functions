@@ -19,13 +19,15 @@ function colaboraGerente(managerId) {
     for (let index1 = 0; index1 < elemento.managers.length; index1 += 1) {
       const aaa = elemento.managers;
       aaa.forEach((elemento1) => {
-        if (elemento1 === managerId)     
+        if (elemento1 === managerId) {
           arrayColabora.push(`${gerente[index].firstName} ${gerente[index].lastName}`);
-        })
+        }
+      })
     }
   });
   return arrayColabora;
 }
+
 function getRelatedEmployees(managerId) {
   if (isManager(managerId)) {
     return colaboraGerente(managerId);
