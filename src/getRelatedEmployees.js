@@ -13,25 +13,25 @@ function isManager(id) {
 }
 
 function getRelatedEmployees(managerId) {
-  arrayColabora = [];
+  let arrayColabora = [];
   if (isManager(managerId)) {
-    const gerente = data.employees
-    for (let index = 0; index < gerente.length; index += 1) {
-        for (let index1 = 0; index1 < gerente[index].managers.length; index1 += 1) {
-          if (gerente[index].managers[index1] === managerId) {
+    const gerente = data.employees;
+    gerente.forEach((elemento, index) => {
+      for (let index1 = 0; index1 < elemento.managers.length; index1 += 1) {
+        const aaa = elemento.managers;
+        aaa.forEach((elemento1) => {
+          if (elemento1 === managerId)     
             arrayColabora.push(`${gerente[index].firstName} ${gerente[index].lastName}`);
-          }
-        }
-    }
+        })
+      }
+    });
   }
-  else {
+   else {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
-  return(arrayColabora);
+  return (arrayColabora);
 }
-//console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992'));
-//console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992'))
-
-
+ console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992'));
+// console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992'))
 
 module.exports = { isManager, getRelatedEmployees };
