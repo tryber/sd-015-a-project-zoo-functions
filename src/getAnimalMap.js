@@ -1,7 +1,7 @@
 const data = require('../data/zoo_data');
 
 function resultNameAnimal(localanimal, nomeanimal) {
-  const entriesNomeAnimal = Object.entries(nomeanimal);
+ /* const entriesNomeAnimal = Object.entries(nomeanimal);
   const nvArray = {};
   entriesNomeAnimal.forEach((element) => {
     nvArray[element[0]] = element[1];
@@ -53,7 +53,7 @@ function getAnimalMap(options) {
   }
   if (options.includeNames) {
     return nomeAnimaisLocal(animaisLocal());
-  }
+  }*/
 }
 
 getAnimalMap({ includeNames: true });
