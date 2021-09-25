@@ -1,23 +1,23 @@
 const data = require('../data/zoo_data');
 
 function isManager(id) {
- 
+
   const gerente = data.employees
-  for (let index = 0; index < gerente.length; index += 1){
+  for (let index = 0; index < gerente.length; index += 1) {
     if (gerente[index].managers.length !== 0) {
       for (let index1 = 0; index1 < gerente[index].managers.length; index1 += 1) {
         if (gerente[index].managers[index1] === id) {
           return true;
-        } 
+        }
       }
     }
   }
-  return false
+  return false;
 }
 
 function getRelatedEmployees(managerId) {
   arrayColabora = [];
- 
+  
   if (isManager(managerId)) {
     const gerente = data.employees
     for (let index = 0; index < gerente.length; index += 1) {
