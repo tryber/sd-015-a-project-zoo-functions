@@ -1,31 +1,22 @@
 const data = require('../data/zoo_data');
 
 function getEmployeesCoverage(employee) {
-  const simplifyI = Object.values(employee);
-  const simplify = simplifyI[0];
-  const findEmployeeName = data.employees.find((find) =>
-    find.firstName === simplify || find.lastName === simplify || find.id === simplify);
-  if (findEmployeeName === undefined) {
-    throw new Error('Informações inválidas');
-  }
-  const findId = findEmployeeName.responsibleFor;
-  const findSpecies = [];
-  for (let i = 0; i < findId.length; i += 1) {
-    findSpecies.push(data.species.find((find) => find.id === findId[i]));
-  }
-  const speciesName = [];
-  const speciesLocation = [];
-  for (let i = 0; i < findSpecies.length; i += 1) {
-    speciesName.push(findSpecies[i].name);
-    speciesLocation.push(findSpecies[i].location);
-  }
-  const employeeCover = {
-    id: findEmployeeName.id,
-    fullName: `${findEmployeeName.firstName} ${findEmployeeName.lastName}`,
-    species: speciesName,
-    locations: speciesLocation,
+  const findEmployee = ({ name, id }) => data.employees.find((find) =>
+    find.firstName === name || find.lastName === name || find.id === id);
+  const findSpecies = find => data.species.filter((filter) => find.responsibleFor
+    .includes(filter.id));
+  const employeeCover = data.employees.map((entry) => ({
+    id: entry.id,
+    fullName: `${entry.firstName} ${entry.lastName}`,
+    species: findSpecies(entry).map((specie) => specie.name),
+    locations: findSpecies(entry).map((specie) => specie.location),
+  }))
+  if (employee === undefined) {
+    return employeeCover;
   };
-  return employeeCover;
+  const employeeName = findEmployee(employee);
+  if (employeeName === undefined) throw new Error('Informações inválidas');
+  return employeeCover.find((worker) => worker.id === employeeName.id);
 }
 
 module.exports = getEmployeesCoverage;
