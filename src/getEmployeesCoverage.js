@@ -56,7 +56,7 @@ function getEmployeesCoverage(employee) {
   const simplifyI = Object.values(employee);
   const simplify = simplifyI[0];
   const findEmployeeName = data.employees.find((find) =>
-    find.firstName === simplify || find.lastName === simplify || find.id === simplify );
+    find.firstName === simplify || find.lastName === simplify || find.id === simplify);
   if (findEmployeeName === undefined) {
     throw new Error('Informações inválidas');
   }
