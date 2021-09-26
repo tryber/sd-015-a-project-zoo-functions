@@ -31,7 +31,7 @@ function colaboraGerente(managerId) {
 function getRelatedEmployees(managerId) {
   if (isManager(managerId)) {
     return (colaboraGerente(managerId));
-  } 
+  }
   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 
