@@ -16,7 +16,10 @@ function gerarresultado(animais, nomeEspecie) {
   });
   return registro;
 }
-
+function ordenarName(ordem, param) {
+  if (ordem) param.sort();
+  return param;
+}
 function nomeAnimalLocal(animais, ordem, sexo) {
   const nvResult = {};
   data.species.forEach((element) => {
@@ -26,7 +29,8 @@ function nomeAnimalLocal(animais, ordem, sexo) {
       if ((sexo !== undefined) && (sexo === nomeAnimal.sex)) nvName.push(nomeAnimal.name);
     });
     nvResult[element.name] = nvName;
-    if (ordem) nvResult[element.name].sort();
+    // if (ordem) nvResult[element.name].sort();
+    nvResult[element.name] = ordenarName(ordem, nvResult[element.name]);
   });
   return gerarresultado(animais, nvResult);
 }
