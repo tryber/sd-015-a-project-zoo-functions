@@ -1,55 +1,34 @@
 const data = require('../data/zoo_data');
 // consultado repositório de pedro guarize para este quesito: https://github.com/tryber/sd-015-a-project-zoo-functions/blob/pedro-guarize-zoo-functions-project/src/getAnimalMap.js
 const { species } = data;
+const eachLocation = ['NE', 'NW', 'SE', 'SW'];
 
-// console.log(species.filter((specie) => specie.location === 'NE').map((anim) => anim.name))
+// console.log(species.filter((specie) => specie.location)); // .map((anim) => anim.name));
 
-const allAnimalsMapped = () => ({
-  NE: species
-    .filter((specie) => specie.location === 'NE')
-    .map((anim) => anim.name),
-  NW: species
-    .filter((specie) => specie.location === 'NW')
-    .map((anim) => anim.name),
-  SE: species
-    .filter((specie) => specie.location === 'SE')
-    .map((anim) => anim.name),
-  SW: species
-    .filter((specie) => specie.location === 'SW')
-    .map((anim) => anim.name),
-});
-console.log(allAnimalsMapped());
+const animalLocation = (locations) => species
+  .filter((specie) => specie.location === locations)
+  .map((animalsName) => animalsName.name);
 
-function nameIncluded(param) {
-  const NE = {
-    NE: species
-      .filter((specie) => specie.location === 'NE')
-      .map((anim) => anim.residents.map((elem) => elem.name)),
-  };
-  // const animalNames =
-  // const allAnimals = allAnimalsMapped();
-  // allAnimals.NE.map((elem) => elem === 'lions');
-  // console.log(allAnimals);
-  console.log(NE);
-}
-nameIncluded();
+// console.log(animalLocation(eachLocation));
+
+const noParamGiven = () => eachLocation.reduce((object, currentLocation) => {
+  const finalObject = object;
+  finalObject[currentLocation] = animalLocation(currentLocation);
+  return finalObject;
+}, {});
 
 function getAnimalMap(options) {
   // seu código aqui
   if (options === undefined) {
-    return allAnimalsMapped();
+    return noParamGiven();
   }
 }
+console.log(getAnimalMap());
 
 module.exports = getAnimalMap;
 
 // 7. Implemente a função getAnimalMap
 // A função é responsável pelo mapeamento geográfico das espécies e seus animais, podendo ainda filtrá-los por ordem alfabética e gênero.
-
-// Observações técnicas
-
-// Analise o teste unitário para entender os retornos que são esperados para esta função.
-// O que será avaliado
 
 // Sem parâmetros, retorna animais categorizados por localização;
 // Com a opção includeNames: true especificada, retorna nomes de animais;
