@@ -42,7 +42,8 @@ function scheduleBySearch(string) {
 console.log(scheduleBySearch('Tuesday'));
 function getSchedule(scheduleTarget) { // Função principal! Retorna a programação do zoo de acordo com o que o usuário indicar(dia e animal), caso contrario retorna a programação da semana inteira.
   if (scheduleTarget === 'Monday') {
-    return { Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' },
+    return {
+      Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' },
     };
   }
   if (verifyAnimalOrDay(scheduleTarget) === true) return scheduleBySearch(scheduleTarget);

@@ -7,9 +7,8 @@ function getEmployeeObj(someEmployeeName) {
     (employee.firstName === someEmployeeName || employee.lastName === someEmployeeName));
 }
 function getEmployeeByName(employeeName) {
-  // seu código aqui
   if (!employeeName) return {};
   return getEmployeeObj(employeeName);
 }
-// console.log(getEmployeeByName('Emery'))
+
 module.exports = getEmployeeByName;
