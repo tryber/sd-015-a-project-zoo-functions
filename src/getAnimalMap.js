@@ -10,8 +10,7 @@ function makeAnimalsArray(option, residents) {
   }, []);
 }
 
-function getAnimalMap(options = { includeNames: false, sorted: false, sex: false }) {
-  const obj = {};
+function testVerifications(options, obj) {
   species.forEach(({ name, location, residents }) => {
     if (options.includeNames) {
       const animalsNameList = makeAnimalsArray(options, residents);
@@ -23,6 +22,11 @@ function getAnimalMap(options = { includeNames: false, sorted: false, sex: false
       obj[location].push(name);
     }
   });
+}
+
+function getAnimalMap(options = { includeNames: false, sorted: false, sex: false }) {
+  const obj = {};
+  testVerifications(options, obj);
   return obj;
 }
 
