@@ -1,7 +1,6 @@
-
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
-
+// Retirado do repositório: https://github.com/tryber/sd-015-a-project-zoo-functions/blob/lucaslol-zoo-functions-project/src/countAnimals.js
 function countAnimals(animal) {
   // seu código aqui
   if (animal === undefined) {
