@@ -2,6 +2,7 @@ const data = require('../data/zoo_data');
 const { employees } = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
 
+// Função que busca todos os funcionarios e cria um novo array com objetos personalizados:
 function fullList() {
   const allEmployees = employees.map((person) => ({
     id: person.id,
@@ -13,7 +14,7 @@ function fullList() {
   }));
   return allEmployees;
 }
-
+// Busca o funcionário pelo nome ou sobrenome, com a mesma estrutrura da função "fullList"
 function findByName(name) {
   const byName = employees.find((person) => person.firstName === name || person.lastName === name);
   return ({
@@ -25,7 +26,7 @@ function findByName(name) {
       .find((animal) => animal.id === id).location),
   });
 }
-
+// Busca o funcionário pelo ID, com a mesma estrutrura da função "fullList"
 function findById(id) {
   const byId = employees.find((person) => person.id === id);
   return ({
@@ -37,10 +38,13 @@ function findById(id) {
       .find((animal) => animal.id === idPerson).location),
   });
 }
-
+// Função principal que une todas as outras:
 function getEmployeesCoverage(parameters) {
-  if (!parameters) return fullList();
+  if (!parameters) {
+    return fullList();
+  }
   const { name, id } = parameters;
+  // Faz a vistoria em employees para verificar se o nome ou ID passado como parametro existe:
   const dataBaseCheck = employees.find((person) => person.firstName === name
   || person.lastName === name || person.id === id);
   if (dataBaseCheck === undefined) {
