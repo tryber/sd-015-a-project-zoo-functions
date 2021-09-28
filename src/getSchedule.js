@@ -1,4 +1,3 @@
-const { TestScheduler } = require('jest');
 const data = require('../data/zoo_data');
 
 const simpleWay = {
@@ -15,8 +14,8 @@ const simpleWay = {
     exhibition: ['lions', 'otters', 'frogs', 'snakes', 'giraffes'],
   },
   Friday: {
-    'officeHour': 'Open from 10am until 8pm',
-    'exhibition': ['tigers', 'otters', 'frogs', 'elephants', 'giraffes'],
+    officeHour: 'Open from 10am until 8pm',
+    exhibition: ['tigers', 'otters', 'frogs', 'elephants', 'giraffes'],
   },
   Saturday: {
     officeHour: 'Open from 8am until 10pm',
@@ -34,13 +33,11 @@ const simpleWay = {
   Monday: { 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' },
 };
 const forMonday = {
-  Monday: { 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' },
+  Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' },
 };
-const simpleArray = [];
-simpleArray.push(simpleWay);
 //  Para a criação desta função usei de inspiração o código do Vitor Diorio visto que eu estava com dificuldades de implementala funcionalmente na parte que buscava as species- disponivel em https://github.com/tryber/sd-015-a-project-zoo-functions/pull/93/commits/199f680d891c0c976fd2ca25b4410d10774eccd4
 
-function findDay (day) {
+function findDay(day) {
   const finder = {};
   finder[day] = {
     officeHour: `Open from ${data.hours[day].open}am until ${data.hours[day].close}pm`,
@@ -61,8 +58,8 @@ function getSchedule(scheduleTarget) {
   if (data.species.some((animal) => animal.name === scheduleTarget)) {
     const findSpecie = data.species.find((animal) => animal.name === scheduleTarget);
     return findSpecie.availability;
-  }  
-    return simpleWay;
+}
+return simpleWay;
 }
 
 module.exports = getSchedule;
