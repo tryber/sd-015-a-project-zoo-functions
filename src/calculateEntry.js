@@ -1,9 +1,9 @@
 const data = require('../data/zoo_data');
-//Esta função irá receber um array de visitantes
+// Esta função irá receber um array de visitantes
 function countEntrants(entrants) {
   // seu código aqui
   const visitantes = { child: 0, adult: 0, senior: 0 };
-  //percorre o array dos visitantes
+  // percorre o array dos visitantes
   entrants.forEach((visitante) => {
     if (visitante.age < 18) {
       visitantes.child += 1;
@@ -17,14 +17,14 @@ function countEntrants(entrants) {
 }
 
 
-//Após terminar a implementação da função countEntrants
-//você deverá utilizá-la para implementar a função calculateEntry.
-//Esta deverá receber um array de visitantese a partir da quantidade 
-//de visitantes e faixa etária de cada um,deverá retornar o valor total a ser cobrado.
+// Após terminar a implementação da função countEntrants
+// você deverá utilizá-la para implementar a função calculateEntry.
+// Esta deverá receber um array de visitantese a partir da quantidade 
+// de visitantes e faixa etária de cada um,deverá retornar o valor total a ser cobrado.
 function calculateEntry(entrants) {
   // seu código aqui
   let total = 0;
-  //Se os visitantes serem indefinidos ou o valor for igual a zero ele retorna o total
+  // Se os visitantes serem indefinidos ou o valor for igual a zero ele retorna o total
   if (entrants === undefined || Object.keys(entrants).length === 0) {
     return total;
   }
