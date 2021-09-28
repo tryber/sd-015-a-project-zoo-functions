@@ -12,7 +12,7 @@ function countAnimals(animal) {
     return objectOfAnimals;
   } if (Object.keys(animal).length > 1) {
     const animalTarget = species.find((target) => target.name === animal.specie);
-    return animalTarget.residents.filter((target) => animal.gender === target.sex).length;
+    return animalTarget.residents.filter((target) => animal.sex === target.sex).length;
   }
   const animalTarget = species.find((target) => target.name === animal.specie);
   return animalTarget.residents.length;
