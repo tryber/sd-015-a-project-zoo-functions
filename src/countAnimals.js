@@ -11,8 +11,8 @@ function countAnimals(animal) {
 
   const specie = species.find((anm) => anm.name === animal.specie);
 
-  if (animal.specie && animal.gender) {
-    const specAndGender = specie.residents.filter((anm) => anm.sex === animal.gender);
+  if (animal.specie && animal.sex) {
+    const specAndGender = specie.residents.filter((anm) => anm.sex === animal.sex);
     return specAndGender.length;
   }
   return specie.residents.length;
