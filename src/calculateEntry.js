@@ -28,7 +28,5 @@ const entrants1 = [
   { name: 'Núbia Souza', age: 18 },
   { name: 'Carlos Nogueira', age: 50 },
 ];
-console.log(countEntrants(entrants1));
-console.log(calculateEntry(entrants1));
 
 module.exports = { calculateEntry, countEntrants };
