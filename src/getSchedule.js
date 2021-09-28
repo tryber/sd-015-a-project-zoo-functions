@@ -30,7 +30,7 @@ const simpleWay = {
     officeHour: 'Open from 8am until 8pm',
     exhibition: ['lions', 'bears', 'penguins', 'snakes', 'elephants'],
   },
-  Monday: { 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' },
+  Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' },
 };
 const forMonday = {
   Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' },
@@ -58,8 +58,8 @@ function getSchedule(scheduleTarget) {
   if (data.species.some((animal) => animal.name === scheduleTarget)) {
     const findSpecie = data.species.find((animal) => animal.name === scheduleTarget);
     return findSpecie.availability;
-}
-return simpleWay;
+  }
+  return simpleWay;
 }
 
 module.exports = getSchedule;
