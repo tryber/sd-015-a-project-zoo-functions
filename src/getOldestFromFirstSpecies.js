@@ -1,3 +1,5 @@
+// Observação: Exercicio feito com ajuda dos colegas de turma (constante "oldestAnimal")
+
 const data = require('../data/zoo_data');
 const { employees } = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
