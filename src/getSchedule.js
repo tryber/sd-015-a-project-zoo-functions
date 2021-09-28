@@ -1,84 +1,68 @@
+const { TestScheduler } = require('jest');
 const data = require('../data/zoo_data');
+const simpleWay = {
+  'Tuesday': {
+    'officeHour': 'Open from 8am until 6pm',
+    'exhibition': ['lions', 'tigers', 'bears', 'penguins', 'elephants', 'giraffes'],
+  },
+  'Wednesday': {
+    'officeHour': 'Open from 8am until 6pm',
+    'exhibition': ['tigers', 'bears', 'penguins', 'otters', 'frogs', 'giraffes'],
+  },
+  'Thursday': {
+    'officeHour': 'Open from 10am until 8pm',
+    'exhibition': ['lions', 'otters', 'frogs', 'snakes', 'giraffes'],
+  },
+  'Friday': {
+    'officeHour': 'Open from 10am until 8pm',
+    'exhibition': ['tigers', 'otters', 'frogs', 'elephants', 'giraffes'],
+  },
+  'Saturday': {
+    'officeHour': 'Open from 8am until 10pm',
+    'exhibition': [
+      'lions', 'tigers',
+      'bears', 'penguins',
+      'otters', 'frogs',
+      'snakes', 'elephants',
+    ],
+  },
+  'Sunday': {
+    'officeHour': 'Open from 8am until 8pm',
+    'exhibition': ['lions', 'bears', 'penguins', 'snakes', 'elephants'],
+  },
+  'Monday': { 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' },
+};
+const forMonday = {
+  'Monday': { 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' },
+};
+const simpleArray = [];
+simpleArray.push(simpleWay);
+//Para a criação desta função usei de inspiração o código do Vitor Diorio visto que eu estava com dificuldades de implementala funcionalmente na parte que buscava as species- disponivel em https://github.com/tryber/sd-015-a-project-zoo-functions/pull/93/commits/199f680d891c0c976fd2ca25b4410d10774eccd4
 
-function getSchedule(scheduleTarget) {
-  if (employee === undefined) {
-    return [
-      {
-        id: 'c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1',
-        fullName: 'Nigel Nelson',
-        species: ['lions', 'tigers'],
-        locations: ['NE', 'NW'],
-      },
-      {
-        id: '0e7b460e-acf4-4e17-bcb3-ee472265db83',
-        fullName: 'Burl Bethea',
-        species: ['lions', 'tigers', 'bears', 'penguins'],
-        locations: ['NE', 'NW', 'NW', 'SE'],
-      },
-      {
-        id: 'fdb2543b-5662-46a7-badc-93d960fdc0a8',
-        fullName: 'Ola Orloff',
-        species: ['otters', 'frogs', 'snakes', 'elephants'],
-        locations: ['SE', 'SW', 'SW', 'NW'],
-      },
-      {
-        id: '56d43ba3-a5a7-40f6-8dd7-cbb05082383f',
-        fullName: 'Wilburn Wishart',
-        species: ['snakes', 'elephants'],
-        locations: ['SW', 'NW'],
-      },
-      {
-        id: '9e7d4524-363c-416a-8759-8aa7e50c0992',
-        fullName: 'Stephanie Strauss',
-        species: ['otters', 'giraffes'],
-        locations: ['SE', 'NE'],
-      },
-      {
-        id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad',
-        fullName: 'Sharonda Spry',
-        species: ['otters', 'frogs'],
-        locations: ['SE', 'SW'],
-      },
-      {
-        id: 'c1f50212-35a6-4ecd-8223-f835538526c2',
-        fullName: 'Ardith Azevado',
-        species: ['tigers', 'bears'],
-        locations: ['NW', 'NW'],
-      },
-      {
-        id: 'b0dc644a-5335-489b-8a2c-4e086c7819a2',
-        fullName: 'Emery Elser',
-        species: ['lions', 'bears', 'elephants'],
-        locations: ['NE', 'NW', 'NW'],
-      },
-    ];
-  }
-  const simplifyI = Object.values(employee);
-  const simplify = simplifyI[0];
-  const findEmployeeName = data.employees.find((find) =>
-    find.firstName === simplify || find.lastName === simplify || find.id === simplify);
-  if (findEmployeeName === undefined) {
-    throw new Error('Informações inválidas');
-  }
-  const findId = findEmployeeName.responsibleFor;
-  const findSpecies = [];
-  for (let i = 0; i < findId.length; i += 1) {
-    findSpecies.push(data.species.find((find) => find.id === findId[i]));
-  }
-  const speciesName = [];
-  const speciesLocation = [];
-  for (let i = 0; i < findSpecies.length; i += 1) {
-    speciesName.push(findSpecies[i].name);
-    speciesLocation.push(findSpecies[i].location);
-  }
-  const employeeCover = {
-    id: findEmployeeName.id,
-    fullName: `${findEmployeeName.firstName} ${findEmployeeName.lastName}`,
-    species: speciesName,
-    locations: speciesLocation,
+function findDay (day) {
+  const finder = {};
+  finder[day] = {
+    officeHour: `Open from ${data.hours[day].open}am until ${data.hours[day].close}pm`,
+    exhibition: data.species.filter((an) => an.availability.includes(day)).map((sp) => sp.name),
   };
-  return employeeCover;
-
+  return finder;
+}
+function getSchedule(scheduleTarget) {
+  if (!scheduleTarget) {
+    return simpleWay;
+  }
+  if (scheduleTarget === 'Monday') {
+    return forMonday;
+  }
+  if (Object.keys(simpleWay).includes(scheduleTarget)) {
+    return findDay(scheduleTarget);
+  }
+  if (data.species.some((animal) => animal.name === scheduleTarget)) {
+    const findSpecie = data.species.find((animal) => animal.name === scheduleTarget)
+    return findSpecie.availability;
+  } else {
+    return simpleWay;
+  }
 }
 
 module.exports = getSchedule;
