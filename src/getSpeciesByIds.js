@@ -4,14 +4,10 @@
 const data = require('../data/zoo_data');
 // espalha o array
 function getSpeciesByIds(...ids) {
+const { species } = require('../data/zoo_data');
+
 // seu código aqui
-// array vazio
-  const array = [];
-//  insere a variável ids no forEach, puxa o primeiro item, puxa o array que o critério seja a especie com id única. 
-//  specie é igual ao primeiro parametro
-ids.forEach((item) => array.push(data.species.find((specie) => specie.id === item)));
-//  retorna o array com as especies
-  return array;
+return species.filter((specie) => ids.includes(species.id))
   
 }
 
