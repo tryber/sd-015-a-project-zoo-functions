@@ -18,7 +18,7 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  if (entrants === undefined || Object.keys(entrants).length === 0) {
+  if (!entrants || Object.keys(entrants).length === 0) { // converte obj em array sendo possivel contar com o length
     return 0;
   }
   const count = countEntrants(entrants);

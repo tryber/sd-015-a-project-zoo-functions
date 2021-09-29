@@ -3,11 +3,11 @@ const data = require('../data/zoo_data');
 const { employees } = data;
 
 function getEmployeeByName(employeeName) {
-  if (employeeName === undefined) {
+  if (!employeeName) {
     return {};
   }
-  const search = (fName) => fName.firstName === employeeName || fName.lastName === employeeName;
-  return employees.find(search);
+  return employees.find((fName) =>
+    fName.firstName === employeeName || fName.lastName === employeeName); // primeiro ou ultimo nome
 }
 
 // console.log(getEmployeeByName());

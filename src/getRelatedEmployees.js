@@ -12,11 +12,11 @@ function isManager(id) {
 }
 
 function getRelatedEmployees(managerId) {
-  if (isManager(managerId) !== true) {
+  if (!isManager(managerId)) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
-  const responsible = employees.filter((fEmploye) => fEmploye.managers.includes(managerId));
-  return responsible.map((mapName) => `${mapName.firstName} ${mapName.lastName}`);
+  const managerResponse = employees.filter((fEmploye) => fEmploye.managers.includes(managerId)); // armazena array com os devidos empregados gerenciado por id passado na função
+  return managerResponse.map((mapName) => `${mapName.firstName} ${mapName.lastName}`);
 }
 
 // console.log(isManager());

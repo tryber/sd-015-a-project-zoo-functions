@@ -6,6 +6,6 @@ function getSpeciesByIds(...ids) { // ... nos permite representar um número ind
   return species.filter((specie) => ids.includes(specie.id));
 }
 
-// console.log(species);
+// console.log(getSpeciesByIds());
 
 module.exports = getSpeciesByIds;
