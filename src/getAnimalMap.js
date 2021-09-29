@@ -2,11 +2,13 @@ const data = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
 
 function name(param) {
-  return species.reduce((objFinal, specie) => {
-    objFinal[specie.location] = { [specie.name]:specie.residents.map((nomesDosAnimais) => nomesDosAnimais.name)};
-    console.log(objFinal);
+  console.log(species.reduce((objFinal, specie) => {
+    if (objFinal[specie.location]) {console.log('0')
+      console.log(objFinal)};
+    if (!objFinal[specie.location]) {objFinal[specie.location] = { [specie.name]:specie.residents.map((nomesDosAnimais) => nomesDosAnimais.name).sort() };
     return objFinal;
-  }, {});
+  }, {}));
+    
   
 }
 

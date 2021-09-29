@@ -3,12 +3,9 @@ const { hours } = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
 
 const diasEHoras = (Object.entries(hours));
-console.log((species.map((element) => element.availability.includes('lions'))));
 function getSchedule(scheduleTarget) {
-  // sem parametr
-  if (scheduleTarget === 'Monday')
-  {
-    return {Monday: { 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' }}
+  if (scheduleTarget === 'Monday') {
+    return { Monday: { 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' } };
   }
   if (!(diasEHoras.some((x) => x[0] === scheduleTarget) || species.some((y) => y.name === scheduleTarget))) {
     return diasEHoras.reduce((dia, hora) => {
