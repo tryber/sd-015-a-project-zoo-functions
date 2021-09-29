@@ -11,8 +11,8 @@
 //     return diasEHoras.reduce((dia, hora) => {
 //       dia[hora[0]] = { 'officeHour': `Open from ${hora[1].open}am until ${hora[1].close}pm`, 'exhibition': species
 //       .reduce((animaisEmExibiçao, diaDeExibiçao) => {
-//            diaDeExibiçao.availability.map((diaDaSemana) => diaDaSemana === hora[0]? animaisEmExibiçao.push(diaDeExibiçao.name):null )            
-//               return animaisEmExibiçao;          
+//            diaDeExibiçao.availability.map((diaDaSemana) => diaDaSemana === hora[0]? animaisEmExibiçao.push(diaDeExibiçao.name):null )
+//               return animaisEmExibiçao;
 //       },[])
 //       }
 //       if (hora[0] === 'Monday') {
@@ -25,7 +25,7 @@
 //   if (species.find((element) => element.availability.includes(scheduleTarget))) {
 //      const hora = diasEHoras.find((element) => element[0] === scheduleTarget);
 //      const obj = { [scheduleTarget]: {'officeHour': `Open from ${hora[1].open}am until ${hora[1].close}pm`,'exhibition':species.reduce((animaisEmExibiçao, diaDeExibiçao) => {
-//       diaDeExibiçao.availability.map((diaDaSemana) => diaDaSemana === scheduleTarget? animaisEmExibiçao.push(diaDeExibiçao.name):null)            
+//       diaDeExibiçao.availability.map((diaDaSemana) => diaDaSemana === scheduleTarget? animaisEmExibiçao.push(diaDeExibiçao.name):null)
 //                   return animaisEmExibiçao;
 //         },[])
 //         }

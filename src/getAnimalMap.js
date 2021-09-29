@@ -8,8 +8,6 @@
 //     if (!objFinal[specie.location]) {objFinal[specie.location] = { [specie.name]:specie.residents.map((nomesDosAnimais) => nomesDosAnimais.name).sort() };
 //     return objFinal;
 //   }, {}));
-    
-  
 // }
 
 // function sorted(param) {
@@ -24,9 +22,7 @@
 //     objFinal[specie.location] = { [specie.name]: species.map((element) => element.residents.filter((sex) => sex.sex === 'female').map((nome) => nome.name))};
 //     return objFinal;
 //   }, []);
-  
 // }
-
 
 // // // // function sex(param) {
 // //   console.log(species.map((element) => element.residents.filter((sex) => sex.sex === 'female').map((nome) => nome.name)))
@@ -50,7 +46,6 @@
 //     const obj = sexFemale()
 //       return obj;
 //     }
-    
 //   if (options[0].includeNames === true) {
 //     const obj = name();
 //     return obj;
