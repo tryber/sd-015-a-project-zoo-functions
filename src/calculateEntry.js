@@ -25,7 +25,9 @@ function calculateEntry(entrants) {
     return total;
   }
   const visitantesPorIdade = countEntrants(entrants);
-  total = visitantesPorIdade.adult * data.prices.adult + visitantesPorIdade.child * data.prices.child + visitantesPorIdade.senior * data.prices.senior;
+  total = visitantesPorIdade.adult * data.prices.adult
+  + visitantesPorIdade.child * data.prices.child
+  + visitantesPorIdade.senior * data.prices.senior;
   return total;
 }
 
