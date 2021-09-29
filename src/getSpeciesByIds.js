@@ -7,7 +7,7 @@ function getSpeciesByIds(...ids) {
 const { species } = require('../data/zoo_data');
 
 // seu código aqui
-return species.filter((specie) => ids.includes(species.id))
+return species.filter((specie) => ids.includes(specie.id))
   
 }
 
