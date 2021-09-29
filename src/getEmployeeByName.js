@@ -1,5 +1,5 @@
 const data = require('../data/zoo_data');
-
+// Crie uma função que busca as pessoas colaboradoras a partir do primeiro ou último nome
 const { employees } = data;
 
 function getEmployeeByName(employeeName) {
