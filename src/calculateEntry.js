@@ -16,7 +16,6 @@ function countEntrants(entrants) {
   return visitantes;
 }
 
-
 // Após terminar a implementação da função countEntrants
 // você deverá utilizá-la para implementar a função calculateEntry.
 // Esta deverá receber um array de visitantese a partir da quantidade 
