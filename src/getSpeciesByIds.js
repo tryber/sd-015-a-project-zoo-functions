@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 
 const { species } = data;
 
-function getSpeciesByIds(...ids) { // ... nos permite representar um número indefinido de argumentos como um array
+function getSpeciesByIds(...ids) { // formatos diferentes de ids
   return species.filter((specie) => ids.includes(specie.id));
 }
 
