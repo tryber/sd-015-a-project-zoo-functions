@@ -21,6 +21,7 @@ function getAnimalMap(options) {
       return specieResidents.sort((a, b) => a.name > b.name ? 1 : -1);
     }
     return specieResidents;
+    console.log(specieResidents);
   }).map((array, index) => {
     const obj = {};
     obj[animal[index]] = array.map((resident) => resident.name);
