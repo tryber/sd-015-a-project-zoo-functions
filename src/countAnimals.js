@@ -22,7 +22,7 @@ function doisParametros(parametro) {
   const b = species.filter((element) => element.name === parametro.specie)[0].residents;
   let cont = 0;
   b.forEach((element, index) => {
-    if (b[index].sex === parametro.gender) { cont += 1; }
+    if (b[index].sex === parametro.sex) { cont += 1; }
   });
   return cont;
 }
