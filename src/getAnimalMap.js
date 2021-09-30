@@ -2,6 +2,11 @@ const data = require('../data/zoo_data');
 
 const { species } = data;
 
+function createArrayLocations() {
+  const mapLocation = species.map((loc) => loc.location);
+  return mapLocation.filter((loc, i) => mapLocation.indexOf(loc) === i);
+}
+
 function animalsLocations(arrayLocations) {
   const result = {};
   arrayLocations.forEach((loc) => {
@@ -10,7 +15,7 @@ function animalsLocations(arrayLocations) {
   return result;
 }
 
-// console.log(animalsLocations(['NE', 'NW', 'SE', 'SW']));
+// console.log(animalsLocations(createArrayLocations()));
 
 function animalsIncludeNames(arrayLocations) {
   const result = {};
@@ -24,7 +29,7 @@ function animalsIncludeNames(arrayLocations) {
   return result;
 }
 
-// console.log(animalsIncludeNames(['NE', 'NW', 'SE', 'SW']));
+// console.log(animalsIncludeNames(createArrayLocations()));
 
 function animalsIncludeNamesSex(arrayLocations, sex) {
   const result = {};
@@ -39,10 +44,10 @@ function animalsIncludeNamesSex(arrayLocations, sex) {
   return result;
 }
 
-// console.log(animalsIncludeNamesSex(['NE', 'NW', 'SE', 'SW']));
+// console.log(animalsIncludeNamesSex(createArrayLocations()));
 
-function getAnimalMap({ includeNames = 0, sex, sorted } = 0) { // o importante é definir um valor para evitar o erro undefined
-  const arrayLocations = ['NE', 'NW', 'SE', 'SW'];
+function getAnimalMap({ includeNames, sex, sorted } = 0) { // o importante é definir um valor para evitar o erro undefined
+  const arrayLocations = createArrayLocations();
   if (!includeNames) return animalsLocations(arrayLocations);
   let result = animalsIncludeNames(arrayLocations);
   if (sex) {
