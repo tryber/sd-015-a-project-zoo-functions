@@ -9,5 +9,5 @@ function getOldestFromFirstSpecies(id) {
   const animalOlder = animalObj.residents.sort((a, b) => b.age - a.age);
   return Object.values(animalOlder[0]);
 }
-getOldestFromFirstSpecies('fdb2543b-5662-46a7-badc-93d960fdc0a8');
+
 module.exports = getOldestFromFirstSpecies;
