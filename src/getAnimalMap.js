@@ -22,7 +22,7 @@ function getSortedAnimals(animal, options) {
   const sortAnimals = animal.map((spc) => {
     if (options.sorted) {
       const sortResidents = getSpecieResidents(options, spc)
-        .sort((a, b) => (a.name > b.name) ? 1 : -1);
+        .sort((a, b) => a.name > b.name);
       return sortResidents;
     }
     return getSpecieResidents(options, spc);
@@ -57,7 +57,6 @@ function getAnimalMap(options) {
       .reduce((acc, obj) => Object.assign(acc, obj), {});
     return animalMapReduced;
   }
-
   const objtResidentMap = getResidentMap(options)
     .map((animal, index) => turnIntoObject(animal, index));
   const residentReduced = objtResidentMap
