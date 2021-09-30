@@ -3,12 +3,12 @@ const data = require('../data/zoo_data');
 function getOldestAnimal(specieResidents) {
   let oldestAnimalAge = 0;
   let oldestAnimal;
-  for (let i = 0; i < specieResidents.length; i += 1) {
-    if (specieResidents[i].age > oldestAnimalAge) {
-      oldestAnimalAge = specieResidents[i].age;
-      oldestAnimal = specieResidents[i];
+  specieResidents.forEach((specie) => {
+    if (specie.age > oldestAnimalAge) {
+      oldestAnimalAge = specie.age;
+      oldestAnimal = specie;
     }
-  }
+  })
   return oldestAnimal;
 }
 function getOldestFromFirstSpecies(id) {
