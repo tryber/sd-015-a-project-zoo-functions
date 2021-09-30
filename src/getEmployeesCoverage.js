@@ -1,7 +1,45 @@
 const data = require('../data/zoo_data');
+const specie = require('./getSpeciesByIds');
 
-function getEmployeesCoverage() {
-  // seu código aqui
+const { employees } = data;
+
+function getIndicatedEmployee(obj) { // Função para retornar o objeto da pessoa colaboradora indicada no parâmetro(obj)
+  const employee1 = employees.find((employee) => {
+    const fullName = `${employee.firstName} ${employee.lastName}`;
+    return fullName.includes(obj.name) || employee.id.includes(obj.id);
+  });
+  return employee1;
+}
+
+function answerToReturn(obj) { // Esta função retorna o obj criado a partir da pessoa colaboradora.
+  const indicatedEmployee = getIndicatedEmployee(obj);
+  const objToReturn = {
+    id: indicatedEmployee.id,
+    fullName: `${indicatedEmployee.firstName} ${indicatedEmployee.lastName}`,
+    species: specie(...indicatedEmployee.responsibleFor).map((animal) => animal.name),
+    locations: specie(...indicatedEmployee.responsibleFor).map((animal) => animal.location),
+  };
+  return objToReturn;
+}
+
+function informationsOfAllEmployees() { // Função para retornar a informação de todos os employees caso nenhum parâmetro seja passado para a função principal(getEmployeesCoverage)
+  const arrayWithAllObjs = [];
+  employees.forEach((curr) => {
+    const acc = {
+      id: curr.id,
+      fullName: `${curr.firstName} ${curr.lastName}`,
+      species: specie(...curr.responsibleFor).map((animal) => animal.name),
+      locations: specie(...curr.responsibleFor).map((animal) => animal.location),
+    };
+    arrayWithAllObjs.push(acc);
+  });
+  return arrayWithAllObjs;
+}
+
+function getEmployeesCoverage(obj) {
+  if (obj === undefined) return informationsOfAllEmployees();
+  if (getIndicatedEmployee(obj) === undefined) throw new Error('Informações inválidas');
+  return answerToReturn(obj);
 }
 
 module.exports = getEmployeesCoverage;
