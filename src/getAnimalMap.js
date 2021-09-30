@@ -11,6 +11,11 @@ function makeAnimalsArray(option, residents) {
 }
 
 function testVerifications(options, obj) {
+  
+}
+
+function getAnimalMap(options = { includeNames: false, sorted: false, sex: false }) {
+  const obj = {};
   species.forEach(({ name, location, residents }) => {
     if (options.includeNames) {
       const animalsNameList = makeAnimalsArray(options, residents);
@@ -22,11 +27,6 @@ function testVerifications(options, obj) {
       obj[location].push(name);
     }
   });
-}
-
-function getAnimalMap(options = { includeNames: false, sorted: false, sex: false }) {
-  const obj = {};
-  testVerifications(options, obj);
   return obj;
 }
 
