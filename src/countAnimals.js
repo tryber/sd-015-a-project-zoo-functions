@@ -16,4 +16,6 @@ function countAnimals({ specie = 0, sex = 0 } = 0) {
   return findSpecie.filter((spe) => spe.sex === sex).length;
 }
 
+console.log(countAnimals());
+
 module.exports = countAnimals;
