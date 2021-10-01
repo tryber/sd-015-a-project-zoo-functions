@@ -9,8 +9,9 @@ function location() {
   return { NE: ne, NW: nw, SE: se, SW: sw };
 }
 
-function name(param) {
-  return (species.reduce((objFinal, specie) => {
+function name() {
+  return (species.reduce((objFinal1, specie) => {
+    const objFinal = { ...objFinal1 };
     if (objFinal[specie.location] === undefined) {
       objFinal[specie.location] = [{ [specie.name]: specie.residents
         .map((nomesDosAnimais) => nomesDosAnimais.name) }];
@@ -24,8 +25,9 @@ function name(param) {
   }, {}));
 }
 
-function sorted(param) {
-  return (species.reduce((objFinal, specie) => {
+function sorted() {
+  return (species.reduce((objFinal1, specie) => {
+    const objFinal = { ...objFinal1 };
     if (objFinal[specie.location] === undefined) {
       objFinal[specie.location] = [{ [specie.name]: specie.residents
         .map((nomesDosAnimais) => nomesDosAnimais.name).sort() }];
@@ -39,84 +41,64 @@ function sorted(param) {
   }, {}));
 }
 
-function sexFemale() {
-  return (species.reduce((objFinal, specie) => {
+function sexMaleOrFemale(param) {
+  return (species.reduce((objFinal1, specie) => {
+    const objFinal = { ...objFinal1 };
     if (objFinal[specie.location] === undefined) {
       objFinal[specie.location] = [{ [specie.name]: specie.residents
-        .filter((element) => element.sex === 'female')
+        .filter((element) => element.sex === param)
         .map((nomesDosAnimais) => nomesDosAnimais.name) }];
       return objFinal;
     }
     if (objFinal[specie.location] !== undefined) {
       objFinal[specie.location].push({ [specie.name]: specie.residents
-        .filter((element) => element.sex === 'female')
+        .filter((element) => element.sex === param)
         .map((nomesDosAnimais) => nomesDosAnimais.name) });
     }
     return objFinal;
   }, {}));
 }
 
-function sexMale() {
-  return (species.reduce((objFinal, specie) => {
+function sexMaleOrFemaleSorted(param) {
+  return (species.reduce((objFinal1, specie) => {
+    const objFinal = { ...objFinal1 };
     if (objFinal[specie.location] === undefined) {
       objFinal[specie.location] = [{ [specie.name]: specie.residents
-        .filter((element) => element.sex === 'male')
-        .map((nomesDosAnimais) => nomesDosAnimais.name) }];
-      return objFinal;
-    }
-    if (objFinal[specie.location] !== undefined) {
-      objFinal[specie.location].push({ [specie.name]: specie.residents
-        .filter((element) => element.sex === 'male')
-        .map((nomesDosAnimais) => nomesDosAnimais.name) });
-    }
-    return objFinal;
-  }, {}));
-}
-function sexFemaleSorted() {
-  return (species.reduce((objFinal, specie) => {
-    if (objFinal[specie.location] === undefined) {
-      objFinal[specie.location] = [{ [specie.name]: specie.residents
-        .filter((element) => element.sex === 'female')
+        .filter((element) => element.sex === param)
         .map((nomesDosAnimais) => nomesDosAnimais.name).sort() }];
       return objFinal;
     }
     if (objFinal[specie.location] !== undefined) {
       objFinal[specie.location].push({ [specie.name]: specie.residents
-        .filter((element) => element.sex === 'female')
+        .filter((element) => element.sex === param)
         .map((nomesDosAnimais) => nomesDosAnimais.name).sort() });
     }
     return objFinal;
   }, {}));
 }
 
-function sexMaleSorted() {
-  return (species.reduce((objFinal, specie) => {
-    if (objFinal[specie.location] === undefined) {
-      objFinal[specie.location] = [{ [specie.name]: specie.residents
-        .filter((element) => element.sex === 'male')
-        .map((nomesDosAnimais) => nomesDosAnimais.name).sort() }];
-      return objFinal;
-    }
-    if (objFinal[specie.location] !== undefined) {
-      objFinal[specie.location].push({ [specie.name]: specie.residents
-        .filter((element) => element.sex === 'male')
-        .map((nomesDosAnimais) => nomesDosAnimais.name).sort() });
-    }
-    return objFinal;
-  }, {}));
+function sexSortedOrNot(sex, sort) {
+  if (sort) {
+    return sexMaleOrFemaleSorted(sex);
+  }
+  return sexMaleOrFemale(sex);
 }
 
-function getAnimalMap(...options) {
-  if (!options[0] || options[0].includeNames !== true) { return location(); }
-  if (options[0].includeNames === true && options[0].sex === 'female' && options[0]
-    .sorted === true) { return sexFemaleSorted(); }
-  if (options[0].includeNames === true && options[0].sex === 'male' && options[0]
-    .sorted === true) { return sexMaleSorted(); }
-  if (options[0].includeNames === true && options[0].sorted === true) { return sorted(); }
-  if (options[0].includeNames === true && options[0].sex === 'male') { return sexMale(); }
-  if (options[0].includeNames === true && options[0].sex === 'female') { return sexFemale(); }
-  if (options[0].includeNames === true) { return name(); }
-  if (options[0].sex === 'male' && sorted === true) { return sexMaleSorted(); }
+function nameSortedOrNot(sort) {
+  if (sort) {
+    return sorted();
+  }
+  return name();
+}
+
+function getAnimalMap(options = {}) {
+  if (options.includeNames === true && options.sex) {
+    return sexSortedOrNot(options.sex, options.sorted);
+  }
+  if (options.includeNames === true) {
+    return nameSortedOrNot(options.sorted);
+  }
+  return location();
 }
 
 getAnimalMap();
