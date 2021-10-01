@@ -1,57 +1,123 @@
-// const data = require('../data/zoo_data');
-// const { species } = require('../data/zoo_data');
+const data = require('../data/zoo_data');
+const { species } = require('../data/zoo_data');
 
-// function name(param) {
-//   console.log(species.reduce((objFinal, specie) => {
-//     if (objFinal[specie.location]) {console.log('0')
-//       console.log(objFinal)};
-//     if (!objFinal[specie.location]) {objFinal[specie.location] = { [specie.name]:specie.residents.map((nomesDosAnimais) => nomesDosAnimais.name).sort() };
-//     return objFinal;
-//   }, {}));
-// }
+function location() {
+  const ne = species.filter((element) => element.location === 'NE').map((element) => element.name);
+  const nw = species.filter((element) => element.location === 'NW').map((element) => element.name);
+  const se = species.filter((element) => element.location === 'SE').map((element) => element.name);
+  const sw = species.filter((element) => element.location === 'SW').map((element) => element.name);
+  return { NE: ne, NW: nw, SE: se, SW: sw };
+}
 
-// function sorted(param) {
-//   console.log(species.reduce((objFinal, specie) => {
-//     objFinal[specie.location] = { [specie.name]:specie.residents.map((nomesDosAnimais) => nomesDosAnimais.name).sort() };
-//     return objFinal;
-//   }, {}));
-// }
+function name(param) {
+  return (species.reduce((objFinal, specie) => {
+    if (objFinal[specie.location] === undefined) {
+      objFinal[specie.location] = [{ [specie.name]: specie.residents
+        .map((nomesDosAnimais) => nomesDosAnimais.name) }];
+      return objFinal;
+    }
+    if (objFinal[specie.location] !== undefined) {
+      objFinal[specie.location].push({ [specie.name]: specie.residents
+        .map((nomesDosAnimais) => nomesDosAnimais.name) });
+    }
+    return objFinal;
+  }, {}));
+}
 
-// function sexFemale () {
-//   return species.reduce((objFinal, specie) => {
-//     objFinal[specie.location] = { [specie.name]: species.map((element) => element.residents.filter((sex) => sex.sex === 'female').map((nome) => nome.name))};
-//     return objFinal;
-//   }, []);
-// }
+function sorted(param) {
+  return (species.reduce((objFinal, specie) => {
+    if (objFinal[specie.location] === undefined) {
+      objFinal[specie.location] = [{ [specie.name]: specie.residents
+        .map((nomesDosAnimais) => nomesDosAnimais.name).sort() }];
+      return objFinal;
+    }
+    if (objFinal[specie.location] !== undefined) {
+      objFinal[specie.location].push({ [specie.name]: specie.residents
+        .map((nomesDosAnimais) => nomesDosAnimais.name).sort() });
+    }
+    return objFinal;
+  }, {}));
+}
 
-// // // // function sex(param) {
-// //   console.log(species.map((element) => element.residents.filter((sex) => sex.sex === 'female').map((nome) => nome.name)))
+function sexFemale() {
+  return (species.reduce((objFinal, specie) => {
+    if (objFinal[specie.location] === undefined) {
+      objFinal[specie.location] = [{ [specie.name]: specie.residents
+        .filter((element) => element.sex === 'female')
+        .map((nomesDosAnimais) => nomesDosAnimais.name) }];
+      return objFinal;
+    }
+    if (objFinal[specie.location] !== undefined) {
+      objFinal[specie.location].push({ [specie.name]: specie.residents
+        .filter((element) => element.sex === 'female')
+        .map((nomesDosAnimais) => nomesDosAnimais.name) });
+    }
+    return objFinal;
+  }, {}));
+}
 
-// function getAnimalMap(...options) {
-//   const ne = species.filter((element) => element.location === 'NE').map((element) => element.name);
-//   const nw = species.filter((element) => element.location === 'NW').map((element) => element.name);
-//   const se = species.filter((element) => element.location === 'SE').map((element) => element.name);
-//   const sw = species.filter((element) => element.location === 'SW').map((element) => element.name);
-//   if (!options[0]) {
-//     return { NE: ne, NW: nw, SE: se, SW: sw };
-//   }
-//   if (options[0].includeNames === true && options[0].sorted === true) {
-//     const obj = { NE: sorted(ne), NW: sorted(nw), SE: sorted(se), SW: sorted(sw) };
-//     return obj;
-//   }
-//   if (options[0].includeNames === true && options[0].sex=== 'male') {
-//     return species.map((element) => element.residents.filter((sex) => sex.sex === 'male').map((nome) => nome.name));
-//   }
-//   if (options[0].includeNames === true && options[0].sex=== 'female') {
-//     const obj = sexFemale()
-//       return obj;
-//     }
-//   if (options[0].includeNames === true) {
-//     const obj = name();
-//     return obj;
-//   }
-// }
-// const options = { includeNames: true};
-// // sex();
-// console.log(getAnimalMap(options));
-// module.exports = getAnimalMap;
+function sexMale() {
+  return (species.reduce((objFinal, specie) => {
+    if (objFinal[specie.location] === undefined) {
+      objFinal[specie.location] = [{ [specie.name]: specie.residents
+        .filter((element) => element.sex === 'male')
+        .map((nomesDosAnimais) => nomesDosAnimais.name) }];
+      return objFinal;
+    }
+    if (objFinal[specie.location] !== undefined) {
+      objFinal[specie.location].push({ [specie.name]: specie.residents
+        .filter((element) => element.sex === 'male')
+        .map((nomesDosAnimais) => nomesDosAnimais.name) });
+    }
+    return objFinal;
+  }, {}));
+}
+function sexFemaleSorted() {
+  return (species.reduce((objFinal, specie) => {
+    if (objFinal[specie.location] === undefined) {
+      objFinal[specie.location] = [{ [specie.name]: specie.residents
+        .filter((element) => element.sex === 'female')
+        .map((nomesDosAnimais) => nomesDosAnimais.name).sort() }];
+      return objFinal;
+    }
+    if (objFinal[specie.location] !== undefined) {
+      objFinal[specie.location].push({ [specie.name]: specie.residents
+        .filter((element) => element.sex === 'female')
+        .map((nomesDosAnimais) => nomesDosAnimais.name).sort() });
+    }
+    return objFinal;
+  }, {}));
+}
+
+function sexMaleSorted() {
+  return (species.reduce((objFinal, specie) => {
+    if (objFinal[specie.location] === undefined) {
+      objFinal[specie.location] = [{ [specie.name]: specie.residents
+        .filter((element) => element.sex === 'male')
+        .map((nomesDosAnimais) => nomesDosAnimais.name).sort() }];
+      return objFinal;
+    }
+    if (objFinal[specie.location] !== undefined) {
+      objFinal[specie.location].push({ [specie.name]: specie.residents
+        .filter((element) => element.sex === 'male')
+        .map((nomesDosAnimais) => nomesDosAnimais.name).sort() });
+    }
+    return objFinal;
+  }, {}));
+}
+
+function getAnimalMap(...options) {
+  if (!options[0] || options[0].includeNames !== true) { return location(); }
+  if (options[0].includeNames === true && options[0].sex === 'female' && options[0]
+    .sorted === true) { return sexFemaleSorted(); }
+  if (options[0].includeNames === true && options[0].sex === 'male' && options[0]
+    .sorted === true) { return sexMaleSorted(); }
+  if (options[0].includeNames === true && options[0].sorted === true) { return sorted(); }
+  if (options[0].includeNames === true && options[0].sex === 'male') { return sexMale(); }
+  if (options[0].includeNames === true && options[0].sex === 'female') { return sexFemale(); }
+  if (options[0].includeNames === true) { return name(); }
+  if (options[0].sex === 'male' && sorted === true) { return sexMaleSorted(); }
+}
+
+getAnimalMap();
+module.exports = getAnimalMap;
