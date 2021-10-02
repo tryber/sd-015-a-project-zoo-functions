@@ -1,4 +1,5 @@
 const data = require('../data/zoo_data');
+
 const { employees } = data;
 // Crie a gestão dos funcionários de acordo com o respectivo gerente
 function isManager(id) {
