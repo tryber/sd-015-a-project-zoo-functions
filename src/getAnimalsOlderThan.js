@@ -7,4 +7,4 @@ function getAnimalsOlderThan(animal, age) {
   return ageCorrect;
 }
 
-module.exports = getAnimalsOlderTh
+module.exports = getAnimalsOlderThan
