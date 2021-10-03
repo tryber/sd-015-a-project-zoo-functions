@@ -1,4 +1,4 @@
-//ref: https://github.com/tryber/sd-015-a-project-zoo-functions/pull/145
+// ref: https://github.com/tryber/sd-015-a-project-zoo-functions/pull/145
 // Crie uma função que verifica se todos os animais de uma espécie possuem a idade mínima especificada
 const data = require('../data/zoo_data');
 
