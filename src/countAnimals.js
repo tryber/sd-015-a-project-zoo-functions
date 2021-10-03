@@ -1,6 +1,7 @@
 const data = require('../data/zoo_data');
 
-// consultado o repositorio de alex cubas
+// consultado o repositorio de alex cubas e  de vivian ost
+// https://github.com/tryber/sd-015-a-project-zoo-functions/pull/154/commits/08553a670c246fab18f120ec67801b1a74495756
 // https://github.com/tryber/sd-015-a-project-zoo-functions/pull/12/commits/52d0a899afe68fc53467a395e2dd8e45786bbeb7
 
 function countAnimals(animal) {
