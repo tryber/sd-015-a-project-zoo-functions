@@ -8,8 +8,8 @@ function countAnimals(animal) {
   const animalsName = {};
 
   if (!animal) {
-    data.species.forEach((el) => {
-      animalsName[el.name] = el.residents.length;
+    data.species.forEach((ele) => {
+      animalsName[ele.name] = ele.residents.length;
     });
     return animalsName;
   }
