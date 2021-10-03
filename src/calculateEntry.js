@@ -1,33 +1,24 @@
 const { prices } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-// Pessoas com idade menor que 18 anos são classificadas como crianças (child);
-// Pessoas com idade maior ou igual a 18 anos e menor que 50 são classicadas como adultas (adult);
-// Pessoas com idade maior ou igual 50 anos são classificadas como pessoas com mais idade (senior).
 function countEntrants(entrants) {
-  const child = entrants.filter((p) => p.age < 18).lenght;
-  const adult = entrants.filter((p) => p.age >= 18 && p.age < 50).lenght;
-  const senior = entrants.filter((p) => p.age >= 50).lenght;
-  const ppl = { child, adult, senior };
-  return ppl;
+  const child1 = entrants.filter((entrant) => entrant.age < 18).length;
+  const adult1 = entrants.filter((entrant) => entrant.age >= 18 && entrant.age < 50).length;
+  const senior1 = entrants.filter((entrant) => entrant.age >= 50).length;
+  return { child: child1, adult: adult1, senior: senior1 };
 }
 
 function calculateEntry(entrants) {
-  if (!entrants || Object.keys(entrants).length === 0) {
-    return 0;
-  }
+  if (!entrants || Object.keys(entrants).length === 0) { return 0; }
 
-  const RecoveryFunction = countEntrants(entrants);
-  const { child = 0, adult = 0, senior = 0 } = RecoveryFunction;
-
-  const childPpl = child * prices.child;
-  const adultPpl = adult * prices.adult;
-  const seniorPpl = senior * prices.senior;
-  const totalPrices = childPpl + adultPpl + seniorPpl;
-  return totalPrices;
+  const pplAgeEntrants = countEntrants(entrants);
+  const totalCalculatePrice = pplAgeEntrants.child * prices.child
+  + pplAgeEntrants.adult * prices.adult
+  + pplAgeEntrants.senior * prices.senior;
+  return totalCalculatePrice;
 }
-// const priceChild = countPpl.child * prices.child;
-// const priceAdult = countPpl.adult * prices.adult;
-// const priceSenior = countPpl.senior * prices.senior;
+// // Pessoas com idade menor que 18 anos são classificadas como crianças (child);
+// // Pessoas com idade maior ou igual a 18 anos e menor que 50 são classicadas como adultas (adult);
+// // Pessoas com idade maior ou igual 50 anos são classificadas como pessoas com mais idade (senior).
 
 module.exports = { calculateEntry, countEntrants };
