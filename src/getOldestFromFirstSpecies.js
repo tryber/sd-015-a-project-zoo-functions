@@ -8,7 +8,7 @@ function getOldestAnimal(specieResidents) {
       oldestAnimalAge = specie.age;
       oldestAnimal = specie;
     }
-  })
+  });
   return oldestAnimal;
 }
 function getOldestFromFirstSpecies(id) {
