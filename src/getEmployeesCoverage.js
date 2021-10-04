@@ -1,7 +1,6 @@
 const data = require('../data/zoo_data');
 
 function getEmployeesCoverage(idOrName) {
-  // seu código aqui
   if (idOrName) {
     const searchEmployee = data.employees.find(({ id, firstName, lastName }) =>
       id === idOrName || firstName === idOrName || lastName === idOrName);
