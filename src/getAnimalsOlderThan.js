@@ -1,7 +1,11 @@
+// ref: https://github.com/tryber/sd-015-a-project-zoo-functions/pull/145
+// Crie uma função que verifica se todos os animais de uma espécie possuem a idade mínima especificada
 const data = require('../data/zoo_data');
 
 function getAnimalsOlderThan(animal, age) {
-  // seu código aqui
+  const findTheAnimal = data.species.find((correct) => correct.name === animal);
+  const ageCorrect = findTheAnimal.residents.every((allAnimals) => allAnimals.age >= age);
+  return ageCorrect;
 }
 
 module.exports = getAnimalsOlderThan;
