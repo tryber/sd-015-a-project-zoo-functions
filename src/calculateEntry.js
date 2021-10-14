@@ -32,10 +32,11 @@ function countEntrants(entrants) {
 // console.log(countEntrants(entrants));
 
 function calculateEntry(entrants) {
-  const obj = countEntrants(entrants);
+  const totalEntries = countEntrants(entrants);
+  const { child, adult, senior } = totalEntries;
   // console.log(Object.keys(obj));
-  return Object.keys(obj)
-    .reduce(((acc, current) => acc + obj[current] * data.prices[current]), 0);
+  if (!entrants || Object.entries(entrants).length === 0) return 0;
+  return (child * data.prices.child) + (adult * data.prices.adult) + (senior * data.prices.senior);
 }
 
 // console.log(calculateEntry(entrants));
