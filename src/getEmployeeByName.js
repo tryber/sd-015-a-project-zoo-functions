@@ -4,8 +4,9 @@ const { employees } = data;
 
 function getEmployeeByName(employeeName) {
   // seu código aqui
-  return employees.find((employee) => employee.firstName === employeeName
-    || employee.lastName === employeeName) ? this : {};
+  const employee = employees.find((emp) => emp.firstName === employeeName
+  || employee.lastName === employeeName);
+  return employee || {};
 }
 
 module.exports = getEmployeeByName;
