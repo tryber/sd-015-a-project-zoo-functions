@@ -4,7 +4,6 @@ function getSpeciesByIds(...id) {
   // seu código aqui
   const allIds = id;
   let returnable = [];
-  console.log(data.species.residents);
   allIds.forEach((currId) => {
     returnable = [...returnable, ...data.species.filter((specie) => specie.id === currId)];
   });

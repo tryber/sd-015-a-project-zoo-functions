@@ -25,5 +25,3 @@ function getAnimalMap(options) {
 }
 
 module.exports = getAnimalMap;
-
-console.log(getAnimalMap({ sex: 'male', sorted: true }));
