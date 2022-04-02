@@ -1,4 +1,3 @@
-/* eslint-disable editorconfig/editorconfig */
 const data = require('../data/zoo_data');
 
 function getSpecies(id) {
@@ -8,7 +7,7 @@ function getSpecies(id) {
 
 function getByName(name) {
   const { id: employeeId, firstName, lastName, responsibleFor } = data.employees
-  .find((el) => el.firstName.includes(name) || el.lastName.includes(name));
+    .find((el) => el.firstName.includes(name) || el.lastName.includes(name));
   const allSpeciesNameAndLocation = responsibleFor.map((animalId) => getSpecies(animalId));
   const result = {
     id: employeeId,
@@ -21,7 +20,7 @@ function getByName(name) {
 
 function getById(id) {
   const payload = data.employees
-  .find((el) => el.id === id);
+    .find((el) => el.id === id);
   if (!payload) {
     throw new Error('Informações inválidas');
   }
@@ -37,7 +36,7 @@ function getById(id) {
 }
 
 function getEmployeesCoverage(request) {
-  if (!request) { 
+  if (!request) {
     return data.employees.map((employer) => getByName(employer.firstName));
   }
   const { name, id } = request;
